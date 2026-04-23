@@ -1,0 +1,132 @@
+[
+    {
+        "id": "age_eligibility",
+        "title": "Are you eligible to vote?",
+        "description": "To vote in India you must be an Indian citizen aged 18+ on the qualifying date (1 Jan, 1 Apr, 1 Jul, or 1 Oct of the electoral roll revision year) and not disqualified by law.",
+        "steps": [
+            "Confirm you are a citizen of India (required under Section 16 of the Representation of the People Act 1950)",
+            "Verify you will have turned 18 on or before the nearest qualifying date — 1 January, 1 April, 1 July, or 1 October — of the roll revision year",
+            "Check that you are ordinarily resident in the constituency where you wish to enrol",
+            "Ensure you are not disqualified (unsound mind per court, or disqualified for corrupt electoral practices)",
+            "Gather age proof, address proof, and a passport-size photo before starting Form 6"
+        ],
+        "officialLink": "https://voters.eci.gov.in/",
+        "category": "eligibility",
+        "verified_on": "2026-04-23",
+        "source": "https://ecisveep.nic.in/voters/general-voters/"
+    },
+    {
+        "id": "epic_status_check",
+        "title": "Check if you already have a Voter ID (EPIC)",
+        "description": "Check whether you are already on the electoral roll and hold an EPIC by searching the ECI Electoral Search portal by EPIC number, by details, or by registered mobile number.",
+        "steps": [
+            "Open the ECI Electoral Search portal at electoralsearch.eci.gov.in",
+            "Choose one of three tabs: 'Search by EPIC' (leftmost, 10-digit EPIC + state), 'Search by Details' (middle, name/DOB/state/constituency), or 'Search by Mobile' (rightmost, state + registered mobile + OTP)",
+            "Enter the required fields, complete the CAPTCHA, and submit",
+            "Review the result: an entry showing EPIC, Assembly Constituency, polling station, and part number confirms you are enrolled; 'No records found' means you must apply via Form 6",
+            "Note your EPIC number and polling details, then optionally download your e-EPIC from voters.eci.gov.in after login"
+        ],
+        "officialLink": "https://electoralsearch.eci.gov.in/",
+        "category": "registration",
+        "verified_on": "2026-04-23",
+        "source": "https://voters.eci.gov.in/"
+    },
+    {
+        "id": "form_6_registration",
+        "title": "Register as a new voter with Form 6",
+        "description": "First-time voters register by filing Form 6 on the Voter Services Portal: create an account with mobile OTP, complete personal and address details, upload documents, submit, and track until BLO verification.",
+        "steps": [
+            "Visit voters.eci.gov.in — you must create an account first: enter your mobile number, complete the captcha, request OTP, verify, and set a password (Form 6 is not accessible without login)",
+            "Log in and under 'New Registration for General Electors' click 'Fill Form 6'",
+            "Fill personal details (name, DOB, gender, place of birth), Aadhaar if available, present ordinary residence with PIN code, and contact information",
+            "Upload a recent passport-size colour photo (white background), age proof (birth certificate, 10th marksheet, passport, or Aadhaar), and address proof (Aadhaar, bank passbook, utility bill, or passport)",
+            "Preview, submit with CAPTCHA, save the reference ID, and track under 'Track Application Status' until the BLO completes field verification and the ERO approves — the EPIC is then delivered by Speed Post"
+        ],
+        "officialLink": "https://voters.eci.gov.in/form6",
+        "category": "registration",
+        "verified_on": "2026-04-23",
+        "source": "https://voters.eci.gov.in/guidelines/Form-6_en.pdf"
+    },
+    {
+        "id": "polling_booth_lookup",
+        "title": "Find your polling booth",
+        "description": "Find your assigned polling station via the ECI Voters' Services Portal, the Voter Helpline app, SMS, or the 1950 toll-free number — all free ECI services.",
+        "steps": [
+            "Visit voters.eci.gov.in and click 'Know Your Polling Booth / Know Your Polling Details'",
+            "Enter your 10-digit EPIC number, or use 'Search by Details' with name, relative's name, DOB, and state",
+            "Complete the CAPTCHA and submit to see your polling station name, address, part number, serial number, and BLO contact",
+            "Alternative: SMS 'ECI <space> <EPIC No>' to 1950 for instant booth details",
+            "Download the Voter Helpline app (Android/iOS) or call toll-free 1950 (available in 22 languages) for help"
+        ],
+        "officialLink": "https://electoralsearch.eci.gov.in/pollingstation",
+        "category": "pollingday",
+        "verified_on": "2026-04-23",
+        "source": "https://eci.gov.in/eci-mobile-app/records/voter-helpline-app-r1/"
+    },
+    {
+        "id": "documents_to_carry",
+        "title": "Documents to carry on polling day",
+        "description": "If you do not have your EPIC, ECI accepts any one of 12 alternative photo ID documents — but your name must still appear on the electoral roll for you to vote.",
+        "steps": [
+            "Carry your original EPIC (Voter ID) as first preference; e-EPIC is treated as equivalent",
+            "If EPIC is unavailable, carry ONE original document from ECI's 12-item alternate list (photocopies and soft copies are not accepted): Aadhaar, MNREGA Job Card, Bank/Post Office passbook with photo, Health Insurance Smart Card or Ayushman Bharat Card, Driving Licence, PAN Card, Smart Card issued by RGI under NPR, Indian Passport, Pension document with photo, Central/State Govt or PSU Service ID, MP/MLA/MLC ID card, or UDID Card",
+            "Confirm your name appears on the electoral roll at voters.eci.gov.in BEFORE polling day — no document overrides a missing roll entry",
+            "Show the document to the First Polling Officer for identity verification",
+            "NRI / overseas electors must carry their original Indian passport only; no alternate documents are allowed"
+        ],
+        "officialLink": "https://voters.eci.gov.in/Homepage",
+        "category": "documents",
+        "verified_on": "2026-04-23",
+        "source": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2177191"
+    },
+    {
+        "id": "name_not_on_list",
+        "title": "What to do if your name is missing from the voter list",
+        "description": "If your name is missing from the electoral roll on polling day you cannot vote at that booth — but you can verify, file Form 6 or Form 8, and escalate via BLO, ERO, or the 1950 helpline.",
+        "steps": [
+            "Search your name at electoralsearch.eci.gov.in by EPIC, mobile, or details, or via the Voter Helpline / ECINET app",
+            "Call the National Voter Helpline 1950 (toll-free) or SMS 'ECI <space> <EPIC No>' to 1950 to confirm roll status",
+            "Contact your Booth Level Officer using 'Book-a-Call with BLO' on the Voter Helpline app, or visit the BLO locally",
+            "File Form 6 (new inclusion) or Form 8 (correction/shifting) at voters.eci.gov.in; if you were previously on the roll, lodge a grievance with the ERO",
+            "Escalate unresolved complaints via the National Grievance Services Portal or email complaints@eci.gov.in — ECI targets resolution within 48 hours"
+        ],
+        "officialLink": "https://voters.eci.gov.in/Homepage",
+        "category": "pollingday",
+        "verified_on": "2026-04-23",
+        "source": "https://www.eci.gov.in/gallery/image/1187-call-1950-to-know-your-name-in-electoral-roll/"
+    },
+    {
+        "id": "first_time_confidence",
+        "title": "What happens inside the polling booth",
+        "description": "Inside the polling booth, three polling officers verify you, ink your finger, and record your entry — then you press one button on the EVM and verify the VVPAT paper slip for seven seconds.",
+        "steps": [
+            "Enter the booth and join the queue with your EPIC or one of the 12 alternate photo IDs ready",
+            "First Polling Officer: checks your ID and matches your name against the marked copy of the electoral roll",
+            "Second Polling Officer: applies indelible ink on your left index finger, records your entry in the Form 17A register, takes your signature/thumb, hands you a signed voter slip",
+            "Third Polling Officer: takes your slip, checks your inked finger, directs you to the voting compartment once the Presiding Officer activates the Ballot Unit",
+            "Press the blue button on the EVM Ballot Unit against your chosen candidate (or NOTA at the bottom); a red light glows and a beep confirms your vote",
+            "Watch the VVPAT transparent window for seven seconds — it displays a paper slip with the candidate's serial number, name, and symbol before dropping into the sealed box",
+            "Alert the Presiding Officer immediately if you do not see the VVPAT slip or hear the confirmation beep"
+        ],
+        "officialLink": "https://www.eci.gov.in/evm-vvpat",
+        "category": "pollingday",
+        "verified_on": "2026-04-23",
+        "source": "https://eci.gov.in/files/file/11409-broucher-for-presiding-officer-on-use-of-evm-vvpat/"
+    },
+    {
+        "id": "polling_day_timing",
+        "title": "When and when not to go to the booth",
+        "description": "Polls generally run 7 AM to 6 PM, but hours vary by state and constituency. Anyone already in the queue at closing time must be allowed to vote.",
+        "steps": [
+            "Check your specific constituency's notified poll hours on your state CEO website or the ECI press release for that election — do not assume 7–6 everywhere",
+            "Arrive early (7–9 AM) or late afternoon (4–5 PM) to avoid mid-morning queues, which are typically heaviest",
+            "Carry your EPIC or an ECI-approved alternative photo ID along with your official photo voter slip",
+            "Join the queue BEFORE the notified closing hour — the Presiding Officer issues numbered slips to everyone in line at closing, and polling continues until all of them vote",
+            "Do not leave the queue if it moves slowly near closing; by law every voter present at the closing hour is entitled to vote"
+        ],
+        "officialLink": "https://voters.eci.gov.in/",
+        "category": "pollingday",
+        "verified_on": "2026-04-23",
+        "source": "https://eci.gov.in/files/file/8993-handbook-for-presiding-officers-october-2018/"
+    }
+]
