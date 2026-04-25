@@ -1,38 +1,49 @@
 # Prompt Log — VoteReady
 
+This file logs every significant prompt sent to Antigravity during the build.
+
+---
+
 ## Day 1 — First Gemini round-trip test
 
-### Prompt 1: Create test.html
-**Goal:** Prove the Gemini API works end-to-end in a browser before building the real app.
+**Prompt:** Create test.html with a text input, button, and Gemini API integration. No frameworks.
 
-**Prompt sent:**
-> [paste the exact prompt you sent above]
+**Result:** Worked first try. Gemini returned "Hello" to test input. Dark-mode UI generated automatically.
 
-**Result:** [fill in after you see it work — or break]
+**Notes:** 45 minutes of GCP setup friction before API key worked. Once the key was ready, code generation took 41 seconds.
 
-**Notes:** [what surprised you, what needed fixing]
+---
+
+## Day 1 — Research lesson
+
+I tried to shortcut ECI research by prompting another AI and having it verify sources. Got called out when I tried the same trick twice. Opened the real URLs in Firefox — PIB page confirmed, voters.eci.gov.in confirmed, but electoralsearch tab order was wrong in AI research (it said Details/EPIC/Mobile but real page shows EPIC/Details/Mobile).
+
+**Lesson learned:** AI research is fine for exploring. Verification must be manual — I can't outsource judgment to another AI.
+
 ---
 
 ## Day 1 — Checklist UI
 
-**Prompt sent:**
-> Build checklist.html in the project root. It loads data/checklist.json 
-> via fetch on page load and renders each item as a collapsible card...
-> [paste the full prompt you actually used]
+**Prompt:** Build checklist.html loading data/checklist.json, rendering as collapsible cards with Done toggle and progress bar.
 
-**Result:** Worked on second try. First run failed in the browser with 
-a CORS NetworkError because file:// protocol blocks fetch() of local 
-files. Fixed by running `python -m http.server 8000` and opening via 
-http://localhost:8000. The code Antigravity generated was correct — 
-my runtime environment was wrong.
+**Result:** Worked on second try. First run failed with CORS error (file:// blocks fetch). Fixed with `python -m http.server 8000`.
 
-**What I learned:** Any app using fetch() for local JSON needs a local 
-server during development. Vercel will serve over https:// in production 
-so this is only a dev-time issue, but it needs to be documented in the 
-README for judges who clone the repo.
+**Notes:** Code was correct — runtime environment was wrong. Need to document local server setup in README.
 
-**Visual result:** Antigravity nailed the styling on the first try. 
-Dark cards, rounded corners, category tags with distinct colors (blue 
-for eligibility, purple for registration, orange for polling day), 
-progress bar with smooth fill animation. Consistent with test.html 
-without me prompting for specific colors.
+---
+
+## Day 1 → Day 3 — Lost commits
+
+Built landing page (index.html) and added "Back to home" navigation on day 1 afternoon. Never committed. Two days of life stuff happened. Came back on day 3 to find:
+- index.html untracked
+- checklist.html and test.html with uncommitted changes
+- README.md never updated with real content
+- PROMPTS.md accidentally overwritten with README content (wrong Ctrl+S tab)
+
+**Lesson learned:** Always commit before closing, even if unfinished. Two-day gap meant re-deriving what I'd done from git diff and Antigravity history.
+
+---
+
+## Day 3 — Recovery commit
+
+Recovered landing page and "Back to home" links from git status. Rebuilt this prompt log from scratch. Recreated README.md properly.

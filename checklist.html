@@ -222,9 +222,24 @@
             padding: 40px;
             color: var(--dim-text);
         }
+
+        .back-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: var(--dim-text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--text-color);
+        }
     </style>
 </head>
 <body>
+    <a href="index.html" class="back-link">← Back to home</a>
 
     <header>
         <div class="progress-container">

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoteReady</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --text-color: #f8fafc;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --card-border: #334155;
+            --primary-color: #3b82f6;
+            --primary-hover: #2563eb;
+            --border-radius: 12px;
+            --dim-text: #94a3b8;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 48px;
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin: 0 0 16px 0;
+            font-weight: 800;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin: 0 0 16px 0;
+            color: #e2e8f0;
+        }
+
+        .description {
+            color: var(--dim-text);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .cards-container {
+            display: flex;
+            gap: 24px;
+            width: 100%;
+        }
+
+        .card {
+            flex: 1;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--border-radius);
+            padding: 32px;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            background: rgba(40, 55, 75, 0.8);
+            border-color: var(--card-border);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin: 0 0 12px 0;
+            color: var(--text-color);
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--dim-text);
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        footer {
+            margin-top: 64px;
+            text-align: center;
+            color: var(--dim-text);
+            font-size: 0.9rem;
+            padding: 20px 0;
+        }
+
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .cards-container {
+                flex-direction: column;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="hero">
+            <h1>VoteReady</h1>
+            <h2>Your guided walkthrough for first-time Indian voters</h2>
+            <p class="description">This application helps 18-22 year olds confidently prepare to cast their first vote. We provide the essential knowledge and step-by-step guidance you need before heading to the polling booth.</p>
+        </div>
+
+        <div class="cards-container">
+            <a href="checklist.html" class="card">
+                <h3>Am I Ready?</h3>
+                <p>8-step checklist to verify you're prepared for polling day.</p>
+            </a>
+            <a href="test.html" class="card">
+                <h3>Ask a Question</h3>
+                <p>Get answers about voting from Gemini AI.</p>
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <p>Built with Google Antigravity for PromptWars Virtual 2026. Data verified against Election Commission of India.</p>
+        <p><a href="https://github.com/rajyyug1132/voteready" target="_blank" rel="noopener">View on GitHub</a></p>
+    </footer>
+</body>
+</html>
