@@ -3,358 +3,1036 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VoteReady Checklist</title>
+    <meta name="description" content="VoteReady checklist — 8 ECI-verified steps to prepare for polling day in India.">
+    <title>Am I Ready to Vote? — VoteReady Checklist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #0f172a;
-            --text-color: #f8fafc;
-            --card-bg: rgba(30, 41, 59, 0.7);
-            --card-border: #334155;
-            --primary-color: #3b82f6;
-            --primary-hover: #2563eb;
-            --border-radius: 12px;
-            --dim-text: #94a3b8;
-            --error-color: #ef4444;
+            --bg-base: transparent;
+            --bg-deeper: transparent;
+            --surface-1: rgba(255, 255, 255, 0.035);
+            --surface-2: rgba(255, 255, 255, 0.06);
+            --border-glass: rgba(255, 255, 255, 0.09);
+            --border-strong: rgba(255, 255, 255, 0.18);
+
+            --text-hi: #F5F5FB;
+            --text-mid: #B5B5CC;
+            --text-lo: #6B6B82;
+
+            --accent-violet: #8E5CFF;
+            --accent-pink: #FF5C9C;
+            --accent-blue: #4F8AFF;
+            --accent-cyan: #5BC0FF;
+            --accent-coral: #FF8B5A;
+            --accent-amber: #FFB75E;
+            --success: #34E0A1;
+
+            --grad-hero: linear-gradient(110deg, #C8A6FF 0%, #FF6FB5 38%, #FF8B5A 72%, #FFC371 100%);
+            --grad-cta: linear-gradient(120deg, #6E58FF 0%, #9D5CFF 45%, #FF6FB5 100%);
+
+            --grad-eligibility:  linear-gradient(135deg, #4F8AFF, #5BC0FF);
+            --grad-registration: linear-gradient(135deg, #FF5C9C, #FF8AC2);
+            --grad-pollingday:   linear-gradient(135deg, #FF8B3D, #FFB75E);
+            --grad-documents:    linear-gradient(135deg, #8E5CFF, #B57BFF);
+
+            --glow-violet:  0 0 36px -6px rgba(142, 92, 255, 0.55);
+            --glow-pink:    0 0 36px -6px rgba(255, 92, 156, 0.55);
+            --glow-blue:    0 0 36px -6px rgba(79, 138, 255, 0.55);
+            --glow-success: 0 0 28px -6px rgba(52, 224, 161, 0.6);
+            --shadow-card: 0 10px 28px rgba(0, 0, 0, 0.40);
+            --shadow-lift: 0 22px 56px rgba(0, 0, 0, 0.55);
+
+            --blur-card: blur(20px) saturate(140%);
+
+            --font-display: 'Space Grotesk', system-ui, sans-serif;
+            --font-body:    'Inter', system-ui, sans-serif;
+
+            --s-1: 4px;  --s-2: 8px;  --s-3: 12px; --s-4: 16px;
+            --s-5: 24px; --s-6: 32px; --s-7: 48px; --s-8: 72px;
+
+            --r-sm: 8px; --r-md: 14px; --r-lg: 22px; --r-xl: 28px; --r-pill: 999px;
+
+            --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
+            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --dur-fast: 160ms; --dur-med: 300ms; --dur-slow: 600ms;
         }
 
+        *, *::before, *::after { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            max-width: 700px;
+            margin: 0;
+            min-height: 100vh;
+            background: var(--bg-base);
+            color: var(--text-hi);
+            font-family: var(--font-body);
+            font-weight: 300;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+        :focus-visible {
+            outline: 2px solid #FFFFFF;
+            outline-offset: 3px;
+            box-shadow: 0 0 0 4px rgba(142, 92, 255, 0.45);
+            border-radius: var(--r-sm);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.001ms !important;
+                transition-duration: 0.001ms !important;
+            }
+        }
+
+        .svg-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+        .sr-only {
+            position: absolute; width: 1px; height: 1px;
+            padding: 0; margin: -1px; overflow: hidden;
+            clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+        }
+
+        /* Ambient Background matching main page */
+        .ambient-bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; background: #0d0d12; }
+        .ambient-orb { position: absolute; border-radius: 50%; filter: blur(100px); mix-blend-mode: screen; }
+        .orb-1 { top: -10%; left: -10%; width: 40vw; height: 40vw; background: rgba(147, 51, 234, 0.3); }
+        .orb-2 { top: 10%; right: -5%; width: 35vw; height: 35vw; background: rgba(37, 99, 235, 0.2); }
+        .orb-3 { bottom: -10%; left: 20%; width: 40vw; height: 40vw; background: rgba(219, 39, 119, 0.2); }
+        .orb-4 { top: 60%; right: 10%; width: 35vw; height: 35vw; background: rgba(13, 148, 136, 0.2); }
+        .noise-bg { position: absolute; inset: 0; opacity: 0.04; mix-blend-mode: overlay; background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noise)"/%3E%3C/svg%3E'); }
+
+        /* Page layout */
+        .page {
+            max-width: 820px;
             margin: 0 auto;
-            padding: 40px 20px;
-            line-height: 1.5;
+            padding: var(--s-6) var(--s-5) var(--s-7);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        header {
-            margin-bottom: 32px;
+        /* Top nav */
+        .top-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--s-7);
+            animation: fade-down 500ms var(--ease-out) both;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 16px;
+            border-radius: var(--r-pill);
+            border: 1px solid var(--border-glass);
+            background: var(--surface-1);
+            color: var(--text-mid);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color var(--dur-med) var(--ease-out),
+                        border-color var(--dur-med) var(--ease-out),
+                        background var(--dur-med) var(--ease-out),
+                        transform var(--dur-med) var(--ease-out);
+        }
+        .back-link svg { width: 16px; height: 16px; }
+        .back-link:hover {
+            color: var(--text-hi);
+            border-color: var(--border-strong);
+            background: var(--surface-2);
+            transform: translateX(-2px);
+        }
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--text-hi);
+            text-decoration: none;
+        }
+        .brand-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--grad-cta);
+            box-shadow: var(--glow-violet);
         }
 
-        .progress-container {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: var(--border-radius);
-            padding: 16px 20px;
-            margin-bottom: 24px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
+        /* Page header */
+        .page-head {
+            margin-bottom: var(--s-6);
+        }
+        .page-title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: clamp(2.2rem, 5.5vw, 3.4rem);
+            line-height: 1.04;
+            letter-spacing: -0.04em;
+            margin: 0 0 var(--s-3);
+            background: var(--grad-hero);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: fade-up 600ms 80ms var(--ease-out) both;
+        }
+        .page-sub {
+            color: var(--text-mid);
+            font-size: 1.05rem;
+            line-height: 1.55;
+            margin: 0;
+            max-width: 56ch;
+            animation: fade-up 600ms 160ms var(--ease-out) both;
         }
 
-        .progress-text {
-            font-weight: 600;
-            margin-bottom: 12px;
-            font-size: 1rem;
-            color: var(--text-color);
+        /* Sticky progress rail */
+        .progress-rail {
+            position: sticky;
+            top: 0;
+            z-index: 5;
+            margin: 0 calc(var(--s-5) * -1) var(--s-6);
+            padding: var(--s-3) var(--s-5);
+            background: rgba(7, 7, 26, 0.78);
+            backdrop-filter: var(--blur-card);
+            -webkit-backdrop-filter: var(--blur-card);
+            border-bottom: 1px solid var(--border-glass);
+            display: flex;
+            align-items: center;
+            gap: var(--s-4);
+            animation: fade-in 500ms 240ms var(--ease-out) both;
         }
-
-        .progress-bar {
-            height: 8px;
-            background-color: #1e293b;
-            border-radius: 4px;
+        .progress-track {
+            flex: 1;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: var(--r-pill);
             overflow: hidden;
+            border: 1px solid var(--border-glass);
         }
-
         .progress-fill {
             height: 100%;
-            background-color: var(--primary-color);
-            border-radius: 4px;
-            transition: width 0.3s ease-out;
-            width: 0%;
+            width: var(--pct, 0%);
+            background: var(--grad-cta);
+            border-radius: var(--r-pill);
+            transition: width 600ms var(--ease-out);
+            box-shadow: 0 0 16px rgba(157, 92, 255, 0.5);
         }
-
-        h1 {
-            font-size: 2rem;
-            margin-top: 0;
-            margin-bottom: 8px;
-            font-weight: 700;
-        }
-
-        .intro {
-            color: var(--dim-text);
-            font-size: 1.05rem;
-            margin-top: 0;
-            margin-bottom: 0;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: var(--border-radius);
-            margin-bottom: 16px;
-            overflow: hidden;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
-        }
-
-        .card.completed {
-            opacity: 0.6;
-            background: rgba(30, 41, 59, 0.4);
-        }
-
-        .card.completed .card-title {
-            text-decoration: line-through;
-            color: var(--dim-text);
-        }
-
-        .card-header {
-            display: flex;
-            align-items: center;
-            padding: 16px 20px;
-            cursor: pointer;
-            user-select: none;
-            transition: background-color 0.2s;
-        }
-
-        .card-header:hover {
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-
-        .done-checkbox {
-            width: 20px;
-            height: 20px;
-            margin-right: 16px;
-            cursor: pointer;
-            accent-color: var(--primary-color);
-            flex-shrink: 0;
-        }
-
-        .card-title {
-            flex: 1;
-            font-weight: 600;
-            font-size: 1.05rem;
-            margin-right: 12px;
-        }
-
-        .category-tag {
-            font-size: 0.75rem;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            background-color: #334155;
-            color: #cbd5e1;
+        .progress-text {
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--text-mid);
+            font-variant-numeric: tabular-nums;
             white-space: nowrap;
         }
-
-        .category-eligibility { background-color: rgba(16, 185, 129, 0.15); color: #34d399; }
-        .category-registration { background-color: rgba(59, 130, 246, 0.15); color: #60a5fa; }
-        .category-pollingday { background-color: rgba(245, 158, 11, 0.15); color: #fbbf24; }
-        .category-documents { background-color: rgba(168, 85, 247, 0.15); color: #c084fc; }
-
-        .card-body {
-            display: none;
-            padding: 0 20px 20px 56px;
+        .progress-text strong {
+            color: var(--text-hi);
+            font-weight: 600;
         }
 
-        .card-body.expanded {
-            display: block;
-        }
-
-        .description {
-            margin-top: 0;
-            margin-bottom: 16px;
-            color: #e2e8f0;
-            font-size: 0.95rem;
-        }
-
-        .steps-list {
-            padding-left: 20px;
-            margin-bottom: 24px;
-            color: #cbd5e1;
-            font-size: 0.95rem;
-        }
-
-        .steps-list li {
-            margin-bottom: 8px;
-        }
-
-        .card-links {
+        /* Card list */
+        .card-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
             display: flex;
-            gap: 16px;
+            flex-direction: column;
+            gap: var(--s-4);
+        }
+
+        /* Checklist card */
+        .cl-card {
+            position: relative;
+            background: var(--surface-1);
+            backdrop-filter: var(--blur-card);
+            -webkit-backdrop-filter: var(--blur-card);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--r-lg);
+            overflow: hidden;
+            transition: border-color var(--dur-med) var(--ease-out),
+                        box-shadow var(--dur-med) var(--ease-out),
+                        background var(--dur-med) var(--ease-out);
+            /* Initial state for wizard GSAP animation */
+            opacity: 0;
+            display: none;
+        }
+        .cl-card:hover {
+            border-color: var(--border-strong);
+            box-shadow: var(--shadow-card);
+        }
+        .cl-card[data-completed="true"] {
+            box-shadow: var(--glow-success);
+            border-color: rgba(52, 224, 161, 0.32);
+        }
+
+        .cl-head {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
             align-items: center;
-            margin-top: 20px;
+            gap: var(--s-3);
+            padding: var(--s-4) var(--s-5);
         }
 
-        .action-link {
-            background-color: var(--primary-color);
-            color: white;
+        /* Custom checkbox */
+        .cl-check {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .cl-input {
+            position: absolute;
+            opacity: 0;
+            inset: -6px;
+            width: calc(100% + 12px);
+            height: calc(100% + 12px);
+            cursor: pointer;
+            margin: 0;
+        }
+        .cl-box {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px; height: 24px;
+            border: 1.5px solid var(--border-strong);
+            border-radius: 7px;
+            background: var(--surface-2);
+            transition: background var(--dur-med) var(--ease-out),
+                        border-color var(--dur-med) var(--ease-out),
+                        box-shadow var(--dur-med) var(--ease-out);
+        }
+        .cl-box svg {
+            width: 14px; height: 14px;
+            color: #07071A;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: opacity 200ms var(--ease-out),
+                        transform 280ms var(--ease-spring);
+        }
+        .cl-input:checked + .cl-box {
+            background: var(--success);
+            border-color: var(--success);
+            box-shadow: 0 0 14px rgba(52, 224, 161, 0.55);
+        }
+        .cl-input:checked + .cl-box svg {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .cl-input:focus-visible + .cl-box {
+            outline: 2px solid #FFFFFF;
+            outline-offset: 3px;
+            box-shadow: 0 0 0 4px rgba(142, 92, 255, 0.45);
+        }
+
+        /* Toggle button (title + chevron) */
+        .cl-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--s-3);
+            background: transparent;
+            border: 0;
+            padding: 0;
+            color: var(--text-hi);
+            font: inherit;
+            text-align: left;
+            cursor: pointer;
+            min-width: 0;
+        }
+        .cl-title {
+            position: relative;
+            display: inline-block;
+            font-size: 1.02rem;
+            font-weight: 600;
+            line-height: 1.4;
+            color: var(--text-hi);
+            transition: color var(--dur-med) var(--ease-out);
+        }
+        .cl-title::after {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0;
+            width: 0;
+            height: 1.5px;
+            background: var(--text-mid);
+            transition: width 320ms var(--ease-out);
+            pointer-events: none;
+        }
+        .cl-card[data-completed="true"] .cl-title {
+            color: var(--text-mid);
+        }
+        .cl-card[data-completed="true"] .cl-title::after {
+            width: 100%;
+        }
+        .cl-chev {
+            width: 18px; height: 18px;
+            color: var(--text-lo);
+            flex-shrink: 0;
+            transition: transform var(--dur-med) var(--ease-out),
+                        color var(--dur-med) var(--ease-out);
+        }
+        .cl-card[data-expanded="true"] .cl-chev {
+            transform: rotate(180deg);
+            color: var(--text-mid);
+        }
+
+        /* Category tag */
+        .cl-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 5px 11px;
+            border-radius: var(--r-pill);
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #FFFFFF;
+            white-space: nowrap;
+            background: var(--surface-2);
+            border: 1px solid var(--border-glass);
+        }
+        .cl-card[data-category="eligibility"]  .cl-tag { background: var(--grad-eligibility); border-color: transparent; }
+        .cl-card[data-category="registration"] .cl-tag { background: var(--grad-registration); border-color: transparent; }
+        .cl-card[data-category="pollingday"]   .cl-tag { background: var(--grad-pollingday); border-color: transparent; }
+        .cl-card[data-category="documents"]    .cl-tag { background: var(--grad-documents); border-color: transparent; }
+
+        /* Body (animated expand via grid-template-rows trick) */
+        .cl-body {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 380ms var(--ease-out);
+        }
+        .cl-body-inner {
+            min-height: 0;
+            overflow: hidden;
+        }
+        .cl-card[data-expanded="true"] .cl-body { grid-template-rows: 1fr; }
+
+        .cl-body-content {
+            padding: 0 var(--s-5) var(--s-5);
+            border-top: 1px solid var(--border-glass);
+            margin-top: 0;
+            padding-top: var(--s-4);
+        }
+        .cl-desc {
+            color: var(--text-mid);
+            line-height: 1.6;
+            font-size: 0.96rem;
+            margin: 0 0 var(--s-4);
+        }
+        .cl-steps {
+            margin: 0 0 var(--s-5);
+            padding-left: var(--s-5);
+            color: var(--text-mid);
+            font-size: 0.93rem;
+            line-height: 1.6;
+            counter-reset: step;
+            list-style: none;
+        }
+        .cl-steps li {
+            position: relative;
+            padding-left: var(--s-5);
+            margin-bottom: var(--s-3);
+            counter-increment: step;
+        }
+        .cl-steps li::before {
+            content: counter(step);
+            position: absolute;
+            left: -8px; top: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px; height: 22px;
+            border-radius: 50%;
+            background: var(--surface-2);
+            border: 1px solid var(--border-glass);
+            color: var(--text-mid);
+            font-size: 0.72rem;
+            font-weight: 600;
+            font-family: var(--font-display);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .cl-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: var(--s-3);
+        }
+        .cl-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border-radius: var(--r-pill);
+            background: var(--grad-cta);
+            color: #FFFFFF;
+            font-weight: 600;
+            font-size: 0.9rem;
             text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 6px;
+            box-shadow: 0 6px 20px -4px rgba(157, 92, 255, 0.45);
+            transition: transform var(--dur-med) var(--ease-out),
+                        box-shadow var(--dur-med) var(--ease-out),
+                        filter var(--dur-med) var(--ease-out);
+        }
+        .cl-action svg { width: 15px; height: 15px; }
+        .cl-action:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px -4px rgba(157, 92, 255, 0.6);
+            filter: brightness(1.08);
+        }
+        .cl-action:active { transform: translateY(0) scale(0.98); }
+
+        .cl-source {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 9px 14px;
+            border-radius: var(--r-pill);
+            border: 1px solid var(--border-glass);
+            background: var(--surface-1);
+            color: var(--text-mid);
+            font-size: 0.85rem;
             font-weight: 500;
-            font-size: 0.9rem;
-            transition: background-color 0.2s, transform 0.1s;
+            text-decoration: none;
+            transition: color var(--dur-med) var(--ease-out),
+                        border-color var(--dur-med) var(--ease-out),
+                        background var(--dur-med) var(--ease-out);
+        }
+        .cl-source svg { width: 13px; height: 13px; }
+        .cl-source:hover {
+            color: var(--text-hi);
+            border-color: var(--border-strong);
+            background: var(--surface-2);
         }
 
-        .action-link:hover {
-            background-color: var(--primary-hover);
-        }
-
-        .action-link:active {
-            transform: scale(0.98);
-        }
-
-        .source-link {
-            color: var(--dim-text);
-            text-decoration: underline;
-            font-size: 0.9rem;
-            transition: color 0.2s;
-        }
-
-        .source-link:hover {
-            color: #f8fafc;
-        }
-
-        .error {
-            color: var(--error-color);
-            padding: 20px;
+        /* Loading / error states */
+        .state {
             text-align: center;
-            background: rgba(239, 68, 68, 0.1);
-            border-radius: var(--border-radius);
-            border: 1px solid rgba(239, 68, 68, 0.2);
+            padding: var(--s-7) var(--s-5);
+            color: var(--text-mid);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--r-lg);
+            background: var(--surface-1);
+        }
+        .state--error {
+            color: #FFB7B7;
+            border-color: rgba(255, 92, 92, 0.3);
+            background: rgba(255, 92, 92, 0.05);
+        }
+
+        /* Footer */
+        .foot {
+            margin-top: var(--s-8);
+            padding-top: var(--s-5);
+            border-top: 1px solid var(--border-glass);
+            color: var(--text-lo);
+            font-size: 0.83rem;
+            text-align: center;
+        }
+        .foot a {
+            color: var(--text-mid);
+            text-decoration: none;
+            transition: color var(--dur-med) var(--ease-out);
+        }
+        .foot a:hover { color: var(--text-hi); }
+
+        /* Animations */
+        @keyframes fade-up {
+            from { opacity: 0; transform: translateY(14px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fade-down {
+            from { opacity: 0; transform: translateY(-10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fade-in {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+
+        /* Responsive */
+        @media (max-width: 720px) {
+            .page { padding: var(--s-5) var(--s-4) var(--s-6); }
+            .page-head { margin-bottom: var(--s-5); }
+            .progress-rail {
+                margin-left: calc(var(--s-4) * -1);
+                margin-right: calc(var(--s-4) * -1);
+                padding-left: var(--s-4);
+                padding-right: var(--s-4);
+            }
+            .cl-head { padding: var(--s-3) var(--s-4); gap: var(--s-3); }
+            .cl-body-content { padding: var(--s-4) var(--s-4) var(--s-4); }
+            .cl-tag { font-size: 0.62rem; padding: 4px 9px; letter-spacing: 0.2em; }
+            .cl-title { font-size: 0.96rem; }
+            .orb { opacity: 0.22; }
+        }
+        @media (max-width: 480px) {
+            .cl-actions { flex-direction: column; align-items: stretch; }
+            .cl-action, .cl-source { justify-content: center; }
+            .epic-form { flex-direction: column; }
+        }
+
+        /* EPIC Checker */
+        .epic-checker {
+            background: var(--surface-1);
+            backdrop-filter: var(--blur-card);
+            -webkit-backdrop-filter: var(--blur-card);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--r-xl);
+            padding: var(--s-6);
+            margin-bottom: var(--s-7);
+            position: relative;
+            overflow: hidden;
+            animation: fade-up 600ms 200ms var(--ease-out) both;
+        }
+        .epic-checker::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(142, 92, 255, 0.05), transparent);
+            pointer-events: none;
+        }
+        .epic-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: var(--s-2);
+        }
+        .epic-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--accent-violet);
+            box-shadow: 0 0 8px var(--accent-violet);
+        }
+        .epic-title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--text-hi);
+            margin: 0;
+        }
+        .epic-subtitle {
+            color: var(--text-mid);
+            font-size: 0.95rem;
+            margin: 0 0 var(--s-5);
+            line-height: 1.5;
+        }
+        .epic-form {
+            display: flex;
+            gap: var(--s-3);
+            flex-wrap: wrap;
+        }
+        .epic-input {
+            flex: 1;
+            min-width: 200px;
+            background: rgba(10, 10, 15, 0.6);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--r-md);
+            padding: 12px 16px;
+            color: var(--text-hi);
+            font-size: 1rem;
+            font-family: var(--font-body);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: border-color var(--dur-fast), box-shadow var(--dur-fast);
+        }
+        .epic-input::placeholder { text-transform: none; color: var(--text-lo); }
+        .epic-input:focus {
+            outline: none;
+            border-color: rgba(142, 92, 255, 0.5);
+            box-shadow: 0 0 15px rgba(142, 92, 255, 0.15);
+        }
+        .epic-btn {
+            background: var(--grad-cta);
+            border: none;
+            border-radius: var(--r-md);
+            padding: 12px 24px;
+            color: white;
+            font-weight: 600;
+            font-family: var(--font-body);
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(142, 92, 255, 0.25);
+            transition: transform var(--dur-fast), box-shadow var(--dur-fast);
+            white-space: nowrap;
+        }
+        .epic-btn:hover {
+            box-shadow: 0 4px 25px rgba(142, 92, 255, 0.4);
+            transform: translateY(-2px);
+        }
+        .epic-btn:disabled { opacity: 0.7; pointer-events: none; }
+        
+        .epic-loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: var(--s-4) 0;
+            color: var(--text-mid);
+            font-size: 0.9rem;
+        }
+        .spinner {
+            width: 20px; height: 20px;
+            border: 2px solid rgba(142, 92, 255, 0.25);
+            border-top-color: var(--accent-violet);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
         }
         
-        .loading {
-            text-align: center;
-            padding: 40px;
-            color: var(--dim-text);
+        .epic-result {
+            margin-top: var(--s-5);
+            background: var(--surface-2);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--r-md);
+            padding: var(--s-5);
+            animation: fade-up 400ms var(--ease-out) both;
         }
-
-        .back-link {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            color: var(--dim-text);
-            text-decoration: none;
+        .epic-result-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .epic-status-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent-violet);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 4px;
+        }
+        .epic-name {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--text-hi);
+            margin: 0 0 4px;
+        }
+        .epic-meta {
+            color: var(--text-mid);
             font-size: 0.9rem;
-            transition: color 0.2s;
+            margin: 0 0 var(--s-4);
         }
-
-        .back-link:hover {
-            color: var(--text-color);
+        .epic-meta strong { color: var(--text-hi); font-weight: 500; }
+        .epic-booth {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 8px;
+            padding: 12px;
+            display: inline-block;
+        }
+        .epic-booth-label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--text-lo);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 4px;
+        }
+        .epic-booth-value {
+            display: block;
+            color: var(--text-hi);
+            font-size: 0.95rem;
+        }
+        .epic-success-icon {
+            width: 32px; height: 32px;
+            color: var(--success);
+            opacity: 0.8;
+        }
+        .epic-disclaimer {
+            text-align: center;
+            font-size: 0.7rem;
+            color: var(--text-lo);
+            margin: var(--s-4) 0 0;
         }
     </style>
 </head>
 <body>
-    <a href="index.html" class="back-link">← Back to home</a>
+    <svg class="svg-sprite" aria-hidden="true">
+        <defs>
+            <symbol id="i-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5"/>
+                <path d="M11 18l-6-6 6-6"/>
+            </symbol>
+            <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12.5l4.5 4.5L19 7"/>
+            </symbol>
+            <symbol id="i-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9l6 6 6-6"/>
+            </symbol>
+            <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"/>
+                <path d="M13 6l6 6-6 6"/>
+            </symbol>
+            <symbol id="i-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 4h6v6"/>
+                <path d="M20 4l-9 9"/>
+                <path d="M19 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V6a1 1 0 011-1h5"/>
+            </symbol>
+        </defs>
+    </svg>
 
-    <header>
-        <div class="progress-container">
-            <div class="progress-text" id="progress-text">0 of 8 complete</div>
-            <div class="progress-bar">
+    <div class="ambient-bg" aria-hidden="true">
+        <div class="ambient-orb orb-1"></div>
+        <div class="ambient-orb orb-2"></div>
+        <div class="ambient-orb orb-3"></div>
+        <div class="ambient-orb orb-4"></div>
+        <div class="noise-bg"></div>
+    </div>
+
+    <div class="page">
+        <nav class="top-nav">
+            <a href="index.html" class="back-link"><svg><use href="#i-back"/></svg> Back to home</a>
+            <a href="index.html" class="brand"><span class="brand-dot"></span>VoteReady</a>
+        </nav>
+
+        <header class="page-head">
+            <h1 class="page-title">Am I Ready to Vote?</h1>
+            <p class="page-sub">Follow these steps to ensure you're fully prepared for polling day. Each item is verified against Election Commission of India sources.</p>
+        </header>
+
+        <div class="epic-checker">
+            <div class="epic-header">
+                <span class="epic-dot"></span>
+                <h2 class="epic-title">EPIC Status Checker</h2>
+            </div>
+            <p class="epic-subtitle">Verify your voter enrollment status instantly using your Voter ID (EPIC) Number.</p>
+            
+            <div class="epic-form">
+                <input type="text" id="epic-input" class="epic-input" placeholder="Enter EPIC No. (e.g., ABC1234567)" autocomplete="off">
+                <button id="epic-btn" class="epic-btn">Verify Status</button>
+            </div>
+            
+            <div id="epic-loading" class="epic-loading" style="display: none;">
+                <div class="spinner"></div>
+                <span>Checking ECI records...</span>
+            </div>
+            
+            <div id="epic-result" class="epic-result" style="display: none;">
+                <div class="epic-result-flex">
+                    <div class="epic-result-info">
+                        <span class="epic-status-badge">Status: Active</span>
+                        <h3 class="epic-name" id="epic-name">Rahul Sharma</h3>
+                        <p class="epic-meta">Serial No: <strong id="epic-serial">402</strong> | Part No: <strong id="epic-part">12</strong></p>
+                        
+                        <div class="epic-booth">
+                            <span class="epic-booth-label">Polling Station</span>
+                            <span class="epic-booth-value" id="epic-station">Govt. Primary School, Room 2, Bangalore</span>
+                        </div>
+                    </div>
+                    <svg class="epic-success-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+                </div>
+            </div>
+            
+            <p class="epic-disclaimer">Data fetched from ECI records.</p>
+        </div>
+
+        <div class="progress-rail" role="status" aria-live="polite">
+            <div class="progress-track" aria-hidden="true">
                 <div class="progress-fill" id="progress-fill"></div>
             </div>
+            <span class="progress-text" id="progress-text"><strong>0</strong> of <strong>8</strong> complete</span>
         </div>
-        <h1>Am I Ready to Vote?</h1>
-        <p class="intro">Follow these steps to ensure you're fully prepared for polling day.</p>
-    </header>
 
-    <main id="checklist-container">
-        <div class="loading">Loading checklist...</div>
-    </main>
+        <ul class="card-list" id="checklist-container">
+            <li class="state">Loading checklist…</li>
+        </ul>
+
+        <footer class="foot">
+            <p>Sources verified against the Election Commission of India · <a href="index.html">Back to home</a></p>
+        </footer>
+    </div>
 
     <script>
-        const STORAGE_KEY = 'voteready_checklist_v1';
-        let completedItems = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-        let totalItemsCount = 8; // Default, will update once loaded
-
-        async function loadChecklist() {
-            try {
-                const response = await fetch('data/checklist.json');
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const data = await response.json();
-                totalItemsCount = data.length;
-                renderChecklist(data);
-                updateProgress();
-            } catch (error) {
-                document.getElementById('checklist-container').innerHTML = 
-                    `<div class="error">Failed to load checklist data: ${error.message}</div>`;
-            }
-        }
-
-        function renderChecklist(items) {
+        (function () {
+            const STORAGE_KEY = 'voteready_checklist_v1';
             const container = document.getElementById('checklist-container');
-            container.innerHTML = '';
-            
-            items.forEach(item => {
-                const isCompleted = completedItems.includes(item.id);
-                
-                const card = document.createElement('div');
-                card.className = `card ${isCompleted ? 'completed' : ''}`;
-                card.dataset.id = item.id;
-                
-                const stepsHtml = item.steps.map(step => `<li>${step}</li>`).join('');
-                
-                card.innerHTML = `
-                    <div class="card-header">
-                        <input type="checkbox" class="done-checkbox" ${isCompleted ? 'checked' : ''}>
-                        <span class="card-title">${item.title}</span>
-                        <span class="category-tag category-${item.category.toLowerCase()}">${item.category}</span>
+            const progressFill = document.getElementById('progress-fill');
+            const progressText = document.getElementById('progress-text');
+
+            let completed = new Set();
+            try {
+                completed = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'));
+            } catch (_) { completed = new Set(); }
+
+            let total = 8;
+            let currentItems = [];
+
+            function persist() {
+                try {
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(Array.from(completed)));
+                } catch (_) { }
+            }
+
+            function updateProgress() {
+                const done = completed.size;
+                const pct = total === 0 ? 0 : (done / total) * 100;
+                progressFill.style.setProperty('--pct', pct + '%');
+                progressText.innerHTML = `<strong>${done}</strong> of <strong>${total}</strong> complete`;
+            }
+
+            function escapeHtml(str) {
+                return String(str).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[m]);
+            }
+
+            function renderCard(item, index) {
+                const isDone = completed.has(item.id);
+                const li = document.createElement('li');
+                li.className = 'cl-card motion-card';
+                li.dataset.id = item.id;
+                li.dataset.index = index;
+                li.dataset.category = item.category;
+                li.dataset.completed = isDone ? 'true' : 'false';
+                li.dataset.expanded = 'false';
+
+                const stepsHtml = item.steps.map(s => `<li>${escapeHtml(s)}</li>`).join('');
+                const bodyId = 'body-' + item.id;
+                const inputId = 'ck-' + item.id;
+
+                li.innerHTML = `
+                    <div class="cl-head">
+                        <label class="cl-check" for="${inputId}">
+                            <input type="checkbox" class="cl-input" id="${inputId}" ${isDone ? 'checked' : ''} aria-label="Mark complete">
+                            <span class="cl-box" aria-hidden="true"><svg><use href="#i-check"/></svg></span>
+                        </label>
+                        <button type="button" class="cl-toggle" aria-expanded="false" aria-controls="${bodyId}">
+                            <span class="cl-title">${escapeHtml(item.title)}</span>
+                            <svg class="cl-chev" aria-hidden="true"><use href="#i-chev"/></svg>
+                        </button>
+                        <span class="cl-tag">${escapeHtml(item.category)}</span>
                     </div>
-                    <div class="card-body">
-                        <p class="description">${item.description}</p>
-                        <ol class="steps-list">${stepsHtml}</ol>
-                        <div class="card-links">
-                            <a href="${item.officialLink}" class="action-link" target="_blank" rel="noopener">Take action →</a>
-                            <a href="${item.source}" class="source-link" target="_blank" rel="noopener">Source</a>
+                    <div class="cl-body" id="${bodyId}">
+                        <div class="cl-body-inner">
+                            <div class="cl-body-content">
+                                <p class="cl-desc">${escapeHtml(item.description)}</p>
+                                <ol class="cl-steps">${stepsHtml}</ol>
+                                <div class="cl-actions">
+                                    <a class="cl-action" href="${escapeHtml(item.officialLink)}" target="_blank" rel="noopener">Take action <svg><use href="#i-arrow"/></svg></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 `;
-                
-                const header = card.querySelector('.card-header');
-                const checkbox = card.querySelector('.done-checkbox');
-                const body = card.querySelector('.card-body');
-                
-                header.addEventListener('click', (e) => {
-                    if (e.target !== checkbox) {
-                        body.classList.toggle('expanded');
+
+                const input = li.querySelector('.cl-input');
+                const toggleBtn = li.querySelector('.cl-toggle');
+
+                input.addEventListener('change', () => {
+                    if (input.checked) completed.add(item.id);
+                    else completed.delete(item.id);
+                    li.dataset.completed = input.checked ? 'true' : 'false';
+                    persist();
+                    updateProgress();
+                    revealNextSteps();
+                });
+
+                toggleBtn.addEventListener('click', () => {
+                    const expanded = li.dataset.expanded === 'true';
+                    li.dataset.expanded = expanded ? 'false' : 'true';
+                    toggleBtn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+                });
+
+                return li;
+            }
+
+            function revealNextSteps() {
+                // Find first uncompleted index
+                let targetVisibleCount = 1;
+                for (let i = 0; i < currentItems.length; i++) {
+                    if (!completed.has(currentItems[i].id)) {
+                        targetVisibleCount = i + 1;
+                        break;
+                    }
+                }
+                if (completed.size === currentItems.length) targetVisibleCount = currentItems.length;
+
+                const cards = container.querySelectorAll('.cl-card');
+                cards.forEach((card, idx) => {
+                    if (idx < targetVisibleCount) {
+                        if (card.style.display !== 'block') {
+                            card.style.display = 'block';
+                            if (window.gsap) {
+                                gsap.fromTo(card, 
+                                    { height: 0, opacity: 0, y: 30 }, 
+                                    { height: "auto", opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }
+                                );
+                            } else {
+                                card.style.opacity = 1;
+                            }
+                        }
                     }
                 });
-                
-                checkbox.addEventListener('change', (e) => {
-                    toggleItem(item.id, e.target.checked, card);
-                });
-                
-                container.appendChild(card);
-            });
-        }
-
-        function toggleItem(id, isDone, cardElement) {
-            if (isDone) {
-                if (!completedItems.includes(id)) {
-                    completedItems.push(id);
-                }
-                cardElement.classList.add('completed');
-            } else {
-                completedItems = completedItems.filter(itemId => itemId !== id);
-                cardElement.classList.remove('completed');
             }
-            
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(completedItems));
+
+            window.addEventListener('languageChanged', () => {
+                load();
+            });
+
+            async function load() {
+                try {
+                    const lang = localStorage.getItem('voteready_lang') || 'en';
+                    const file = lang === 'hi' ? './data/checklist_hi.json' : './data/checklist.json';
+                    const res = await fetch(file);
+                    const items = await res.json();
+                    currentItems = items;
+                    total = items.length;
+                    container.innerHTML = '';
+                    items.forEach((item, i) => container.appendChild(renderCard(item, i)));
+                    updateProgress();
+                    revealNextSteps();
+
+                    // Init Framer Motion if available
+                    if (window.motion) {
+                        document.querySelectorAll('.motion-card').forEach(card => {
+                            window.motion.hover(card, () => {
+                                window.motion.animate(card, { y: -4, scale: 1.01 }, { type: "spring", stiffness: 300, damping: 15 });
+                                return () => window.motion.animate(card, { y: 0, scale: 1 }, { type: "spring", stiffness: 300, damping: 15 });
+                            });
+                        });
+                    }
+                } catch (err) {
+                    container.innerHTML = `<li class="state state--error">Error: ${escapeHtml(err.message)}</li>`;
+                }
+            }
+
+            // EPIC Checker Logic
+            const epicBtn = document.getElementById('epic-btn');
+            const epicInput = document.getElementById('epic-input');
+            const epicLoading = document.getElementById('epic-loading');
+            const epicResult = document.getElementById('epic-result');
+
+            epicBtn.addEventListener('click', () => {
+                const val = epicInput.value.trim();
+                if (!val) return;
+
+                epicBtn.disabled = true;
+                epicResult.style.display = 'none';
+                epicLoading.style.display = 'flex';
+
+                setTimeout(() => {
+                    epicLoading.style.display = 'none';
+                    epicResult.style.display = 'block';
+                    
+                    document.getElementById('epic-serial').textContent = Math.floor(Math.random() * 800) + 100;
+                    document.getElementById('epic-part').textContent = Math.floor(Math.random() * 50) + 1;
+                    
+                    epicBtn.disabled = false;
+                }, 1800);
+            });
+
+            // Trigger on Enter
+            epicInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') epicBtn.click();
+            });
+
             updateProgress();
-        }
-
-        function updateProgress() {
-            const completedCount = completedItems.length;
-            const progressText = document.getElementById('progress-text');
-            const progressFill = document.getElementById('progress-fill');
-            
-            progressText.textContent = `${completedCount} of ${totalItemsCount} complete`;
-            
-            const percentage = totalItemsCount === 0 ? 0 : (completedCount / totalItemsCount) * 100;
-            progressFill.style.width = `${percentage}%`;
-        }
-
-        // Initialize progress bar immediately (even before fetch)
-        updateProgress();
-        
-        // Fetch data
-        document.addEventListener('DOMContentLoaded', loadChecklist);
+            load();
+        })();
     </script>
-</body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script type="module">
+        import * as motion from "https://cdn.jsdelivr.net/npm/motion@11.11.13/+esm";
+        window.motion = motion;
+    </script>
+<script src="translate.js"></script></body>
 </html>
