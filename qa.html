@@ -366,11 +366,6 @@
             const userQuestion = questionInput.value.trim();
             if (!userQuestion) return;
 
-            if (typeof GEMINI_API_KEY === 'undefined' || !GEMINI_API_KEY) {
-                alert('Error: GEMINI_API_KEY is not defined. Make sure config.js is correct.');
-                return;
-            }
-
             // Set loading state
             questionInput.disabled = true;
             askBtn.disabled = true;
@@ -390,24 +385,14 @@ Section 7 (Timings): Polling generally happens from 7 AM to 6 PM. Anyone already
 
                 const systemPrompt = "You are a helpful assistant for first-time Indian voters (ages 18-22) preparing to vote in Indian general elections. Use the handbook context below as your factual reference, but NEVER mention 'Section X', 'the handbook', 'the document', or where the information came from. Speak in plain, conversational language as if explaining to an 18-year-old friend voting for the first time. Keep answers to 3-5 sentences. If you are not certain about something, say so rather than guessing. If the question is not covered by the handbook context below, reply exactly with: 'I don't have specific information on that. Please visit voters.eci.gov.in for official guidance.' Do not append any extra disclaimer to in-scope answers — keep them clean.\n\n" + handbook_context;
 
-                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
+                const response = await fetch('/api/gemini', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        systemInstruction: {
-                            parts: [
-                                { text: systemPrompt }
-                            ]
-                        },
-                        contents: [
-                            {
-                                parts: [
-                                    { text: userQuestion }
-                                ]
-                            }
-                        ]
+                        systemPrompt: systemPrompt,
+                        userQuestion: userQuestion
                     })
                 });
 
