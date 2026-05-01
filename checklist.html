@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,9 @@
     <title>Am I Ready to Vote? — VoteReady Checklist</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@700&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --bg-base: transparent;
@@ -32,14 +35,14 @@
             --grad-hero: linear-gradient(110deg, #C8A6FF 0%, #FF6FB5 38%, #FF8B5A 72%, #FFC371 100%);
             --grad-cta: linear-gradient(120deg, #6E58FF 0%, #9D5CFF 45%, #FF6FB5 100%);
 
-            --grad-eligibility:  linear-gradient(135deg, #4F8AFF, #5BC0FF);
+            --grad-eligibility: linear-gradient(135deg, #4F8AFF, #5BC0FF);
             --grad-registration: linear-gradient(135deg, #FF5C9C, #FF8AC2);
-            --grad-pollingday:   linear-gradient(135deg, #FF8B3D, #FFB75E);
-            --grad-documents:    linear-gradient(135deg, #8E5CFF, #B57BFF);
+            --grad-pollingday: linear-gradient(135deg, #FF8B3D, #FFB75E);
+            --grad-documents: linear-gradient(135deg, #8E5CFF, #B57BFF);
 
-            --glow-violet:  0 0 36px -6px rgba(142, 92, 255, 0.55);
-            --glow-pink:    0 0 36px -6px rgba(255, 92, 156, 0.55);
-            --glow-blue:    0 0 36px -6px rgba(79, 138, 255, 0.55);
+            --glow-violet: 0 0 36px -6px rgba(142, 92, 255, 0.55);
+            --glow-pink: 0 0 36px -6px rgba(255, 92, 156, 0.55);
+            --glow-blue: 0 0 36px -6px rgba(79, 138, 255, 0.55);
             --glow-success: 0 0 28px -6px rgba(52, 224, 161, 0.6);
             --shadow-card: 0 10px 28px rgba(0, 0, 0, 0.40);
             --shadow-lift: 0 22px 56px rgba(0, 0, 0, 0.55);
@@ -47,20 +50,40 @@
             --blur-card: blur(20px) saturate(140%);
 
             --font-display: 'Space Grotesk', system-ui, sans-serif;
-            --font-body:    'Inter', system-ui, sans-serif;
+            --font-body: 'Inter', system-ui, sans-serif;
 
-            --s-1: 4px;  --s-2: 8px;  --s-3: 12px; --s-4: 16px;
-            --s-5: 24px; --s-6: 32px; --s-7: 48px; --s-8: 72px;
+            --s-1: 4px;
+            --s-2: 8px;
+            --s-3: 12px;
+            --s-4: 16px;
+            --s-5: 24px;
+            --s-6: 32px;
+            --s-7: 48px;
+            --s-8: 72px;
 
-            --r-sm: 8px; --r-md: 14px; --r-lg: 22px; --r-xl: 28px; --r-pill: 999px;
+            --r-sm: 8px;
+            --r-md: 14px;
+            --r-lg: 22px;
+            --r-xl: 28px;
+            --r-pill: 999px;
 
-            --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
+            --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
             --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-            --dur-fast: 160ms; --dur-med: 300ms; --dur-slow: 600ms;
+            --dur-fast: 160ms;
+            --dur-med: 300ms;
+            --dur-slow: 600ms;
         }
 
-        *, *::before, *::after { box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
             min-height: 100vh;
@@ -72,34 +95,99 @@
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
+
         :focus-visible {
             outline: 2px solid #FFFFFF;
             outline-offset: 3px;
             box-shadow: 0 0 0 4px rgba(142, 92, 255, 0.45);
             border-radius: var(--r-sm);
         }
+
         @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
+
+            *,
+            *::before,
+            *::after {
                 animation-duration: 0.001ms !important;
                 transition-duration: 0.001ms !important;
             }
         }
 
-        .svg-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+        .svg-sprite {
+            position: absolute;
+            width: 0;
+            height: 0;
+            overflow: hidden;
+        }
+
         .sr-only {
-            position: absolute; width: 1px; height: 1px;
-            padding: 0; margin: -1px; overflow: hidden;
-            clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
 
         /* Ambient Background matching main page */
-        .ambient-bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; background: #0d0d12; }
-        .ambient-orb { position: absolute; border-radius: 50%; filter: blur(100px); mix-blend-mode: screen; }
-        .orb-1 { top: -10%; left: -10%; width: 40vw; height: 40vw; background: rgba(147, 51, 234, 0.3); }
-        .orb-2 { top: 10%; right: -5%; width: 35vw; height: 35vw; background: rgba(37, 99, 235, 0.2); }
-        .orb-3 { bottom: -10%; left: 20%; width: 40vw; height: 40vw; background: rgba(219, 39, 119, 0.2); }
-        .orb-4 { top: 60%; right: 10%; width: 35vw; height: 35vw; background: rgba(13, 148, 136, 0.2); }
-        .noise-bg { position: absolute; inset: 0; opacity: 0.04; mix-blend-mode: overlay; background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noise)"/%3E%3C/svg%3E'); }
+        .ambient-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+            background: #0d0d12;
+        }
+
+        .ambient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            mix-blend-mode: screen;
+        }
+
+        .orb-1 {
+            top: -10%;
+            left: -10%;
+            width: 40vw;
+            height: 40vw;
+            background: rgba(147, 51, 234, 0.3);
+        }
+
+        .orb-2 {
+            top: 10%;
+            right: -5%;
+            width: 35vw;
+            height: 35vw;
+            background: rgba(37, 99, 235, 0.2);
+        }
+
+        .orb-3 {
+            bottom: -10%;
+            left: 20%;
+            width: 40vw;
+            height: 40vw;
+            background: rgba(219, 39, 119, 0.2);
+        }
+
+        .orb-4 {
+            top: 60%;
+            right: 10%;
+            width: 35vw;
+            height: 35vw;
+            background: rgba(13, 148, 136, 0.2);
+        }
+
+        .noise-bg {
+            position: absolute;
+            inset: 0;
+            opacity: 0.04;
+            mix-blend-mode: overlay;
+            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noise)"/%3E%3C/svg%3E');
+        }
 
         /* Page layout */
         .page {
@@ -119,6 +207,7 @@
             margin-bottom: var(--s-7);
             animation: fade-down 500ms var(--ease-out) both;
         }
+
         .back-link {
             display: inline-flex;
             align-items: center;
@@ -132,17 +221,23 @@
             font-size: 0.9rem;
             font-weight: 500;
             transition: color var(--dur-med) var(--ease-out),
-                        border-color var(--dur-med) var(--ease-out),
-                        background var(--dur-med) var(--ease-out),
-                        transform var(--dur-med) var(--ease-out);
+                border-color var(--dur-med) var(--ease-out),
+                background var(--dur-med) var(--ease-out),
+                transform var(--dur-med) var(--ease-out);
         }
-        .back-link svg { width: 16px; height: 16px; }
+
+        .back-link svg {
+            width: 16px;
+            height: 16px;
+        }
+
         .back-link:hover {
             color: var(--text-hi);
             border-color: var(--border-strong);
             background: var(--surface-2);
             transform: translateX(-2px);
         }
+
         .brand {
             display: inline-flex;
             align-items: center;
@@ -153,8 +248,10 @@
             color: var(--text-hi);
             text-decoration: none;
         }
+
         .brand-dot {
-            width: 8px; height: 8px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
             background: var(--grad-cta);
             box-shadow: var(--glow-violet);
@@ -164,6 +261,7 @@
         .page-head {
             margin-bottom: var(--s-6);
         }
+
         .page-title {
             font-family: var(--font-display);
             font-weight: 700;
@@ -177,6 +275,7 @@
             color: transparent;
             animation: fade-up 600ms 80ms var(--ease-out) both;
         }
+
         .page-sub {
             color: var(--text-mid);
             font-size: 1.05rem;
@@ -202,6 +301,7 @@
             gap: var(--s-4);
             animation: fade-in 500ms 240ms var(--ease-out) both;
         }
+
         .progress-track {
             flex: 1;
             height: 6px;
@@ -210,6 +310,7 @@
             overflow: hidden;
             border: 1px solid var(--border-glass);
         }
+
         .progress-fill {
             height: 100%;
             width: var(--pct, 0%);
@@ -218,6 +319,7 @@
             transition: width 600ms var(--ease-out);
             box-shadow: 0 0 16px rgba(157, 92, 255, 0.5);
         }
+
         .progress-text {
             font-size: 0.88rem;
             font-weight: 500;
@@ -225,6 +327,7 @@
             font-variant-numeric: tabular-nums;
             white-space: nowrap;
         }
+
         .progress-text strong {
             color: var(--text-hi);
             font-weight: 600;
@@ -250,16 +353,20 @@
             border-radius: var(--r-lg);
             overflow: hidden;
             transition: border-color var(--dur-med) var(--ease-out),
-                        box-shadow var(--dur-med) var(--ease-out),
-                        background var(--dur-med) var(--ease-out);
+                box-shadow var(--dur-med) var(--ease-out),
+                background var(--dur-med) var(--ease-out),
+                transform var(--dur-med) var(--ease-out);
             /* Initial state for wizard GSAP animation */
             opacity: 0;
             display: none;
         }
+
         .cl-card:hover {
             border-color: var(--border-strong);
             box-shadow: var(--shadow-card);
+            transform: translateY(-3px);
         }
+
         .cl-card[data-completed="true"] {
             box-shadow: var(--glow-success);
             border-color: rgba(52, 224, 161, 0.32);
@@ -281,6 +388,7 @@
             justify-content: center;
             cursor: pointer;
         }
+
         .cl-input {
             position: absolute;
             opacity: 0;
@@ -290,36 +398,43 @@
             cursor: pointer;
             margin: 0;
         }
+
         .cl-box {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 24px; height: 24px;
+            width: 24px;
+            height: 24px;
             border: 1.5px solid var(--border-strong);
             border-radius: 7px;
             background: var(--surface-2);
             transition: background var(--dur-med) var(--ease-out),
-                        border-color var(--dur-med) var(--ease-out),
-                        box-shadow var(--dur-med) var(--ease-out);
+                border-color var(--dur-med) var(--ease-out),
+                box-shadow var(--dur-med) var(--ease-out);
         }
+
         .cl-box svg {
-            width: 14px; height: 14px;
+            width: 14px;
+            height: 14px;
             color: #07071A;
             opacity: 0;
             transform: scale(0.5);
             transition: opacity 200ms var(--ease-out),
-                        transform 280ms var(--ease-spring);
+                transform 280ms var(--ease-spring);
         }
-        .cl-input:checked + .cl-box {
+
+        .cl-input:checked+.cl-box {
             background: var(--success);
             border-color: var(--success);
             box-shadow: 0 0 14px rgba(52, 224, 161, 0.55);
         }
-        .cl-input:checked + .cl-box svg {
+
+        .cl-input:checked+.cl-box svg {
             opacity: 1;
             transform: scale(1);
         }
-        .cl-input:focus-visible + .cl-box {
+
+        .cl-input:focus-visible+.cl-box {
             outline: 2px solid #FFFFFF;
             outline-offset: 3px;
             box-shadow: 0 0 0 4px rgba(142, 92, 255, 0.45);
@@ -340,6 +455,7 @@
             cursor: pointer;
             min-width: 0;
         }
+
         .cl-title {
             position: relative;
             display: inline-block;
@@ -349,29 +465,36 @@
             color: var(--text-hi);
             transition: color var(--dur-med) var(--ease-out);
         }
+
         .cl-title::after {
             content: '';
             position: absolute;
-            top: 50%; left: 0;
+            top: 50%;
+            left: 0;
             width: 0;
             height: 1.5px;
             background: var(--text-mid);
             transition: width 320ms var(--ease-out);
             pointer-events: none;
         }
+
         .cl-card[data-completed="true"] .cl-title {
             color: var(--text-mid);
         }
+
         .cl-card[data-completed="true"] .cl-title::after {
             width: 100%;
         }
+
         .cl-chev {
-            width: 18px; height: 18px;
+            width: 18px;
+            height: 18px;
             color: var(--text-lo);
             flex-shrink: 0;
             transition: transform var(--dur-med) var(--ease-out),
-                        color var(--dur-med) var(--ease-out);
+                color var(--dur-med) var(--ease-out);
         }
+
         .cl-card[data-expanded="true"] .cl-chev {
             transform: rotate(180deg);
             color: var(--text-mid);
@@ -392,10 +515,26 @@
             background: var(--surface-2);
             border: 1px solid var(--border-glass);
         }
-        .cl-card[data-category="eligibility"]  .cl-tag { background: var(--grad-eligibility); border-color: transparent; }
-        .cl-card[data-category="registration"] .cl-tag { background: var(--grad-registration); border-color: transparent; }
-        .cl-card[data-category="pollingday"]   .cl-tag { background: var(--grad-pollingday); border-color: transparent; }
-        .cl-card[data-category="documents"]    .cl-tag { background: var(--grad-documents); border-color: transparent; }
+
+        .cl-card[data-category="eligibility"] .cl-tag {
+            background: var(--grad-eligibility);
+            border-color: transparent;
+        }
+
+        .cl-card[data-category="registration"] .cl-tag {
+            background: var(--grad-registration);
+            border-color: transparent;
+        }
+
+        .cl-card[data-category="pollingday"] .cl-tag {
+            background: var(--grad-pollingday);
+            border-color: transparent;
+        }
+
+        .cl-card[data-category="documents"] .cl-tag {
+            background: var(--grad-documents);
+            border-color: transparent;
+        }
 
         /* Body (animated expand via grid-template-rows trick) */
         .cl-body {
@@ -403,11 +542,15 @@
             grid-template-rows: 0fr;
             transition: grid-template-rows 380ms var(--ease-out);
         }
+
         .cl-body-inner {
             min-height: 0;
             overflow: hidden;
         }
-        .cl-card[data-expanded="true"] .cl-body { grid-template-rows: 1fr; }
+
+        .cl-card[data-expanded="true"] .cl-body {
+            grid-template-rows: 1fr;
+        }
 
         .cl-body-content {
             padding: 0 var(--s-5) var(--s-5);
@@ -415,12 +558,14 @@
             margin-top: 0;
             padding-top: var(--s-4);
         }
+
         .cl-desc {
             color: var(--text-mid);
             line-height: 1.6;
             font-size: 0.96rem;
             margin: 0 0 var(--s-4);
         }
+
         .cl-steps {
             margin: 0 0 var(--s-5);
             padding-left: var(--s-5);
@@ -430,20 +575,24 @@
             counter-reset: step;
             list-style: none;
         }
+
         .cl-steps li {
             position: relative;
             padding-left: var(--s-5);
             margin-bottom: var(--s-3);
             counter-increment: step;
         }
+
         .cl-steps li::before {
             content: counter(step);
             position: absolute;
-            left: -8px; top: 0;
+            left: -8px;
+            top: 0;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 22px; height: 22px;
+            width: 22px;
+            height: 22px;
             border-radius: 50%;
             background: var(--surface-2);
             border: 1px solid var(--border-glass);
@@ -460,6 +609,7 @@
             align-items: center;
             gap: var(--s-3);
         }
+
         .cl-action {
             display: inline-flex;
             align-items: center;
@@ -473,16 +623,24 @@
             text-decoration: none;
             box-shadow: 0 6px 20px -4px rgba(157, 92, 255, 0.45);
             transition: transform var(--dur-med) var(--ease-out),
-                        box-shadow var(--dur-med) var(--ease-out),
-                        filter var(--dur-med) var(--ease-out);
+                box-shadow var(--dur-med) var(--ease-out),
+                filter var(--dur-med) var(--ease-out);
         }
-        .cl-action svg { width: 15px; height: 15px; }
+
+        .cl-action svg {
+            width: 15px;
+            height: 15px;
+        }
+
         .cl-action:hover {
             transform: translateY(-2px);
             box-shadow: 0 12px 28px -4px rgba(157, 92, 255, 0.6);
             filter: brightness(1.08);
         }
-        .cl-action:active { transform: translateY(0) scale(0.98); }
+
+        .cl-action:active {
+            transform: translateY(0) scale(0.98);
+        }
 
         .cl-source {
             display: inline-flex;
@@ -497,10 +655,15 @@
             font-weight: 500;
             text-decoration: none;
             transition: color var(--dur-med) var(--ease-out),
-                        border-color var(--dur-med) var(--ease-out),
-                        background var(--dur-med) var(--ease-out);
+                border-color var(--dur-med) var(--ease-out),
+                background var(--dur-med) var(--ease-out);
         }
-        .cl-source svg { width: 13px; height: 13px; }
+
+        .cl-source svg {
+            width: 13px;
+            height: 13px;
+        }
+
         .cl-source:hover {
             color: var(--text-hi);
             border-color: var(--border-strong);
@@ -516,6 +679,7 @@
             border-radius: var(--r-lg);
             background: var(--surface-1);
         }
+
         .state--error {
             color: #FFB7B7;
             border-color: rgba(255, 92, 92, 0.3);
@@ -531,47 +695,107 @@
             font-size: 0.83rem;
             text-align: center;
         }
+
         .foot a {
             color: var(--text-mid);
             text-decoration: none;
             transition: color var(--dur-med) var(--ease-out);
         }
-        .foot a:hover { color: var(--text-hi); }
+
+        .foot a:hover {
+            color: var(--text-hi);
+        }
 
         /* Animations */
         @keyframes fade-up {
-            from { opacity: 0; transform: translateY(14px); }
-            to   { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(14px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
         @keyframes fade-down {
-            from { opacity: 0; transform: translateY(-10px); }
-            to   { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
         @keyframes fade-in {
-            from { opacity: 0; }
-            to   { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         /* Responsive */
         @media (max-width: 720px) {
-            .page { padding: var(--s-5) var(--s-4) var(--s-6); }
-            .page-head { margin-bottom: var(--s-5); }
+            .page {
+                padding: var(--s-5) var(--s-4) var(--s-6);
+            }
+
+            .page-head {
+                margin-bottom: var(--s-5);
+            }
+
             .progress-rail {
                 margin-left: calc(var(--s-4) * -1);
                 margin-right: calc(var(--s-4) * -1);
                 padding-left: var(--s-4);
                 padding-right: var(--s-4);
             }
-            .cl-head { padding: var(--s-3) var(--s-4); gap: var(--s-3); }
-            .cl-body-content { padding: var(--s-4) var(--s-4) var(--s-4); }
-            .cl-tag { font-size: 0.62rem; padding: 4px 9px; letter-spacing: 0.2em; }
-            .cl-title { font-size: 0.96rem; }
-            .orb { opacity: 0.22; }
+
+            .cl-head {
+                padding: var(--s-3) var(--s-4);
+                gap: var(--s-3);
+            }
+
+            .cl-body-content {
+                padding: var(--s-4) var(--s-4) var(--s-4);
+            }
+
+            .cl-tag {
+                font-size: 0.62rem;
+                padding: 4px 9px;
+                letter-spacing: 0.2em;
+            }
+
+            .cl-title {
+                font-size: 0.96rem;
+            }
+
+            .orb {
+                opacity: 0.22;
+            }
         }
+
         @media (max-width: 480px) {
-            .cl-actions { flex-direction: column; align-items: stretch; }
-            .cl-action, .cl-source { justify-content: center; }
-            .epic-form { flex-direction: column; }
+            .cl-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .cl-action,
+            .cl-source {
+                justify-content: center;
+            }
+
+            .epic-form {
+                flex-direction: column;
+            }
         }
 
         /* EPIC Checker */
@@ -587,6 +811,7 @@
             overflow: hidden;
             animation: fade-up 600ms 200ms var(--ease-out) both;
         }
+
         .epic-checker::before {
             content: '';
             position: absolute;
@@ -594,18 +819,22 @@
             background: linear-gradient(135deg, rgba(142, 92, 255, 0.05), transparent);
             pointer-events: none;
         }
+
         .epic-header {
             display: flex;
             align-items: center;
             gap: 10px;
             margin-bottom: var(--s-2);
         }
+
         .epic-dot {
-            width: 8px; height: 8px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
             background: var(--accent-violet);
             box-shadow: 0 0 8px var(--accent-violet);
         }
+
         .epic-title {
             font-family: var(--font-display);
             font-weight: 700;
@@ -613,17 +842,20 @@
             color: var(--text-hi);
             margin: 0;
         }
+
         .epic-subtitle {
             color: var(--text-mid);
             font-size: 0.95rem;
             margin: 0 0 var(--s-5);
             line-height: 1.5;
         }
+
         .epic-form {
             display: flex;
             gap: var(--s-3);
             flex-wrap: wrap;
         }
+
         .epic-input {
             flex: 1;
             min-width: 200px;
@@ -638,12 +870,18 @@
             letter-spacing: 0.5px;
             transition: border-color var(--dur-fast), box-shadow var(--dur-fast);
         }
-        .epic-input::placeholder { text-transform: none; color: var(--text-lo); }
+
+        .epic-input::placeholder {
+            text-transform: none;
+            color: var(--text-lo);
+        }
+
         .epic-input:focus {
             outline: none;
             border-color: rgba(142, 92, 255, 0.5);
             box-shadow: 0 0 15px rgba(142, 92, 255, 0.15);
         }
+
         .epic-btn {
             background: var(--grad-cta);
             border: none;
@@ -657,12 +895,17 @@
             transition: transform var(--dur-fast), box-shadow var(--dur-fast);
             white-space: nowrap;
         }
+
         .epic-btn:hover {
             box-shadow: 0 4px 25px rgba(142, 92, 255, 0.4);
             transform: translateY(-2px);
         }
-        .epic-btn:disabled { opacity: 0.7; pointer-events: none; }
-        
+
+        .epic-btn:disabled {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
         .epic-loading {
             display: flex;
             align-items: center;
@@ -672,14 +915,16 @@
             color: var(--text-mid);
             font-size: 0.9rem;
         }
+
         .spinner {
-            width: 20px; height: 20px;
+            width: 20px;
+            height: 20px;
             border: 2px solid rgba(142, 92, 255, 0.25);
             border-top-color: var(--accent-violet);
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
-        
+
         .epic-result {
             margin-top: var(--s-5);
             background: var(--surface-2);
@@ -688,11 +933,13 @@
             padding: var(--s-5);
             animation: fade-up 400ms var(--ease-out) both;
         }
+
         .epic-result-flex {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
         }
+
         .epic-status-badge {
             display: inline-block;
             font-size: 0.75rem;
@@ -702,25 +949,33 @@
             letter-spacing: 0.1em;
             margin-bottom: 4px;
         }
+
         .epic-name {
             font-family: var(--font-display);
             font-size: 1.2rem;
             color: var(--text-hi);
             margin: 0 0 4px;
         }
+
         .epic-meta {
             color: var(--text-mid);
             font-size: 0.9rem;
             margin: 0 0 var(--s-4);
         }
-        .epic-meta strong { color: var(--text-hi); font-weight: 500; }
+
+        .epic-meta strong {
+            color: var(--text-hi);
+            font-weight: 500;
+        }
+
         .epic-booth {
             background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 8px;
             padding: 12px;
             display: inline-block;
         }
+
         .epic-booth-label {
             display: block;
             font-size: 0.75rem;
@@ -729,16 +984,20 @@
             letter-spacing: 0.1em;
             margin-bottom: 4px;
         }
+
         .epic-booth-value {
             display: block;
             color: var(--text-hi);
             font-size: 0.95rem;
         }
+
         .epic-success-icon {
-            width: 32px; height: 32px;
+            width: 32px;
+            height: 32px;
             color: var(--success);
             opacity: 0.8;
         }
+
         .epic-disclaimer {
             text-align: center;
             font-size: 0.7rem;
@@ -747,27 +1006,33 @@
         }
     </style>
 </head>
+
 <body>
     <svg class="svg-sprite" aria-hidden="true">
         <defs>
-            <symbol id="i-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M19 12H5"/>
-                <path d="M11 18l-6-6 6-6"/>
+            <symbol id="i-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5" />
+                <path d="M11 18l-6-6 6-6" />
             </symbol>
-            <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12.5l4.5 4.5L19 7"/>
+            <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12.5l4.5 4.5L19 7" />
             </symbol>
-            <symbol id="i-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M6 9l6 6 6-6"/>
+            <symbol id="i-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9l6 6 6-6" />
             </symbol>
-            <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14"/>
-                <path d="M13 6l6 6-6 6"/>
+            <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14" />
+                <path d="M13 6l6 6-6 6" />
             </symbol>
-            <symbol id="i-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14 4h6v6"/>
-                <path d="M20 4l-9 9"/>
-                <path d="M19 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V6a1 1 0 011-1h5"/>
+            <symbol id="i-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 4h6v6" />
+                <path d="M20 4l-9 9" />
+                <path d="M19 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V6a1 1 0 011-1h5" />
             </symbol>
         </defs>
     </svg>
@@ -782,13 +1047,16 @@
 
     <div class="page">
         <nav class="top-nav">
-            <a href="index.html" class="back-link"><svg><use href="#i-back"/></svg> Back to home</a>
+            <a href="index.html" class="back-link"><svg>
+                    <use href="#i-back" />
+                </svg> Back to home</a>
             <a href="index.html" class="brand"><span class="brand-dot"></span>VoteReady</a>
         </nav>
 
         <header class="page-head">
             <h1 class="page-title">Am I Ready to Vote?</h1>
-            <p class="page-sub">Follow these steps to ensure you're fully prepared for polling day. Each item is verified against Election Commission of India sources.</p>
+            <p class="page-sub">Follow these steps to ensure you're fully prepared for polling day. Each item is
+                verified against Election Commission of India sources.</p>
         </header>
 
         <div class="epic-checker">
@@ -796,34 +1064,42 @@
                 <span class="epic-dot"></span>
                 <h2 class="epic-title">EPIC Status Checker</h2>
             </div>
-            <p class="epic-subtitle">Verify your voter enrollment status instantly using your Voter ID (EPIC) Number.</p>
-            
+            <p class="epic-subtitle">Verify your voter enrollment status instantly using your Voter ID (EPIC) Number.
+            </p>
+
             <div class="epic-form">
-                <input type="text" id="epic-input" class="epic-input" placeholder="Enter EPIC No. (e.g., ABC1234567)" autocomplete="off">
+                <input type="text" id="epic-input" class="epic-input" placeholder="Enter EPIC No. (e.g., ABC1234567)"
+                    autocomplete="off">
                 <button id="epic-btn" class="epic-btn">Verify Status</button>
             </div>
-            
+
             <div id="epic-loading" class="epic-loading" style="display: none;">
                 <div class="spinner"></div>
                 <span>Checking ECI records...</span>
             </div>
-            
+
             <div id="epic-result" class="epic-result" style="display: none;">
                 <div class="epic-result-flex">
                     <div class="epic-result-info">
                         <span class="epic-status-badge">Status: Active</span>
                         <h3 class="epic-name" id="epic-name">Rahul Sharma</h3>
-                        <p class="epic-meta">Serial No: <strong id="epic-serial">402</strong> | Part No: <strong id="epic-part">12</strong></p>
-                        
+                        <p class="epic-meta">Serial No: <strong id="epic-serial">402</strong> | Part No: <strong
+                                id="epic-part">12</strong></p>
+
                         <div class="epic-booth">
                             <span class="epic-booth-label">Polling Station</span>
-                            <span class="epic-booth-value" id="epic-station">Govt. Primary School, Room 2, Bangalore</span>
+                            <span class="epic-booth-value" id="epic-station">Govt. Primary School, Room 2,
+                                Bangalore</span>
                         </div>
                     </div>
-                    <svg class="epic-success-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+                    <svg class="epic-success-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round">
+                        <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
+                        <path d="M22 4L12 14.01l-3-3" />
+                    </svg>
                 </div>
             </div>
-            
+
             <p class="epic-disclaimer">Data fetched from ECI records.</p>
         </div>
 
@@ -952,8 +1228,8 @@
                         if (card.style.display !== 'block') {
                             card.style.display = 'block';
                             if (window.gsap) {
-                                gsap.fromTo(card, 
-                                    { height: 0, opacity: 0, y: 30 }, 
+                                gsap.fromTo(card,
+                                    { height: 0, opacity: 0, y: 30 },
                                     { height: "auto", opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }
                                 );
                             } else {
@@ -981,15 +1257,7 @@
                     updateProgress();
                     revealNextSteps();
 
-                    // Init Framer Motion if available
-                    if (window.motion) {
-                        document.querySelectorAll('.motion-card').forEach(card => {
-                            window.motion.hover(card, () => {
-                                window.motion.animate(card, { y: -4, scale: 1.01 }, { type: "spring", stiffness: 300, damping: 15 });
-                                return () => window.motion.animate(card, { y: 0, scale: 1 }, { type: "spring", stiffness: 300, damping: 15 });
-                            });
-                        });
-                    }
+                    // Hover animation handled by CSS .motion-card:hover (no JS dependency needed)
                 } catch (err) {
                     container.innerHTML = `<li class="state state--error">Error: ${escapeHtml(err.message)}</li>`;
                 }
@@ -1012,10 +1280,10 @@
                 setTimeout(() => {
                     epicLoading.style.display = 'none';
                     epicResult.style.display = 'block';
-                    
+
                     document.getElementById('epic-serial').textContent = Math.floor(Math.random() * 800) + 100;
                     document.getElementById('epic-part').textContent = Math.floor(Math.random() * 50) + 1;
-                    
+
                     epicBtn.disabled = false;
                 }, 1800);
             });
@@ -1030,9 +1298,8 @@
         })();
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script type="module">
-        import * as motion from "https://cdn.jsdelivr.net/npm/motion@11.11.13/+esm";
-        window.motion = motion;
-    </script>
-<script src="translate.js"></script></body>
+    <!-- motion dependency removed: CSS hover used instead -->
+    <script src="translate.js"></script>
+</body>
+
 </html>
