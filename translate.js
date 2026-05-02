@@ -132,7 +132,15 @@ const dictionary = {
     "Location access denied.": "स्थान अनुमति अस्वीकृत।",
     "Map routing unavailable in local dev.": "स्थानीय डेव में मैप रूटिंग उपलब्ध नहीं।",
     "Please select a state first.": "पहले एक राज्य चुनें।",
-    "CEO Portal:": "CEO पोर्टल:"
+    "CEO Portal:": "CEO पोर्टल:",
+    "From eligible to voted": "पात्र से मतदान तक",
+    "Dates shown are examples — actual election dates are announced by the Election Commission of India.": "दिखाई गई तारीखें उदाहरण हैं — वास्तविक चुनाव तिथियां ECI द्वारा घोषित की जाती हैं।",
+    "Submit Form 6 at voters.eci.gov.in. You need proof of age, address, and a passport-size photo.": "voters.eci.gov.in पर फॉर्म 6 जमा करें। आयु, पता प्रमाण और पासपोर्ट साइज फोटो चाहिए।",
+    "Search the electoral roll to confirm your name, serial number, and assigned polling station.": "अपना नाम, क्रमांक और मतदान केंद्र पुष्टि करने के लिए मतदाता सूची खोजें।",
+    "Go to your assigned booth, get your identity verified, press the blue button on the Ballot Unit for your chosen candidate, and verify your VVPAT slip (visible for ~7 seconds).": "अपने मतदान केंद्र पर जाएं, पहचान सत्यापित करवाएं, अपने उम्मीदवार के लिए नीला बटन दबाएं और VVPAT पर्ची (~7 सेकंड) देखें।",
+    "Vote counting is conducted in the presence of candidates and their agents. VVPAT slips of 5 randomly selected booths per constituency are cross-verified with the electronic count.": "उम्मीदवारों और उनके एजेंटों की उपस्थिति में मतगणना होती है। प्रति निर्वाचन क्षेत्र 5 यादृच्छिक बूथों की VVPAT पर्चियां इलेक्ट्रॉनिक गणना से जांची जाती हैं।",
+    "● Upcoming": "● आगामी",
+    "✓ Completed": "✓ पूर्ण"
 };
 
 let currentLang = localStorage.getItem('voteready_lang') || 'en';
