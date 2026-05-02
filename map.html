@@ -648,9 +648,17 @@
 
     function showInfo(name) {
       const s = STATES[name]; if (!s) return;
+
+      const ladakhNote = name === 'Ladakh' 
+        ? `<div style="font-size:11px;color:#a1a1aa;background:rgba(255,255,255,.04);border-radius:8px;padding:10px;margin-bottom:12px;border:1px solid rgba(255,255,255,.08)">
+            <span data-key="Map boundary data predates the 2019 J&K bifurcation — Ladakh UT boundary not separately shown.">ⓘ Map boundary data predates the 2019 J&K bifurcation — Ladakh UT boundary not separately shown.</span>
+           </div>` 
+        : '';
+
       const card = document.getElementById('infoCard');
       card.className = 'info-card';
       card.innerHTML = `
+        ${ladakhNote}
         <div class="state-name">${name}</div>
         <div class="state-capital">🏛 Capital: ${s.cap}</div>
         <div class="info-grid">

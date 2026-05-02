@@ -140,7 +140,8 @@ const dictionary = {
     "Go to your assigned booth, get your identity verified, press the blue button on the Ballot Unit for your chosen candidate, and verify your VVPAT slip (visible for ~7 seconds).": "अपने मतदान केंद्र पर जाएं, पहचान सत्यापित करवाएं, अपने उम्मीदवार के लिए नीला बटन दबाएं और VVPAT पर्ची (~7 सेकंड) देखें।",
     "Vote counting is conducted in the presence of candidates and their agents. VVPAT slips of 5 randomly selected booths per constituency are cross-verified with the electronic count.": "उम्मीदवारों और उनके एजेंटों की उपस्थिति में मतगणना होती है। प्रति निर्वाचन क्षेत्र 5 यादृच्छिक बूथों की VVPAT पर्चियां इलेक्ट्रॉनिक गणना से जांची जाती हैं।",
     "● Upcoming": "● आगामी",
-    "✓ Completed": "✓ पूर्ण"
+    "✓ Completed": "✓ पूर्ण",
+    "Map boundary data predates the 2019 J&K bifurcation — Ladakh UT boundary not separately shown.": "ⓘ मानचित्र सीमा डेटा 2019 J&K विभाजन से पहले का है — लद्दाख UT सीमा अलग से नहीं दिखाई गई है।"
 };
 
 let currentLang = localStorage.getItem('voteready_lang') || 'en';
