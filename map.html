@@ -1,217 +1,659 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VoteReady — Explore by State</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter',sans-serif;background:transparent;color:#fff;min-height:100vh;font-weight:300;line-height:1.8}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VoteReady — Explore by State</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@700&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
 
-/* HEADER */
-.header{display:flex;align-items:center;justify-content:space-between;padding:18px 40px;background:rgba(13,13,18,.7);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.1);position:sticky;top:0;z-index:100}
-.header-left{display:flex;align-items:center;gap:22px}
-.menu-btn{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:600;font-size:14px;letter-spacing:.5px}
-.menu-lines{display:flex;flex-direction:column;gap:4px;width:16px}
-.menu-lines span{display:block;height:2px;background:#fff;border-radius:1px}
-.divider{width:1px;height:22px;background:rgba(255,255,255,.3)}
-.logo{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:#fff;text-decoration:none;display:flex;align-items:center;gap:6px;letter-spacing:-.04em;line-height:1.1}
-.logo-bubble{background:#a855f7;padding:2px 8px;border-radius:4px;position:relative;line-height:1.2}
-.logo-bubble::after{content:'';position:absolute;bottom:-6px;left:10px;border-left:5px solid transparent;border-right:5px solid transparent;border-top:5px solid #a855f7}
-.back-btn{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;padding:8px 18px;border-radius:30px;text-decoration:none;font-size:14px;font-weight:500;transition:.2s}
-.back-btn:hover{background:rgba(255,255,255,.18)}
+    body {
+      font-family: 'Inter', sans-serif;
+      background: transparent;
+      color: #fff;
+      min-height: 100vh;
+      font-weight: 300;
+      line-height: 1.8
+    }
 
-/* HERO BAND */
-.page-hero{background:rgba(255,255,255,0.02);padding:40px 40px 30px;border-bottom:1px solid rgba(255,255,255,.1);backdrop-filter:blur(10px)}
-.page-hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(32px,5vw,58px);font-weight:700;text-transform:uppercase;line-height:1.1;letter-spacing:-.04em}
-.page-hero h1 span{color:#c084fc}
-.page-hero p{margin-top:10px;color:#a1a1aa;font-size:15px;max-width:500px;font-weight:300;line-height:1.8}
+    /* HEADER */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 40px;
+      background: rgba(13, 13, 18, .7);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, .1);
+      position: sticky;
+      top: 0;
+      z-index: 100
+    }
 
-/* MAIN LAYOUT */
-.map-section{display:flex;min-height:calc(100vh - 180px)}
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 22px
+    }
 
-/* LEFT PANEL */
-.left-panel{width:340px;min-width:300px;background:rgba(255,255,255,0.02);border-right:1px solid rgba(255,255,255,.08);padding:30px 24px;display:flex;flex-direction:column;gap:20px;overflow-y:auto;backdrop-filter:blur(10px)}
-.panel-label{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#a1a1aa;margin-bottom:6px}
-.state-select{width:100%;padding:11px 14px;background:rgba(255,255,255,0.05);border:1.5px solid rgba(255,255,255,0.1);color:#fff;border-radius:8px;font-size:15px;font-family:'Inter',sans-serif;cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a1a1aa' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
-.state-select:focus{outline:none;border-color:#a855f7}
-.state-select option{background:#0d0d12}
+    .menu-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: .5px
+    }
 
-/* INFO CARD */
-.info-card{background:rgba(255,255,255,0.04);border-radius:10px;padding:22px;border:1px solid rgba(255,255,255,.08);flex:1;backdrop-filter:blur(10px)}
-.info-card.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:12px;color:#a1a1aa;min-height:300px}
-.info-card.empty svg{opacity:.4}
-.state-name{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:#fff;line-height:1.1;margin-bottom:4px;letter-spacing:-.04em}
-.state-capital{font-size:13px;color:#a1a1aa;margin-bottom:18px}
-.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
-.info-box{background:rgba(255,255,255,0.03);border-radius:8px;padding:12px;text-align:center}
-.info-box .num{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;color:#c084fc;line-height:1.1;letter-spacing:-.04em}
-.info-box .lbl{font-size:11px;color:#a1a1aa;margin-top:3px;text-transform:uppercase;letter-spacing:.2em}
-.info-voters{background:rgba(255,255,255,0.03);border-radius:8px;padding:12px;margin-bottom:14px;display:flex;align-items:center;gap:10px}
-.info-voters .num{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:#4ade80;letter-spacing:-.04em}
-.info-voters .lbl{font-size:11px;color:#a1a1aa;text-transform:uppercase;letter-spacing:.2em}
-.info-helpline{background:rgba(255,255,255,0.03);border-radius:8px;padding:12px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between}
-.info-helpline .hl{font-family:'Space Grotesk',sans-serif;font-size:22px;color:#c084fc;font-weight:700;letter-spacing:-.04em}
-.info-helpline .lbl{font-size:12px;color:#a1a1aa}
-.ceo-link{display:flex;align-items:center;gap:8px;background:#a855f7;color:#fff;padding:10px 16px;border-radius:8px;text-decoration:none;font-size:13px;font-weight:600;transition:.2s}
-.ceo-link:hover{background:#9333ea}
-.ceo-link svg{width:14px;height:14px;flex-shrink:0}
-.nvsp-link{display:flex;align-items:center;gap:8px;background:#3b82f6;color:#fff;padding:10px 16px;border-radius:8px;text-decoration:none;font-size:13px;font-weight:600;transition:.2s;margin-top:8px}
-.nvsp-link:hover{background:#2563eb}
+    .menu-lines {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      width: 16px
+    }
 
-/* MAP PANEL */
-.map-panel{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;position:relative;background:transparent}
-.map-title{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#a1a1aa;margin-bottom:16px;text-align:center}
-#india-map{width:100%;max-width:620px;height:auto;cursor:pointer;filter:drop-shadow(0 0 30px rgba(168,85,247,.2))}
-.state-path{fill:rgba(255,255,255,0.05);stroke:rgba(255,255,255,0.15);stroke-width:.8px;transition:fill .15s;cursor:pointer}
-.state-path:hover{fill:rgba(168,85,247,0.3)}
-.state-path.active{fill:#a855f7}
-.map-tooltip{position:absolute;background:rgba(13,13,18,.95);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:8px 14px;font-size:13px;font-weight:600;color:#fff;pointer-events:none;opacity:0;transition:opacity .15s;white-space:nowrap;box-shadow:0 4px 16px rgba(0,0,0,.4)}
+    .menu-lines span {
+      display: block;
+      height: 2px;
+      background: #fff;
+      border-radius: 1px
+    }
 
-/* FOOTER */
-.footer{padding:24px 40px;background:rgba(13,13,18,.6);border-top:1px solid rgba(255,255,255,.07);text-align:center;font-size:13px;color:#a1a1aa;backdrop-filter:blur(10px)}
-.footer a{color:#c084fc;text-decoration:none}
+    .divider {
+      width: 1px;
+      height: 22px;
+      background: rgba(255, 255, 255, .3)
+    }
 
-/* Responsive */
-@media(max-width:900px){
-  .map-section{flex-direction:column}
-  .left-panel{width:100%;border-right:none;border-bottom:1px solid rgba(255,255,255,.08)}
-  #india-map{max-width:460px}
-}
-@media(max-width:600px){
-  .header{padding:14px 16px}
-  .page-hero{padding:28px 16px 22px}
-  .map-panel{padding:16px}
-}
-</style>
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      letter-spacing: -.04em;
+      line-height: 1.1
+    }
+
+    .logo-bubble {
+      background: #a855f7;
+      padding: 2px 8px;
+      border-radius: 4px;
+      position: relative;
+      line-height: 1.2
+    }
+
+    .logo-bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 10px;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid #a855f7
+    }
+
+    .back-btn {
+      background: rgba(255, 255, 255, .1);
+      border: 1px solid rgba(255, 255, 255, .2);
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: .2s
+    }
+
+    .back-btn:hover {
+      background: rgba(255, 255, 255, .18)
+    }
+
+    /* HERO BAND */
+    .page-hero {
+      background: rgba(255, 255, 255, 0.02);
+      padding: 40px 40px 30px;
+      border-bottom: 1px solid rgba(255, 255, 255, .1);
+      backdrop-filter: blur(10px)
+    }
+
+    .page-hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(32px, 5vw, 58px);
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1.1;
+      letter-spacing: -.04em
+    }
+
+    .page-hero h1 span {
+      color: #c084fc
+    }
+
+    .page-hero p {
+      margin-top: 10px;
+      color: #a1a1aa;
+      font-size: 15px;
+      max-width: 500px;
+      font-weight: 300;
+      line-height: 1.8
+    }
+
+    /* MAIN LAYOUT */
+    .map-section {
+      display: flex;
+      min-height: calc(100vh - 180px)
+    }
+
+    /* LEFT PANEL */
+    .left-panel {
+      width: 340px;
+      min-width: 300px;
+      background: rgba(255, 255, 255, 0.02);
+      border-right: 1px solid rgba(255, 255, 255, .08);
+      padding: 30px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      overflow-y: auto;
+      backdrop-filter: blur(10px)
+    }
+
+    .panel-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: #a1a1aa;
+      margin-bottom: 6px
+    }
+
+    .state-select {
+      width: 100%;
+      padding: 11px 14px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1.5px solid rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border-radius: 8px;
+      font-size: 15px;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a1a1aa' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center
+    }
+
+    .state-select:focus {
+      outline: none;
+      border-color: #a855f7
+    }
+
+    .state-select option {
+      background: #0d0d12
+    }
+
+    /* INFO CARD */
+    .info-card {
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 10px;
+      padding: 22px;
+      border: 1px solid rgba(255, 255, 255, .08);
+      flex: 1;
+      backdrop-filter: blur(10px)
+    }
+
+    .info-card.empty {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 12px;
+      color: #a1a1aa;
+      min-height: 300px
+    }
+
+    .info-card.empty svg {
+      opacity: .4
+    }
+
+    .state-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 4px;
+      letter-spacing: -.04em
+    }
+
+    .state-capital {
+      font-size: 13px;
+      color: #a1a1aa;
+      margin-bottom: 18px
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 18px
+    }
+
+    .info-box {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 8px;
+      padding: 12px;
+      text-align: center
+    }
+
+    .info-box .num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: #c084fc;
+      line-height: 1.1;
+      letter-spacing: -.04em
+    }
+
+    .info-box .lbl {
+      font-size: 11px;
+      color: #a1a1aa;
+      margin-top: 3px;
+      text-transform: uppercase;
+      letter-spacing: .2em
+    }
+
+    .info-voters {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .info-voters .num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #4ade80;
+      letter-spacing: -.04em
+    }
+
+    .info-voters .lbl {
+      font-size: 11px;
+      color: #a1a1aa;
+      text-transform: uppercase;
+      letter-spacing: .2em
+    }
+
+    .info-helpline {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between
+    }
+
+    .info-helpline .hl {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 22px;
+      color: #c084fc;
+      font-weight: 700;
+      letter-spacing: -.04em
+    }
+
+    .info-helpline .lbl {
+      font-size: 12px;
+      color: #a1a1aa
+    }
+
+    .ceo-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #a855f7;
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      transition: .2s
+    }
+
+    .ceo-link:hover {
+      background: #9333ea
+    }
+
+    .ceo-link svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0
+    }
+
+    .nvsp-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #3b82f6;
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      transition: .2s;
+      margin-top: 8px
+    }
+
+    .nvsp-link:hover {
+      background: #2563eb
+    }
+
+    /* MAP PANEL */
+    .map-panel {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      position: relative;
+      background: transparent
+    }
+
+    .map-title {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: #a1a1aa;
+      margin-bottom: 16px;
+      text-align: center
+    }
+
+    #india-map {
+      width: 100%;
+      max-width: 620px;
+      height: auto;
+      cursor: pointer;
+      filter: drop-shadow(0 0 30px rgba(168, 85, 247, .2))
+    }
+
+    .state-path {
+      fill: rgba(255, 255, 255, 0.05);
+      stroke: rgba(255, 255, 255, 0.15);
+      stroke-width: .8px;
+      transition: fill .15s;
+      cursor: pointer
+    }
+
+    .state-path:hover {
+      fill: rgba(168, 85, 247, 0.3)
+    }
+
+    .state-path.active {
+      fill: #a855f7
+    }
+
+    .map-tooltip {
+      position: absolute;
+      background: rgba(13, 13, 18, .95);
+      border: 1px solid rgba(255, 255, 255, .15);
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .15s;
+      white-space: nowrap;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, .4)
+    }
+
+    /* FOOTER */
+    .footer {
+      padding: 24px 40px;
+      background: rgba(13, 13, 18, .6);
+      border-top: 1px solid rgba(255, 255, 255, .07);
+      text-align: center;
+      font-size: 13px;
+      color: #a1a1aa;
+      backdrop-filter: blur(10px)
+    }
+
+    .footer a {
+      color: #c084fc;
+      text-decoration: none
+    }
+
+    /* Responsive */
+    @media(max-width:900px) {
+      .map-section {
+        flex-direction: column
+      }
+
+      .left-panel {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, .08)
+      }
+
+      #india-map {
+        max-width: 460px
+      }
+    }
+
+    @media(max-width:600px) {
+      .header {
+        padding: 14px 16px
+      }
+
+      .page-hero {
+        padding: 28px 16px 22px
+      }
+
+      .map-panel {
+        padding: 16px
+      }
+    }
+  </style>
 </head>
+
 <body>
-<style>
-  .ambient-bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; background: #0d0d12; }
-  .ambient-orb { position: absolute; border-radius: 50%; filter: blur(100px); mix-blend-mode: screen; }
-  .orb-1 { top: -10%; left: -10%; width: 40vw; height: 40vw; background: rgba(147, 51, 234, 0.3); }
-  .orb-2 { top: 10%; right: -5%; width: 35vw; height: 35vw; background: rgba(37, 99, 235, 0.2); }
-  .orb-3 { bottom: -10%; left: 20%; width: 40vw; height: 40vw; background: rgba(219, 39, 119, 0.2); }
-  .orb-4 { top: 60%; right: 10%; width: 35vw; height: 35vw; background: rgba(13, 148, 136, 0.2); }
-  .noise-bg { position: absolute; inset: 0; opacity: 0.04; mix-blend-mode: overlay; background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noise)"/%3E%3C/svg%3E'); }
-</style>
-<div class="ambient-bg" aria-hidden="true">
-  <div class="ambient-orb orb-1"></div>
-  <div class="ambient-orb orb-2"></div>
-  <div class="ambient-orb orb-3"></div>
-  <div class="ambient-orb orb-4"></div>
-  <div class="noise-bg"></div>
-</div>
+  <style>
+    .ambient-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+      background: #0d0d12;
+    }
 
-<header class="header">
-  <div class="header-left">
-    <a href="index.html" class="menu-btn">
-      <div class="menu-lines"><span></span><span></span><span></span></div>
-      MENU
-    </a>
-    <div class="divider"></div>
-    <a href="index.html" class="logo">
-      <span class="logo-bubble">VOTE</span>READY
-    </a>
+    .ambient-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      mix-blend-mode: screen;
+    }
+
+    .orb-1 {
+      top: -10%;
+      left: -10%;
+      width: 40vw;
+      height: 40vw;
+      background: rgba(147, 51, 234, 0.3);
+    }
+
+    .orb-2 {
+      top: 10%;
+      right: -5%;
+      width: 35vw;
+      height: 35vw;
+      background: rgba(37, 99, 235, 0.2);
+    }
+
+    .orb-3 {
+      bottom: -10%;
+      left: 20%;
+      width: 40vw;
+      height: 40vw;
+      background: rgba(219, 39, 119, 0.2);
+    }
+
+    .orb-4 {
+      top: 60%;
+      right: 10%;
+      width: 35vw;
+      height: 35vw;
+      background: rgba(13, 148, 136, 0.2);
+    }
+
+    .noise-bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0.04;
+      mix-blend-mode: overlay;
+      background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noise)"/%3E%3C/svg%3E');
+    }
+  </style>
+  <div class="ambient-bg" aria-hidden="true">
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <div class="ambient-orb orb-3"></div>
+    <div class="ambient-orb orb-4"></div>
+    <div class="noise-bg"></div>
   </div>
-  <a href="index.html" class="back-btn">← Back to Home</a>
-</header>
 
-<div class="page-hero">
-  <h1>Explore Voting Info<br><span>By State</span></h1>
-  <p>Click any state on the map or use the dropdown to find official voter resources, seat counts, and helplines.</p>
-</div>
-
-<div class="map-section">
-  <!-- LEFT PANEL -->
-  <aside class="left-panel">
-    <div>
-      <p class="panel-label">Select a State / UT</p>
-      <select class="state-select" id="stateSelect">
-        <option value="">— Choose a State —</option>
-      </select>
+  <header class="header">
+    <div class="header-left">
+      <a href="index.html" class="menu-btn">
+        <div class="menu-lines"><span></span><span></span><span></span></div>
+        MENU
+      </a>
+      <div class="divider"></div>
+      <a href="index.html" class="logo">
+        <span class="logo-bubble">VOTE</span>READY
+      </a>
     </div>
+    <a href="index.html" class="back-btn">← Back to Home</a>
+  </header>
 
-    <div class="info-card empty" id="infoCard">
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-        <circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>
-      </svg>
-      <p>Click a state on the map or use the dropdown above</p>
-    </div>
-  </aside>
+  <div class="page-hero">
+    <h1>Explore Voting Info<br><span>By State</span></h1>
+    <p>Click any state on the map or use the dropdown to find official voter resources, seat counts, and helplines.</p>
+  </div>
 
-  <!-- MAP PANEL -->
-  <main class="map-panel">
-    <p class="map-title">India — All States &amp; Union Territories</p>
-    <svg id="india-map" viewBox="0 0 600 680"></svg>
-    <div class="map-tooltip" id="tooltip"></div>
-  </main>
-</div>
+  <div class="map-section">
+    <!-- LEFT PANEL -->
+    <aside class="left-panel">
+      <div>
+        <p class="panel-label">Select a State / UT</p>
+        <select class="state-select" id="stateSelect">
+          <option value="">— Choose a State —</option>
+        </select>
+      </div>
 
-<footer class="footer">
-  VoteReady · Data sourced from ECI &amp; CEO portals · 
-  <a href="https://nvsp.in" target="_blank">NVSP</a> · 
-  <a href="https://voters.eci.gov.in" target="_blank">ECI Voter Portal</a>
-</footer>
+      <div class="info-card empty" id="infoCard">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <circle cx="12" cy="12" r="10" />
+          <path d="M12 8v4l3 3" />
+        </svg>
+        <p>Click a state on the map or use the dropdown above</p>
+      </div>
+    </aside>
 
-<script src="https://d3js.org/d3.v7.min.js"></script>
-<script src="https://d3js.org/topojson.v3.min.js"></script>
-<script>
-const STATES = {
-  "Andhra Pradesh":    {cap:"Amaravati",      ceo:"ceoandhra.nic.in",               ls:25,vs:175,voters:"~42M"},
-  "Arunachal Pradesh": {cap:"Itanagar",       ceo:"ceoarec.nic.in",                 ls:2, vs:60, voters:"~0.9M"},
-  "Assam":             {cap:"Dispur",         ceo:"ceoassam.nic.in",                ls:14,vs:126,voters:"~22M"},
-  "Bihar":             {cap:"Patna",          ceo:"ceobihar.nic.in",                ls:40,vs:243,voters:"~75M"},
-  "Chhattisgarh":      {cap:"Raipur",         ceo:"ceochhattisgarh.nic.in",         ls:11,vs:90, voters:"~20M"},
-  "Goa":               {cap:"Panaji",         ceo:"ceogoa.nic.in",                  ls:2, vs:40, voters:"~1.1M"},
-  "Gujarat":           {cap:"Gandhinagar",    ceo:"ceo.gujarat.gov.in",             ls:26,vs:182,voters:"~52M"},
-  "Haryana":           {cap:"Chandigarh",     ceo:"ceoharyana.nic.in",              ls:10,vs:90, voters:"~20M"},
-  "Himachal Pradesh":  {cap:"Shimla",         ceo:"himachalceo.nic.in",             ls:4, vs:68, voters:"~5.7M"},
-  "Jharkhand":         {cap:"Ranchi",         ceo:"jharkhandceo.nic.in",            ls:14,vs:81, voters:"~23M"},
-  "Karnataka":         {cap:"Bengaluru",      ceo:"ceokarnataka.kar.nic.in",        ls:28,vs:224,voters:"~53M"},
-  "Kerala":            {cap:"Thiruvananthapuram",ceo:"ceo.kerala.gov.in",           ls:20,vs:140,voters:"~27M"},
-  "Madhya Pradesh":    {cap:"Bhopal",         ceo:"ceomadhyapradesh.nic.in",        ls:29,vs:230,voters:"~55M"},
-  "Maharashtra":       {cap:"Mumbai",         ceo:"ceo.maharashtra.gov.in",         ls:48,vs:288,voters:"~91M"},
-  "Manipur":           {cap:"Imphal",         ceo:"ceomanipur.nic.in",              ls:2, vs:60, voters:"~2M"},
-  "Meghalaya":         {cap:"Shillong",       ceo:"ceomeghalaya.nic.in",            ls:2, vs:60, voters:"~2M"},
-  "Mizoram":           {cap:"Aizawl",         ceo:"ceomizoram.nic.in",              ls:1, vs:40, voters:"~0.8M"},
-  "Nagaland":          {cap:"Kohima",         ceo:"ceonagaland.nic.in",             ls:1, vs:60, voters:"~1.3M"},
-  "Odisha":            {cap:"Bhubaneswar",    ceo:"ceoodisha.nic.in",               ls:21,vs:147,voters:"~35M"},
-  "Punjab":            {cap:"Chandigarh",     ceo:"ceopunjab.nic.in",               ls:13,vs:117,voters:"~21M"},
-  "Rajasthan":         {cap:"Jaipur",         ceo:"ceorajasthan.nic.in",            ls:25,vs:200,voters:"~51M"},
-  "Sikkim":            {cap:"Gangtok",        ceo:"ceosikkim.nic.in",               ls:1, vs:32, voters:"~0.4M"},
-  "Tamil Nadu":        {cap:"Chennai",        ceo:"elections.tn.gov.in",            ls:39,vs:234,voters:"~62M"},
-  "Telangana":         {cap:"Hyderabad",      ceo:"ceotelangana.nic.in",            ls:17,vs:119,voters:"~32M"},
-  "Tripura":           {cap:"Agartala",       ceo:"ceotripura.nic.in",              ls:2, vs:60, voters:"~2.8M"},
-  "Uttar Pradesh":     {cap:"Lucknow",        ceo:"ceouttarapradesh.nic.in",        ls:80,vs:403,voters:"~152M"},
-  "Uttarakhand":       {cap:"Dehradun",       ceo:"ceo.uk.gov.in",                  ls:5, vs:70, voters:"~8.5M"},
-  "West Bengal":       {cap:"Kolkata",        ceo:"ceowestbengal.nic.in",           ls:42,vs:294,voters:"~73M"},
-  "Jammu and Kashmir": {cap:"Srinagar",       ceo:"ceojammukashmir.nic.in",         ls:5, vs:90, voters:"~9M"},
-  "Ladakh":            {cap:"Leh",            ceo:"ceojammukashmir.nic.in",         ls:1, vs:0,  voters:"~0.2M"},
-  "Delhi":             {cap:"New Delhi",      ceo:"ceodelhi.nic.in",                ls:7, vs:70, voters:"~15M"},
-  "Chandigarh":        {cap:"Chandigarh",     ceo:"ceochandigarh.nic.in",           ls:1, vs:0,  voters:"~0.6M"},
-  "Puducherry":        {cap:"Puducherry",     ceo:"ceopuducherry.nic.in",           ls:1, vs:30, voters:"~1M"},
-  "Andaman and Nicobar Islands":{cap:"Port Blair",ceo:"andamanceo.nic.in",          ls:1, vs:30, voters:"~0.3M"},
-  "Dadra and Nagar Haveli and Daman and Diu":{cap:"Daman",ceo:"daman.nic.in",      ls:2, vs:0,  voters:"~0.4M"},
-  "Lakshadweep":       {cap:"Kavaratti",      ceo:"lakshadweep.gov.in",             ls:1, vs:0,  voters:"~0.06M"}
-};
+    <!-- MAP PANEL -->
+    <main class="map-panel">
+      <p class="map-title">India — All States &amp; Union Territories</p>
+      <svg id="india-map" viewBox="0 0 600 680"></svg>
+      <div class="map-tooltip" id="tooltip"></div>
+    </main>
+  </div>
 
-// Populate dropdown
-const select = document.getElementById('stateSelect');
-Object.keys(STATES).sort().forEach(name => {
-  const opt = document.createElement('option');
-  opt.value = name; opt.textContent = name;
-  select.appendChild(opt);
-});
+  <footer class="footer">
+    VoteReady · Data sourced from ECI &amp; CEO portals ·
+    <a href="https://nvsp.in" target="_blank">NVSP</a> ·
+    <a href="https://voters.eci.gov.in" target="_blank">ECI Voter Portal</a>
+  </footer>
 
-function showInfo(name) {
-  const s = STATES[name];
-  if (!s) return;
-  const card = document.getElementById('infoCard');
-  card.className = 'info-card';
-  card.innerHTML = `
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script>
+    const STATES = {
+      "Andhra Pradesh": { cap: "Amaravati", ceo: "ceoandhra.nic.in", ls: 25, vs: 175, voters: "~42M" },
+      "Arunachal Pradesh": { cap: "Itanagar", ceo: "ceoarec.nic.in", ls: 2, vs: 60, voters: "~0.9M" },
+      "Assam": { cap: "Dispur", ceo: "ceoassam.nic.in", ls: 14, vs: 126, voters: "~22M" },
+      "Bihar": { cap: "Patna", ceo: "ceobihar.nic.in", ls: 40, vs: 243, voters: "~75M" },
+      "Chhattisgarh": { cap: "Raipur", ceo: "ceochhattisgarh.nic.in", ls: 11, vs: 90, voters: "~20M" },
+      "Goa": { cap: "Panaji", ceo: "ceogoa.nic.in", ls: 2, vs: 40, voters: "~1.1M" },
+      "Gujarat": { cap: "Gandhinagar", ceo: "ceo.gujarat.gov.in", ls: 26, vs: 182, voters: "~52M" },
+      "Haryana": { cap: "Chandigarh", ceo: "ceoharyana.nic.in", ls: 10, vs: 90, voters: "~20M" },
+      "Himachal Pradesh": { cap: "Shimla", ceo: "himachalceo.nic.in", ls: 4, vs: 68, voters: "~5.7M" },
+      "Jharkhand": { cap: "Ranchi", ceo: "jharkhandceo.nic.in", ls: 14, vs: 81, voters: "~23M" },
+      "Karnataka": { cap: "Bengaluru", ceo: "ceokarnataka.kar.nic.in", ls: 28, vs: 224, voters: "~53M" },
+      "Kerala": { cap: "Thiruvananthapuram", ceo: "ceo.kerala.gov.in", ls: 20, vs: 140, voters: "~27M" },
+      "Madhya Pradesh": { cap: "Bhopal", ceo: "ceomadhyapradesh.nic.in", ls: 29, vs: 230, voters: "~55M" },
+      "Maharashtra": { cap: "Mumbai", ceo: "ceo.maharashtra.gov.in", ls: 48, vs: 288, voters: "~91M" },
+      "Manipur": { cap: "Imphal", ceo: "ceomanipur.nic.in", ls: 2, vs: 60, voters: "~2M" },
+      "Meghalaya": { cap: "Shillong", ceo: "ceomeghalaya.nic.in", ls: 2, vs: 60, voters: "~2M" },
+      "Mizoram": { cap: "Aizawl", ceo: "ceomizoram.nic.in", ls: 1, vs: 40, voters: "~0.8M" },
+      "Nagaland": { cap: "Kohima", ceo: "ceonagaland.nic.in", ls: 1, vs: 60, voters: "~1.3M" },
+      "Odisha": { cap: "Bhubaneswar", ceo: "ceoodisha.nic.in", ls: 21, vs: 147, voters: "~35M" },
+      "Punjab": { cap: "Chandigarh", ceo: "ceopunjab.nic.in", ls: 13, vs: 117, voters: "~21M" },
+      "Rajasthan": { cap: "Jaipur", ceo: "ceorajasthan.nic.in", ls: 25, vs: 200, voters: "~51M" },
+      "Sikkim": { cap: "Gangtok", ceo: "ceosikkim.nic.in", ls: 1, vs: 32, voters: "~0.4M" },
+      "Tamil Nadu": { cap: "Chennai", ceo: "elections.tn.gov.in", ls: 39, vs: 234, voters: "~62M" },
+      "Telangana": { cap: "Hyderabad", ceo: "ceotelangana.nic.in", ls: 17, vs: 119, voters: "~32M" },
+      "Tripura": { cap: "Agartala", ceo: "ceotripura.nic.in", ls: 2, vs: 60, voters: "~2.8M" },
+      "Uttar Pradesh": { cap: "Lucknow", ceo: "ceouttarapradesh.nic.in", ls: 80, vs: 403, voters: "~152M" },
+      "Uttarakhand": { cap: "Dehradun", ceo: "ceo.uk.gov.in", ls: 5, vs: 70, voters: "~8.5M" },
+      "West Bengal": { cap: "Kolkata", ceo: "ceowestbengal.nic.in", ls: 42, vs: 294, voters: "~73M" },
+      "Jammu and Kashmir": { cap: "Srinagar", ceo: "ceojammukashmir.nic.in", ls: 5, vs: 90, voters: "~9M" },
+      "Ladakh": { cap: "Leh", ceo: "ceojammukashmir.nic.in", ls: 1, vs: 0, voters: "~0.2M" },
+      "Delhi": { cap: "New Delhi", ceo: "ceodelhi.nic.in", ls: 7, vs: 70, voters: "~15M" },
+      "Chandigarh": { cap: "Chandigarh", ceo: "ceochandigarh.nic.in", ls: 1, vs: 0, voters: "~0.6M" },
+      "Puducherry": { cap: "Puducherry", ceo: "ceopuducherry.nic.in", ls: 1, vs: 30, voters: "~1M" },
+      "Andaman and Nicobar Islands": { cap: "Port Blair", ceo: "andamanceo.nic.in", ls: 1, vs: 30, voters: "~0.3M" },
+      "Dadra and Nagar Haveli and Daman and Diu": { cap: "Daman", ceo: "daman.nic.in", ls: 2, vs: 0, voters: "~0.4M" },
+      "Lakshadweep": { cap: "Kavaratti", ceo: "lakshadweep.gov.in", ls: 1, vs: 0, voters: "~0.06M" }
+    };
+
+    // Populate dropdown
+    const select = document.getElementById('stateSelect');
+    Object.keys(STATES).sort().forEach(name => {
+      const opt = document.createElement('option');
+      opt.value = name; opt.textContent = name;
+      select.appendChild(opt);
+    });
+
+    function showInfo(name) {
+      const s = STATES[name];
+      if (!s) return;
+      const card = document.getElementById('infoCard');
+      card.className = 'info-card';
+      card.innerHTML = `
     <div class="state-name">${name}</div>
     <div class="state-capital">🏛 Capital: ${s.cap}</div>
     <div class="info-grid">
@@ -237,89 +679,87 @@ function showInfo(name) {
       Check / Register on NVSP
     </a>
   `;
-  // highlight map
-  d3.selectAll('.state-path').classed('active', false);
-  d3.selectAll('.state-path').filter(d => {
-    const geoName = normName(d.properties);
-    // Legacy map patch: The geojson fuses J&K and Ladakh. Highlight the fused polygon for both.
-    if (name === 'Ladakh' && geoName === 'Jammu and Kashmir') return true;
-    return geoName === name;
-  }).classed('active', true);
-}
+      // highlight map
+      d3.selectAll('.state-path').classed('active', false);
+      d3.selectAll('.state-path').filter(d => {
+        const geoName = normName(d.properties);
+        // Legacy map patch: The geojson fuses J&K and Ladakh. Highlight the fused polygon for both.
+        if (name === 'Ladakh' && geoName === 'Jammu and Kashmir') return true;
+        return geoName === name;
+      }).classed('active', true);
+    }
 
-select.addEventListener('change', e => { if(e.target.value) showInfo(e.target.value); });
+    select.addEventListener('change', e => { if (e.target.value) showInfo(e.target.value); });
 
-// Using a reliable TopoJSON source for post-2019 boundaries
-const TOPO_URL = 'https://raw.githubusercontent.com/HindustanTimesLabs/shapefiles/master/india/state_ut/india_state_ut.topojson';
-const svg = d3.select('#india-map');
-const tooltip = document.getElementById('tooltip');
-const mapPanel = document.querySelector('.map-panel');
+    // D3 map
+    const GEO_URL = 'https://raw.githubusercontent.com/geohacker/india/master/state/india_telengana.geojson';
+    const svg = d3.select('#india-map');
+    const tooltip = document.getElementById('tooltip');
+    const mapPanel = document.querySelector('.map-panel');
 
-// GeoJSON uses old/alternate state names — map them to our canonical STATES keys
-const NAME_ALIASES = {
-  'Orissa':              'Odisha',
-  'Uttaranchal':         'Uttarakhand',
-  'Pondicherry':         'Puducherry',
-  'Daman and Diu':       'Dadra and Nagar Haveli and Daman and Diu',
-  'Dadra and Nagar Haveli': 'Dadra and Nagar Haveli and Daman and Diu',
-  'Jammu & Kashmir':     'Jammu and Kashmir',
-  'Andaman & Nicobar':   'Andaman and Nicobar Islands',
-  'NCT of Delhi':        'Delhi',
-};
+    // GeoJSON uses old/alternate state names — map them to our canonical STATES keys
+    const NAME_ALIASES = {
+      'Orissa': 'Odisha',
+      'Uttaranchal': 'Uttarakhand',
+      'Pondicherry': 'Puducherry',
+      'Daman and Diu': 'Dadra and Nagar Haveli and Daman and Diu',
+      'Dadra and Nagar Haveli': 'Dadra and Nagar Haveli and Daman and Diu',
+      'Jammu & Kashmir': 'Jammu and Kashmir',
+      'Andaman & Nicobar': 'Andaman and Nicobar Islands',
+      'NCT of Delhi': 'Delhi',
+    };
 
-function normName(props) {
-  // Add common keys found in modern shapefiles
-  const raw = props.state_name || props.ST_NM || props.NAME_1 || props.name || props.State || '';
-  return NAME_ALIASES[raw] || raw;
-}
+    function normName(props) {
+      // Add common keys found in modern shapefiles
+      const raw = props.state_name || props.ST_NM || props.NAME_1 || props.name || props.State || '';
+      return NAME_ALIASES[raw] || raw;
+    }
 
-d3.json(TOPO_URL).then(topo => {
-  // Extract the GeoJSON features from the TopoJSON
-  const geo = topojson.feature(topo, topo.objects.india_state_ut);
-  
-  const proj = d3.geoMercator().fitSize([600, 680], geo);
-  const path = d3.geoPath().projection(proj);
+    d3.json(GEO_URL).then(geo => {
+      const proj = d3.geoMercator().fitSize([600, 680], geo);
+      const path = d3.geoPath().projection(proj);
 
-  svg.selectAll('path')
-    .data(geo.features)
-    .join('path')
-    .attr('class', 'state-path')
-    .attr('d', path)
-    .on('mousemove', function(event, d) {
-      // The property name might differ in the new file (e.g., d.properties.state_name)
-      const name = normName(d.properties); 
-      tooltip.textContent = name;
-      tooltip.style.opacity = '1';
-      const rect = mapPanel.getBoundingClientRect();
-      tooltip.style.left = (event.clientX - rect.left + 12) + 'px';
-      tooltip.style.top  = (event.clientY - rect.top - 36) + 'px';
-    })
-    .on('mouseleave', function() {
-      tooltip.style.opacity = '0';
-    })
-    .on('click', function(event, d) {
-      const name = normName(d.properties);
-      if (!name) return;
-      const key = STATES[name]
-        ? name
-        : Object.keys(STATES).find(k =>
-            k.toLowerCase().includes(name.toLowerCase()) ||
-            name.toLowerCase().includes(k.toLowerCase())
-          );
-      if (key) {
-        select.value = key;
-        showInfo(key);
-      }
+      svg.selectAll('path')
+        .data(geo.features)
+        .join('path')
+        .attr('class', 'state-path')
+        .attr('d', path)
+        .on('mousemove', function(event, d) {
+          const name = normName(d.properties);
+          tooltip.textContent = name;
+          tooltip.style.opacity = '1';
+          const rect = mapPanel.getBoundingClientRect();
+          tooltip.style.left = (event.clientX - rect.left + 12) + 'px';
+          tooltip.style.top  = (event.clientY - rect.top - 36) + 'px';
+        })
+        .on('mouseleave', function() {
+          tooltip.style.opacity = '0';
+        })
+        .on('click', function(event, d) {
+          const name = normName(d.properties);
+          if (!name) return;
+          // Exact match first, then partial
+          const key = STATES[name]
+            ? name
+            : Object.keys(STATES).find(k =>
+                k.toLowerCase().includes(name.toLowerCase()) ||
+                name.toLowerCase().includes(k.toLowerCase())
+              );
+          if (key) {
+            select.value = key;
+            showInfo(key);
+          }
+        });
+    }).catch(() => {
+      svg.append('text').attr('x',300).attr('y',340).attr('text-anchor','middle')
+        .attr('fill','#3a6080').attr('font-size','15').text('Map could not be loaded. Use the dropdown above.');
     });
-}).catch(error => {
-  console.error("Map loading error:", error);
-  svg.append('text').attr('x',300).attr('y',340).attr('text-anchor','middle')
-    .attr('fill','#3a6080').attr('font-size','15').text('Map could not be loaded. Use the dropdown above.');
-});
 
-// Deep-link: ?state=West+Bengal
-const qp = new URLSearchParams(location.search).get('state');
-if (qp && STATES[qp]) { select.value = qp; showInfo(qp); }
-</script>
-<script src="translate.js"></script></body>
+    // Deep-link: ?state=West+Bengal
+    const qp = new URLSearchParams(location.search).get('state');
+    if (qp && STATES[qp]) { select.value = qp; showInfo(qp); }
+  </script>
+  <script src="translate.js"></script>
+</body>
+
 </html>
