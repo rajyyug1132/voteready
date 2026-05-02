@@ -238,7 +238,12 @@ function showInfo(name) {
   `;
   // highlight map
   d3.selectAll('.state-path').classed('active', false);
-  d3.selectAll('.state-path').filter(d => normName(d.properties) === name).classed('active', true);
+  d3.selectAll('.state-path').filter(d => {
+    const geoName = normName(d.properties);
+    // Legacy map patch: The geojson fuses J&K and Ladakh. Highlight the fused polygon for both.
+    if (name === 'Ladakh' && geoName === 'Jammu and Kashmir') return true;
+    return geoName === name;
+  }).classed('active', true);
 }
 
 select.addEventListener('change', e => { if(e.target.value) showInfo(e.target.value); });
