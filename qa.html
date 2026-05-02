@@ -363,8 +363,18 @@
         });
 
         askBtn.addEventListener('click', async () => {
+            // 1. Grab the user's actual question
             const userQuestion = questionInput.value.trim();
             if (!userQuestion) return;
+
+            // 2. Fetch checklist progress from localStorage
+            const checklistData = localStorage.getItem('voteready_state');
+            const userContext = checklistData
+                ? `The user has completed the following checklist items: ${checklistData}. `
+                : `The user has not started or completed any checklist items yet. `;
+
+            // 3. Build the context-aware prompt sent to Vercel
+            const dynamicPrompt = `[System Context: ${userContext}]\n\nUser Question: ${userQuestion}`;
 
             // Set loading state
             questionInput.disabled = true;
@@ -374,15 +384,12 @@
             responseContainer.classList.remove('visible');
 
             try {
-                // Remove all systemPrompt references. 
-                // Just capture the user's input and send it.
-
                 const response = await fetch('/api/gemini', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ userQuestion: userQuestion }) // Only passing the intent
+                    body: JSON.stringify({ userQuestion: dynamicPrompt })
                 });
 
                 if (!response.ok) {
