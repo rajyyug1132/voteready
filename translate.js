@@ -104,7 +104,15 @@ const dictionary = {
     "Total Voters": "कुल मतदाता",
     "Helpline": "हेल्पलाइन",
     "State CEO Website": "राज्य सीईओ वेबसाइट",
-    "National Voter Portal": "राष्ट्रीय मतदाता पोर्टल"
+    "National Voter Portal": "राष्ट्रीय मतदाता पोर्टल",
+    "Am I Ready to Vote?": "क्या मैं वोट देने के लिए तैयार हूँ?",
+    "Follow these steps to ensure you're fully prepared for polling day. Each item is verified against Election Commission of India sources.": "मतदान के दिन के लिए पूरी तरह से तैयार रहने के लिए इन चरणों का पालन करें। प्रत्येक आइटम भारत निर्वाचन आयोग के स्रोतों से सत्यापित है।",
+    "← Back to home": "← होम पर वापस जाएँ",
+    "Open Checklist →": "चेकलिस्ट खोलें →",
+    "Ask a Question →": "प्रश्न पूछें →",
+    "Go →": "जाएं →",
+    "Start Your Checklist →": "चेकलिस्ट शुरू करें →",
+    "Ask AI →": "AI से पूछें →"
 };
 
 let currentLang = localStorage.getItem('voteready_lang') || 'en';
