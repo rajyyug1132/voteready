@@ -122,13 +122,13 @@ const dictionary = {
     "Vote counting is conducted in the presence of candidates and their agents. VVPAT slips of 5 randomly selected booths per constituency are cross-verified with the electronic count.": "वोटों की गिनती उम्मीदवारों और उनके एजेंटों की उपस्थिति में की जाती है। प्रति निर्वाचन क्षेत्र 5 यादृच्छिक रूप से चयनित बूथों की वीवीपैट (VVPAT) पर्चियों का इलेक्ट्रॉनिक गिनती के साथ क्रॉस-सत्यापन किया जाता है।",
     "MENU": "मेनू",
     "← Back to Home": "← होम पर वापस जाएँ",
-    "EXPLORE VOTING INFO": "वोटिंग जानकारी देखें",
-    "BY STATE": "राज्य के अनुसार",
+    "Explore Voting Info": "वोटिंग जानकारी देखें",
+    "By State": "राज्य के अनुसार",
     "Click any state on the map or use the dropdown to find official voter resources, seat counts, and helplines.": "आधिकारिक मतदाता संसाधन, सीटों की संख्या और हेल्पलाइन खोजने के लिए मानचित्र पर किसी भी राज्य पर क्लिक करें या ड्रॉपडाउन का उपयोग करें।",
-    "SELECT A STATE / UT": "राज्य / केंद्र शासित प्रदेश चुनें",
+    "Select a State / UT": "राज्य / केंद्र शासित प्रदेश चुनें",
     "— Choose a State —": "— एक राज्य चुनें —",
     "Click a state on the map or use the dropdown above": "मानचित्र पर एक राज्य पर क्लिक करें या ऊपर दिए गए ड्रॉपडाउन का उपयोग करें",
-    "INDIA — ALL STATES & UNION TERRITORIES": "भारत — सभी राज्य और केंद्र शासित प्रदेश"
+    "India — All States & Union Territories": "भारत — सभी राज्य और केंद्र शासित प्रदेश"
 };
 
 let currentLang = localStorage.getItem('voteready_lang') || 'en';
