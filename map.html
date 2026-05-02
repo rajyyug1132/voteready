@@ -478,6 +478,26 @@
         padding: 16px
       }
     }
+
+    /* Google Maps routing container */
+    #google-map {
+      height: 220px;
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(13, 13, 18, 0.5);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    #google-map.active {
+      border-color: rgba(157, 78, 221, 0.5);
+      box-shadow: 0 0 20px rgba(157, 78, 221, 0.2);
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
   </style>
 </head>
 
@@ -777,20 +797,33 @@
     function initMap() {
       const center = { lat: 20.5937, lng: 78.9629 };
       gmap = new google.maps.Map(document.getElementById('google-map'), {
-        zoom: 5,
+        zoom: 4,
         center: center,
+        disableDefaultUI: true,
+        zoomControl: false,
+        mapTypeControl: false,
+        streetViewControl: false,
+        fullscreenControl: false,
         styles: [
-          { elementType: 'geometry', stylers: [{ color: '#0d0d12' }] },
-          { elementType: 'labels.text.fill', stylers: [{ color: '#a1a1aa' }] },
-          { elementType: 'labels.text.stroke', stylers: [{ color: '#0d0d12' }] },
-          { featureType: 'administrative', elementType: 'geometry.stroke', stylers: [{ color: '#3f3f46' }] },
-          { featureType: 'road', elementType: 'geometry', stylers: [{ color: '#27272a' }] },
-          { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#18181b' }] }
+          { elementType: 'geometry', stylers: [{ color: '#1d1d2b' }] },
+          { elementType: 'labels.text.fill', stylers: [{ color: '#8ec3b9' }] },
+          { elementType: 'labels.text.stroke', stylers: [{ color: '#1a3646' }] },
+          { featureType: 'administrative.country', elementType: 'geometry.stroke', stylers: [{ color: '#4b4b6b' }] },
+          { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#0e0e1a' }] },
+          { featureType: 'road', elementType: 'geometry', stylers: [{ color: '#2c2c3d' }] },
+          { featureType: 'road', elementType: 'labels.text.fill', stylers: [{ color: '#9ca5b3' }] }
         ]
       });
       directionsService = new google.maps.DirectionsService();
-      directionsRenderer = new google.maps.DirectionsRenderer({ suppressMarkers: false });
-      directionsRenderer.setMap(gmap);
+      directionsRenderer = new google.maps.DirectionsRenderer({
+        map: gmap,
+        polylineOptions: {
+          strokeColor: '#9d4edd',
+          strokeWeight: 4,
+          strokeOpacity: 0.8
+        },
+        suppressMarkers: false
+      });
     }
 
     function getRouteToOffice() {
@@ -804,8 +837,10 @@
         return;
       }
       const routeBtn = document.getElementById('routeBtn');
-      routeBtn.textContent = 'Locating...';
+      const geoStatus = document.getElementById('geo-status');
+      routeBtn.innerHTML = '<svg style="animation:spin 1s linear infinite;margin-right:8px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0"/></svg> Locating...';
       routeBtn.disabled = true;
+      geoStatus.textContent = 'Requesting your location...';
 
       navigator.geolocation.getCurrentPosition((position) => {
         const userPos = {
@@ -813,25 +848,30 @@
           lng: position.coords.longitude
         };
         const destination = `Chief Electoral Officer Office, ${STATES[selectedState].cap}, India`;
+        geoStatus.textContent = 'Finding route...';
         directionsService.route(
           { origin: userPos, destination: destination, travelMode: 'DRIVING' },
           (result, status) => {
-            routeBtn.textContent = '📍 Get Route to CEO Office';
+            routeBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" style="margin-right:8px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Find Nearest CEO Office';
             routeBtn.disabled = false;
             if (status === 'OK') {
               directionsRenderer.setDirections(result);
-              // Expose end address for Q&A context
+              gmap.setZoom(12);
+              document.getElementById('google-map').classList.add('active');
               window.nearestOfficeData = result.routes[0].legs[0].end_address;
+              const dist = result.routes[0].legs[0].distance.text;
+              const dur  = result.routes[0].legs[0].duration.text;
+              geoStatus.textContent = `📍 ${dist} away · ~${dur} drive`;
               document.getElementById('google-map').scrollIntoView({ behavior: 'smooth' });
             } else {
-              alert('Could not find a route. Try a different state or check your connection.');
+              geoStatus.textContent = 'Could not find a route. Try a different state.';
             }
           }
         );
       }, () => {
-        routeBtn.textContent = '📍 Get Route to CEO Office';
+        routeBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" style="margin-right:8px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Find Nearest CEO Office';
         routeBtn.disabled = false;
-        alert('Location access denied. Please allow location access and try again.');
+        geoStatus.textContent = 'Location access denied.';
       });
     }
 
