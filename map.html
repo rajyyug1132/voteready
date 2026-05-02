@@ -9,6 +9,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@700&display=swap"
     rel="stylesheet">
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcHY3rlCfYwmTOYVkOmu5VWzGX1iB4CcU&libraries=places"></script>
   <style>
     * {
       box-sizing: border-box;
@@ -757,6 +758,73 @@
     // Deep-link: ?state=West+Bengal
     const qp = new URLSearchParams(location.search).get('state');
     if (qp && STATES[qp]) { select.value = qp; showInfo(qp); }
+
+    // --- Google Maps: CEO Office Routing ---
+    let gmap, directionsService, directionsRenderer;
+
+    function initMap() {
+      const center = { lat: 20.5937, lng: 78.9629 };
+      gmap = new google.maps.Map(document.getElementById('google-map'), {
+        zoom: 5,
+        center: center,
+        styles: [
+          { elementType: 'geometry', stylers: [{ color: '#0d0d12' }] },
+          { elementType: 'labels.text.fill', stylers: [{ color: '#a1a1aa' }] },
+          { elementType: 'labels.text.stroke', stylers: [{ color: '#0d0d12' }] },
+          { featureType: 'administrative', elementType: 'geometry.stroke', stylers: [{ color: '#3f3f46' }] },
+          { featureType: 'road', elementType: 'geometry', stylers: [{ color: '#27272a' }] },
+          { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#18181b' }] }
+        ]
+      });
+      directionsService = new google.maps.DirectionsService();
+      directionsRenderer = new google.maps.DirectionsRenderer({ suppressMarkers: false });
+      directionsRenderer.setMap(gmap);
+    }
+
+    function getRouteToOffice() {
+      const selectedState = document.getElementById('stateSelect').value;
+      if (!selectedState) {
+        alert('Please select a state first.');
+        return;
+      }
+      if (!navigator.geolocation) {
+        alert('Geolocation is not supported by your browser.');
+        return;
+      }
+      const routeBtn = document.getElementById('routeBtn');
+      routeBtn.textContent = 'Locating...';
+      routeBtn.disabled = true;
+
+      navigator.geolocation.getCurrentPosition((position) => {
+        const userPos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        const destination = `Chief Electoral Officer Office, ${STATES[selectedState].cap}, India`;
+        directionsService.route(
+          { origin: userPos, destination: destination, travelMode: 'DRIVING' },
+          (result, status) => {
+            routeBtn.textContent = '📍 Get Route to CEO Office';
+            routeBtn.disabled = false;
+            if (status === 'OK') {
+              directionsRenderer.setDirections(result);
+              // Expose end address for Q&A context
+              window.nearestOfficeData = result.routes[0].legs[0].end_address;
+              document.getElementById('google-map').scrollIntoView({ behavior: 'smooth' });
+            } else {
+              alert('Could not find a route. Try a different state or check your connection.');
+            }
+          }
+        );
+      }, () => {
+        routeBtn.textContent = '📍 Get Route to CEO Office';
+        routeBtn.disabled = false;
+        alert('Location access denied. Please allow location access and try again.');
+      });
+    }
+
+    // Init Google Map on load
+    window.addEventListener('load', initMap);
   </script>
   <script src="translate.js"></script>
 </body>
