@@ -98,14 +98,14 @@
     {
         "id": "first_time_confidence",
         "title": "What happens inside the polling booth",
-        "description": "Inside the polling booth, three polling officers verify you, ink your finger, and record your entry — then you press one button on the EVM and verify the VVPAT paper slip for seven seconds.",
+        "description": "Inside the polling booth, three polling officers verify you, ink your finger, and record your entry — then you press one button on the EVM and verify the VVPAT paper slip for about 7 seconds.",
         "steps": [
             "Enter the booth and join the queue with your EPIC or one of the 12 alternate photo IDs ready",
             "First Polling Officer: checks your ID and matches your name against the marked copy of the electoral roll",
             "Second Polling Officer: applies indelible ink on your left index finger, records your entry in the Form 17A register, takes your signature/thumb, hands you a signed voter slip",
             "Third Polling Officer: takes your slip, checks your inked finger, directs you to the voting compartment once the Presiding Officer activates the Ballot Unit",
             "Press the blue button on the EVM Ballot Unit against your chosen candidate (or NOTA at the bottom); a red light glows and a beep confirms your vote",
-            "Watch the VVPAT transparent window for seven seconds — it displays a paper slip with the candidate's serial number, name, and symbol before dropping into the sealed box",
+            "Watch the VVPAT transparent window for about 7 seconds — it displays a paper slip with the candidate's serial number, name, and symbol before dropping into the sealed box",
             "Alert the Presiding Officer immediately if you do not see the VVPAT slip or hear the confirmation beep"
         ],
         "officialLink": "https://www.eci.gov.in/evm-vvpat",

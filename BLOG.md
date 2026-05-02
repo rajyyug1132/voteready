@@ -10,7 +10,7 @@
 
 I turned 18 last year. I'm eligible to vote in the next general election. And until I started building VoteReady, I didn't actually know the steps involved.
 
-Not in a vague way in a specific, embarrassing way. I didn't know that you need to submit Form 6 to register. I didn't know there are exactly 12 accepted photo IDs at the polling booth, not "any government ID." I didn't know the VVPAT slip is visible for about 7 seconds before it drops into the sealed box.
+Not in a vague way — in a specific, embarrassing way. I didn't know that you need to submit Form 6 to register. I didn't know there are exactly 12 accepted photo IDs at the polling booth, not "any government ID." I didn't know the VVPAT slip is visible for about 7 seconds before it drops into the sealed box.
 
 I only found all of this out because I tried to explain it to someone else through an app, and the app kept getting it wrong.
 
@@ -40,7 +40,7 @@ No. I'd verified the claim against itself. The "source" I was checking was text 
 
 When I went to the actual ECI Manual, the beep was mentioned only in a troubleshooting checklist for polling officers — not as a voter-facing instruction. The ECI FAQ document turned out to describe it more explicitly as voter confirmation, but the point stands: I almost shipped a claim that was verified circularly. The only reason I caught it was because someone pushed me to check against the primary source, not against my own output.
 
-I deleted the beep claim from the app and replaced it with hedged language: "The machine will confirm that your vote has been recorded." Later, after reading the ECI FAQ more carefully, I confirmed the beep is real. But I'd rather ship something cautious and correct than confident and wrong.
+I deleted the beep claim from the app and replaced it with hedged language: "The machine will confirm that your vote has been recorded." Later, after reading the ECI FAQ more carefully, I confirmed the beep is real — it's described explicitly as voter confirmation in the FAQ document. I added the specific, verified claim back into the checklist: "a red light glows and a beep confirms your vote." But I'd rather go through that cycle of delete-verify-restore than ship something I hadn't checked against a primary source.
 
 ## The ID list that was "close enough"
 

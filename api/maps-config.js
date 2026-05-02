@@ -1,8 +1,10 @@
-// api/maps-config.js
-// Server-side Maps configuration placeholder.
-// The Google Maps JS API key is loaded client-side in map.html.
-// Add any server-side Maps configuration here if needed in the future.
+export default function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', process.env.ALLOWED_ORIGIN || 'https://voteready-pi.vercel.app');
+  res.setHeader('Cache-Control', 'public, max-age=3600');
 
-module.exports = {
-  MAPS_API_KEY: process.env.GOOGLE_MAPS_API_KEY || '',
-};
+  const key = process.env.GOOGLE_MAPS_KEY;
+  if (!key) {
+    return res.status(500).json({ error: 'Maps key not configured.' });
+  }
+  return res.status(200).json({ key });
+}

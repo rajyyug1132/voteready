@@ -27,7 +27,6 @@
       line-height: 1.8
     }
 
-    /* HEADER */
     .header {
       display: flex;
       align-items: center;
@@ -45,37 +44,6 @@
       display: flex;
       align-items: center;
       gap: 22px
-    }
-
-    .menu-btn {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 14px;
-      letter-spacing: .5px
-    }
-
-    .menu-lines {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      width: 16px
-    }
-
-    .menu-lines span {
-      display: block;
-      height: 2px;
-      background: #fff;
-      border-radius: 1px
-    }
-
-    .divider {
-      width: 1px;
-      height: 22px;
-      background: rgba(255, 255, 255, .3)
     }
 
     .logo {
@@ -125,7 +93,6 @@
       background: rgba(255, 255, 255, .18)
     }
 
-    /* HERO BAND */
     .page-hero {
       background: rgba(255, 255, 255, 0.02);
       padding: 40px 40px 30px;
@@ -155,13 +122,11 @@
       line-height: 1.8
     }
 
-    /* MAIN LAYOUT */
     .map-section {
       display: flex;
       min-height: calc(100vh - 180px)
     }
 
-    /* LEFT PANEL */
     .left-panel {
       width: 340px;
       min-width: 300px;
@@ -209,7 +174,6 @@
       background: #0d0d12
     }
 
-    /* INFO CARD */
     .info-card {
       background: rgba(255, 255, 255, 0.04);
       border-radius: 10px;
@@ -372,7 +336,6 @@
       background: #2563eb
     }
 
-    /* MAP PANEL */
     .map-panel {
       flex: 1;
       display: flex;
@@ -434,7 +397,6 @@
       box-shadow: 0 4px 16px rgba(0, 0, 0, .4)
     }
 
-    /* FOOTER */
     .footer {
       padding: 24px 40px;
       background: rgba(13, 13, 18, .6);
@@ -450,7 +412,32 @@
       text-decoration: none
     }
 
-    /* Responsive */
+    #google-map {
+      height: 220px;
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(13, 13, 18, 0.5);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      transition: all 0.3s ease
+    }
+
+    #google-map.active {
+      border-color: rgba(157, 78, 221, 0.5);
+      box-shadow: 0 0 20px rgba(157, 78, 221, 0.2)
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg)
+      }
+
+      to {
+        transform: rotate(360deg)
+      }
+    }
+
     @media(max-width:900px) {
       .map-section {
         flex-direction: column
@@ -480,33 +467,6 @@
         padding: 16px
       }
     }
-
-    /* Google Maps routing container */
-    #google-map {
-      height: 220px;
-      width: 100%;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background: rgba(13, 13, 18, 0.5);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-      overflow: hidden;
-      transition: all 0.3s ease;
-    }
-
-    #google-map.active {
-      border-color: rgba(157, 78, 221, 0.5);
-      box-shadow: 0 0 20px rgba(157, 78, 221, 0.2);
-    }
-
-    @keyframes spin {
-      from {
-        transform: rotate(0deg);
-      }
-
-      to {
-        transform: rotate(360deg);
-      }
-    }
   </style>
 </head>
 
@@ -518,14 +478,14 @@
       z-index: -1;
       overflow: hidden;
       pointer-events: none;
-      background: #0d0d12;
+      background: #0d0d12
     }
 
     .ambient-orb {
       position: absolute;
       border-radius: 50%;
       filter: blur(100px);
-      mix-blend-mode: screen;
+      mix-blend-mode: screen
     }
 
     .orb-1 {
@@ -533,7 +493,7 @@
       left: -10%;
       width: 40vw;
       height: 40vw;
-      background: rgba(147, 51, 234, 0.3);
+      background: rgba(147, 51, 234, 0.3)
     }
 
     .orb-2 {
@@ -541,7 +501,7 @@
       right: -5%;
       width: 35vw;
       height: 35vw;
-      background: rgba(37, 99, 235, 0.2);
+      background: rgba(37, 99, 235, 0.2)
     }
 
     .orb-3 {
@@ -549,7 +509,7 @@
       left: 20%;
       width: 40vw;
       height: 40vw;
-      background: rgba(219, 39, 119, 0.2);
+      background: rgba(219, 39, 119, 0.2)
     }
 
     .orb-4 {
@@ -557,7 +517,7 @@
       right: 10%;
       width: 35vw;
       height: 35vw;
-      background: rgba(13, 148, 136, 0.2);
+      background: rgba(13, 148, 136, 0.2)
     }
 
     .noise-bg {
@@ -565,7 +525,7 @@
       inset: 0;
       opacity: 0.04;
       mix-blend-mode: overlay;
-      background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noise)"/%3E%3C/svg%3E');
+      background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noise)"/%3E%3C/svg%3E')
     }
   </style>
   <div class="ambient-bg" aria-hidden="true">
@@ -578,7 +538,6 @@
 
   <header class="header">
     <div class="header-left">
-      <!-- Menu button and divider deleted -->
       <a href="index.html" class="logo">
         <span class="logo-bubble">VOTE</span>READY
       </a>
@@ -592,7 +551,6 @@
   </div>
 
   <div class="map-section">
-    <!-- LEFT PANEL -->
     <aside class="left-panel">
       <div>
         <p class="panel-label">Select a State / UT</p>
@@ -610,27 +568,22 @@
       </div>
 
       <!-- Search & Routing UI -->
-      <div class="routing-section"
-        style="margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
+      <div class="routing-section" style="margin-top:20px;border-top:1px solid rgba(255,255,255,0.1);padding-top:20px;">
         <p class="panel-label">Live Navigation</p>
         <button id="routeBtn" class="ceo-link" onclick="getRouteToOffice()"
-          style="width: 100%; justify-content: center; border: none; cursor: pointer; margin-bottom: 12px;">
+          style="width:100%;justify-content:center;border:none;cursor:pointer;margin-bottom:12px;">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"
-            style="margin-right:8px;">
+            style="margin-right:8px">
             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
             <circle cx="12" cy="10" r="3" />
           </svg>
           Find Nearest CEO Office
         </button>
-        <div id="google-map"
-          style="height: 220px; width: 100%; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.2);">
-          <!-- Google Map will load here -->
-        </div>
-        <p id="geo-status" style="font-size: 11px; color: #a1a1aa; margin-top: 8px; text-align: center;"></p>
+        <div id="google-map"></div>
+        <p id="geo-status" style="font-size:11px;color:#a1a1aa;margin-top:8px;text-align:center;"></p>
       </div>
     </aside>
 
-    <!-- MAP PANEL -->
     <main class="map-panel">
       <p class="map-title">India — All States &amp; Union Territories</p>
       <svg id="india-map" viewBox="0 0 600 680"></svg>
@@ -686,7 +639,6 @@
       "Lakshadweep": { cap: "Kavaratti", ceo: "lakshadweep.gov.in", ls: 1, vs: 0, voters: "~0.06M" }
     };
 
-    // Populate dropdown
     const select = document.getElementById('stateSelect');
     Object.keys(STATES).sort().forEach(name => {
       const opt = document.createElement('option');
@@ -695,41 +647,23 @@
     });
 
     function showInfo(name) {
-      const s = STATES[name];
-      if (!s) return;
+      const s = STATES[name]; if (!s) return;
       const card = document.getElementById('infoCard');
       card.className = 'info-card';
       card.innerHTML = `
-    <div class="state-name">${name}</div>
-    <div class="state-capital">🏛 Capital: ${s.cap}</div>
-    <div class="info-grid">
-      <div class="info-box"><div class="num">${s.ls}</div><div class="lbl">Lok Sabha Seats</div></div>
-      <div class="info-box"><div class="num">${s.vs || '—'}</div><div class="lbl">Vidhan Sabha Seats</div></div>
-    </div>
-    <div class="info-voters">
-      <div>
-        <div class="num">${s.voters}</div>
-        <div class="lbl">Registered Voters (approx)</div>
-      </div>
-    </div>
-    <div class="info-helpline">
-      <div><div class="lbl">Voter Helpline</div><div class="hl">📞 1950</div></div>
-      <div style="text-align:right"><div class="lbl">National</div><div style="font-size:11px;color:#3a6080;margin-top:3px">Toll Free</div></div>
-    </div>
-    <a class="ceo-link" href="https://${s.ceo}" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
-      CEO Portal: ${s.ceo}
-    </a>
-    <a class="nvsp-link" href="https://nvsp.in" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14"><path d="M9 11l3 3 8-8"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
-      Check / Register on NVSP
-    </a>
-  `;
-      // highlight map
+        <div class="state-name">${name}</div>
+        <div class="state-capital">🏛 Capital: ${s.cap}</div>
+        <div class="info-grid">
+          <div class="info-box"><div class="num">${s.ls}</div><div class="lbl">Lok Sabha Seats</div></div>
+          <div class="info-box"><div class="num">${s.vs || '—'}</div><div class="lbl">Vidhan Sabha Seats</div></div>
+        </div>
+        <div class="info-voters"><div><div class="num">${s.voters}</div><div class="lbl">Registered Voters (approx)</div></div></div>
+        <div class="info-helpline"><div><div class="lbl">Voter Helpline</div><div class="hl">📞 1950</div></div><div style="text-align:right"><div class="lbl">National</div><div style="font-size:11px;color:#3a6080;margin-top:3px">Toll Free</div></div></div>
+        <a class="ceo-link" href="https://${s.ceo}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>CEO Portal: ${s.ceo}</a>
+        <a class="nvsp-link" href="https://nvsp.in" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14"><path d="M9 11l3 3 8-8"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>Check / Register on NVSP</a>`;
       d3.selectAll('.state-path').classed('active', false);
       d3.selectAll('.state-path').filter(d => {
         const geoName = normName(d.properties);
-        // Legacy map patch: The geojson fuses J&K and Ladakh. Highlight the fused polygon for both.
         if (name === 'Ladakh' && geoName === 'Jammu and Kashmir') return true;
         return geoName === name;
       }).classed('active', true);
@@ -737,22 +671,17 @@
 
     select.addEventListener('change', e => { if (e.target.value) showInfo(e.target.value); });
 
-    // D3 map — stable post-2019 TopoJSON (includes separate Ladakh polygon)
     const TOPO_URL = 'https://raw.githubusercontent.com/virengajera/data-covid19india/master/mapdata/india.json';
     const svg = d3.select('#india-map');
     const tooltip = document.getElementById('tooltip');
     const mapPanel = document.querySelector('.map-panel');
 
-    // GeoJSON uses old/alternate state names — map them to our canonical STATES keys
     const NAME_ALIASES = {
-      'Orissa': 'Odisha',
-      'Uttaranchal': 'Uttarakhand',
-      'Pondicherry': 'Puducherry',
+      'Orissa': 'Odisha', 'Uttaranchal': 'Uttarakhand', 'Pondicherry': 'Puducherry',
       'Daman and Diu': 'Dadra and Nagar Haveli and Daman and Diu',
       'Dadra and Nagar Haveli': 'Dadra and Nagar Haveli and Daman and Diu',
-      'Jammu & Kashmir': 'Jammu and Kashmir',
-      'Andaman & Nicobar': 'Andaman and Nicobar Islands',
-      'NCT of Delhi': 'Delhi',
+      'Jammu & Kashmir': 'Jammu and Kashmir', 'Andaman & Nicobar': 'Andaman and Nicobar Islands',
+      'NCT of Delhi': 'Delhi'
     };
 
     function normName(props) {
@@ -761,109 +690,65 @@
     }
 
     d3.json(TOPO_URL).then(topo => {
-      // Target the 'states' object inside the covid19india TopoJSON
       const geo = topojson.feature(topo, topo.objects.states);
-
       const proj = d3.geoMercator().fitSize([600, 680], geo);
       const path = d3.geoPath().projection(proj);
 
       svg.selectAll('path')
-        .data(geo.features)
-        .join('path')
-        .attr('class', 'state-path')
-        .attr('d', path)
+        .data(geo.features).join('path')
+        .attr('class', 'state-path').attr('d', path)
         .on('mousemove', function (event, d) {
           const name = normName(d.properties);
-          tooltip.textContent = name;
-          tooltip.style.opacity = '1';
+          tooltip.textContent = name; tooltip.style.opacity = '1';
           const rect = mapPanel.getBoundingClientRect();
           tooltip.style.left = (event.clientX - rect.left + 12) + 'px';
           tooltip.style.top = (event.clientY - rect.top - 36) + 'px';
         })
-        .on('mouseleave', function () {
-          tooltip.style.opacity = '0';
-        })
+        .on('mouseleave', () => { tooltip.style.opacity = '0'; })
         .on('click', function (event, d) {
-          const name = normName(d.properties);
-          if (!name) return;
-          const key = STATES[name]
-            ? name
-            : Object.keys(STATES).find(k =>
-              k.toLowerCase().includes(name.toLowerCase()) ||
-              name.toLowerCase().includes(k.toLowerCase())
-            );
-          if (key) {
-            select.value = key;
-            showInfo(key);
-          }
+          const name = normName(d.properties); if (!name) return;
+          const key = STATES[name] ? name : Object.keys(STATES).find(k =>
+            k.toLowerCase().includes(name.toLowerCase()) || name.toLowerCase().includes(k.toLowerCase()));
+          if (key) { select.value = key; showInfo(key); }
         });
-    }).catch(error => {
-      console.error('Map loading error:', error);
+    }).catch(() => {
       svg.append('text').attr('x', 300).attr('y', 340).attr('text-anchor', 'middle')
         .attr('fill', '#3a6080').attr('font-size', '15').text('Map could not be loaded. Use the dropdown above.');
     });
 
-    // Deep-link: ?state=West+Bengal
     const qp = new URLSearchParams(location.search).get('state');
     if (qp && STATES[qp]) { select.value = qp; showInfo(qp); }
 
-    // --- Google Maps: CEO Office Routing ---
+    // --- Google Maps: CEO Office Routing (key loaded from server) ---
     let gmap, directionsService, directionsRenderer, advancedMarker;
 
     async function initMap() {
-      // Load the Map and Marker libraries dynamically
       const { Map } = await google.maps.importLibrary('maps');
       const { AdvancedMarkerElement } = await google.maps.importLibrary('marker');
 
       gmap = new Map(document.getElementById('google-map'), {
-        center: { lat: 20.5937, lng: 78.9629 },
-        zoom: 4,
-        mapId: '8e5456a0a0608ba57dec44ea',
-        disableDefaultUI: true
+        center: { lat: 20.5937, lng: 78.9629 }, zoom: 4,
+        mapId: '8e5456a0a0608ba57dec44ea', disableDefaultUI: true
       });
-
       directionsService = new google.maps.DirectionsService();
       directionsRenderer = new google.maps.DirectionsRenderer({
-        map: gmap,
-        suppressMarkers: true, // Use our custom advanced marker instead
-        polylineOptions: {
-          strokeColor: '#9d4edd',
-          strokeWeight: 5,
-          strokeOpacity: 0.85
-        }
+        map: gmap, suppressMarkers: true,
+        polylineOptions: { strokeColor: '#9d4edd', strokeWeight: 5, strokeOpacity: 0.85 }
       });
     }
 
     function dropCustomMarker(position) {
-      // Remove previous marker if it exists
       if (advancedMarker) advancedMarker.map = null;
-
       const pin = document.createElement('div');
-      pin.innerHTML = `
-        <div style="background:#9d4edd;padding:6px;border-radius:50%;box-shadow:0 0 15px #9d4edd;border:2px solid white;display:flex;align-items:center;justify-content:center;">
-          <svg viewBox="0 0 24 24" fill="white" width="22" height="22"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-        </div>
-      `;
-
+      pin.innerHTML = '<div style="background:#9d4edd;padding:6px;border-radius:50%;box-shadow:0 0 15px #9d4edd;border:2px solid white;display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" fill="white" width="22" height="22"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>';
       const { AdvancedMarkerElement } = google.maps.marker;
-      advancedMarker = new AdvancedMarkerElement({
-        map: gmap,
-        position: position,
-        content: pin,
-        title: 'Chief Electoral Officer Office'
-      });
+      advancedMarker = new AdvancedMarkerElement({ map: gmap, position, content: pin, title: 'Chief Electoral Officer Office' });
     }
 
     function getRouteToOffice() {
       const selectedState = document.getElementById('stateSelect').value;
-      if (!selectedState) {
-        alert('Please select a state first.');
-        return;
-      }
-      if (!navigator.geolocation) {
-        alert('Geolocation is not supported by your browser.');
-        return;
-      }
+      if (!selectedState) { alert('Please select a state first.'); return; }
+      if (!navigator.geolocation) { alert('Geolocation is not supported by your browser.'); return; }
       const routeBtn = document.getElementById('routeBtn');
       const geoStatus = document.getElementById('geo-status');
       routeBtn.innerHTML = '<svg style="animation:spin 1s linear infinite;margin-right:8px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0"/></svg> Locating...';
@@ -871,11 +756,8 @@
       geoStatus.textContent = 'Requesting your location...';
 
       navigator.geolocation.getCurrentPosition((position) => {
-        const userPos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-        const destination = `Chief Electoral Officer Office, ${STATES[selectedState].cap}, India`;
+        const userPos = { lat: position.coords.latitude, lng: position.coords.longitude };
+        const destination = 'Chief Electoral Officer Office, ' + STATES[selectedState].cap + ', India';
         geoStatus.textContent = 'Finding route...';
         directionsService.route(
           { origin: userPos, destination: destination, travelMode: 'DRIVING' },
@@ -886,11 +768,9 @@
               directionsRenderer.setDirections(result);
               gmap.setZoom(12);
               document.getElementById('google-map').classList.add('active');
-              window.nearestOfficeData = result.routes[0].legs[0].end_address;
               const dist = result.routes[0].legs[0].distance.text;
               const dur = result.routes[0].legs[0].duration.text;
-              geoStatus.textContent = `📍 ${dist} away · ~${dur} drive`;
-              // Drop custom branded marker at the CEO office
+              geoStatus.textContent = '📍 ' + dist + ' away · ~' + dur + ' drive';
               dropCustomMarker(result.routes[0].legs[0].end_location);
               document.getElementById('google-map').scrollIntoView({ behavior: 'smooth' });
             } else {
@@ -905,12 +785,23 @@
       });
     }
 
-    // Init Google Map via callback (triggered by async Maps script below)
+    // Dynamically load Google Maps API — key from server, not hardcoded
+    (async function loadMapsApi() {
+      try {
+        const res = await fetch('/api/maps-config');
+        const { key } = await res.json();
+        if (!key) return;
+        const script = document.createElement('script');
+        script.src = 'https://maps.googleapis.com/maps/api/js?key=' + key + '&v=weekly&libraries=places,marker&callback=initMap';
+        script.async = true; script.defer = true;
+        document.head.appendChild(script);
+      } catch (e) {
+        console.warn('Maps API key not available:', e.message);
+        document.getElementById('geo-status').textContent = 'Map routing unavailable in local dev.';
+      }
+    })();
   </script>
   <script src="translate.js"></script>
-  <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcHY3rlCfYwmTOYVkOmu5VWzGX1iB4CcU&v=weekly&libraries=places,marker&callback=initMap"
-    async defer></script>
 </body>
 
 </html>

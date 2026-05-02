@@ -8,8 +8,6 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@700&display=swap"
         rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
-    <link rel="stylesheet" href="./assets/brand.css">
     <style>
         :root {
             --bg-color: transparent;
@@ -365,28 +363,22 @@
         });
 
         askBtn.addEventListener('click', async () => {
-            // 1. Grab the user's actual question
             const userQuestion = questionInput.value.trim();
             if (!userQuestion) return;
 
-            // 2. Fetch checklist progress from localStorage
-            const checklistData = localStorage.getItem('voteready_state');
-            const userContext = checklistData
-                ? `The user has completed the following checklist items: ${checklistData}. `
-                : `The user has not started or completed any checklist items yet. `;
+            // Build structured context from localStorage (server validates & formats)
+            let completedSteps = [];
+            try {
+                completedSteps = JSON.parse(localStorage.getItem('voteready_checklist_v1') || '[]');
+            } catch (_) { }
 
-            // 2b. Fetch voter EPIC data if the user verified their ID
-            const voterRaw = localStorage.getItem('voteready_voter');
-            let voterContext = '';
-            if (voterRaw) {
-                try {
-                    const v = JSON.parse(voterRaw);
-                    voterContext = `The user's verified voter record: Name: ${v.name}, EPIC: ${v.epic_no}, Status: ${v.status}, Polling Station: ${v.polling_station || 'N/A'}, Constituency: ${v.assembly_constituency || 'N/A'}${v.action_required ? ', Action Required: ' + v.action_required : ''}. `;
-                } catch (_) {}
-            }
+            let voter = null;
+            try {
+                const raw = localStorage.getItem('voteready_voter');
+                if (raw) voter = JSON.parse(raw);
+            } catch (_) { }
 
-            // 3. Build the context-aware prompt sent to Vercel
-            const dynamicPrompt = `[System Context: ${userContext}${voterContext}]\n\nUser Question: ${userQuestion}`;
+            const userContext = { completedSteps, voter };
 
             // Set loading state
             questionInput.disabled = true;
@@ -401,7 +393,7 @@
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ userQuestion: dynamicPrompt })
+                    body: JSON.stringify({ userQuestion, userContext })
                 });
 
                 if (!response.ok) {

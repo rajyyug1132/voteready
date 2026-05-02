@@ -51,6 +51,8 @@ Open [localhost:8000](http://localhost:8000). The checklist and map work without
 
 For the Q&A feature, deploy to Vercel and set the `GEMINI_API_KEY` environment variable in your Vercel project settings. The serverless proxy at `api/gemini.js` handles the API call server-side. Get a key at [aistudio.google.com/apikey](https://aistudio.google.com/apikey).
 
+For the map routing feature, also set `GOOGLE_MAPS_KEY` in Vercel environment variables. The Maps API key is loaded dynamically via `api/maps-config.js` and is never hardcoded in client-side HTML. Restrict the key to your production domain in the Google Cloud Console.
+
 ## Why this exists
 
 In India, roughly 1.8 crore citizens turn 18 every year and become eligible to vote. Many don't register, miss deadlines, or skip polling day because the process feels opaque. VoteReady reduces that friction by walking new voters through the actual steps in plain language, with links to the official ECI tools that handle each step.

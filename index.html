@@ -11,8 +11,6 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@700&display=swap"
     rel="stylesheet">
-  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
-  <link rel="stylesheet" href="./assets/brand.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -206,8 +204,9 @@
   <!-- HERO -->
   <section
     class="relative min-h-[100vh] flex flex-col items-center justify-center text-center px-5 pt-[80px] pb-[100px] overflow-hidden">
-    <!-- Spline 3D Background -->
-    <div class="absolute inset-0 z-0 pointer-events-none opacity-60">
+    <!-- Spline 3D Background (gradient fallback if CDN unavailable) -->
+    <div class="absolute inset-0 z-0 pointer-events-none opacity-60"
+      style="background: radial-gradient(ellipse at 50% 40%, rgba(124,58,237,0.25) 0%, rgba(99,102,241,0.1) 40%, transparent 70%);">
       <spline-viewer url="https://prod.spline.design/KKN7HxAEIQ35poYf/scene.splinecode"></spline-viewer>
     </div>
     <div
@@ -345,7 +344,8 @@
         <span
           class="inline-flex items-center gap-2 text-[10px] font-semibold tracking-[0.22em] uppercase text-amber-400 border border-amber-400/20 rounded-full px-3.5 py-1.5 bg-amber-500/[0.06] mb-4">Illustrative
           Timeline</span>
-        <h2 class="font-display font-bold text-[clamp(28px,4vw,44px)] tracking-[-0.03em] leading-[1.1] mb-3">Your voter journey</h2>
+        <h2 class="font-display font-bold text-[clamp(28px,4vw,44px)] tracking-[-0.03em] leading-[1.1] mb-3">Your voter
+          journey</h2>
         <p class="text-[14px] text-zinc-500 max-w-[400px] mx-auto">Dates shown are examples — actual election dates are
           announced by the Election Commission of India.</p>
       </div>
@@ -356,7 +356,8 @@
             class="absolute left-[-36px] md:left-[-40px] top-1 w-[12px] h-[12px] rounded-full border-2 border-purple-500/50 bg-background z-10">
           </div>
           <div class="text-[11px] font-mono text-zinc-500 uppercase tracking-wider mb-2">~6 months before polling</div>
-          <h3 class="font-display font-bold text-[22px] md:text-[26px] tracking-[-0.02em] text-white mb-2">Register to vote</h3>
+          <h3 class="font-display font-bold text-[22px] md:text-[26px] tracking-[-0.02em] text-white mb-2">Register to
+            vote</h3>
           <p class="text-[14px] text-zinc-400 leading-[1.7] max-w-[480px]">Submit Form 6 online at voters.eci.gov.in to
             get your name on the electoral roll. You need proof of age, address, and a passport-size photo.</p>
         </div>
@@ -365,7 +366,8 @@
             class="absolute left-[-36px] md:left-[-40px] top-1 w-[12px] h-[12px] rounded-full border-2 border-indigo-500/50 bg-background z-10">
           </div>
           <div class="text-[11px] font-mono text-zinc-500 uppercase tracking-wider mb-2">~2 weeks before polling</div>
-          <h3 class="font-display font-bold text-[22px] md:text-[26px] tracking-[-0.02em] text-white mb-2">Find your polling booth</h3>
+          <h3 class="font-display font-bold text-[22px] md:text-[26px] tracking-[-0.02em] text-white mb-2">Find your
+            polling booth</h3>
           <p class="text-[14px] text-zinc-400 leading-[1.7] max-w-[480px]">Search the electoral roll to confirm your
             name, serial number, and assigned polling station. Download your e-EPIC or carry one of the 12 accepted
             photo IDs.</p>
@@ -375,7 +377,8 @@
             class="absolute left-[-36px] md:left-[-40px] top-1 w-[12px] h-[12px] rounded-full border-2 border-teal-500/50 bg-background z-10">
           </div>
           <div class="text-[11px] font-mono text-zinc-500 uppercase tracking-wider mb-2">Polling day</div>
-          <h3 class="font-display font-bold text-[22px] md:text-[26px] tracking-[-0.02em] text-white mb-2">Cast your vote</h3>
+          <h3 class="font-display font-bold text-[22px] md:text-[26px] tracking-[-0.02em] text-white mb-2">Cast your
+            vote</h3>
           <p class="text-[14px] text-zinc-400 leading-[1.7] max-w-[480px]">Go to your assigned booth, get your identity
             verified, press the blue button on the Ballot Unit for your chosen candidate, and verify your VVPAT slip
             (visible for ~7 seconds).</p>
@@ -385,7 +388,8 @@
             class="absolute left-[-36px] md:left-[-40px] top-1 w-[12px] h-[12px] rounded-full border-2 border-pink-500/50 bg-background z-10">
           </div>
           <div class="text-[11px] font-mono text-zinc-500 uppercase tracking-wider mb-2">After polling</div>
-          <h3 class="font-display font-bold text-[22px] md:text-[26px] tracking-[-0.02em] text-white mb-2">Results day</h3>
+          <h3 class="font-display font-bold text-[22px] md:text-[26px] tracking-[-0.02em] text-white mb-2">Results day
+          </h3>
           <p class="text-[14px] text-zinc-400 leading-[1.7] max-w-[480px]">Vote counting is conducted in the presence of
             candidates and their agents. VVPAT slips of 5 randomly selected booths per constituency are cross-verified
             with the electronic count.</p>

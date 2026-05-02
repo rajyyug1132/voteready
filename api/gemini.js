@@ -16,43 +16,77 @@ If Your Name Is Missing: If your name is not on the electoral roll, you cannot v
 
 Polling Hours: Polling hours are set by the Election Commission for each election phase and may vary, but are typically from 7:00 AM to 6:00 PM. If you are already standing in the queue when polling officially closes, you will be allowed to cast your vote.`;
 
-export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method Not Allowed' });
-  }
+// Known valid checklist step IDs — reject anything not on this list
+const VALID_STEP_IDS = new Set([
+  'age_eligibility', 'epic_status_check', 'form_6_registration',
+  'polling_booth_lookup', 'documents_to_carry', 'name_not_on_list',
+  'first_time_confidence', 'polling_day_timing'
+]);
 
-  const { userQuestion } = req.body;
+function sanitize(str, maxLen) {
+  return String(str || '').replace(/[\r\n]/g, ' ').slice(0, maxLen);
+}
+
+export default async function handler(req, res) {
+  // CORS
+  res.setHeader('Access-Control-Allow-Origin', process.env.ALLOWED_ORIGIN || 'https://voteready-pi.vercel.app');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  if (req.method === 'OPTIONS') return res.status(204).end();
+  if (req.method !== 'POST') return res.status(405).json({ error: 'Method Not Allowed' });
+
+  const { userQuestion, userContext } = req.body;
 
   if (!userQuestion || typeof userQuestion !== 'string') {
     return res.status(400).json({ error: 'Missing or invalid userQuestion' });
   }
 
-  if (userQuestion.trim().length > 500) {
-    return res.status(400).json({ error: 'Question too long. Please keep it under 500 characters.' });
-  }
+  const trimmed = userQuestion.trim();
+  if (trimmed.length === 0) return res.status(400).json({ error: 'Question cannot be empty.' });
+  if (trimmed.length > 500) return res.status(400).json({ error: 'Question too long. Please keep it under 500 characters.' });
 
   const apiKey = process.env.GEMINI_API_KEY;
-  if (!apiKey) {
-    return res.status(500).json({ error: 'Server configuration error.' });
+  if (!apiKey) return res.status(500).json({ error: 'Server configuration error.' });
+
+  // --- Build context SERVER-SIDE from structured, validated data ---
+  let contextPrefix = '';
+  if (userContext && typeof userContext === 'object') {
+    const parts = [];
+
+    if (Array.isArray(userContext.completedSteps)) {
+      const safe = userContext.completedSteps.filter(id => VALID_STEP_IDS.has(id));
+      parts.push(safe.length > 0
+        ? `The user has completed these checklist steps: ${safe.join(', ')}.`
+        : 'The user has not completed any checklist steps yet.');
+    }
+
+    if (userContext.voter && typeof userContext.voter === 'object') {
+      const v = userContext.voter;
+      parts.push([
+        `Voter record:`,
+        `Name: ${sanitize(v.name, 100)}`,
+        `EPIC: ${sanitize(v.epic_no, 20)}`,
+        `Status: ${sanitize(v.status, 20)}`,
+        `Polling Station: ${sanitize(v.polling_station, 150) || 'N/A'}`,
+        `Constituency: ${sanitize(v.assembly_constituency, 100) || 'N/A'}`,
+        v.action_required ? `Action Required: ${sanitize(v.action_required, 150)}` : null,
+      ].filter(Boolean).join(', ') + '.');
+    }
+
+    if (parts.length > 0) contextPrefix = `[User Context: ${parts.join(' ')}]\n\n`;
   }
+
+  const fullPrompt = `${contextPrefix}User Question: ${trimmed}`;
 
   try {
     const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        systemInstruction: {
-          parts: [{ text: SYSTEM_PROMPT }]
-        },
-        contents: [{
-          parts: [{ text: userQuestion }]
-        }],
-        generationConfig: {
-          temperature: 0.1,
-          maxOutputTokens: 500
-        }
+        systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
+        contents: [{ parts: [{ text: fullPrompt }] }],
+        generationConfig: { temperature: 0.1, maxOutputTokens: 500 }
       })
     });
 
@@ -61,9 +95,7 @@ export default async function handler(req, res) {
       return res.status(response.status).json(errorData);
     }
 
-    const data = await response.json();
-    return res.status(200).json(data);
-
+    return res.status(200).json(await response.json());
   } catch (error) {
     console.error("Gemini API Proxy Error:", error);
     return res.status(500).json({ error: 'Failed to communicate with AI provider.' });
