@@ -1,0 +1,18 @@
+{
+  "test_voters": [
+    {
+      "epic_no": "VOTE202601",
+      "name": "Yyug Mohapatro",
+      "status": "Active",
+      "polling_station": "BMSCE Main Block, Room 101",
+      "assembly_constituency": "Basavanagudi"
+    },
+    {
+      "epic_no": "VOTE202602",
+      "name": "Bunty Kumar",
+      "status": "Inactive",
+      "reason": "De-registered due to address change",
+      "action_required": "Apply for Form 8 at Voter Portal"
+    }
+  ]
+}

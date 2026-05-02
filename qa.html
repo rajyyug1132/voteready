@@ -373,8 +373,18 @@
                 ? `The user has completed the following checklist items: ${checklistData}. `
                 : `The user has not started or completed any checklist items yet. `;
 
+            // 2b. Fetch voter EPIC data if the user verified their ID
+            const voterRaw = localStorage.getItem('voteready_voter');
+            let voterContext = '';
+            if (voterRaw) {
+                try {
+                    const v = JSON.parse(voterRaw);
+                    voterContext = `The user's verified voter record: Name: ${v.name}, EPIC: ${v.epic_no}, Status: ${v.status}, Polling Station: ${v.polling_station || 'N/A'}, Constituency: ${v.assembly_constituency || 'N/A'}${v.action_required ? ', Action Required: ' + v.action_required : ''}. `;
+                } catch (_) {}
+            }
+
             // 3. Build the context-aware prompt sent to Vercel
-            const dynamicPrompt = `[System Context: ${userContext}]\n\nUser Question: ${userQuestion}`;
+            const dynamicPrompt = `[System Context: ${userContext}${voterContext}]\n\nUser Question: ${userQuestion}`;
 
             // Set loading state
             questionInput.disabled = true;

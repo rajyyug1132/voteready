@@ -1263,30 +1263,84 @@
                 }
             }
 
-            // EPIC Checker Logic
-            const epicBtn = document.getElementById('epic-btn');
+            // EPIC Checker Logic — backed by /data/voters.json
+            const epicBtn   = document.getElementById('epic-btn');
             const epicInput = document.getElementById('epic-input');
             const epicLoading = document.getElementById('epic-loading');
-            const epicResult = document.getElementById('epic-result');
+            const epicResult  = document.getElementById('epic-result');
 
-            epicBtn.addEventListener('click', () => {
-                const val = epicInput.value.trim();
+            async function verifyEpic() {
+                const val = epicInput.value.trim().toUpperCase();
                 if (!val) return;
 
                 epicBtn.disabled = true;
                 epicResult.style.display = 'none';
                 epicLoading.style.display = 'flex';
 
-                setTimeout(() => {
+                try {
+                    const res = await fetch('./data/voters.json');
+                    const data = await res.json();
+                    const voter = data.test_voters.find(v => v.epic_no.toUpperCase() === val);
+
                     epicLoading.style.display = 'none';
-                    epicResult.style.display = 'block';
 
-                    document.getElementById('epic-serial').textContent = Math.floor(Math.random() * 800) + 100;
-                    document.getElementById('epic-part').textContent = Math.floor(Math.random() * 50) + 1;
+                    if (voter) {
+                        // Populate result card
+                        const isActive = voter.status === 'Active';
+                        const badge = epicResult.querySelector('.epic-status-badge');
+                        const icon  = epicResult.querySelector('.epic-success-icon');
 
-                    epicBtn.disabled = false;
-                }, 1800);
-            });
+                        badge.textContent = `Status: ${voter.status}`;
+                        badge.style.color = isActive ? 'var(--accent-violet)' : '#ff6b6b';
+
+                        document.getElementById('epic-name').textContent = voter.name;
+
+                        // Reuse serial/part fields for constituency / polling station
+                        const metaEl = epicResult.querySelector('.epic-meta');
+                        metaEl.innerHTML = `EPIC No: <strong>${voter.epic_no}</strong> &nbsp;|&nbsp; Constituency: <strong>${voter.assembly_constituency || 'N/A'}</strong>`;
+
+                        const stationEl = document.getElementById('epic-station');
+                        if (isActive) {
+                            stationEl.textContent = voter.polling_station;
+                        } else {
+                            stationEl.textContent = `${voter.reason || 'Inactive'} — ${voter.action_required || ''}`;
+                            icon.style.color = '#ff6b6b';
+                        }
+
+                        epicResult.style.display = 'block';
+
+                        // === AI Context Injection ===
+                        // Store voter data so qa.html can pick it up as hidden context
+                        localStorage.setItem('voteready_voter', JSON.stringify({
+                            epic_no: voter.epic_no,
+                            name: voter.name,
+                            status: voter.status,
+                            polling_station: voter.polling_station || null,
+                            assembly_constituency: voter.assembly_constituency || null,
+                            action_required: voter.action_required || null
+                        }));
+
+                    } else {
+                        // Not found in demo database
+                        epicResult.style.display = 'block';
+                        const badge = epicResult.querySelector('.epic-status-badge');
+                        badge.textContent = 'Not Found in Demo DB';
+                        badge.style.color = '#a1a1aa';
+                        document.getElementById('epic-name').textContent = 'EPIC number not recognised';
+                        epicResult.querySelector('.epic-meta').innerHTML =
+                            'Try <strong>VOTE202601</strong> or <strong>VOTE202602</strong> to test the demo.';
+                        document.getElementById('epic-station').textContent = 'No record found.';
+                        localStorage.removeItem('voteready_voter');
+                    }
+                } catch (err) {
+                    epicLoading.style.display = 'none';
+                    console.error('EPIC lookup error:', err);
+                }
+
+                epicBtn.disabled = false;
+            }
+
+            epicBtn.addEventListener('click', verifyEpic);
 
             // Trigger on Enter
             epicInput.addEventListener('keypress', (e) => {
