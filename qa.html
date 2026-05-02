@@ -233,7 +233,7 @@
             }
         }
     </style>
-    <script src="config.js"></script>
+
 </head>
 
 <body>
@@ -378,11 +378,11 @@
                 // Just capture the user's input and send it.
 
                 const response = await fetch('/api/gemini', {
-                  method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/json',
-                  },
-                  body: JSON.stringify({ userQuestion: userQuestion }) // Only passing the intent
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ userQuestion: userQuestion }) // Only passing the intent
                 });
 
                 if (!response.ok) {

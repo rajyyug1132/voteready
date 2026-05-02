@@ -1,39 +1,41 @@
+const SYSTEM_PROMPT = `You are a helpful assistant for first-time Indian voters (ages 18-22) preparing to vote in Indian general elections. Use the reference information below as your factual source, but NEVER mention section numbers, 'the reference', 'the document', or where the information came from. Speak in plain, conversational language as if explaining to an 18-year-old friend voting for the first time. Keep answers to 3-5 sentences. If you are not certain about something, say so rather than guessing. If the question is not covered by the reference information below, reply exactly with: 'I don't have specific information on that. Please visit voters.eci.gov.in for official guidance.' Do not append any extra disclaimer to in-scope answers — keep them clean.
+
+[Verified ECI Reference Information]
+
+Eligibility: Every Indian citizen aged 18 or older on the qualifying date (January 1, April 1, July 1, or October 1) is eligible to register as a voter.
+
+Registration: Use Form 6 to register as a new voter. You can submit it online at voters.eci.gov.in or through the Voter Helpline App. You will typically need proof of age, proof of address, and a passport-size photograph.
+
+Polling Day Documents: Carry your EPIC (Voter ID card) to the polling station. If you do not have your EPIC, you can present one of 12 specific alternative photo IDs approved by the Election Commission. These include Aadhaar card, PAN card, Indian Passport, Driving Licence, and MNREGA Job Card, among others. The accepted IDs are a specific notified list — not any government-issued photo ID. For the complete list, visit voters.eci.gov.in.
+
+At the Polling Station: Polling officers will verify your identity, apply indelible ink to your finger, and direct you to the voting compartment where the EVM (Electronic Voting Machine) and VVPAT (Voter Verifiable Paper Audit Trail) are set up.
+
+Voting Process: Inside the voting compartment, press the blue button on the Ballot Unit next to the name and symbol of the candidate you want to vote for. You can also press the NOTA (None of the Above) button if you do not wish to vote for any candidate. After pressing the button, a printed paper slip showing the serial number, name, and symbol of your chosen candidate will appear behind a transparent window for about 7 seconds, allowing you to verify your vote. The slip then automatically drops into a sealed box. The machine will confirm that your vote has been recorded.
+
+If Your Name Is Missing: If your name is not on the electoral roll, you cannot vote in that election. To get your name added, submit Form 6 for inclusion. You can check whether your name is on the voter list at electoralsearch.eci.gov.in or by calling the ECI toll-free helpline at 1950.
+
+Polling Hours: Polling hours are set by the Election Commission for each election phase and may vary, but are typically from 7:00 AM to 6:00 PM. If you are already standing in the queue when polling officially closes, you will be allowed to cast your vote.`;
+
 export default async function handler(req, res) {
-  // 1. Method Guard - Reject anything that isn't POST
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
-  // 2. Input Destructuring & Validation (Client only sends userQuestion now)
   const { userQuestion } = req.body;
 
   if (!userQuestion || typeof userQuestion !== 'string') {
     return res.status(400).json({ error: 'Missing or invalid userQuestion' });
   }
 
-  // FIX B: Input Length Validation (Prevents payload stuffing/abuse)
   if (userQuestion.trim().length > 500) {
     return res.status(400).json({ error: 'Question too long. Please keep it under 500 characters.' });
   }
 
-  // 3. Environment Variable Check
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
     return res.status(500).json({ error: 'Server configuration error.' });
   }
 
-  // FIX A: Server-Side System Prompt Enforcement
-  // Paste your full ~1,700 character handbook_context here. 
-  // The client can NO LONGER dictate these rules.
-  const SYSTEM_PROMPT = `[Verified ECI Reference Information]
-Eligibility: You must be an Indian citizen, 18 years or older on the qualifying date.
-Registration: Register using Form 6 on voters.eci.gov.in.
-Polling Day Documents: Carry your EPIC (Voter ID) or one of the 12 accepted alternative photo IDs.
-... [PASTE THE REST OF YOUR JSON DATA HERE] ...
-
-INSTRUCTIONS: You are a helpful assistant for first-time Indian voters. Base your answers ONLY on the provided ECI reference information. If you do not know the answer based on this context, say "I can only assist with ECI voting procedures based on verified documents." Do not fabricate answers.`;
-
-  // 4. API Call to Gemini
   try {
     const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
       method: 'POST',
@@ -41,15 +43,15 @@ INSTRUCTIONS: You are a helpful assistant for first-time Indian voters. Base you
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        system_instruction: {
+        systemInstruction: {
           parts: [{ text: SYSTEM_PROMPT }]
         },
         contents: [{
           parts: [{ text: userQuestion }]
         }],
         generationConfig: {
-          temperature: 0.1, // Forces highly factual, deterministic outputs
-          maxOutputTokens: 500 // Prevents the AI from rambling and wasting quota
+          temperature: 0.1,
+          maxOutputTokens: 500
         }
       })
     });
