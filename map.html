@@ -664,7 +664,6 @@
       d3.selectAll('.state-path').classed('active', false);
       d3.selectAll('.state-path').filter(d => {
         const geoName = normName(d.properties);
-        if (name === 'Ladakh' && geoName === 'Jammu and Kashmir') return true;
         return geoName === name;
       }).classed('active', true);
     }
