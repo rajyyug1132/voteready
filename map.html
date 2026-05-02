@@ -492,13 +492,20 @@
       overflow: hidden;
       transition: all 0.3s ease;
     }
+
     #google-map.active {
       border-color: rgba(157, 78, 221, 0.5);
       box-shadow: 0 0 20px rgba(157, 78, 221, 0.2);
     }
+
     @keyframes spin {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
     }
   </style>
 </head>
@@ -603,13 +610,20 @@
       </div>
 
       <!-- Search & Routing UI -->
-      <div class="routing-section" style="margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
+      <div class="routing-section"
+        style="margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
         <p class="panel-label">Live Navigation</p>
-        <button id="routeBtn" class="ceo-link" onclick="getRouteToOffice()" style="width: 100%; justify-content: center; border: none; cursor: pointer; margin-bottom: 12px;">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" style="margin-right:8px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <button id="routeBtn" class="ceo-link" onclick="getRouteToOffice()"
+          style="width: 100%; justify-content: center; border: none; cursor: pointer; margin-bottom: 12px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"
+            style="margin-right:8px;">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
           Find Nearest CEO Office
         </button>
-        <div id="google-map" style="height: 220px; width: 100%; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.2);">
+        <div id="google-map"
+          style="height: 220px; width: 100%; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.2);">
           <!-- Google Map will load here -->
         </div>
         <p id="geo-status" style="font-size: 11px; color: #a1a1aa; margin-top: 8px; text-align: center;"></p>
@@ -758,26 +772,26 @@
         .join('path')
         .attr('class', 'state-path')
         .attr('d', path)
-        .on('mousemove', function(event, d) {
+        .on('mousemove', function (event, d) {
           const name = normName(d.properties);
           tooltip.textContent = name;
           tooltip.style.opacity = '1';
           const rect = mapPanel.getBoundingClientRect();
           tooltip.style.left = (event.clientX - rect.left + 12) + 'px';
-          tooltip.style.top  = (event.clientY - rect.top - 36) + 'px';
+          tooltip.style.top = (event.clientY - rect.top - 36) + 'px';
         })
-        .on('mouseleave', function() {
+        .on('mouseleave', function () {
           tooltip.style.opacity = '0';
         })
-        .on('click', function(event, d) {
+        .on('click', function (event, d) {
           const name = normName(d.properties);
           if (!name) return;
           const key = STATES[name]
             ? name
             : Object.keys(STATES).find(k =>
-                k.toLowerCase().includes(name.toLowerCase()) ||
-                name.toLowerCase().includes(k.toLowerCase())
-              );
+              k.toLowerCase().includes(name.toLowerCase()) ||
+              name.toLowerCase().includes(k.toLowerCase())
+            );
           if (key) {
             select.value = key;
             showInfo(key);
@@ -785,8 +799,8 @@
         });
     }).catch(error => {
       console.error('Map loading error:', error);
-      svg.append('text').attr('x',300).attr('y',340).attr('text-anchor','middle')
-        .attr('fill','#3a6080').attr('font-size','15').text('Map could not be loaded. Use the dropdown above.');
+      svg.append('text').attr('x', 300).attr('y', 340).attr('text-anchor', 'middle')
+        .attr('fill', '#3a6080').attr('font-size', '15').text('Map could not be loaded. Use the dropdown above.');
     });
 
     // Deep-link: ?state=West+Bengal
@@ -874,7 +888,7 @@
               document.getElementById('google-map').classList.add('active');
               window.nearestOfficeData = result.routes[0].legs[0].end_address;
               const dist = result.routes[0].legs[0].distance.text;
-              const dur  = result.routes[0].legs[0].duration.text;
+              const dur = result.routes[0].legs[0].duration.text;
               geoStatus.textContent = `📍 ${dist} away · ~${dur} drive`;
               // Drop custom branded marker at the CEO office
               dropCustomMarker(result.routes[0].legs[0].end_location);
@@ -894,7 +908,9 @@
     // Init Google Map via callback (triggered by async Maps script below)
   </script>
   <script src="translate.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcHY3rlCfYwmTOYVkOmu5VWzGX1iB4CcU&v=weekly&libraries=places,marker&callback=initMap" async defer></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcHY3rlCfYwmTOYVkOmu5VWzGX1iB4CcU&v=weekly&libraries=places,marker&callback=initMap"
+    async defer></script>
 </body>
 
 </html>

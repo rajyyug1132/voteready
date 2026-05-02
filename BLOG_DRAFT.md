@@ -10,7 +10,7 @@
 
 I turned 18 last year. I'm eligible to vote in the next general election. And until I started building VoteReady, I didn't actually know the steps involved.
 
-Not in a vague way — in a specific, embarrassing way. I didn't know that you need to submit Form 6 to register. I didn't know there are exactly 12 accepted photo IDs at the polling booth, not "any government ID." I didn't know the VVPAT slip is visible for about 7 seconds before it drops into the sealed box.
+Not in a vague way in a specific, embarrassing way. I didn't know that you need to submit Form 6 to register. I didn't know there are exactly 12 accepted photo IDs at the polling booth, not "any government ID." I didn't know the VVPAT slip is visible for about 7 seconds before it drops into the sealed box.
 
 I only found all of this out because I tried to explain it to someone else through an app, and the app kept getting it wrong.
 
