@@ -654,13 +654,13 @@
         <div class="state-name">${name}</div>
         <div class="state-capital">🏛 Capital: ${s.cap}</div>
         <div class="info-grid">
-          <div class="info-box"><div class="num">${s.ls}</div><div class="lbl">Lok Sabha Seats</div></div>
-          <div class="info-box"><div class="num">${s.vs || '—'}</div><div class="lbl">Vidhan Sabha Seats</div></div>
+          <div class="info-box"><div class="num">${s.ls}</div><div class="lbl" data-key="Lok Sabha Seats">Lok Sabha Seats</div></div>
+          <div class="info-box"><div class="num">${s.vs || '—'}</div><div class="lbl" data-key="Vidhan Sabha Seats">Vidhan Sabha Seats</div></div>
         </div>
-        <div class="info-voters"><div><div class="num">${s.voters}</div><div class="lbl">Registered Voters (approx)</div></div></div>
-        <div class="info-helpline"><div><div class="lbl">Voter Helpline</div><div class="hl">📞 1950</div></div><div style="text-align:right"><div class="lbl">National</div><div style="font-size:11px;color:#3a6080;margin-top:3px">Toll Free</div></div></div>
-        <a class="ceo-link" href="https://${s.ceo}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>CEO Portal: ${s.ceo}</a>
-        <a class="nvsp-link" href="https://nvsp.in" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14"><path d="M9 11l3 3 8-8"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>Check / Register on NVSP</a>`;
+        <div class="info-voters"><div><div class="num">${s.voters}</div><div class="lbl" data-key="Registered Voters (approx)">Registered Voters (approx)</div></div></div>
+        <div class="info-helpline"><div><div class="lbl" data-key="Voter Helpline">Voter Helpline</div><div class="hl">📞 1950</div></div><div style="text-align:right"><div class="lbl" data-key="National">National</div><div style="font-size:11px;color:#3a6080;margin-top:3px" data-key="Toll Free">Toll Free</div></div></div>
+        <a class="ceo-link" href="https://${s.ceo}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg><span data-key="CEO Portal:">CEO Portal:</span> ${s.ceo}</a>
+        <a class="nvsp-link" href="https://nvsp.in" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14"><path d="M9 11l3 3 8-8"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg><span data-key="Check / Register on NVSP">Check / Register on NVSP</span></a>`;
       d3.selectAll('.state-path').classed('active', false);
       d3.selectAll('.state-path').filter(d => {
         const geoName = normName(d.properties);

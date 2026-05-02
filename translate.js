@@ -104,7 +104,35 @@ const dictionary = {
     "Total Voters": "कुल मतदाता",
     "Helpline": "हेल्पलाइन",
     "State CEO Website": "राज्य सीईओ वेबसाइट",
-    "National Voter Portal": "राष्ट्रीय मतदाता पोर्टल"
+    "National Voter Portal": "राष्ट्रीय मतदाता पोर्टल",
+
+    // MAP PAGE STRINGS
+    "Explore Voting Info": "राज्यवार मतदान जानकारी",
+    "By State": "राज्य के अनुसार",
+    "Click any state on the map or use the dropdown to find official voter resources, seat counts, and helplines.": "आधिकारिक मतदाता संसाधन, सीट संख्या और हेल्पलाइन खोजने के लिए मानचित्र पर कोई राज्य क्लिक करें।",
+    "Select a State / UT": "राज्य / केंद्र शासित प्रदेश चुनें",
+    "— Choose a State —": "— एक राज्य चुनें —",
+    "Click a state on the map or use the dropdown above": "मानचित्र पर राज्य क्लिक करें या ऊपर ड्रॉपडाउन उपयोग करें",
+    "Live Navigation": "लाइव नेविगेशन",
+    "Find Nearest CEO Office": "निकटतम CEO कार्यालय खोजें",
+    "India — All States & Union Territories": "भारत — सभी राज्य और केंद्र शासित प्रदेश",
+    "← Back to Home": "← होम पर वापस",
+    "Lok Sabha Seats": "लोक सभा सीटें",
+    "Vidhan Sabha Seats": "विधान सभा सीटें",
+    "Registered Voters (approx)": "पंजीकृत मतदाता (लगभग)",
+    "Voter Helpline": "मतदाता हेल्पलाइन",
+    "National": "राष्ट्रीय",
+    "Toll Free": "टोल फ्री",
+    "Check / Register on NVSP": "NVSP पर जांचें / पंजीकरण करें",
+    "Data sourced from ECI & CEO portals": "ECI और CEO पोर्टल से डेटा",
+    "Locating...": "स्थान खोज रहे हैं...",
+    "Requesting your location...": "आपका स्थान मांगा जा रहा है...",
+    "Finding route...": "मार्ग खोज रहे हैं...",
+    "Could not find a route. Try a different state.": "मार्ग नहीं मिला। दूसरा राज्य आज़माएं।",
+    "Location access denied.": "स्थान अनुमति अस्वीकृत।",
+    "Map routing unavailable in local dev.": "स्थानीय डेव में मैप रूटिंग उपलब्ध नहीं।",
+    "Please select a state first.": "पहले एक राज्य चुनें।",
+    "CEO Portal:": "CEO पोर्टल:"
 };
 
 let currentLang = localStorage.getItem('voteready_lang') || 'en';
@@ -161,10 +189,20 @@ function translateElement(el) {
 
 function applyTranslation() {
     translateElement(document.body);
+    translateDataKeys();
     const toggleBtn = document.getElementById('lang-toggle');
     if (toggleBtn) {
         toggleBtn.textContent = currentLang === 'en' ? 'अ/A' : 'A/अ';
     }
+}
+
+// Translates elements that carry a data-key attribute (used in dynamically injected HTML)
+function translateDataKeys(root) {
+    (root || document).querySelectorAll('[data-key]').forEach(el => {
+        el.textContent = (currentLang === 'hi' && dictionary[el.dataset.key])
+            ? dictionary[el.dataset.key]
+            : el.dataset.key;
+    });
 }
 
 function toggleLanguage() {
@@ -180,6 +218,7 @@ const observer = new MutationObserver((mutations) => {
             mutation.addedNodes.forEach(node => {
                 if (node.nodeType === Node.ELEMENT_NODE) {
                     translateElement(node);
+                    translateDataKeys(node);
                 } else if (node.nodeType === Node.TEXT_NODE) {
                     translateTextNode(node);
                 }
