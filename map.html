@@ -792,37 +792,49 @@
     if (qp && STATES[qp]) { select.value = qp; showInfo(qp); }
 
     // --- Google Maps: CEO Office Routing ---
-    let gmap, directionsService, directionsRenderer;
+    let gmap, directionsService, directionsRenderer, advancedMarker;
 
-    function initMap() {
-      const center = { lat: 20.5937, lng: 78.9629 };
-      gmap = new google.maps.Map(document.getElementById('google-map'), {
+    async function initMap() {
+      // Load the Map and Marker libraries dynamically
+      const { Map } = await google.maps.importLibrary('maps');
+      const { AdvancedMarkerElement } = await google.maps.importLibrary('marker');
+
+      gmap = new Map(document.getElementById('google-map'), {
+        center: { lat: 20.5937, lng: 78.9629 },
         zoom: 4,
-        center: center,
-        disableDefaultUI: true,
-        zoomControl: false,
-        mapTypeControl: false,
-        streetViewControl: false,
-        fullscreenControl: false,
-        styles: [
-          { elementType: 'geometry', stylers: [{ color: '#1d1d2b' }] },
-          { elementType: 'labels.text.fill', stylers: [{ color: '#8ec3b9' }] },
-          { elementType: 'labels.text.stroke', stylers: [{ color: '#1a3646' }] },
-          { featureType: 'administrative.country', elementType: 'geometry.stroke', stylers: [{ color: '#4b4b6b' }] },
-          { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#0e0e1a' }] },
-          { featureType: 'road', elementType: 'geometry', stylers: [{ color: '#2c2c3d' }] },
-          { featureType: 'road', elementType: 'labels.text.fill', stylers: [{ color: '#9ca5b3' }] }
-        ]
+        mapId: '8e5456a0a0608ba57dec44ea',
+        disableDefaultUI: true
       });
+
       directionsService = new google.maps.DirectionsService();
       directionsRenderer = new google.maps.DirectionsRenderer({
         map: gmap,
+        suppressMarkers: true, // Use our custom advanced marker instead
         polylineOptions: {
           strokeColor: '#9d4edd',
-          strokeWeight: 4,
-          strokeOpacity: 0.8
-        },
-        suppressMarkers: false
+          strokeWeight: 5,
+          strokeOpacity: 0.85
+        }
+      });
+    }
+
+    function dropCustomMarker(position) {
+      // Remove previous marker if it exists
+      if (advancedMarker) advancedMarker.map = null;
+
+      const pin = document.createElement('div');
+      pin.innerHTML = `
+        <div style="background:#9d4edd;padding:6px;border-radius:50%;box-shadow:0 0 15px #9d4edd;border:2px solid white;display:flex;align-items:center;justify-content:center;">
+          <svg viewBox="0 0 24 24" fill="white" width="22" height="22"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        </div>
+      `;
+
+      const { AdvancedMarkerElement } = google.maps.marker;
+      advancedMarker = new AdvancedMarkerElement({
+        map: gmap,
+        position: position,
+        content: pin,
+        title: 'Chief Electoral Officer Office'
       });
     }
 
@@ -862,6 +874,8 @@
               const dist = result.routes[0].legs[0].distance.text;
               const dur  = result.routes[0].legs[0].duration.text;
               geoStatus.textContent = `📍 ${dist} away · ~${dur} drive`;
+              // Drop custom branded marker at the CEO office
+              dropCustomMarker(result.routes[0].legs[0].end_location);
               document.getElementById('google-map').scrollIntoView({ behavior: 'smooth' });
             } else {
               geoStatus.textContent = 'Could not find a route. Try a different state.';
@@ -878,7 +892,7 @@
     // Init Google Map via callback (triggered by async Maps script below)
   </script>
   <script src="translate.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcHY3rlCfYwmTOYVkOmu5VWzGX1iB4CcU&libraries=places&callback=initMap" async defer></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcHY3rlCfYwmTOYVkOmu5VWzGX1iB4CcU&v=weekly&libraries=places,marker&callback=initMap" async defer></script>
 </body>
 
 </html>
