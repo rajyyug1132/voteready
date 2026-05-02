@@ -1,0 +1,36 @@
+/* ============================================
+   VoteReady — Shared Brand Tokens
+   Import this in every page's <head>
+   ============================================ */
+
+:root {
+  /* Brand Colors */
+  --vr-purple: #9d4edd;
+  --vr-indigo: #4f46e5;
+  --vr-bg-dark: #0d0d12;
+
+  /* Gradients */
+  --vr-gradient: linear-gradient(135deg, var(--vr-purple) 0%, var(--vr-indigo) 100%);
+
+  /* Semantic Colors */
+  --vr-status-active: #4ade80;
+  --vr-status-inactive: #ef4444;
+}
+
+/* Primary brand button — apply to main CTAs */
+.btn-primary-brand {
+  background: var(--vr-gradient);
+  color: white;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(157, 78, 221, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-primary-brand:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(157, 78, 221, 0.5);
+}
