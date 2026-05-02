@@ -157,6 +157,7 @@ body{font-family:'Inter',sans-serif;background:transparent;color:#fff;min-height
 </footer>
 
 <script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://d3js.org/topojson.v3.min.js"></script>
 <script>
 const STATES = {
   "Andhra Pradesh":    {cap:"Amaravati",      ceo:"ceoandhra.nic.in",               ls:25,vs:175,voters:"~42M"},
@@ -248,8 +249,8 @@ function showInfo(name) {
 
 select.addEventListener('change', e => { if(e.target.value) showInfo(e.target.value); });
 
-// D3 map
-const GEO_URL = 'https://raw.githubusercontent.com/geohacker/india/master/state/india_telengana.geojson';
+// Using a reliable TopoJSON source for post-2019 boundaries
+const TOPO_URL = 'https://raw.githubusercontent.com/HindustanTimesLabs/shapefiles/master/india/state_ut/india_state_ut.topojson';
 const svg = d3.select('#india-map');
 const tooltip = document.getElementById('tooltip');
 const mapPanel = document.querySelector('.map-panel');
@@ -267,11 +268,15 @@ const NAME_ALIASES = {
 };
 
 function normName(props) {
-  const raw = props.ST_NM || props.NAME_1 || props.name || props.State || '';
+  // Add common keys found in modern shapefiles
+  const raw = props.state_name || props.ST_NM || props.NAME_1 || props.name || props.State || '';
   return NAME_ALIASES[raw] || raw;
 }
 
-d3.json(GEO_URL).then(geo => {
+d3.json(TOPO_URL).then(topo => {
+  // Extract the GeoJSON features from the TopoJSON
+  const geo = topojson.feature(topo, topo.objects.india_state_ut);
+  
   const proj = d3.geoMercator().fitSize([600, 680], geo);
   const path = d3.geoPath().projection(proj);
 
@@ -281,7 +286,8 @@ d3.json(GEO_URL).then(geo => {
     .attr('class', 'state-path')
     .attr('d', path)
     .on('mousemove', function(event, d) {
-      const name = normName(d.properties);
+      // The property name might differ in the new file (e.g., d.properties.state_name)
+      const name = normName(d.properties); 
       tooltip.textContent = name;
       tooltip.style.opacity = '1';
       const rect = mapPanel.getBoundingClientRect();
@@ -294,7 +300,6 @@ d3.json(GEO_URL).then(geo => {
     .on('click', function(event, d) {
       const name = normName(d.properties);
       if (!name) return;
-      // Exact match first, then partial
       const key = STATES[name]
         ? name
         : Object.keys(STATES).find(k =>
@@ -306,7 +311,8 @@ d3.json(GEO_URL).then(geo => {
         showInfo(key);
       }
     });
-}).catch(() => {
+}).catch(error => {
+  console.error("Map loading error:", error);
   svg.append('text').attr('x',300).attr('y',340).attr('text-anchor','middle')
     .attr('fill','#3a6080').attr('font-size','15').text('Map could not be loaded. Use the dropdown above.');
 });
