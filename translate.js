@@ -112,7 +112,23 @@ const dictionary = {
     "Ask a Question →": "प्रश्न पूछें →",
     "Go →": "जाएं →",
     "Start Your Checklist →": "चेकलिस्ट शुरू करें →",
-    "Ask AI →": "AI से पूछें →"
+    "Ask AI →": "AI से पूछें →",
+    "Checklist": "चेकलिस्ट",
+    "Explore Map": "मानचित्र देखें",
+    "Dates shown are examples — actual election dates are announced by the Election Commission of India.": "दिखाई गई तिथियां उदाहरण हैं — वास्तविक चुनाव तिथियों की घोषणा भारत निर्वाचन आयोग द्वारा की जाती है।",
+    "Submit Form 6 online at voters.eci.gov.in to get your name on the electoral roll. You need proof of age, address, and a passport-size photo.": "मतदाता सूची में अपना नाम दर्ज कराने के लिए voters.eci.gov.in पर ऑनलाइन फॉर्म 6 जमा करें। आपको आयु, पते के प्रमाण और एक पासपोर्ट आकार की तस्वीर की आवश्यकता होगी।",
+    "Search the electoral roll to confirm your name, serial number, and assigned polling station. Download your e-EPIC or carry one of the 12 accepted photo IDs.": "अपना नाम, क्रम संख्या और निर्दिष्ट मतदान केंद्र की पुष्टि करने के लिए मतदाता सूची खोजें। अपना ई-ईपीआईसी (e-EPIC) डाउनलोड करें या 12 स्वीकृत फोटो आईडी में से कोई एक ले जाएं।",
+    "Go to your assigned booth, get your identity verified, press the blue button on the Ballot Unit for your chosen candidate, and verify your VVPAT slip (visible for ~7 seconds).": "अपने निर्दिष्ट बूथ पर जाएं, अपनी पहचान सत्यापित करवाएं, अपने चुने हुए उम्मीदवार के लिए बैलेट यूनिट पर नीला बटन दबाएं, और अपनी वीवीपैट (VVPAT) पर्ची सत्यापित करें (~7 सेकंड के लिए दिखाई देती है)।",
+    "Vote counting is conducted in the presence of candidates and their agents. VVPAT slips of 5 randomly selected booths per constituency are cross-verified with the electronic count.": "वोटों की गिनती उम्मीदवारों और उनके एजेंटों की उपस्थिति में की जाती है। प्रति निर्वाचन क्षेत्र 5 यादृच्छिक रूप से चयनित बूथों की वीवीपैट (VVPAT) पर्चियों का इलेक्ट्रॉनिक गिनती के साथ क्रॉस-सत्यापन किया जाता है।",
+    "MENU": "मेनू",
+    "← Back to Home": "← होम पर वापस जाएँ",
+    "EXPLORE VOTING INFO": "वोटिंग जानकारी देखें",
+    "BY STATE": "राज्य के अनुसार",
+    "Click any state on the map or use the dropdown to find official voter resources, seat counts, and helplines.": "आधिकारिक मतदाता संसाधन, सीटों की संख्या और हेल्पलाइन खोजने के लिए मानचित्र पर किसी भी राज्य पर क्लिक करें या ड्रॉपडाउन का उपयोग करें।",
+    "SELECT A STATE / UT": "राज्य / केंद्र शासित प्रदेश चुनें",
+    "— Choose a State —": "— एक राज्य चुनें —",
+    "Click a state on the map or use the dropdown above": "मानचित्र पर एक राज्य पर क्लिक करें या ऊपर दिए गए ड्रॉपडाउन का उपयोग करें",
+    "INDIA — ALL STATES & UNION TERRITORIES": "भारत — सभी राज्य और केंद्र शासित प्रदेश"
 };
 
 let currentLang = localStorage.getItem('voteready_lang') || 'en';
