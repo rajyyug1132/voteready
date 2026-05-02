@@ -374,33 +374,15 @@
             responseContainer.classList.remove('visible');
 
             try {
-                const handbook_context = `[Verified ECI Reference Information]
- 
-Eligibility: Every Indian citizen aged 18 or older on the qualifying date (January 1, April 1, July 1, or October 1) is eligible to register as a voter.
- 
-Registration: Use Form 6 to register as a new voter. You can submit it online at voters.eci.gov.in or through the Voter Helpline App. You will typically need proof of age, proof of address, and a passport-size photograph.
- 
-Polling Day Documents: Carry your EPIC (Voter ID card) to the polling station. If you do not have your EPIC, you can present one of 12 specific alternative photo IDs approved by the Election Commission. These include Aadhaar card, PAN card, Indian Passport, Driving Licence, and MNREGA Job Card, among others. The accepted IDs are a specific notified list — not any government-issued photo ID. For the complete list, visit voters.eci.gov.in.
- 
-At the Polling Station: Polling officers will verify your identity, apply indelible ink to your finger, and direct you to the voting compartment where the EVM (Electronic Voting Machine) and VVPAT (Voter Verifiable Paper Audit Trail) are set up.
- 
-Voting Process: Inside the voting compartment, press the blue button on the Ballot Unit next to the name and symbol of the candidate you want to vote for. You can also press the NOTA (None of the Above) button if you do not wish to vote for any candidate. After pressing the button, a printed paper slip showing the serial number, name, and symbol of your chosen candidate will appear behind a transparent window for about 7 seconds, allowing you to verify your vote. The slip then automatically drops into a sealed box. The machine will confirm that your vote has been recorded.
- 
-If Your Name Is Missing: If your name is not on the electoral roll, you cannot vote in that election. To get your name added, submit Form 6 for inclusion. You can check whether your name is on the voter list at electoralsearch.eci.gov.in or by calling the ECI toll-free helpline at 1950.
- 
-Polling Hours: Polling hours are set by the Election Commission for each election phase and may vary, but are typically from 7:00 AM to 6:00 PM. If you are already standing in the queue when polling officially closes, you will be allowed to cast your vote.`;
-
-                const systemPrompt = "You are a helpful assistant for first-time Indian voters (ages 18-22) preparing to vote in Indian general elections. Use the reference information below as your factual source, but NEVER mention section numbers, 'the reference', 'the document', or where the information came from. Speak in plain, conversational language as if explaining to an 18-year-old friend voting for the first time. Keep answers to 3-5 sentences. If you are not certain about something, say so rather than guessing. If the question is not covered by the reference information below, reply exactly with: 'I don't have specific information on that. Please visit voters.eci.gov.in for official guidance.' Do not append any extra disclaimer to in-scope answers — keep them clean.\n\n" + handbook_context;
+                // Remove all systemPrompt references. 
+                // Just capture the user's input and send it.
 
                 const response = await fetch('/api/gemini', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        systemPrompt: systemPrompt,
-                        userQuestion: userQuestion
-                    })
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({ userQuestion: userQuestion }) // Only passing the intent
                 });
 
                 if (!response.ok) {

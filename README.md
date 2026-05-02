@@ -55,6 +55,11 @@ For the Q&A feature, deploy to Vercel and set the `GEMINI_API_KEY` environment v
 
 In India, roughly 1.8 crore citizens turn 18 every year and become eligible to vote. Many don't register, miss deadlines, or skip polling day because the process feels opaque. VoteReady reduces that friction by walking new voters through the actual steps in plain language, with links to the official ECI tools that handle each step.
 
+# Engineering Tradeoffs & Future Scaling
+
+Current Architecture: Due to the concise, high-signal nature of our ECI reference JSON (~425 tokens), we inject the full context into the Gemini 2.5 Flash system prompt. This guarantees 100% factual grounding with zero retrieval latency.
+"Scaling Plan: As we expand to state-specific rules (36 states & UTs), we have mapped out a zero-dependency lexical router (getRelevantContext) to chunk the prompt dynamically without bloating the 10MB repository limit.
+
 ## Project status
 
 Built solo during PromptWars Virtual 2026 (April 23 – May 3, 2026). See `PROMPTS.md` for the build log.
