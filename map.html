@@ -600,6 +600,7 @@
   </footer>
 
   <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://d3js.org/topojson.v3.min.js"></script>
   <script>
     const STATES = {
       "Andhra Pradesh": { cap: "Amaravati", ceo: "ceoandhra.nic.in", ls: 25, vs: 175, voters: "~42M" },
@@ -691,8 +692,8 @@
 
     select.addEventListener('change', e => { if (e.target.value) showInfo(e.target.value); });
 
-    // D3 map
-    const GEO_URL = 'https://raw.githubusercontent.com/geohacker/india/master/state/india_telengana.geojson';
+    // D3 map — stable post-2019 TopoJSON (includes separate Ladakh polygon)
+    const TOPO_URL = 'https://raw.githubusercontent.com/virengajera/data-covid19india/master/mapdata/india.json';
     const svg = d3.select('#india-map');
     const tooltip = document.getElementById('tooltip');
     const mapPanel = document.querySelector('.map-panel');
@@ -710,12 +711,14 @@
     };
 
     function normName(props) {
-      // Add common keys found in modern shapefiles
-      const raw = props.state_name || props.ST_NM || props.NAME_1 || props.name || props.State || '';
+      const raw = props.st_nm || props.state_name || props.ST_NM || props.NAME_1 || props.name || props.State || '';
       return NAME_ALIASES[raw] || raw;
     }
 
-    d3.json(GEO_URL).then(geo => {
+    d3.json(TOPO_URL).then(topo => {
+      // Target the 'states' object inside the covid19india TopoJSON
+      const geo = topojson.feature(topo, topo.objects.states);
+
       const proj = d3.geoMercator().fitSize([600, 680], geo);
       const path = d3.geoPath().projection(proj);
 
@@ -738,7 +741,6 @@
         .on('click', function(event, d) {
           const name = normName(d.properties);
           if (!name) return;
-          // Exact match first, then partial
           const key = STATES[name]
             ? name
             : Object.keys(STATES).find(k =>
@@ -750,7 +752,8 @@
             showInfo(key);
           }
         });
-    }).catch(() => {
+    }).catch(error => {
+      console.error('Map loading error:', error);
       svg.append('text').attr('x',300).attr('y',340).attr('text-anchor','middle')
         .attr('fill','#3a6080').attr('font-size','15').text('Map could not be loaded. Use the dropdown above.');
     });
