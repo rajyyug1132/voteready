@@ -2,6 +2,38 @@ const dictionary = {
     "Election Information": "चुनाव की जानकारी",
     "You Need": "जो आपको चाहिए",
     "Get personalized, state-specific voter information instantly.": "तुरंत व्यक्तिगत, राज्य-विशिष्ट मतदाता जानकारी प्राप्त करें।",
+    "Your first vote,": "आपका पहला वोट,",
+    "fully prepared.": "पूरी तैयारी के साथ।",
+    "A step-by-step walkthrough for first-time Indian voters — ECI-verified checklist, AI-powered Q&A, and state-wise resources.": "पहली बार के भारतीय मतदाताओं के लिए चरण-दर-चरण मार्गदर्शिका — ECI-सत्यापित चेकलिस्ट, AI-संचालित प्रश्नोत्तर, और राज्य-वार संसाधन।",
+    "Start Your Checklist": "चेकलिस्ट शुरू करें",
+    "ECI-Verified · Built for PromptWars 2026": "ECI-सत्यापित · PromptWars 2026 के लिए निर्मित",
+    "Feature 01": "सुविधा 01",
+    "Feature 02": "सुविधा 02",
+    "Feature 03": "सुविधा 03",
+    "8-step verified checklist": "8-चरण सत्यापित चेकलिस्ट",
+    "Every step from eligibility to polling day, verified against ECI source documents. Check items off as you go — your progress saves automatically.": "पात्रता से मतदान दिवस तक हर कदम, ECI स्रोत दस्तावेज़ों से सत्यापित। आगे बढ़ते हुए आइटम चेक करें — आपकी प्रगति स्वचालित रूप से सहेजी जाती है।",
+    "Open Checklist →": "चेकलिस्ट खोलें →",
+    "AI-powered Q&A": "AI-संचालित प्रश्नोत्तर",
+    "Ask anything about voting in India. Powered by Gemini, grounded in verified ECI reference data. The API key never touches your browser — all calls go through a serverless proxy.": "भारत में मतदान के बारे में कुछ भी पूछें। Gemini द्वारा संचालित, सत्यापित ECI संदर्भ डेटा पर आधारित। API कुंजी कभी भी आपके ब्राउज़र तक नहीं पहुँचती।",
+    "Ask a Question →": "प्रश्न पूछें →",
+    "State-by-state explorer": "राज्य-वार एक्सप्लोरर",
+    "Interactive India map with Lok Sabha seats, Vidhan Sabha seats, registered voters, CEO portal links, and voter helpline numbers for all 36 states and union territories.": "सभी 36 राज्यों और केंद्र शासित प्रदेशों के लिए लोक सभा सीटें, विधान सभा सीटें, पंजीकृत मतदाता, CEO पोर्टल लिंक और मतदाता हेल्पलाइन नंबरों के साथ इंटरैक्टिव भारत मानचित्र।",
+    "Your voter journey": "आपकी मतदाता यात्रा",
+    "Illustrative Timeline": "उदाहरणात्मक समयरेखा",
+    "Ready to cast": "क्या आप अपना",
+    "your first vote?": "पहला वोट डालने के लिए तैयार हैं?",
+    "Every fact in VoteReady is verified against official ECI sources. No guesses, no hallucinations — just what you need to know.": "VoteReady में हर तथ्य आधिकारिक ECI स्रोतों से सत्यापित है। कोई अनुमान नहीं — बस वही जो आपको जानना चाहिए।",
+    "Start Your Checklist →": "चेकलिस्ट शुरू करें →",
+    "Register on voters.eci.gov.in ↗": "voters.eci.gov.in पर पंजीकरण करें ↗",
+    "Register to Vote": "मतदान के लिए पंजीकरण करें",
+    "Go →": "जाएं →",
+    "~6 months before polling": "~मतदान से 6 महीने पहले",
+    "Register to vote": "मतदान के लिए पंजीकरण करें",
+    "~2 weeks before polling": "~मतदान से 2 सप्ताह पहले",
+    "Polling day": "मतदान का दिन",
+    "Cast your vote": "अपना वोट डालें",
+    "After polling": "मतदान के बाद",
+    "Results day": "परिणाम का दिन",
     "Am I Ready?": "क्या मैं तैयार हूँ?",
     "Step-by-step voter checklist": "चरण-दर-चरण मतदाता चेकलिस्ट",
     "Ask AI": "AI से पूछें",
@@ -84,7 +116,7 @@ function translateTextNode(node) {
         if (!node.originalText) {
             node.originalText = node.nodeValue;
         }
-        
+
         let textToMatch = node.originalText.trim();
         if (dictionary[textToMatch]) {
             node.nodeValue = node.nodeValue.replace(textToMatch, dictionary[textToMatch]);
@@ -97,7 +129,7 @@ function translateElement(el) {
         // Restore
         const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null, false);
         let node;
-        while(node = walker.nextNode()) {
+        while (node = walker.nextNode()) {
             if (node.originalText) {
                 node.nodeValue = node.originalText;
             }
@@ -108,7 +140,7 @@ function translateElement(el) {
     } else {
         const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null, false);
         let node;
-        while(node = walker.nextNode()) {
+        while (node = walker.nextNode()) {
             // skip script and style tags
             if (node.parentElement && (node.parentElement.tagName === 'SCRIPT' || node.parentElement.tagName === 'STYLE')) continue;
             translateTextNode(node);
@@ -158,7 +190,7 @@ const observer = new MutationObserver((mutations) => {
 
 document.addEventListener('DOMContentLoaded', () => {
     observer.observe(document.body, { childList: true, subtree: true });
-    
+
     // Create the toggle button
     const toggleBtn = document.createElement('button');
     toggleBtn.id = 'lang-toggle';
@@ -183,6 +215,6 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleBtn.onmouseover = () => toggleBtn.style.background = 'rgba(168, 85, 247, 0.4)';
     toggleBtn.onmouseout = () => toggleBtn.style.background = 'rgba(168, 85, 247, 0.2)';
     document.body.appendChild(toggleBtn);
-    
+
     applyTranslation();
 });
