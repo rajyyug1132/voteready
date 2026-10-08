@@ -1,0 +1,215 @@
+{
+  "base_url": "https://voteready-pi.vercel.app",
+  "captured_at": "2026-10-08T09:01:51+0530",
+  "shots": [
+    {
+      "file": "home-390-en.jpg",
+      "url": "https://voteready-pi.vercel.app/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "lang": "en",
+      "page_errors": [],
+      "http_errors": [
+        "404 https://voteready-pi.vercel.app/assets/screenshots/checklist.png",
+        "404 https://voteready-pi.vercel.app/assets/screenshots/qa.png",
+        "404 https://voteready-pi.vercel.app/assets/screenshots/map.png"
+      ]
+    },
+    {
+      "file": "checklist-390-en.jpg",
+      "url": "https://voteready-pi.vercel.app/checklist.html",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "lang": "en",
+      "page_errors": [],
+      "http_errors": []
+    },
+    {
+      "file": "qa-390-en.jpg",
+      "url": "https://voteready-pi.vercel.app/qa.html",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "lang": "en",
+      "page_errors": [],
+      "http_errors": []
+    },
+    {
+      "file": "map-390-en.jpg",
+      "url": "https://voteready-pi.vercel.app/map.html",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "lang": "en",
+      "page_errors": [
+        "Could not find a 3d context, error: 10",
+        "Could not find a 3d context, error: 10",
+        "Could not find a 3d context, error: 10"
+      ],
+      "http_errors": []
+    },
+    {
+      "file": "home-1440-en.jpg",
+      "url": "https://voteready-pi.vercel.app/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "lang": "en",
+      "page_errors": [],
+      "http_errors": [
+        "404 https://voteready-pi.vercel.app/assets/screenshots/checklist.png",
+        "404 https://voteready-pi.vercel.app/assets/screenshots/map.png",
+        "404 https://voteready-pi.vercel.app/assets/screenshots/qa.png"
+      ]
+    },
+    {
+      "file": "checklist-1440-en.jpg",
+      "url": "https://voteready-pi.vercel.app/checklist.html",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "lang": "en",
+      "page_errors": [],
+      "http_errors": []
+    },
+    {
+      "file": "qa-1440-en.jpg",
+      "url": "https://voteready-pi.vercel.app/qa.html",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "lang": "en",
+      "page_errors": [],
+      "http_errors": []
+    },
+    {
+      "file": "map-1440-en.jpg",
+      "url": "https://voteready-pi.vercel.app/map.html",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "lang": "en",
+      "page_errors": [
+        "Could not find a 3d context, error: 10",
+        "Could not find a 3d context, error: 10",
+        "Could not find a 3d context, error: 10"
+      ],
+      "http_errors": []
+    },
+    {
+      "file": "home-390-hi.jpg",
+      "url": "https://voteready-pi.vercel.app/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "lang": "hi",
+      "page_errors": [],
+      "http_errors": [
+        "404 https://voteready-pi.vercel.app/assets/screenshots/checklist.png",
+        "404 https://voteready-pi.vercel.app/assets/screenshots/qa.png",
+        "404 https://voteready-pi.vercel.app/assets/screenshots/map.png"
+      ]
+    },
+    {
+      "file": "checklist-390-hi.jpg",
+      "url": "https://voteready-pi.vercel.app/checklist.html",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "lang": "hi",
+      "page_errors": [],
+      "http_errors": []
+    },
+    {
+      "file": "qa-390-hi.jpg",
+      "url": "https://voteready-pi.vercel.app/qa.html",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "lang": "hi",
+      "page_errors": [],
+      "http_errors": []
+    },
+    {
+      "file": "map-390-hi.jpg",
+      "url": "https://voteready-pi.vercel.app/map.html",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "lang": "hi",
+      "page_errors": [
+        "Could not find a 3d context, error: 10",
+        "Could not find a 3d context, error: 10",
+        "Could not find a 3d context, error: 10"
+      ],
+      "http_errors": []
+    },
+    {
+      "file": "home-1440-hi.jpg",
+      "url": "https://voteready-pi.vercel.app/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "lang": "hi",
+      "page_errors": [],
+      "http_errors": [
+        "404 https://voteready-pi.vercel.app/assets/screenshots/checklist.png",
+        "404 https://voteready-pi.vercel.app/assets/screenshots/qa.png",
+        "404 https://voteready-pi.vercel.app/assets/screenshots/map.png"
+      ]
+    },
+    {
+      "file": "checklist-1440-hi.jpg",
+      "url": "https://voteready-pi.vercel.app/checklist.html",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "lang": "hi",
+      "page_errors": [],
+      "http_errors": []
+    },
+    {
+      "file": "qa-1440-hi.jpg",
+      "url": "https://voteready-pi.vercel.app/qa.html",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "lang": "hi",
+      "page_errors": [],
+      "http_errors": []
+    },
+    {
+      "file": "map-1440-hi.jpg",
+      "url": "https://voteready-pi.vercel.app/map.html",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "lang": "hi",
+      "page_errors": [
+        "Could not find a 3d context, error: 10",
+        "Could not find a 3d context, error: 10",
+        "Could not find a 3d context, error: 10",
+        "Could not find a 3d context, error: 10"
+      ],
+      "http_errors": []
+    }
+  ]
+}
