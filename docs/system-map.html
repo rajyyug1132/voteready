@@ -1,0 +1,642 @@
+<title>VoteReady System Map</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one long engineering sheet — sticky section index, each section = claim + full-width diagram + caption. Civic paper/ink with indelible-ink violet. */
+:root {
+  --bg: #f6f5f8;
+  --fg: #1d1a24;
+  --muted: #5d5868;
+  --line: #d9d5e1;
+  --line-strong: #a9a2b6;
+  --group: #efedf3;
+  --card: #ffffff;
+  --accent: #5b2a86;
+  --accent-bg: #f1eaf8;
+  --ok: #2c7a4b;
+  --ok-bg: #e8f4ec;
+  --bad: #b23c17;
+  --bad-bg: #fbece6;
+  --edge: #4a4556;
+  --font-body: "Public Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141219; --fg: #ece9f2; --muted: #a59fb2; --line: #2d2937; --line-strong: #4d4659;
+    --group: #1b1822; --card: #211d29; --accent: #c39bf0; --accent-bg: #2a2036;
+    --ok: #6fcf97; --ok-bg: #18291f; --bad: #f08a63; --bad-bg: #33201a; --edge: #b9b3c6;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #141219; --fg: #ece9f2; --muted: #a59fb2; --line: #2d2937; --line-strong: #4d4659;
+  --group: #1b1822; --card: #211d29; --accent: #c39bf0; --accent-bg: #2a2036;
+  --ok: #6fcf97; --ok-bg: #18291f; --bad: #f08a63; --bad-bg: #33201a; --edge: #b9b3c6;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.55; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-inline: 20px; padding-block: 28px 64px; display: grid; gap: 44px; }
+header.top { display: grid; gap: 10px; }
+.eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+h1 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; letter-spacing: -.02em; line-height: 1.1; margin: 0; text-wrap: balance; }
+h2 { font-size: 22px; font-weight: 700; letter-spacing: -.01em; margin: 0; text-wrap: balance; }
+p { margin: 0; max-width: 70ch; }
+.lede { color: var(--muted); font-size: 16px; }
+nav.idx { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); margin-inline: -20px; padding: 10px 20px; display: flex; gap: 6px; flex-wrap: wrap; }
+nav.idx a { font-size: 13px; font-weight: 600; color: var(--fg); text-decoration: none; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); }
+nav.idx a:hover { border-color: var(--accent); color: var(--accent); }
+nav.idx a:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+section { display: grid; gap: 14px; scroll-margin-top: 64px; }
+.meta { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.chip { font-family: var(--font-mono); font-size: 11.5px; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); background: var(--card); }
+.chip.ok { color: var(--ok); border-color: var(--ok); background: var(--ok-bg); }
+.chip.bad { color: var(--bad); border-color: var(--bad); background: var(--bad-bg); }
+.chip.acc { color: var(--accent); border-color: var(--accent); background: var(--accent-bg); }
+figure { margin: 0; display: grid; gap: 10px; }
+.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--card); }
+.scroll svg { display: block; width: 100%; min-width: 960px; height: auto; }
+figcaption { color: var(--muted); font-size: 14px; max-width: 80ch; }
+.notes { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.note { border-top: 2px solid var(--line-strong); padding-top: 10px; display: grid; gap: 4px; min-width: 0; }
+.note b { font-size: 14px; }
+.note span { font-size: 14px; color: var(--muted); }
+.note.bad { border-top-color: var(--bad); }
+.note.acc { border-top-color: var(--accent); }
+code { font-family: var(--font-mono); font-size: .88em; background: var(--group); padding: 1px 5px; border-radius: 4px; overflow-wrap: anywhere; }
+footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 14px; }
+
+/* SVG vocabulary */
+.g { fill: var(--group); stroke: var(--line); }
+.gt { fill: var(--muted); font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+.n { fill: var(--card); stroke: var(--line-strong); }
+.n.ours { stroke: var(--accent); }
+.n.ok { stroke: var(--ok); fill: var(--ok-bg); }
+.n.bad { stroke: var(--bad); fill: var(--bad-bg); }
+.n.acc { fill: var(--accent-bg); stroke: var(--accent); }
+.t { fill: var(--fg); font-family: var(--font-body); font-size: 13px; font-weight: 600; }
+.s { fill: var(--muted); font-family: var(--font-body); font-size: 11.5px; }
+.m { fill: var(--fg); font-family: var(--font-mono); font-size: 11px; }
+.mb { fill: var(--bad); font-family: var(--font-mono); font-size: 11px; }
+.sb { fill: var(--bad); font-family: var(--font-body); font-size: 11.5px; font-weight: 600; }
+.sa { fill: var(--accent); font-family: var(--font-body); font-size: 11.5px; font-weight: 600; }
+.e { stroke: var(--edge); stroke-width: 1.4; fill: none; }
+.e.bad { stroke: var(--bad); stroke-dasharray: 5 4; }
+.e.acc { stroke: var(--accent); stroke-width: 1.6; }
+.el { fill: var(--muted); font-family: var(--font-body); font-size: 11px; }
+.elb { fill: var(--bad); font-family: var(--font-body); font-size: 11px; font-weight: 600; }
+.ah { fill: var(--edge); }
+.ahb { fill: var(--bad); }
+.aha { fill: var(--accent); }
+.life { stroke: var(--line-strong); stroke-dasharray: 3 4; }
+.act { fill: var(--accent-bg); stroke: var(--accent); }
+.num { fill: var(--accent); font-family: var(--font-mono); font-size: 10.5px; font-weight: 500; }
+.alt { fill: none; stroke: var(--bad); stroke-dasharray: 4 3; }
+@media (prefers-reduced-motion: no-preference) { nav.idx a { transition: border-color .15s, color .15s; } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="eyebrow">VoteReady · FSD lab · BMSCE</div>
+    <h1>How VoteReady works, today and after the MERN rebuild</h1>
+    <p class="lede">Four views of one project: what a first-time voter does, how the live site moves data today, how the MERN version will move it, and how a fact gets from an ECI document into the app. Red marks what is broken or untrue on the live site as of 8 Oct 2026.</p>
+  </header>
+
+  <nav class="idx" aria-label="Sections">
+    <a href="#journey">1 · Voter journey</a>
+    <a href="#today">2 · Live site today</a>
+    <a href="#mern">3 · MERN target</a>
+    <a href="#flows">4 · Request flows</a>
+    <a href="#truth">5 · Fact pipeline</a>
+    <a href="#phases">6 · Build phases</a>
+  </nav>
+
+  <!-- 1 JOURNEY -->
+  <section id="journey">
+    <h2>1 · What a first-time voter does</h2>
+    <p>Every screen exists to move someone from “I just turned 18” to “I know where to go and what to carry.” Progress is saved on the visitor's device and feeds the AI answers.</p>
+    <figure>
+      <div class="scroll">
+        <svg viewBox="0 0 1120 300" role="img" aria-label="Voter journey: home, checklist with EPIC demo lookup, ask AI using checklist progress, explore state map, and in the MERN version save a voting plan.">
+          <defs>
+            <marker id="j-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker>
+            <marker id="j-aa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="aha" d="M0,0 L10,5 L0,10 z"/></marker>
+          </defs>
+          <!-- steps -->
+          <rect class="n" x="20" y="60" width="170" height="96" rx="10"/>
+          <text class="m" x="36" y="84">/</text>
+          <text class="t" x="36" y="106">Home</text>
+          <text class="s" x="36" y="126">Picks a path: checklist,</text>
+          <text class="s" x="36" y="142">ask, or state map</text>
+
+          <rect class="n ours" x="230" y="60" width="200" height="96" rx="10"/>
+          <text class="m" x="246" y="84">/checklist</text>
+          <text class="t" x="246" y="106">Ticks 8 ECI steps</text>
+          <text class="s" x="246" y="126">Eligibility → Form 6 → booth</text>
+          <text class="s" x="246" y="142">→ ID documents → polling day</text>
+
+          <rect class="n" x="470" y="60" width="190" height="96" rx="10"/>
+          <text class="m" x="486" y="84">/checklist (demo)</text>
+          <text class="t" x="486" y="106">EPIC lookup</text>
+          <text class="s" x="486" y="126">Demo records only, labelled</text>
+          <text class="s" x="486" y="142">demo; match saved locally</text>
+
+          <rect class="n ours" x="700" y="60" width="190" height="96" rx="10"/>
+          <text class="m" x="716" y="84">/ask</text>
+          <text class="t" x="716" y="106">Asks the AI</text>
+          <text class="s" x="716" y="126">Answer knows which steps</text>
+          <text class="s" x="716" y="142">are done; refuses off-topic</text>
+
+          <rect class="n" x="930" y="60" width="170" height="96" rx="10"/>
+          <text class="m" x="946" y="84">/map</text>
+          <text class="t" x="946" y="106">Checks their state</text>
+          <text class="s" x="946" y="126">Seats, CEO portal,</text>
+          <text class="s" x="946" y="142">helpline 1950</text>
+
+          <path class="e" d="M190,108 H226" marker-end="url(#j-a)"/>
+          <path class="e" d="M430,108 H466" marker-end="url(#j-a)"/>
+          <path class="e" d="M660,108 H696" marker-end="url(#j-a)"/>
+          <path class="e" d="M890,108 H926" marker-end="url(#j-a)"/>
+
+          <!-- device storage -->
+          <rect class="n acc" x="230" y="210" width="430" height="58" rx="10"/>
+          <text class="t" x="246" y="234">Saved on this device</text>
+          <text class="m" x="246" y="254">ticked step ids · language · demo voter match</text>
+          <path class="e acc" d="M330,156 V206" marker-end="url(#j-aa)"/>
+          <text class="el" x="338" y="186">writes</text>
+          <path class="e acc" d="M565,156 V206" marker-end="url(#j-aa)"/>
+          <text class="el" x="573" y="186">writes</text>
+          <path class="e acc" d="M660,239 H795 V160" marker-end="url(#j-aa)"/>
+          <text class="el" x="672" y="232">sent as context with each question</text>
+
+          <!-- MERN addition -->
+          <rect class="n ok" x="930" y="210" width="170" height="58" rx="10"/>
+          <text class="m" x="946" y="232">/plans (MERN)</text>
+          <text class="t" x="946" y="254">Saves a voting plan</text>
+          <path class="e" d="M1015,156 V206" marker-end="url(#j-a)"/>
+          <text class="el" x="1023" y="186">new</text>
+
+          <text class="gt" x="20" y="36">Visitor's path through the app</text>
+        </svg>
+      </div>
+      <figcaption>The plan page is the one new screen in the MERN version: name, state, constituency (from the Kaggle data), polling station, date and the ID document the voter will carry, stored in MongoDB and editable.</figcaption>
+    </figure>
+  </section>
+
+  <!-- 2 TODAY -->
+  <section id="today">
+    <h2>2 · The live site today (v1, tag <code>v1-promptwars</code>)</h2>
+    <div class="meta"><span class="chip">static HTML + vanilla JS</span><span class="chip">Vercel</span><span class="chip">2 serverless functions</span><span class="chip bad">3 things broken live</span></div>
+    <p>Four static pages run in the browser. The only server code is two Vercel functions: one keeps the Gemini key off the client and builds the AI prompt; one hands the browser a Maps key.</p>
+    <figure>
+      <div class="scroll">
+        <svg viewBox="0 0 1120 560" role="img" aria-label="Live site data flow: browser pages read static JSON and localStorage, the Q and A page posts to a Vercel function that calls Gemini, and the map page fetches a Maps key whose embed fails because billing is off.">
+          <defs>
+            <marker id="t-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker>
+            <marker id="t-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ahb" d="M0,0 L10,5 L0,10 z"/></marker>
+            <marker id="t-c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="aha" d="M0,0 L10,5 L0,10 z"/></marker>
+          </defs>
+          <!-- groups -->
+          <rect class="g" x="20" y="40" width="510" height="500" rx="14"/>
+          <text class="gt" x="36" y="62">In the visitor's browser</text>
+          <rect class="g" x="550" y="40" width="260" height="500" rx="14"/>
+          <text class="gt" x="566" y="62">Vercel · voteready-pi</text>
+          <rect class="g" x="830" y="40" width="270" height="500" rx="14"/>
+          <text class="gt" x="846" y="62">Third-party services</text>
+
+          <!-- pages -->
+          <rect class="n" x="40" y="80" width="210" height="50" rx="8"/>
+          <text class="t" x="54" y="102">index.html</text>
+          <text class="sb" x="54" y="120">feature images 404 · journey tags fixed</text>
+
+          <rect class="n" x="40" y="150" width="210" height="50" rx="8"/>
+          <text class="t" x="54" y="172">map.html</text>
+          <text class="s" x="54" y="190">36 states, seats hardcoded in page</text>
+
+          <rect class="n" x="40" y="250" width="210" height="64" rx="8"/>
+          <text class="t" x="54" y="272">checklist.html</text>
+          <text class="s" x="54" y="290">8 cards, progress bar</text>
+          <text class="sb" x="54" y="306">EPIC check: random numbers</text>
+
+          <rect class="n" x="40" y="340" width="210" height="50" rx="8"/>
+          <text class="t" x="54" y="362">qa.html</text>
+          <text class="s" x="54" y="380">question box + 4 sample chips</text>
+
+          <rect class="n" x="40" y="440" width="210" height="64" rx="8"/>
+          <text class="t" x="54" y="462">translate.js</text>
+          <text class="s" x="54" y="480">en→hi by exact text match</text>
+          <text class="sb" x="54" y="496">misses multi-line text</text>
+
+          <!-- localStorage -->
+          <rect class="n acc" x="290" y="275" width="220" height="110" rx="8"/>
+          <text class="t" x="304" y="297">localStorage</text>
+          <text class="m" x="304" y="318">voteready_checklist_v1</text>
+          <text class="m" x="304" y="336">voteready_lang</text>
+          <text class="mb" x="304" y="354">voteready_voter</text>
+          <text class="sb" x="304" y="372">read by qa, never written</text>
+
+          <!-- vercel -->
+          <rect class="n" x="570" y="147" width="220" height="50" rx="8"/>
+          <text class="t" x="584" y="169">api/maps-config.js</text>
+          <text class="s" x="584" y="187">returns GOOGLE_MAPS_KEY</text>
+
+          <rect class="n" x="570" y="215" width="220" height="96" rx="8"/>
+          <text class="t" x="584" y="237">static data/</text>
+          <text class="m" x="584" y="257">checklist.json</text>
+          <text class="m" x="584" y="275">checklist_hi.json</text>
+          <text class="mb" x="584" y="293">voters.json · never read</text>
+
+          <rect class="n ours" x="570" y="372" width="220" height="104" rx="8"/>
+          <text class="t" x="584" y="394">api/gemini.js</text>
+          <text class="s" x="584" y="413">builds prompt on the server</text>
+          <text class="s" x="584" y="430">step-id allowlist · 500-char cap</text>
+          <text class="s" x="584" y="447">temperature 0.1 · 500 tokens</text>
+          <text class="sb" x="584" y="465">returns raw Gemini errors</text>
+
+          <!-- third parties -->
+          <rect class="n" x="850" y="80" width="230" height="50" rx="8"/>
+          <text class="t" x="864" y="102">Script CDNs</text>
+          <text class="s" x="864" y="120">Tailwind, GSAP, Spline, D3</text>
+
+          <rect class="n bad" x="850" y="147" width="230" height="50" rx="8"/>
+          <text class="t" x="864" y="169">Google Maps JS</text>
+          <text class="sb" x="864" y="187">BillingNotEnabledMapError</text>
+
+          <rect class="n" x="850" y="215" width="230" height="50" rx="8"/>
+          <text class="t" x="864" y="237">GitHub raw</text>
+          <text class="s" x="864" y="255">India topojson for the map</text>
+
+          <rect class="n" x="850" y="398" width="230" height="50" rx="8"/>
+          <text class="t" x="864" y="420">Gemini 2.5 Flash</text>
+          <text class="s" x="864" y="438">generateContent</text>
+
+          <!-- edges -->
+          <path class="e" d="M250,98 H846" marker-end="url(#t-a)"/>
+          <text class="el" x="560" y="92">every page loads scripts</text>
+
+          <path class="e" d="M250,166 H566" marker-end="url(#t-a)"/>
+          <text class="el" x="266" y="160">GET /api/maps-config</text>
+          <path class="e bad" d="M790,172 H846" marker-end="url(#t-b)"/>
+          <path class="e" d="M250,186 H540 V240 H846" marker-end="url(#t-a)"/>
+          <text class="el" x="266" y="210">loads state shapes</text>
+
+          <path class="e" d="M250,262 H566" marker-end="url(#t-a)"/>
+          <text class="el" x="266" y="256">fetch by language</text>
+
+          <path class="e acc" d="M250,300 H286" marker-end="url(#t-c)"/>
+          <text class="el" x="255" y="294">ticks</text>
+          <path class="e acc" d="M290,365 H254" marker-end="url(#t-c)"/>
+          <text class="el" x="256" y="358">reads</text>
+
+          <path class="e" d="M250,382 H270 V425 H566" marker-end="url(#t-a)"/>
+          <text class="el" x="290" y="418">POST /api/gemini · question + progress</text>
+          <path class="e" d="M790,423 H846" marker-end="url(#t-a)"/>
+
+          <path class="e" d="M145,440 V394" marker-end="url(#t-a)"/>
+          <text class="el" x="153" y="424">rewrites page text</text>
+        </svg>
+      </div>
+      <figcaption>The AI answer is grounded only in a fixed reference block inside <code>api/gemini.js</code>; the browser sends the question plus ticked step ids, and the server builds the prompt. Map seat counts live inside <code>map.html</code>, not in a data file.</figcaption>
+    </figure>
+    <div class="notes">
+      <div class="note bad"><b>Home images</b><span>The three feature screenshots were never committed; README's four were deleted in <code>f025b73</code>.</span></div>
+      <div class="note bad"><b>EPIC checker</b><span>Shows “Rahul Sharma” with random serial and part numbers after a fake 1.8 s wait.</span></div>
+      <div class="note bad"><b>CEO office routing</b><span>Google refuses the map (billing off), and it routes to the state capital, not the nearest office.</span></div>
+    </div>
+  </section>
+
+  <!-- 3 MERN -->
+  <section id="mern">
+    <h2>3 · After the MERN rebuild (branch <code>fsd-mern</code>)</h2>
+    <div class="meta"><span class="chip acc">React + Vite on Vercel</span><span class="chip acc">Express on Render</span><span class="chip acc">MongoDB Atlas</span><span class="chip">Postman-tested</span></div>
+    <p>The browser stops reading JSON files and calling Gemini through a one-off function. Everything goes through one Express API backed by five Mongoose models; the lab's CRUD requirement is the Voting Plan.</p>
+    <figure>
+      <div class="scroll">
+        <svg viewBox="0 0 1120 700" role="img" aria-label="MERN target: React client calls an Express API with axios; Express uses Mongoose models in MongoDB Atlas, calls Gemini for answers, and is seeded from a cleaned Kaggle dataset and verified ECI facts.">
+          <defs>
+            <marker id="m-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker>
+            <marker id="m-c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="aha" d="M0,0 L10,5 L0,10 z"/></marker>
+          </defs>
+          <!-- groups -->
+          <rect class="g" x="20" y="40" width="300" height="470" rx="14"/>
+          <text class="gt" x="36" y="62">client/ · React (Vite) · Vercel</text>
+          <rect class="g" x="370" y="40" width="390" height="470" rx="14"/>
+          <text class="gt" x="386" y="62">server/ · Express · Render</text>
+          <rect class="g" x="810" y="40" width="290" height="470" rx="14"/>
+          <text class="gt" x="826" y="62">Data and services</text>
+
+          <!-- client -->
+          <rect class="n" x="40" y="80" width="260" height="168" rx="8"/>
+          <text class="t" x="54" y="102">Routes (react-router-dom)</text>
+          <text class="m" x="54" y="124">/            home</text>
+          <text class="m" x="54" y="142">/checklist   8 steps, en/hi</text>
+          <text class="m" x="54" y="160">/ask         AI + sources line</text>
+          <text class="m" x="54" y="178">/map         seats + turnout</text>
+          <text class="m" x="54" y="200">/plans              list</text>
+          <text class="m" x="54" y="218">/plans/create       form</text>
+          <text class="m" x="54" y="236">/plans/update/:id   form</text>
+
+          <rect class="n" x="40" y="266" width="260" height="70" rx="8"/>
+          <text class="t" x="54" y="288">Bootstrap UI, themed</text>
+          <text class="s" x="54" y="306">controlled forms, await then navigate</text>
+          <text class="s" x="54" y="323">key={_id} on every list</text>
+
+          <rect class="n" x="40" y="354" width="260" height="56" rx="8"/>
+          <text class="t" x="54" y="376">i18n: en.json · hi.json</text>
+          <text class="s" x="54" y="394">replaces translate.js</text>
+
+          <rect class="n ours" x="40" y="428" width="260" height="62" rx="8"/>
+          <text class="t" x="54" y="450">axios instance</text>
+          <text class="m" x="54" y="470">baseURL = VITE_API_URL</text>
+
+          <!-- server -->
+          <rect class="n" x="390" y="80" width="350" height="50" rx="8"/>
+          <text class="t" x="404" y="101">index.js middleware</text>
+          <text class="m" x="404" y="120">cors(ALLOWED_ORIGIN) · json · helmet · rate-limit</text>
+
+          <rect class="n ours" x="390" y="146" width="168" height="132" rx="8"/>
+          <text class="t" x="404" y="168">Plan CRUD</text>
+          <text class="m" x="404" y="188">GET  /plans</text>
+          <text class="m" x="404" y="206">GET  /getplan/:id</text>
+          <text class="m" x="404" y="224">POST /createplan</text>
+          <text class="m" x="404" y="242">PUT  /updateplan/:id</text>
+          <text class="m" x="404" y="260">DEL  /deleteplan/:id</text>
+
+          <rect class="n" x="572" y="146" width="168" height="132" rx="8"/>
+          <text class="t" x="586" y="168">Reference</text>
+          <text class="m" x="586" y="188">GET /checklist?lang</text>
+          <text class="m" x="586" y="206">GET /states</text>
+          <text class="m" x="586" y="224">GET /states/:name/</text>
+          <text class="m" x="586" y="242">    constituencies</text>
+          <text class="m" x="586" y="260">GET /health</text>
+
+          <rect class="n ours" x="390" y="294" width="168" height="78" rx="8"/>
+          <text class="t" x="404" y="316">POST /ask</text>
+          <text class="s" x="404" y="335">500-char cap, step-id</text>
+          <text class="s" x="404" y="351">allowlist, temp 0.1,</text>
+          <text class="s" x="404" y="367">refusal line</text>
+
+          <rect class="n" x="572" y="294" width="168" height="78" rx="8"/>
+          <text class="t" x="586" y="316">POST /epic/lookup</text>
+          <text class="s" x="586" y="335">DemoVoter only,</text>
+          <text class="s" x="586" y="351">always returns demo:true</text>
+
+          <rect class="n" x="390" y="388" width="350" height="50" rx="8"/>
+          <text class="t" x="404" y="409">Validation + central error handler</text>
+          <text class="s" x="404" y="427">400 / 404 / 201 codes · no stack traces in responses</text>
+
+          <rect class="n" x="390" y="452" width="350" height="44" rx="8"/>
+          <text class="t" x="404" y="479">models/ · Mongoose schemas</text>
+
+          <!-- data -->
+          <rect class="n acc" x="830" y="80" width="250" height="210" rx="8"/>
+          <text class="t" x="844" y="102">MongoDB Atlas</text>
+          <text class="m" x="844" y="126">Plan          lab CRUD</text>
+          <text class="m" x="844" y="146">State         36 states/UTs</text>
+          <text class="m" x="844" y="166">Constituency  Kaggle seed</text>
+          <text class="m" x="844" y="186">Fact          en+hi, source,</text>
+          <text class="m" x="844" y="204">              verified_on</text>
+          <text class="m" x="844" y="224">DemoVoter     demo:true</text>
+          <text class="s" x="844" y="250">local dev: mongodb://localhost:27017</text>
+          <text class="s" x="844" y="268">deploy: MONGODB_URI (Atlas)</text>
+
+          <rect class="n" x="830" y="310" width="250" height="56" rx="8"/>
+          <text class="t" x="844" y="332">Gemini API</text>
+          <text class="s" x="844" y="350">key only in server env</text>
+
+          <rect class="n" x="830" y="384" width="250" height="56" rx="8"/>
+          <text class="t" x="844" y="406">Postman collection</text>
+          <text class="s" x="844" y="424">server/postman · one request per route</text>
+
+          <!-- edges -->
+          <path class="e acc" d="M300,459 H340 V105 H386" marker-end="url(#m-c)"/>
+                    <text class="el" x="346" y="300" transform="rotate(-90 346 300)">axios · JSON over HTTPS</text>
+          <path class="e" d="M740,474 H786 V185 H826" marker-end="url(#m-a)"/>
+          <text class="el" x="792" y="300" transform="rotate(-90 792 300)">Mongoose queries</text>
+          <path class="e" d="M474,372 V380 H800 V338 H826" marker-end="url(#m-a)"/>
+                    <path class="e" d="M826,412 H760" marker-end="url(#m-a)"/>
+          <text class="el" x="764" y="404">tests</text>
+
+          <!-- seed row -->
+          <rect class="g" x="20" y="540" width="1080" height="140" rx="14"/>
+          <text class="gt" x="36" y="562">One-time seed (npm run seed)</text>
+
+          <rect class="n" x="40" y="578" width="190" height="40" rx="8"/>
+          <text class="t" x="54" y="603">Kaggle election CSV</text>
+          <rect class="n" x="270" y="578" width="210" height="40" rx="8"/>
+          <text class="t" x="284" y="603">Notebook: clean + map 36</text>
+          <rect class="n" x="520" y="578" width="210" height="40" rx="8"/>
+          <text class="t" x="534" y="603">cleaned CSV + row counts</text>
+          <path class="e" d="M230,598 H266" marker-end="url(#m-a)"/>
+          <path class="e" d="M480,598 H516" marker-end="url(#m-a)"/>
+
+          <rect class="n" x="40" y="630" width="190" height="40" rx="8"/>
+          <text class="t" x="54" y="655">ECI PDFs, PIB release</text>
+          <rect class="n" x="270" y="630" width="210" height="40" rx="8"/>
+          <text class="t" x="284" y="655">Read + extract by hand</text>
+          <rect class="n" x="520" y="630" width="210" height="40" rx="8"/>
+          <text class="t" x="534" y="655">facts.json + parity check</text>
+          <path class="e" d="M230,650 H266" marker-end="url(#m-a)"/>
+          <path class="e" d="M480,650 H516" marker-end="url(#m-a)"/>
+
+          <rect class="n ours" x="780" y="600" width="170" height="50" rx="8"/>
+          <text class="t" x="794" y="622">seed.js</text>
+          <text class="s" x="794" y="640">empty DB → filled</text>
+          <path class="e" d="M730,598 H756 V616 H776" marker-end="url(#m-a)"/>
+          <path class="e" d="M730,650 H756 V634 H776" marker-end="url(#m-a)"/>
+          <path class="e" d="M950,625 H1092 V275 H1084" marker-end="url(#m-a)"/>
+          <text class="el" x="958" y="618">inserts seed</text>
+          <text class="el" x="958" y="645">collections</text>
+        </svg>
+      </div>
+      <figcaption>The client never touches MongoDB or Gemini directly; it only knows <code>VITE_API_URL</code>. The <code>/ask</code> route reads its reference text from the Fact collection, so the checklist and the AI answer from the same verified records.</figcaption>
+    </figure>
+  </section>
+
+  <!-- 4 FLOWS -->
+  <section id="flows">
+    <h2>4 · Two requests, step by step</h2>
+    <p>Left: the lab's create flow, with the handout's bugs fixed (validation on the server, <code>await</code> before navigating). Right: an AI question, with the prompt built on the server from stored facts.</p>
+    <figure>
+      <div class="scroll">
+        <svg viewBox="0 0 1120 560" role="img" aria-label="Sequence diagrams: creating a voting plan validates the constituency against the Kaggle collection before saving and navigates only after a 201; asking a question validates input, loads facts, calls Gemini and returns the answer with sources.">
+          <defs>
+            <marker id="f-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker>
+            <marker id="f-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ahb" d="M0,0 L10,5 L0,10 z"/></marker>
+          </defs>
+          <text class="gt" x="20" y="26">A · Create a voting plan</text>
+          <!-- lanes A: x 70, 200, 340, 480 -->
+          <rect class="n" x="20" y="40" width="100" height="34" rx="6"/><text class="t" x="70" y="62" text-anchor="middle">Voter</text>
+          <rect class="n ours" x="140" y="40" width="120" height="34" rx="6"/><text class="t" x="200" y="62" text-anchor="middle">CreatePlan.jsx</text>
+          <rect class="n ours" x="280" y="40" width="120" height="34" rx="6"/><text class="t" x="340" y="62" text-anchor="middle">Express</text>
+          <rect class="n acc" x="420" y="40" width="120" height="34" rx="6"/><text class="t" x="480" y="62" text-anchor="middle">MongoDB</text>
+          <line class="life" x1="70" y1="74" x2="70" y2="540"/>
+          <line class="life" x1="200" y1="74" x2="200" y2="540"/>
+          <line class="life" x1="340" y1="74" x2="340" y2="540"/>
+          <line class="life" x1="480" y1="74" x2="480" y2="540"/>
+
+          <path class="e" d="M70,104 H196" marker-end="url(#f-a)"/><text class="num" x="76" y="98">1</text><text class="el" x="88" y="98">picks state</text>
+          <path class="e" d="M200,134 H336" marker-end="url(#f-a)"/><text class="num" x="206" y="128">2</text><text class="el" x="218" y="128">GET constituencies</text>
+          <path class="e" d="M340,160 H204" marker-end="url(#f-a)"/><text class="el" x="232" y="154">dropdown options</text>
+          <path class="e" d="M70,194 H196" marker-end="url(#f-a)"/><text class="num" x="76" y="188">3</text><text class="el" x="88" y="188">fills, submits</text>
+          <path class="e" d="M200,224 H336" marker-end="url(#f-a)"/><text class="num" x="206" y="218">4</text><text class="el" x="218" y="218">POST /createplan</text>
+          <path class="e" d="M340,254 H476" marker-end="url(#f-a)"/><text class="num" x="346" y="248">5</text><text class="el" x="358" y="248">Constituency exists?</text>
+          <path class="e" d="M480,280 H344" marker-end="url(#f-a)"/><text class="el" x="400" y="274">yes</text>
+          <path class="e" d="M340,310 H476" marker-end="url(#f-a)"/><text class="num" x="346" y="304">6</text><text class="el" x="358" y="304">Plan.create()</text>
+          <path class="e" d="M480,336 H344" marker-end="url(#f-a)"/><text class="el" x="390" y="330">saved doc</text>
+          <path class="e" d="M340,366 H204" marker-end="url(#f-a)"/><text class="num" x="232" y="360">7</text><text class="el" x="244" y="360">201 + plan</text>
+          <rect class="act" x="150" y="380" width="100" height="40" rx="6"/>
+          <text class="m" x="200" y="397" text-anchor="middle">await done →</text>
+          <text class="m" x="200" y="412" text-anchor="middle">navigate</text>
+          <path class="e" d="M200,450 H336" marker-end="url(#f-a)"/><text class="num" x="206" y="444">8</text><text class="el" x="218" y="444">GET /plans</text>
+          <path class="e" d="M340,476 H204" marker-end="url(#f-a)"/><text class="el" x="232" y="470">list incl. new plan</text>
+          <rect class="alt" x="148" y="492" width="340" height="44" rx="6"/>
+          <text class="elb" x="158" y="510">else: invalid idDocument or unknown</text>
+          <text class="elb" x="158" y="526">constituency → 400 {errors}, form stays</text>
+
+          <!-- B -->
+          <text class="gt" x="580" y="26">B · Ask a question</text>
+          <!-- lanes B: x 620, 740, 870, 1000, 1080? -->
+          <rect class="n" x="575" y="40" width="90" height="34" rx="6"/><text class="t" x="620" y="62" text-anchor="middle">Voter</text>
+          <rect class="n ours" x="685" y="40" width="110" height="34" rx="6"/><text class="t" x="740" y="62" text-anchor="middle">Ask.jsx</text>
+          <rect class="n ours" x="815" y="40" width="100" height="34" rx="6"/><text class="t" x="865" y="62" text-anchor="middle">POST /ask</text>
+          <rect class="n acc" x="935" y="40" width="80" height="34" rx="6"/><text class="t" x="975" y="62" text-anchor="middle">Fact</text>
+          <rect class="n" x="1030" y="40" width="80" height="34" rx="6"/><text class="t" x="1070" y="62" text-anchor="middle">Gemini</text>
+          <line class="life" x1="620" y1="74" x2="620" y2="540"/>
+          <line class="life" x1="740" y1="74" x2="740" y2="540"/>
+          <line class="life" x1="865" y1="74" x2="865" y2="540"/>
+          <line class="life" x1="975" y1="74" x2="975" y2="540"/>
+          <line class="life" x1="1070" y1="74" x2="1070" y2="540"/>
+
+          <path class="e" d="M620,104 H736" marker-end="url(#f-a)"/><text class="num" x="626" y="98">1</text><text class="el" x="638" y="98">types question</text>
+          <path class="e" d="M740,134 H861" marker-end="url(#f-a)"/><text class="num" x="746" y="128">2</text><text class="el" x="758" y="128">question, steps, lang</text>
+          <rect class="act" x="815" y="148" width="100" height="56" rx="6"/>
+          <text class="m" x="865" y="166" text-anchor="middle">≤ 500 chars</text>
+          <text class="m" x="865" y="181" text-anchor="middle">drop unknown</text>
+          <text class="m" x="865" y="196" text-anchor="middle">step ids</text>
+          <path class="e" d="M865,230 H971" marker-end="url(#f-a)"/><text class="num" x="871" y="224">3</text><text class="el" x="883" y="224">Fact.find(lang)</text>
+          <path class="e" d="M975,256 H869" marker-end="url(#f-a)"/><text class="el" x="882" y="250">text + sources</text>
+          <path class="e" d="M865,290 H1066" marker-end="url(#f-a)"/><text class="num" x="871" y="284">4</text><text class="el" x="883" y="284">system prompt, temp 0.1</text>
+          <path class="e" d="M1070,320 H869" marker-end="url(#f-a)"/><text class="el" x="960" y="314">answer</text>
+          <path class="e" d="M865,352 H744" marker-end="url(#f-a)"/><text class="num" x="771" y="346">5</text><text class="el" x="783" y="346">answer, sources</text>
+          <path class="e" d="M740,386 H624" marker-end="url(#f-a)"/><text class="num" x="646" y="380">6</text><text class="el" x="658" y="380">answer + Sources</text>
+          <rect class="alt" x="690" y="410" width="410" height="60" rx="6"/>
+          <text class="elb" x="700" y="430">out of scope → fixed line: “I don't have specific</text>
+          <text class="elb" x="700" y="446">information on that. Please visit voters.eci.gov.in”</text>
+          <text class="elb" x="700" y="462">Gemini error → generic message, raw error stays in logs</text>
+          <rect class="alt" x="690" y="480" width="410" height="40" rx="6"/>
+          <text class="elb" x="700" y="504">over rate limit → 429, client says “wait a minute”</text>
+        </svg>
+      </div>
+      <figcaption>Numbers are the order of calls. Red dashed boxes are the failure paths each route must handle; Postman gets one saved example for the happy path and one for each failure.</figcaption>
+    </figure>
+  </section>
+
+  <!-- 5 TRUTH -->
+  <section id="truth">
+    <h2>5 · How a fact gets into the app</h2>
+    <p>The project's rule: no voter-facing fact without a primary source. A fact is a record, not a sentence in a page, so the checklist, the Hindi version and the AI all read the same thing.</p>
+    <figure>
+      <div class="scroll">
+        <svg viewBox="0 0 1120 300" role="img" aria-label="Fact pipeline: primary ECI document, extract claim with section, store as a record with English, Hindi, source and verified date, run parity and link checks, then serve to checklist, AI and map.">
+          <defs>
+            <marker id="p-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker>
+            <marker id="p-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ahb" d="M0,0 L10,5 L0,10 z"/></marker>
+          </defs>
+          <rect class="n" x="20" y="60" width="200" height="110" rx="8"/>
+          <text class="t" x="34" y="84">Primary source</text>
+          <text class="s" x="34" y="104">ECI Presiding Officer handbook</text>
+          <text class="s" x="34" y="120">ECI EVM Manual (Ed. 9, 2026)</text>
+          <text class="s" x="34" y="136">ECI ID order 19 Mar 2024</text>
+          <text class="s" x="34" y="152">PIB release 10 Oct 2025</text>
+
+          <rect class="n" x="260" y="60" width="180" height="110" rx="8"/>
+          <text class="t" x="274" y="84">Read + extract</text>
+          <text class="s" x="274" y="104">one claim per record</text>
+          <text class="s" x="274" y="120">note the section, e.g.</text>
+          <text class="m" x="274" y="138">Handbook §4.5.3</text>
+          <text class="s" x="274" y="156">no AI paraphrase unchecked</text>
+
+          <rect class="n acc" x="480" y="50" width="220" height="130" rx="8"/>
+          <text class="t" x="494" y="74">Fact record</text>
+          <text class="m" x="494" y="96">id, text_en, text_hi</text>
+          <text class="m" x="494" y="114">source (URL)</text>
+          <text class="m" x="494" y="132">section</text>
+          <text class="m" x="494" y="150">verified_on</text>
+          <text class="s" x="494" y="170">JSON in Phase 1, Mongo later</text>
+
+          <rect class="n ok" x="740" y="60" width="160" height="110" rx="8"/>
+          <text class="t" x="754" y="84">Checks</text>
+          <text class="s" x="754" y="104">same ids en = hi</text>
+          <text class="s" x="754" y="120">same step counts</text>
+          <text class="s" x="754" y="136">all 12 IDs both langs</text>
+          <text class="s" x="754" y="152">every source link loads</text>
+
+          <rect class="n" x="940" y="40" width="160" height="40" rx="8"/><text class="t" x="954" y="65">Checklist cards</text>
+          <rect class="n" x="940" y="95" width="160" height="40" rx="8"/><text class="t" x="954" y="120">/ask reference</text>
+          <rect class="n" x="940" y="150" width="160" height="40" rx="8"/><text class="t" x="954" y="175">Map seat counts</text>
+
+          <path class="e" d="M220,115 H256" marker-end="url(#p-a)"/>
+          <path class="e" d="M440,115 H476" marker-end="url(#p-a)"/>
+          <path class="e" d="M700,115 H736" marker-end="url(#p-a)"/>
+          <path class="e" d="M900,115 H918 V60 H936" marker-end="url(#p-a)"/>
+          <path class="e" d="M900,115 H936" marker-end="url(#p-a)"/>
+          <path class="e" d="M900,115 H918 V170 H936" marker-end="url(#p-a)"/>
+
+          <path class="e bad" d="M820,170 V240 H590 V184" marker-end="url(#p-b)"/>
+          <text class="elb" x="600" y="232">check fails → fix the record or delete the claim</text>
+
+          <text class="gt" x="20" y="36">Source → record → checks → every screen</text>
+          <text class="s" x="20" y="282">Found this way in Phase 1 so far: the PIB release is dated 10 Oct 2025 (README says 7 Oct); the EVM Manual cited as Ed. 8 is now Ed. 9 (Aug 2026); photocopy and e-EPIC claims have no source yet.</text>
+        </svg>
+      </div>
+      <figcaption>The red loop is the whole method: a claim that can't be traced to a section in a primary document is removed, not softened.</figcaption>
+    </figure>
+  </section>
+
+  <!-- 6 PHASES -->
+  <section id="phases">
+    <h2>6 · Build phases and where each one lands</h2>
+    <figure>
+      <div class="scroll">
+        <svg viewBox="0 0 1120 260" role="img" aria-label="Eight build phases across two branches: phases 0 to 2 on main, 3 to 5 on fsd-mern, merged at phase 6, verified at 7. Phase 0 done, phase 1 in progress.">
+          <defs>
+            <marker id="h-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker>
+          </defs>
+          <text class="gt" x="20" y="64">main (live)</text>
+          <text class="gt" x="20" y="164">fsd-mern</text>
+          <line class="e" x1="110" y1="60" x2="1100" y2="60"/>
+          <line class="e" x1="420" y1="160" x2="900" y2="160"/>
+          <path class="e" d="M410,60 Q420,60 420,80 V160" />
+          <path class="e" d="M900,160 Q910,160 910,140 V64" marker-end="url(#h-a)"/>
+
+          <!-- main phases -->
+          <rect class="n ok" x="120" y="36" width="90" height="48" rx="8"/><text class="t" x="132" y="56">0 Freeze</text><text class="s" x="132" y="74">done*</text>
+          <rect class="n acc" x="220" y="36" width="90" height="48" rx="8"/><text class="t" x="232" y="56">1 Truth</text><text class="sa" x="232" y="74">in progress</text>
+          <rect class="n" x="320" y="36" width="90" height="48" rx="8"/><text class="t" x="332" y="56">2 De-slop</text><text class="s" x="332" y="74">open</text>
+          <!-- branch phases -->
+          <rect class="n" x="450" y="136" width="120" height="48" rx="8"/><text class="t" x="462" y="156">3 Kaggle data</text><text class="s" x="462" y="174">open</text>
+          <rect class="n" x="590" y="136" width="120" height="48" rx="8"/><text class="t" x="602" y="156">4 Server</text><text class="s" x="602" y="174">open</text>
+          <rect class="n" x="730" y="136" width="120" height="48" rx="8"/><text class="t" x="742" y="156">5 Client</text><text class="s" x="742" y="174">open</text>
+          <rect class="n" x="930" y="36" width="80" height="48" rx="8"/><text class="t" x="942" y="56">6 Deploy</text><text class="s" x="942" y="74">merge</text>
+          <rect class="n" x="1020" y="36" width="80" height="48" rx="8"/><text class="t" x="1032" y="56">7 Verify</text><text class="s" x="1032" y="74">open</text>
+
+          <text class="s" x="120" y="112">gate: rows + deadline</text>
+          <text class="s" x="220" y="126">every fact sourced, en = hi</text>
+          <text class="s" x="320" y="112">a11y ≥ 95</text>
+          <text class="s" x="450" y="206">row counts match</text>
+          <text class="s" x="590" y="206">5 CRUD routes in Postman</text>
+          <text class="s" x="730" y="206">CRUD in browser, en + hi</text>
+          <text class="s" x="930" y="112">live CRUD</text>
+          <text class="s" x="1020" y="126">rows ticked</text>
+          <text class="s" x="20" y="246">* tag v1-promptwars made locally; the session's push of tags was refused (HTTP 403), branch pushes work.</text>
+        </svg>
+      </div>
+      <figcaption>Main stays deployable the whole time. The MERN work happens on its own branch and replaces the static site only once the live client can do full CRUD against the live API.</figcaption>
+    </figure>
+  </section>
+
+  <footer>Source of truth: <code>docs/FSD-CHECKLIST.md</code> in github.com/rajyyug1132/voteready. Status as of 8 Oct 2026.</footer>
+</div>
