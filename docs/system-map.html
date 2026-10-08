@@ -101,16 +101,15 @@ footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line)
   <header class="top">
     <div class="eyebrow">VoteReady · FSD lab · BMSCE</div>
     <h1>How VoteReady works, today and after the MERN rebuild</h1>
-    <p class="lede">Four views of one project: what a first-time voter does, how the live site moves data today, how the MERN version will move it, and how a fact gets from an ECI document into the app. Red marks what is broken or untrue on the live site as of 8 Oct 2026.</p>
+    <p class="lede">Five views of one project: what a first-time voter does, how the MERN system is built, how two key requests flow through it, how a fact gets from an ECI document into the app, and the build plan.</p>
   </header>
 
   <nav class="idx" aria-label="Sections">
     <a href="#journey">1 · Voter journey</a>
-    <a href="#today">2 · Live site today</a>
-    <a href="#mern">3 · MERN target</a>
-    <a href="#flows">4 · Request flows</a>
-    <a href="#truth">5 · Fact pipeline</a>
-    <a href="#phases">6 · Build phases</a>
+    <a href="#mern">2 · MERN system</a>
+    <a href="#flows">3 · Request flows</a>
+    <a href="#truth">4 · Fact pipeline</a>
+    <a href="#phases">5 · Build phases</a>
   </nav>
 
   <!-- 1 JOURNEY -->
@@ -185,133 +184,11 @@ footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line)
     </figure>
   </section>
 
-  <!-- 2 TODAY -->
-  <section id="today">
-    <h2>2 · The live site today (v1, tag <code>v1-promptwars</code>)</h2>
-    <div class="meta"><span class="chip">static HTML + vanilla JS</span><span class="chip">Vercel</span><span class="chip">2 serverless functions</span><span class="chip bad">3 things broken live</span></div>
-    <p>Four static pages run in the browser. The only server code is two Vercel functions: one keeps the Gemini key off the client and builds the AI prompt; one hands the browser a Maps key.</p>
-    <figure>
-      <div class="scroll">
-        <svg viewBox="0 0 1120 560" role="img" aria-label="Live site data flow: browser pages read static JSON and localStorage, the Q and A page posts to a Vercel function that calls Gemini, and the map page fetches a Maps key whose embed fails because billing is off.">
-          <defs>
-            <marker id="t-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker>
-            <marker id="t-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ahb" d="M0,0 L10,5 L0,10 z"/></marker>
-            <marker id="t-c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="aha" d="M0,0 L10,5 L0,10 z"/></marker>
-          </defs>
-          <!-- groups -->
-          <rect class="g" x="20" y="40" width="510" height="500" rx="14"/>
-          <text class="gt" x="36" y="62">In the visitor's browser</text>
-          <rect class="g" x="550" y="40" width="260" height="500" rx="14"/>
-          <text class="gt" x="566" y="62">Vercel · voteready-pi</text>
-          <rect class="g" x="830" y="40" width="270" height="500" rx="14"/>
-          <text class="gt" x="846" y="62">Third-party services</text>
-
-          <!-- pages -->
-          <rect class="n" x="40" y="80" width="210" height="50" rx="8"/>
-          <text class="t" x="54" y="102">index.html</text>
-          <text class="sb" x="54" y="120">feature images 404 · journey tags fixed</text>
-
-          <rect class="n" x="40" y="150" width="210" height="50" rx="8"/>
-          <text class="t" x="54" y="172">map.html</text>
-          <text class="s" x="54" y="190">36 states, seats hardcoded in page</text>
-
-          <rect class="n" x="40" y="250" width="210" height="64" rx="8"/>
-          <text class="t" x="54" y="272">checklist.html</text>
-          <text class="s" x="54" y="290">8 cards, progress bar</text>
-          <text class="sb" x="54" y="306">EPIC check: random numbers</text>
-
-          <rect class="n" x="40" y="340" width="210" height="50" rx="8"/>
-          <text class="t" x="54" y="362">qa.html</text>
-          <text class="s" x="54" y="380">question box + 4 sample chips</text>
-
-          <rect class="n" x="40" y="440" width="210" height="64" rx="8"/>
-          <text class="t" x="54" y="462">translate.js</text>
-          <text class="s" x="54" y="480">en→hi by exact text match</text>
-          <text class="sb" x="54" y="496">misses multi-line text</text>
-
-          <!-- localStorage -->
-          <rect class="n acc" x="290" y="275" width="220" height="110" rx="8"/>
-          <text class="t" x="304" y="297">localStorage</text>
-          <text class="m" x="304" y="318">voteready_checklist_v1</text>
-          <text class="m" x="304" y="336">voteready_lang</text>
-          <text class="mb" x="304" y="354">voteready_voter</text>
-          <text class="sb" x="304" y="372">read by qa, never written</text>
-
-          <!-- vercel -->
-          <rect class="n" x="570" y="147" width="220" height="50" rx="8"/>
-          <text class="t" x="584" y="169">api/maps-config.js</text>
-          <text class="s" x="584" y="187">returns GOOGLE_MAPS_KEY</text>
-
-          <rect class="n" x="570" y="215" width="220" height="96" rx="8"/>
-          <text class="t" x="584" y="237">static data/</text>
-          <text class="m" x="584" y="257">checklist.json</text>
-          <text class="m" x="584" y="275">checklist_hi.json</text>
-          <text class="mb" x="584" y="293">voters.json · never read</text>
-
-          <rect class="n ours" x="570" y="372" width="220" height="104" rx="8"/>
-          <text class="t" x="584" y="394">api/gemini.js</text>
-          <text class="s" x="584" y="413">builds prompt on the server</text>
-          <text class="s" x="584" y="430">step-id allowlist · 500-char cap</text>
-          <text class="s" x="584" y="447">temperature 0.1 · 500 tokens</text>
-          <text class="sb" x="584" y="465">returns raw Gemini errors</text>
-
-          <!-- third parties -->
-          <rect class="n" x="850" y="80" width="230" height="50" rx="8"/>
-          <text class="t" x="864" y="102">Script CDNs</text>
-          <text class="s" x="864" y="120">Tailwind, GSAP, Spline, D3</text>
-
-          <rect class="n bad" x="850" y="147" width="230" height="50" rx="8"/>
-          <text class="t" x="864" y="169">Google Maps JS</text>
-          <text class="sb" x="864" y="187">BillingNotEnabledMapError</text>
-
-          <rect class="n" x="850" y="215" width="230" height="50" rx="8"/>
-          <text class="t" x="864" y="237">GitHub raw</text>
-          <text class="s" x="864" y="255">India topojson for the map</text>
-
-          <rect class="n" x="850" y="398" width="230" height="50" rx="8"/>
-          <text class="t" x="864" y="420">Gemini 2.5 Flash</text>
-          <text class="s" x="864" y="438">generateContent</text>
-
-          <!-- edges -->
-          <path class="e" d="M250,98 H846" marker-end="url(#t-a)"/>
-          <text class="el" x="560" y="92">every page loads scripts</text>
-
-          <path class="e" d="M250,166 H566" marker-end="url(#t-a)"/>
-          <text class="el" x="266" y="160">GET /api/maps-config</text>
-          <path class="e bad" d="M790,172 H846" marker-end="url(#t-b)"/>
-          <path class="e" d="M250,186 H540 V240 H846" marker-end="url(#t-a)"/>
-          <text class="el" x="266" y="210">loads state shapes</text>
-
-          <path class="e" d="M250,262 H566" marker-end="url(#t-a)"/>
-          <text class="el" x="266" y="256">fetch by language</text>
-
-          <path class="e acc" d="M250,300 H286" marker-end="url(#t-c)"/>
-          <text class="el" x="255" y="294">ticks</text>
-          <path class="e acc" d="M290,365 H254" marker-end="url(#t-c)"/>
-          <text class="el" x="256" y="358">reads</text>
-
-          <path class="e" d="M250,382 H270 V425 H566" marker-end="url(#t-a)"/>
-          <text class="el" x="290" y="418">POST /api/gemini · question + progress</text>
-          <path class="e" d="M790,423 H846" marker-end="url(#t-a)"/>
-
-          <path class="e" d="M145,440 V394" marker-end="url(#t-a)"/>
-          <text class="el" x="153" y="424">rewrites page text</text>
-        </svg>
-      </div>
-      <figcaption>The AI answer is grounded only in a fixed reference block inside <code>api/gemini.js</code>; the browser sends the question plus ticked step ids, and the server builds the prompt. Map seat counts live inside <code>map.html</code>, not in a data file.</figcaption>
-    </figure>
-    <div class="notes">
-      <div class="note bad"><b>Home images</b><span>The three feature screenshots were never committed; README's four were deleted in <code>f025b73</code>.</span></div>
-      <div class="note bad"><b>EPIC checker</b><span>Shows “Rahul Sharma” with random serial and part numbers after a fake 1.8 s wait.</span></div>
-      <div class="note bad"><b>CEO office routing</b><span>Google refuses the map (billing off), and it routes to the state capital, not the nearest office.</span></div>
-    </div>
-  </section>
-
   <!-- 3 MERN -->
   <section id="mern">
-    <h2>3 · After the MERN rebuild (branch <code>fsd-mern</code>)</h2>
+    <h2>2 · The MERN system (branch <code>fsd-mern</code>)</h2>
     <div class="meta"><span class="chip acc">React + Vite on Vercel</span><span class="chip acc">Express on Render</span><span class="chip acc">MongoDB Atlas</span><span class="chip">Postman-tested</span></div>
-    <p>The browser stops reading JSON files and calling Gemini through a one-off function. Everything goes through one Express API backed by five Mongoose models; the lab's CRUD requirement is the Voting Plan.</p>
+    <p>The React client talks only to one Express API, which is backed by five Mongoose models and is the only part that calls Gemini. The lab's CRUD requirement is the Voting Plan.</p>
     <figure>
       <div class="scroll">
         <svg viewBox="0 0 1120 700" role="img" aria-label="MERN target: React client calls an Express API with axios; Express uses Mongoose models in MongoDB Atlas, calls Gemini for answers, and is seeded from a cleaned Kaggle dataset and verified ECI facts.">
@@ -457,7 +334,7 @@ footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line)
 
   <!-- 4 FLOWS -->
   <section id="flows">
-    <h2>4 · Two requests, step by step</h2>
+    <h2>3 · Two requests, step by step</h2>
     <p>Left: the lab's create flow, with the handout's bugs fixed (validation on the server, <code>await</code> before navigating). Right: an AI question, with the prompt built on the server from stored facts.</p>
     <figure>
       <div class="scroll">
@@ -536,7 +413,7 @@ footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line)
 
   <!-- 5 TRUTH -->
   <section id="truth">
-    <h2>5 · How a fact gets into the app</h2>
+    <h2>4 · How a fact gets into the app</h2>
     <p>The project's rule: no voter-facing fact without a primary source. A fact is a record, not a sentence in a page, so the checklist, the Hindi version and the AI all read the same thing.</p>
     <figure>
       <div class="scroll">
@@ -598,7 +475,7 @@ footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line)
 
   <!-- 6 PHASES -->
   <section id="phases">
-    <h2>6 · Build phases and where each one lands</h2>
+    <h2>5 · Build phases and where each one lands</h2>
     <figure>
       <div class="scroll">
         <svg viewBox="0 0 1120 260" role="img" aria-label="Eight build phases across two branches: phases 0 to 2 on main, 3 to 5 on fsd-mern, merged at phase 6, verified at 7. Phase 0 done, phase 1 in progress.">
