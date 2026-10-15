@@ -1,603 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VoteReady — Explore by State</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@700&display=swap"
-    rel="stylesheet">
-  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
-  <link rel="stylesheet" href="./assets/brand.css">
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: transparent;
-      color: #fff;
-      min-height: 100vh;
-      font-weight: 300;
-      line-height: 1.8
-    }
-
-    .header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px 40px;
-      background: rgba(13, 13, 18, .7);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255, 255, 255, .1);
-      position: sticky;
-      top: 0;
-      z-index: 100
-    }
-
-    .header-left {
-      display: flex;
-      align-items: center;
-      gap: 22px
-    }
-
-    .logo {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 28px;
-      font-weight: 700;
-      color: #fff;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      letter-spacing: -.04em;
-      line-height: 1.1
-    }
-
-    .logo-bubble {
-      background: #a855f7;
-      padding: 2px 8px;
-      border-radius: 4px;
-      position: relative;
-      line-height: 1.2
-    }
-
-    .logo-bubble::after {
-      content: '';
-      position: absolute;
-      bottom: -6px;
-      left: 10px;
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-top: 5px solid #a855f7
-    }
-
-    .back-btn {
-      background: rgba(255, 255, 255, .1);
-      border: 1px solid rgba(255, 255, 255, .2);
-      color: #fff;
-      padding: 8px 18px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      transition: .2s
-    }
-
-    .back-btn:hover {
-      background: rgba(255, 255, 255, .18)
-    }
-
-    .page-hero {
-      background: rgba(255, 255, 255, 0.02);
-      padding: 40px 40px 30px;
-      border-bottom: 1px solid rgba(255, 255, 255, .1);
-      backdrop-filter: blur(10px)
-    }
-
-    .page-hero h1 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(32px, 5vw, 58px);
-      font-weight: 700;
-      text-transform: uppercase;
-      line-height: 1.1;
-      letter-spacing: -.04em
-    }
-
-    .page-hero h1 span {
-      color: #c084fc
-    }
-
-    .page-hero p {
-      margin-top: 10px;
-      color: #a1a1aa;
-      font-size: 15px;
-      max-width: 500px;
-      font-weight: 300;
-      line-height: 1.8
-    }
-
-    .map-section {
-      display: flex;
-      min-height: calc(100vh - 180px)
-    }
-
-    .left-panel {
-      width: 340px;
-      min-width: 300px;
-      background: rgba(255, 255, 255, 0.02);
-      border-right: 1px solid rgba(255, 255, 255, .08);
-      padding: 30px 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      overflow-y: auto;
-      backdrop-filter: blur(10px)
-    }
-
-    .panel-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: #a1a1aa;
-      margin-bottom: 6px
-    }
-
-    .state-select {
-      width: 100%;
-      padding: 11px 14px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1.5px solid rgba(255, 255, 255, 0.1);
-      color: #fff;
-      border-radius: 8px;
-      font-size: 15px;
-      font-family: 'Inter', sans-serif;
-      cursor: pointer;
-      appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a1a1aa' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 12px center
-    }
-
-    .state-select:focus {
-      outline: none;
-      border-color: #a855f7
-    }
-
-    .state-select option {
-      background: #0d0d12
-    }
-
-    .info-card {
-      background: rgba(255, 255, 255, 0.04);
-      border-radius: 10px;
-      padding: 22px;
-      border: 1px solid rgba(255, 255, 255, .08);
-      flex: 1;
-      backdrop-filter: blur(10px)
-    }
-
-    .info-card.empty {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      gap: 12px;
-      color: #a1a1aa;
-      min-height: 300px
-    }
-
-    .info-card.empty svg {
-      opacity: .4
-    }
-
-    .state-name {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 28px;
-      font-weight: 700;
-      color: #fff;
-      line-height: 1.1;
-      margin-bottom: 4px;
-      letter-spacing: -.04em
-    }
-
-    .state-capital {
-      font-size: 13px;
-      color: #a1a1aa;
-      margin-bottom: 18px
-    }
-
-    .info-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 18px
-    }
-
-    .info-box {
-      background: rgba(255, 255, 255, 0.03);
-      border-radius: 8px;
-      padding: 12px;
-      text-align: center
-    }
-
-    .info-box .num {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 26px;
-      font-weight: 700;
-      color: #c084fc;
-      line-height: 1.1;
-      letter-spacing: -.04em
-    }
-
-    .info-box .lbl {
-      font-size: 11px;
-      color: #a1a1aa;
-      margin-top: 3px;
-      text-transform: uppercase;
-      letter-spacing: .2em
-    }
-
-    .info-voters {
-      background: rgba(255, 255, 255, 0.03);
-      border-radius: 8px;
-      padding: 12px;
-      margin-bottom: 14px;
-      display: flex;
-      align-items: center;
-      gap: 10px
-    }
-
-    .info-voters .num {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 22px;
-      font-weight: 700;
-      color: #4ade80;
-      letter-spacing: -.04em
-    }
-
-    .info-voters .lbl {
-      font-size: 11px;
-      color: #a1a1aa;
-      text-transform: uppercase;
-      letter-spacing: .2em
-    }
-
-    .info-helpline {
-      background: rgba(255, 255, 255, 0.03);
-      border-radius: 8px;
-      padding: 12px;
-      margin-bottom: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between
-    }
-
-    .info-helpline .hl {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 22px;
-      color: #c084fc;
-      font-weight: 700;
-      letter-spacing: -.04em
-    }
-
-    .info-helpline .lbl {
-      font-size: 12px;
-      color: #a1a1aa
-    }
-
-    .ceo-link {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: #a855f7;
-      color: #fff;
-      padding: 10px 16px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 600;
-      transition: .2s
-    }
-
-    .ceo-link:hover {
-      background: #9333ea
-    }
-
-    .ceo-link svg {
-      width: 14px;
-      height: 14px;
-      flex-shrink: 0
-    }
-
-    .nvsp-link {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: #3b82f6;
-      color: #fff;
-      padding: 10px 16px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 600;
-      transition: .2s;
-      margin-top: 8px
-    }
-
-    .nvsp-link:hover {
-      background: #2563eb
-    }
-
-    .map-panel {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      position: relative;
-      background: transparent
-    }
-
-    .map-title {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: #a1a1aa;
-      margin-bottom: 16px;
-      text-align: center
-    }
-
-    #india-map {
-      width: 100%;
-      max-width: 620px;
-      height: auto;
-      cursor: pointer;
-      filter: drop-shadow(0 0 30px rgba(168, 85, 247, .2))
-    }
-
-    .state-path {
-      fill: rgba(255, 255, 255, 0.05);
-      stroke: rgba(255, 255, 255, 0.15);
-      stroke-width: .8px;
-      transition: fill .15s;
-      cursor: pointer
-    }
-
-    .state-path:hover {
-      fill: rgba(168, 85, 247, 0.3)
-    }
-
-    .state-path.active {
-      fill: #a855f7
-    }
-
-    .map-tooltip {
-      position: absolute;
-      background: rgba(13, 13, 18, .95);
-      border: 1px solid rgba(255, 255, 255, .15);
-      border-radius: 8px;
-      padding: 8px 14px;
-      font-size: 13px;
-      font-weight: 600;
-      color: #fff;
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity .15s;
-      white-space: nowrap;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, .4)
-    }
-
-    .footer {
-      padding: 24px 40px;
-      background: rgba(13, 13, 18, .6);
-      border-top: 1px solid rgba(255, 255, 255, .07);
-      text-align: center;
-      font-size: 13px;
-      color: #a1a1aa;
-      backdrop-filter: blur(10px)
-    }
-
-    .footer a {
-      color: #c084fc;
-      text-decoration: none
-    }
-
-    #google-map {
-      height: 220px;
-      width: 100%;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background: rgba(13, 13, 18, 0.5);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-      overflow: hidden;
-      transition: all 0.3s ease
-    }
-
-    #google-map.active {
-      border-color: rgba(157, 78, 221, 0.5);
-      box-shadow: 0 0 20px rgba(157, 78, 221, 0.2)
-    }
-
-    @keyframes spin {
-      from {
-        transform: rotate(0deg)
-      }
-
-      to {
-        transform: rotate(360deg)
-      }
-    }
-
-    @media(max-width:900px) {
-      .map-section {
-        flex-direction: column
-      }
-
-      .left-panel {
-        width: 100%;
-        border-right: none;
-        border-bottom: 1px solid rgba(255, 255, 255, .08)
-      }
-
-      #india-map {
-        max-width: 460px
-      }
-    }
-
-    @media(max-width:600px) {
-      .header {
-        padding: 14px 16px
-      }
-
-      .page-hero {
-        padding: 28px 16px 22px
-      }
-
-      .map-panel {
-        padding: 16px
-      }
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600&family=Noto+Serif+Devanagari:wght@700&family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/site.css" rel="stylesheet">
+  <script>
+    (function () {
+      try {
+        var dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-bs-theme', dark ? 'dark' : 'light');
+      } catch (_) { }
+    })();
+  </script>
+  <meta name="description" content="Lok Sabha and Vidhan Sabha seat counts, CEO portal links and the voter helpline for every Indian state and union territory.">
+  <title>State map — VoteReady</title>
 </head>
-
 <body>
-  <style>
-    .ambient-bg {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      overflow: hidden;
-      pointer-events: none;
-      background: #0d0d12
-    }
-
-    .ambient-orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(100px);
-      mix-blend-mode: screen
-    }
-
-    .orb-1 {
-      top: -10%;
-      left: -10%;
-      width: 40vw;
-      height: 40vw;
-      background: rgba(147, 51, 234, 0.3)
-    }
-
-    .orb-2 {
-      top: 10%;
-      right: -5%;
-      width: 35vw;
-      height: 35vw;
-      background: rgba(37, 99, 235, 0.2)
-    }
-
-    .orb-3 {
-      bottom: -10%;
-      left: 20%;
-      width: 40vw;
-      height: 40vw;
-      background: rgba(219, 39, 119, 0.2)
-    }
-
-    .orb-4 {
-      top: 60%;
-      right: 10%;
-      width: 35vw;
-      height: 35vw;
-      background: rgba(13, 148, 136, 0.2)
-    }
-
-    .noise-bg {
-      position: absolute;
-      inset: 0;
-      opacity: 0.04;
-      mix-blend-mode: overlay;
-      background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noise)"/%3E%3C/svg%3E')
-    }
-  </style>
-  <div class="ambient-bg" aria-hidden="true">
-    <div class="ambient-orb orb-1"></div>
-    <div class="ambient-orb orb-2"></div>
-    <div class="ambient-orb orb-3"></div>
-    <div class="ambient-orb orb-4"></div>
-    <div class="noise-bg"></div>
-  </div>
-
-  <header class="header">
-    <div class="header-left">
-      <a href="index.html" class="logo">
-        <span class="logo-bubble">VOTE</span>READY
-      </a>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <nav class="navbar navbar-expand-md site-nav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><img src="assets/logo.svg" alt="" width="30" height="30">VoteReady</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto align-items-md-center gap-md-1">
+          <li class="nav-item"><a class="nav-link" href="checklist.html">Checklist</a></li>
+          <li class="nav-item"><a class="nav-link" href="qa.html">Ask</a></li>
+          <li class="nav-item"><a class="nav-link" href="map.html" aria-current="page">State map</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://voters.eci.gov.in/" target="_blank" rel="noopener">Register ↗</a></li>
+          <li class="nav-item"><button type="button" id="lang-toggle" class="btn btn-outline-primary lang-toggle" aria-label="Switch language / भाषा बदलें">अ/A</button></li>
+        </ul>
+      </div>
     </div>
-    <a href="index.html" class="back-btn">← Back to Home</a>
-  </header>
+  </nav>
 
-  <div class="page-hero">
-    <h1>Explore Voting Info<br><span>By State</span></h1>
-    <p>Click any state on the map or use the dropdown to find official voter resources, seat counts, and helplines.</p>
-  </div>
+  <main id="main" class="container pb-4">
+    <header class="page-head">
+      <h1>Explore voting info by state</h1>
+      <p>Click a state on the map or use the dropdown to see seat counts, the state's Chief Electoral Officer portal and the voter helpline.</p>
+    </header>
 
-  <div class="map-section">
-    <aside class="left-panel">
-      <div>
-        <p class="panel-label">Select a State / UT</p>
-        <select class="state-select" id="stateSelect">
+    <div class="map-layout">
+      <aside>
+        <label class="form-label" for="stateSelect">Select a State / UT</label>
+        <select class="form-select state-select" id="stateSelect">
           <option value="">— Choose a State —</option>
         </select>
+
+        <div class="info-card empty" id="infoCard">
+          <p class="mb-0">Click a state on the map or use the dropdown above</p>
+        </div>
+
+        <div class="routing-section">
+          <p class="panel-label">Directions</p>
+          <button id="routeBtn" class="btn btn-outline-primary w-100" type="button" onclick="getRouteToOffice()">Directions to the state CEO office</button>
+          <div id="google-map"></div>
+          <p id="geo-status" class="map-note mt-2 mb-0" role="status"></p>
+        </div>
+      </aside>
+
+      <div class="map-panel">
+        <p class="map-title">India — all states and union territories</p>
+        <svg id="india-map" viewBox="0 0 600 680" role="img" aria-label="Map of India. Use the dropdown to choose a state."></svg>
+        <div class="map-tooltip" id="tooltip"></div>
       </div>
+    </div>
+  </main>
 
-      <div class="info-card empty" id="infoCard">
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-          <circle cx="12" cy="12" r="10" />
-          <path d="M12 8v4l3 3" />
-        </svg>
-        <p>Click a state on the map or use the dropdown above</p>
-      </div>
-
-      <!-- Search & Routing UI -->
-      <div class="routing-section" style="margin-top:20px;border-top:1px solid rgba(255,255,255,0.1);padding-top:20px;">
-        <p class="panel-label">Live Navigation</p>
-        <button id="routeBtn" class="ceo-link" onclick="getRouteToOffice()"
-          style="width:100%;justify-content:center;border:none;cursor:pointer;margin-bottom:12px;">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"
-            style="margin-right:8px">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-            <circle cx="12" cy="10" r="3" />
-          </svg>
-          Directions to the state CEO office
-        </button>
-        <div id="google-map"></div>
-        <p id="geo-status" style="font-size:11px;color:#a1a1aa;margin-top:8px;text-align:center;"></p>
-      </div>
-    </aside>
-
-    <main class="map-panel">
-      <p class="map-title">India — All States &amp; Union Territories</p>
-      <svg id="india-map" viewBox="0 0 600 680"></svg>
-      <div class="map-tooltip" id="tooltip"></div>
-    </main>
-  </div>
-
-  <footer class="footer">
-    VoteReady · Lok Sabha total of 543 seats per ECI Atlas 2024; per-state seat counts are being re-verified against ECI sources ·
-    <a href="https://voters.eci.gov.in" target="_blank">ECI Voter Portal</a>
+  <footer class="site-footer">
+    <div class="container">
+      <p class="mb-1">Lok Sabha total of 543 seats per ECI Atlas 2024; per-state seat counts are being re-verified against ECI sources</p>
+      <a href="https://voters.eci.gov.in" target="_blank" rel="noopener">ECI Voters' Services Portal</a>
+    </div>
   </footer>
 
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <script src="https://d3js.org/topojson.v3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     const STATES = {
       "Andhra Pradesh": { cap: "Amaravati", ceo: "ceoandhra.nic.in", ls: 25, vs: 175 },
@@ -649,8 +134,8 @@
       const s = STATES[name]; if (!s) return;
 
       const ladakhNote = name === 'Ladakh' 
-        ? `<div style="font-size:11px;color:#a1a1aa;background:rgba(255,255,255,.04);border-radius:8px;padding:10px;margin-bottom:12px;border:1px solid rgba(255,255,255,.08)">
-            <span data-key="Map boundary data predates the 2019 J&K bifurcation — Ladakh UT boundary not separately shown.">ⓘ Map boundary data predates the 2019 J&K bifurcation — Ladakh UT boundary not separately shown.</span>
+        ? `<div class="map-note mb-3">
+            <span data-key="Map boundary data predates the 2019 J&K bifurcation — Ladakh UT boundary not separately shown.">Map boundary data predates the 2019 J&K bifurcation — Ladakh UT boundary not separately shown.</span>
            </div>` 
         : '';
 
@@ -659,13 +144,13 @@
       card.innerHTML = `
         ${ladakhNote}
         <div class="state-name">${name}</div>
-        <div class="state-capital">🏛 Capital: ${s.cap}</div>
+        <div class="state-capital"><span data-key="Capital:">Capital:</span> ${s.cap}</div>
         <div class="info-grid">
           <div class="info-box"><div class="num">${s.ls}</div><div class="lbl" data-key="Lok Sabha Seats">Lok Sabha Seats</div></div>
           <div class="info-box"><div class="num">${s.vs || '—'}</div><div class="lbl" data-key="Vidhan Sabha Seats">Vidhan Sabha Seats</div></div>
         </div>
-        <div class="info-helpline"><div><div class="lbl" data-key="Voter Helpline">Voter Helpline</div><div class="hl">📞 1950</div></div><div style="text-align:right"><div class="lbl" data-key="National">National</div><div style="font-size:11px;color:#3a6080;margin-top:3px" data-key="Toll Free">Toll Free</div></div></div>
-        ${s.ceo ? `<a class="ceo-link" href="https://${s.ceo}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg><span data-key="CEO Portal:">CEO Portal:</span> ${s.ceo}</a>` : `<p class="ceo-missing" style="font-size:12px;color:#a1a1aa;margin:0 0 10px"><span data-key="No state CEO portal link is listed for this territory yet.">No state CEO portal link is listed for this territory yet.</span></p>`}
+        <div class="info-helpline"><div><div class="lbl" data-key="Voter Helpline">Voter Helpline</div><div class="hl">1950</div></div><div class="text-end"><div class="lbl" data-key="National">National</div><div class="lbl" data-key="Toll Free">Toll Free</div></div></div>
+        ${s.ceo ? `<a class="ceo-link" href="https://${s.ceo}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg><span data-key="CEO Portal:">CEO Portal:</span> ${s.ceo}</a>` : `<p class="ceo-missing map-note"><span data-key="No state CEO portal link is listed for this territory yet.">No state CEO portal link is listed for this territory yet.</span></p>`}
         <a class="nvsp-link" href="https://voters.eci.gov.in/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14"><path d="M9 11l3 3 8-8"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg><span data-key="Check / Register on the Voters' Services Portal">Check / Register on the Voters' Services Portal</span></a>`;
       d3.selectAll('.state-path').classed('active', false);
       d3.selectAll('.state-path').filter(d => {
@@ -738,14 +223,14 @@
       directionsService = new google.maps.DirectionsService();
       directionsRenderer = new google.maps.DirectionsRenderer({
         map: gmap, suppressMarkers: true,
-        polylineOptions: { strokeColor: '#9d4edd', strokeWeight: 5, strokeOpacity: 0.85 }
+        polylineOptions: { strokeColor: '#4b2a8a', strokeWeight: 5, strokeOpacity: 0.85 }
       });
     }
 
     function dropCustomMarker(position) {
       if (advancedMarker) advancedMarker.map = null;
       const pin = document.createElement('div');
-      pin.innerHTML = '<div style="background:#9d4edd;padding:6px;border-radius:50%;box-shadow:0 0 15px #9d4edd;border:2px solid white;display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" fill="white" width="22" height="22"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>';
+      pin.innerHTML = '<div style="width:18px;height:18px;border-radius:50%;background:#4b2a8a;border:3px solid #fff;box-shadow:0 0 0 1px #4b2a8a"></div>';
       const { AdvancedMarkerElement } = google.maps.marker;
       advancedMarker = new AdvancedMarkerElement({ map: gmap, position, content: pin, title: 'Chief Electoral Officer Office' });
     }
@@ -756,7 +241,7 @@
       if (!navigator.geolocation) { alert('Geolocation is not supported by your browser.'); return; }
       const routeBtn = document.getElementById('routeBtn');
       const geoStatus = document.getElementById('geo-status');
-      routeBtn.innerHTML = '<svg style="animation:spin 1s linear infinite;margin-right:8px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0"/></svg> Locating...';
+      routeBtn.textContent = 'Locating...';
       routeBtn.disabled = true;
       geoStatus.textContent = 'Requesting your location...';
 
@@ -767,7 +252,7 @@
         directionsService.route(
           { origin: userPos, destination: destination, travelMode: 'DRIVING' },
           (result, status) => {
-            routeBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" style="margin-right:8px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Directions to the state CEO office';
+            routeBtn.textContent = 'Directions to the state CEO office';
             routeBtn.disabled = false;
             if (status === 'OK') {
               directionsRenderer.setDirections(result);
@@ -775,7 +260,7 @@
               document.getElementById('google-map').classList.add('active');
               const dist = result.routes[0].legs[0].distance.text;
               const dur = result.routes[0].legs[0].duration.text;
-              geoStatus.textContent = '📍 ' + dist + ' away · ~' + dur + ' drive';
+              geoStatus.textContent = dist + ' away · ~' + dur + ' drive';
               dropCustomMarker(result.routes[0].legs[0].end_location);
               document.getElementById('google-map').scrollIntoView({ behavior: 'smooth' });
             } else {
@@ -784,7 +269,7 @@
           }
         );
       }, () => {
-        routeBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" style="margin-right:8px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Directions to the state CEO office';
+        routeBtn.textContent = 'Directions to the state CEO office';
         routeBtn.disabled = false;
         geoStatus.textContent = 'Location access denied.';
       });
@@ -808,11 +293,10 @@
         document.head.appendChild(script);
       } catch (e) {
         console.warn('Maps API key not available:', e.message);
-        document.getElementById('geo-status').textContent = 'Map routing unavailable in local dev.';
+        document.getElementById('geo-status').textContent = 'Directions are unavailable right now.';
       }
     })();
   </script>
   <script src="translate.js"></script>
 </body>
-
 </html>

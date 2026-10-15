@@ -1,1321 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="VoteReady checklist — 8 ECI-verified steps to prepare for polling day in India.">
-    <title>Am I Ready to Vote? — VoteReady Checklist</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@700&display=swap"
-        rel="stylesheet">
-    <style>
-        :root {
-            --bg-base: transparent;
-            --bg-deeper: transparent;
-            --surface-1: rgba(255, 255, 255, 0.035);
-            --surface-2: rgba(255, 255, 255, 0.06);
-            --border-glass: rgba(255, 255, 255, 0.09);
-            --border-strong: rgba(255, 255, 255, 0.18);
-
-            --text-hi: #F5F5FB;
-            --text-mid: #B5B5CC;
-            --text-lo: #6B6B82;
-
-            --accent-violet: #8E5CFF;
-            --accent-pink: #FF5C9C;
-            --accent-blue: #4F8AFF;
-            --accent-cyan: #5BC0FF;
-            --accent-coral: #FF8B5A;
-            --accent-amber: #FFB75E;
-            --success: #34E0A1;
-
-            --grad-hero: linear-gradient(110deg, #C8A6FF 0%, #FF6FB5 38%, #FF8B5A 72%, #FFC371 100%);
-            --grad-cta: linear-gradient(120deg, #6E58FF 0%, #9D5CFF 45%, #FF6FB5 100%);
-
-            --grad-eligibility: linear-gradient(135deg, #4F8AFF, #5BC0FF);
-            --grad-registration: linear-gradient(135deg, #FF5C9C, #FF8AC2);
-            --grad-pollingday: linear-gradient(135deg, #FF8B3D, #FFB75E);
-            --grad-documents: linear-gradient(135deg, #8E5CFF, #B57BFF);
-
-            --glow-violet: 0 0 36px -6px rgba(142, 92, 255, 0.55);
-            --glow-pink: 0 0 36px -6px rgba(255, 92, 156, 0.55);
-            --glow-blue: 0 0 36px -6px rgba(79, 138, 255, 0.55);
-            --glow-success: 0 0 28px -6px rgba(52, 224, 161, 0.6);
-            --shadow-card: 0 10px 28px rgba(0, 0, 0, 0.40);
-            --shadow-lift: 0 22px 56px rgba(0, 0, 0, 0.55);
-
-            --blur-card: blur(20px) saturate(140%);
-
-            --font-display: 'Space Grotesk', system-ui, sans-serif;
-            --font-body: 'Inter', system-ui, sans-serif;
-
-            --s-1: 4px;
-            --s-2: 8px;
-            --s-3: 12px;
-            --s-4: 16px;
-            --s-5: 24px;
-            --s-6: 32px;
-            --s-7: 48px;
-            --s-8: 72px;
-
-            --r-sm: 8px;
-            --r-md: 14px;
-            --r-lg: 22px;
-            --r-xl: 28px;
-            --r-pill: 999px;
-
-            --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-            --dur-fast: 160ms;
-            --dur-med: 300ms;
-            --dur-slow: 600ms;
-        }
-
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            margin: 0;
-            min-height: 100vh;
-            background: var(--bg-base);
-            color: var(--text-hi);
-            font-family: var(--font-body);
-            font-weight: 300;
-            line-height: 1.8;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-        }
-
-        :focus-visible {
-            outline: 2px solid #FFFFFF;
-            outline-offset: 3px;
-            box-shadow: 0 0 0 4px rgba(142, 92, 255, 0.45);
-            border-radius: var(--r-sm);
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.001ms !important;
-                transition-duration: 0.001ms !important;
-            }
-        }
-
-        .svg-sprite {
-            position: absolute;
-            width: 0;
-            height: 0;
-            overflow: hidden;
-        }
-
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-
-        /* Ambient Background matching main page */
-        .ambient-bg {
-            position: fixed;
-            inset: 0;
-            z-index: -1;
-            overflow: hidden;
-            pointer-events: none;
-            background: #0d0d12;
-        }
-
-        .ambient-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            mix-blend-mode: screen;
-        }
-
-        .orb-1 {
-            top: -10%;
-            left: -10%;
-            width: 40vw;
-            height: 40vw;
-            background: rgba(147, 51, 234, 0.3);
-        }
-
-        .orb-2 {
-            top: 10%;
-            right: -5%;
-            width: 35vw;
-            height: 35vw;
-            background: rgba(37, 99, 235, 0.2);
-        }
-
-        .orb-3 {
-            bottom: -10%;
-            left: 20%;
-            width: 40vw;
-            height: 40vw;
-            background: rgba(219, 39, 119, 0.2);
-        }
-
-        .orb-4 {
-            top: 60%;
-            right: 10%;
-            width: 35vw;
-            height: 35vw;
-            background: rgba(13, 148, 136, 0.2);
-        }
-
-        .noise-bg {
-            position: absolute;
-            inset: 0;
-            opacity: 0.04;
-            mix-blend-mode: overlay;
-            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noise)"/%3E%3C/svg%3E');
-        }
-
-        /* Page layout */
-        .page {
-            max-width: 820px;
-            margin: 0 auto;
-            padding: var(--s-6) var(--s-5) var(--s-7);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Top nav */
-        .top-nav {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: var(--s-7);
-            animation: fade-down 500ms var(--ease-out) both;
-        }
-
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 9px 16px;
-            border-radius: var(--r-pill);
-            border: 1px solid var(--border-glass);
-            background: var(--surface-1);
-            color: var(--text-mid);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color var(--dur-med) var(--ease-out),
-                border-color var(--dur-med) var(--ease-out),
-                background var(--dur-med) var(--ease-out),
-                transform var(--dur-med) var(--ease-out);
-        }
-
-        .back-link svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        .back-link:hover {
-            color: var(--text-hi);
-            border-color: var(--border-strong);
-            background: var(--surface-2);
-            transform: translateX(-2px);
-        }
-
-        .brand {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-family: var(--font-display);
-            font-weight: 700;
-            font-size: 0.95rem;
-            color: var(--text-hi);
-            text-decoration: none;
-        }
-
-        .brand-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--grad-cta);
-            box-shadow: var(--glow-violet);
-        }
-
-        /* Page header */
-        .page-head {
-            margin-bottom: var(--s-6);
-        }
-
-        .page-title {
-            font-family: var(--font-display);
-            font-weight: 700;
-            font-size: clamp(2.2rem, 5.5vw, 3.4rem);
-            line-height: 1.04;
-            letter-spacing: -0.04em;
-            margin: 0 0 var(--s-3);
-            background: var(--grad-hero);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: fade-up 600ms 80ms var(--ease-out) both;
-        }
-
-        .page-sub {
-            color: var(--text-mid);
-            font-size: 1.05rem;
-            line-height: 1.55;
-            margin: 0;
-            max-width: 56ch;
-            animation: fade-up 600ms 160ms var(--ease-out) both;
-        }
-
-        /* Sticky progress rail */
-        .progress-rail {
-            position: sticky;
-            top: 0;
-            z-index: 5;
-            margin: 0 calc(var(--s-5) * -1) var(--s-6);
-            padding: var(--s-3) var(--s-5);
-            background: rgba(7, 7, 26, 0.78);
-            backdrop-filter: var(--blur-card);
-            -webkit-backdrop-filter: var(--blur-card);
-            border-bottom: 1px solid var(--border-glass);
-            display: flex;
-            align-items: center;
-            gap: var(--s-4);
-            animation: fade-in 500ms 240ms var(--ease-out) both;
-        }
-
-        .progress-track {
-            flex: 1;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.06);
-            border-radius: var(--r-pill);
-            overflow: hidden;
-            border: 1px solid var(--border-glass);
-        }
-
-        .progress-fill {
-            height: 100%;
-            width: var(--pct, 0%);
-            background: var(--grad-cta);
-            border-radius: var(--r-pill);
-            transition: width 600ms var(--ease-out);
-            box-shadow: 0 0 16px rgba(157, 92, 255, 0.5);
-        }
-
-        .progress-text {
-            font-size: 0.88rem;
-            font-weight: 500;
-            color: var(--text-mid);
-            font-variant-numeric: tabular-nums;
-            white-space: nowrap;
-        }
-
-        .progress-text strong {
-            color: var(--text-hi);
-            font-weight: 600;
-        }
-
-        /* Card list */
-        .card-list {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            gap: var(--s-4);
-        }
-
-        /* Checklist card */
-        .cl-card {
-            position: relative;
-            background: var(--surface-1);
-            backdrop-filter: var(--blur-card);
-            -webkit-backdrop-filter: var(--blur-card);
-            border: 1px solid var(--border-glass);
-            border-radius: var(--r-lg);
-            overflow: hidden;
-            transition: border-color var(--dur-med) var(--ease-out),
-                box-shadow var(--dur-med) var(--ease-out),
-                background var(--dur-med) var(--ease-out),
-                transform var(--dur-med) var(--ease-out);
-            /* Initial state for wizard GSAP animation */
-            opacity: 0;
-            display: none;
-        }
-
-        .cl-card:hover {
-            border-color: var(--border-strong);
-            box-shadow: var(--shadow-card);
-            transform: translateY(-3px);
-        }
-
-        .cl-card[data-completed="true"] {
-            box-shadow: var(--glow-success);
-            border-color: rgba(52, 224, 161, 0.32);
-        }
-
-        .cl-head {
-            display: grid;
-            grid-template-columns: auto 1fr auto;
-            align-items: center;
-            gap: var(--s-3);
-            padding: var(--s-4) var(--s-5);
-        }
-
-        /* Custom checkbox */
-        .cl-check {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-
-        .cl-input {
-            position: absolute;
-            opacity: 0;
-            inset: -6px;
-            width: calc(100% + 12px);
-            height: calc(100% + 12px);
-            cursor: pointer;
-            margin: 0;
-        }
-
-        .cl-box {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 24px;
-            height: 24px;
-            border: 1.5px solid var(--border-strong);
-            border-radius: 7px;
-            background: var(--surface-2);
-            transition: background var(--dur-med) var(--ease-out),
-                border-color var(--dur-med) var(--ease-out),
-                box-shadow var(--dur-med) var(--ease-out);
-        }
-
-        .cl-box svg {
-            width: 14px;
-            height: 14px;
-            color: #07071A;
-            opacity: 0;
-            transform: scale(0.5);
-            transition: opacity 200ms var(--ease-out),
-                transform 280ms var(--ease-spring);
-        }
-
-        .cl-input:checked+.cl-box {
-            background: var(--success);
-            border-color: var(--success);
-            box-shadow: 0 0 14px rgba(52, 224, 161, 0.55);
-        }
-
-        .cl-input:checked+.cl-box svg {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .cl-input:focus-visible+.cl-box {
-            outline: 2px solid #FFFFFF;
-            outline-offset: 3px;
-            box-shadow: 0 0 0 4px rgba(142, 92, 255, 0.45);
-        }
-
-        /* Toggle button (title + chevron) */
-        .cl-toggle {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: var(--s-3);
-            background: transparent;
-            border: 0;
-            padding: 0;
-            color: var(--text-hi);
-            font: inherit;
-            text-align: left;
-            cursor: pointer;
-            min-width: 0;
-        }
-
-        .cl-title {
-            position: relative;
-            display: inline-block;
-            font-size: 1.02rem;
-            font-weight: 600;
-            line-height: 1.4;
-            color: var(--text-hi);
-            transition: color var(--dur-med) var(--ease-out);
-        }
-
-        .cl-title::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            width: 0;
-            height: 1.5px;
-            background: var(--text-mid);
-            transition: width 320ms var(--ease-out);
-            pointer-events: none;
-        }
-
-        .cl-card[data-completed="true"] .cl-title {
-            color: var(--text-mid);
-        }
-
-        .cl-card[data-completed="true"] .cl-title::after {
-            width: 100%;
-        }
-
-        .cl-chev {
-            width: 18px;
-            height: 18px;
-            color: var(--text-lo);
-            flex-shrink: 0;
-            transition: transform var(--dur-med) var(--ease-out),
-                color var(--dur-med) var(--ease-out);
-        }
-
-        .cl-card[data-expanded="true"] .cl-chev {
-            transform: rotate(180deg);
-            color: var(--text-mid);
-        }
-
-        /* Category tag */
-        .cl-tag {
-            display: inline-flex;
-            align-items: center;
-            padding: 5px 11px;
-            border-radius: var(--r-pill);
-            font-size: 0.68rem;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: #FFFFFF;
-            white-space: nowrap;
-            background: var(--surface-2);
-            border: 1px solid var(--border-glass);
-        }
-
-        .cl-card[data-category="eligibility"] .cl-tag {
-            background: var(--grad-eligibility);
-            border-color: transparent;
-        }
-
-        .cl-card[data-category="registration"] .cl-tag {
-            background: var(--grad-registration);
-            border-color: transparent;
-        }
-
-        .cl-card[data-category="pollingday"] .cl-tag {
-            background: var(--grad-pollingday);
-            border-color: transparent;
-        }
-
-        .cl-card[data-category="documents"] .cl-tag {
-            background: var(--grad-documents);
-            border-color: transparent;
-        }
-
-        /* Body (animated expand via grid-template-rows trick) */
-        .cl-body {
-            display: grid;
-            grid-template-rows: 0fr;
-            transition: grid-template-rows 380ms var(--ease-out);
-        }
-
-        .cl-body-inner {
-            min-height: 0;
-            overflow: hidden;
-        }
-
-        .cl-card[data-expanded="true"] .cl-body {
-            grid-template-rows: 1fr;
-        }
-
-        .cl-body-content {
-            padding: 0 var(--s-5) var(--s-5);
-            border-top: 1px solid var(--border-glass);
-            margin-top: 0;
-            padding-top: var(--s-4);
-        }
-
-        .cl-desc {
-            color: var(--text-mid);
-            line-height: 1.6;
-            font-size: 0.96rem;
-            margin: 0 0 var(--s-4);
-        }
-
-        .cl-steps {
-            margin: 0 0 var(--s-5);
-            padding-left: var(--s-5);
-            color: var(--text-mid);
-            font-size: 0.93rem;
-            line-height: 1.6;
-            counter-reset: step;
-            list-style: none;
-        }
-
-        .cl-steps li {
-            position: relative;
-            padding-left: var(--s-5);
-            margin-bottom: var(--s-3);
-            counter-increment: step;
-        }
-
-        .cl-steps li::before {
-            content: counter(step);
-            position: absolute;
-            left: -8px;
-            top: 0;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            background: var(--surface-2);
-            border: 1px solid var(--border-glass);
-            color: var(--text-mid);
-            font-size: 0.72rem;
-            font-weight: 600;
-            font-family: var(--font-display);
-            font-variant-numeric: tabular-nums;
-        }
-
-        .cl-actions {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: var(--s-3);
-        }
-
-        .cl-action {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 18px;
-            border-radius: var(--r-pill);
-            background: var(--grad-cta);
-            color: #FFFFFF;
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-decoration: none;
-            box-shadow: 0 6px 20px -4px rgba(157, 92, 255, 0.45);
-            transition: transform var(--dur-med) var(--ease-out),
-                box-shadow var(--dur-med) var(--ease-out),
-                filter var(--dur-med) var(--ease-out);
-        }
-
-        .cl-action svg {
-            width: 15px;
-            height: 15px;
-        }
-
-        .cl-action:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 28px -4px rgba(157, 92, 255, 0.6);
-            filter: brightness(1.08);
-        }
-
-        .cl-action:active {
-            transform: translateY(0) scale(0.98);
-        }
-
-        .cl-source {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 9px 14px;
-            border-radius: var(--r-pill);
-            border: 1px solid var(--border-glass);
-            background: var(--surface-1);
-            color: var(--text-mid);
-            font-size: 0.85rem;
-            font-weight: 500;
-            text-decoration: none;
-            transition: color var(--dur-med) var(--ease-out),
-                border-color var(--dur-med) var(--ease-out),
-                background var(--dur-med) var(--ease-out);
-        }
-
-        .cl-source svg {
-            width: 13px;
-            height: 13px;
-        }
-
-        .cl-source:hover {
-            color: var(--text-hi);
-            border-color: var(--border-strong);
-            background: var(--surface-2);
-        }
-
-        /* Loading / error states */
-        .state {
-            text-align: center;
-            padding: var(--s-7) var(--s-5);
-            color: var(--text-mid);
-            border: 1px solid var(--border-glass);
-            border-radius: var(--r-lg);
-            background: var(--surface-1);
-        }
-
-        .state--error {
-            color: #FFB7B7;
-            border-color: rgba(255, 92, 92, 0.3);
-            background: rgba(255, 92, 92, 0.05);
-        }
-
-        /* Footer */
-        .foot {
-            margin-top: var(--s-8);
-            padding-top: var(--s-5);
-            border-top: 1px solid var(--border-glass);
-            color: var(--text-lo);
-            font-size: 0.83rem;
-            text-align: center;
-        }
-
-        .foot a {
-            color: var(--text-mid);
-            text-decoration: none;
-            transition: color var(--dur-med) var(--ease-out);
-        }
-
-        .foot a:hover {
-            color: var(--text-hi);
-        }
-
-        /* Animations */
-        @keyframes fade-up {
-            from {
-                opacity: 0;
-                transform: translateY(14px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fade-down {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fade-in {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        /* Responsive */
-        @media (max-width: 720px) {
-            .page {
-                padding: var(--s-5) var(--s-4) var(--s-6);
-            }
-
-            .page-head {
-                margin-bottom: var(--s-5);
-            }
-
-            .progress-rail {
-                margin-left: calc(var(--s-4) * -1);
-                margin-right: calc(var(--s-4) * -1);
-                padding-left: var(--s-4);
-                padding-right: var(--s-4);
-            }
-
-            .cl-head {
-                padding: var(--s-3) var(--s-4);
-                gap: var(--s-3);
-            }
-
-            .cl-body-content {
-                padding: var(--s-4) var(--s-4) var(--s-4);
-            }
-
-            .cl-tag {
-                font-size: 0.62rem;
-                padding: 4px 9px;
-                letter-spacing: 0.2em;
-            }
-
-            .cl-title {
-                font-size: 0.96rem;
-            }
-
-            .orb {
-                opacity: 0.22;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .cl-actions {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .cl-action,
-            .cl-source {
-                justify-content: center;
-            }
-
-            .epic-form {
-                flex-direction: column;
-            }
-        }
-
-        /* EPIC Checker */
-        .epic-checker {
-            background: var(--surface-1);
-            backdrop-filter: var(--blur-card);
-            -webkit-backdrop-filter: var(--blur-card);
-            border: 1px solid var(--border-glass);
-            border-radius: var(--r-xl);
-            padding: var(--s-6);
-            margin-bottom: var(--s-7);
-            position: relative;
-            overflow: hidden;
-            animation: fade-up 600ms 200ms var(--ease-out) both;
-        }
-
-        .epic-checker::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(142, 92, 255, 0.05), transparent);
-            pointer-events: none;
-        }
-
-        .epic-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: var(--s-2);
-        }
-
-        .epic-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--accent-violet);
-            box-shadow: 0 0 8px var(--accent-violet);
-        }
-
-        .epic-title {
-            font-family: var(--font-display);
-            font-weight: 700;
-            font-size: 1.4rem;
-            color: var(--text-hi);
-            margin: 0;
-        }
-
-        .epic-subtitle {
-            color: var(--text-mid);
-            font-size: 0.95rem;
-            margin: 0 0 var(--s-5);
-            line-height: 1.5;
-        }
-
-        .epic-form {
-            display: flex;
-            gap: var(--s-3);
-            flex-wrap: wrap;
-        }
-
-        .epic-input {
-            flex: 1;
-            min-width: 200px;
-            background: rgba(10, 10, 15, 0.6);
-            border: 1px solid var(--border-glass);
-            border-radius: var(--r-md);
-            padding: 12px 16px;
-            color: var(--text-hi);
-            font-size: 1rem;
-            font-family: var(--font-body);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: border-color var(--dur-fast), box-shadow var(--dur-fast);
-        }
-
-        .epic-input::placeholder {
-            text-transform: none;
-            color: var(--text-lo);
-        }
-
-        .epic-input:focus {
-            outline: none;
-            border-color: rgba(142, 92, 255, 0.5);
-            box-shadow: 0 0 15px rgba(142, 92, 255, 0.15);
-        }
-
-        .epic-btn {
-            background: var(--grad-cta);
-            border: none;
-            border-radius: var(--r-md);
-            padding: 12px 24px;
-            color: white;
-            font-weight: 600;
-            font-family: var(--font-body);
-            cursor: pointer;
-            box-shadow: 0 4px 20px rgba(142, 92, 255, 0.25);
-            transition: transform var(--dur-fast), box-shadow var(--dur-fast);
-            white-space: nowrap;
-        }
-
-        .epic-btn:hover {
-            box-shadow: 0 4px 25px rgba(142, 92, 255, 0.4);
-            transform: translateY(-2px);
-        }
-
-        .epic-btn:disabled {
-            opacity: 0.7;
-            pointer-events: none;
-        }
-
-        .spinner {
-            width: 20px;
-            height: 20px;
-            border: 2px solid rgba(142, 92, 255, 0.25);
-            border-top-color: var(--accent-violet);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        .epic-result {
-            margin-top: var(--s-5);
-            background: var(--surface-2);
-            border: 1px solid var(--border-glass);
-            border-radius: var(--r-md);
-            padding: var(--s-5);
-            animation: fade-up 400ms var(--ease-out) both;
-        }
-
-        .epic-result-flex {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-
-        .epic-status-badge {
-            display: inline-block;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--accent-violet);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 4px;
-        }
-
-        .epic-name {
-            font-family: var(--font-display);
-            font-size: 1.2rem;
-            color: var(--text-hi);
-            margin: 0 0 4px;
-        }
-
-        .epic-meta {
-            color: var(--text-mid);
-            font-size: 0.9rem;
-            margin: 0 0 var(--s-4);
-        }
-
-        .epic-meta strong {
-            color: var(--text-hi);
-            font-weight: 500;
-        }
-
-        .epic-booth {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            padding: 12px;
-            display: inline-block;
-        }
-
-        .epic-booth-label {
-            display: block;
-            font-size: 0.75rem;
-            color: var(--text-lo);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 4px;
-        }
-
-        .epic-booth-value {
-            display: block;
-            color: var(--text-hi);
-            font-size: 0.95rem;
-        }
-
-        .epic-success-icon {
-            width: 32px;
-            height: 32px;
-            color: var(--success);
-            opacity: 0.8;
-        }
-
-        .epic-disclaimer {
-            text-align: center;
-            font-size: 0.7rem;
-            color: var(--text-lo);
-            margin: var(--s-4) 0 0;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600&family=Noto+Serif+Devanagari:wght@700&family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/site.css" rel="stylesheet">
+  <script>
+    (function () {
+      try {
+        var dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-bs-theme', dark ? 'dark' : 'light');
+      } catch (_) { }
+    })();
+  </script>
+  <meta name="description" content="An 8-step checklist for first-time Indian voters, based on Election Commission of India sources.">
+  <title>Am I ready to vote? — VoteReady</title>
 </head>
-
 <body>
-    <svg class="svg-sprite" aria-hidden="true">
-        <defs>
-            <symbol id="i-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M19 12H5" />
-                <path d="M11 18l-6-6 6-6" />
-            </symbol>
-            <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12.5l4.5 4.5L19 7" />
-            </symbol>
-            <symbol id="i-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M6 9l6 6 6-6" />
-            </symbol>
-            <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14" />
-                <path d="M13 6l6 6-6 6" />
-            </symbol>
-            <symbol id="i-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14 4h6v6" />
-                <path d="M20 4l-9 9" />
-                <path d="M19 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V6a1 1 0 011-1h5" />
-            </symbol>
-        </defs>
-    </svg>
-
-    <div class="ambient-bg" aria-hidden="true">
-        <div class="ambient-orb orb-1"></div>
-        <div class="ambient-orb orb-2"></div>
-        <div class="ambient-orb orb-3"></div>
-        <div class="ambient-orb orb-4"></div>
-        <div class="noise-bg"></div>
-    </div>
-
-    <div class="page">
-        <nav class="top-nav">
-            <a href="index.html" class="back-link"><svg>
-                    <use href="#i-back" />
-                </svg> Back to home</a>
-            <a href="index.html" class="brand"><span class="brand-dot"></span>VoteReady</a>
-        </nav>
-
-        <header class="page-head">
-            <h1 class="page-title">Am I Ready to Vote?</h1>
-            <p class="page-sub">Follow these steps to ensure you're fully prepared for polling day. Each item is
-                based on Election Commission of India sources.</p>
-        </header>
-
-        <div class="epic-checker">
-            <div class="epic-header">
-                <span class="epic-dot"></span>
-                <h2 class="epic-title">EPIC Status Checker (demo)</h2>
-            </div>
-            <p class="epic-subtitle">Try the demo with a sample EPIC number: VOTE202601 or VOTE202602.
-            </p>
-
-            <div class="epic-form">
-                <input type="text" id="epic-input" class="epic-input" placeholder="Enter EPIC No. (e.g., VOTE202601)"
-                    autocomplete="off">
-                <button id="epic-btn" class="epic-btn">Verify Status</button>
-            </div>
-
-            <div id="epic-result" class="epic-result" style="display: none;" role="status" aria-live="polite">
-                <div class="epic-result-flex">
-                    <div class="epic-result-info">
-                        <span class="epic-status-badge" id="epic-status"></span>
-                        <h3 class="epic-name" id="epic-name"></h3>
-                        <p class="epic-meta" id="epic-meta"></p>
-
-                        <div class="epic-booth" id="epic-booth">
-                            <span class="epic-booth-label" id="epic-booth-label"></span>
-                            <span class="epic-booth-value" id="epic-station"></span>
-                        </div>
-                    </div>
-                    <svg class="epic-success-icon" id="epic-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2" stroke-linecap="round" aria-hidden="true">
-                        <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
-                        <path d="M22 4L12 14.01l-3-3" />
-                    </svg>
-                </div>
-            </div>
-
-            <p class="epic-disclaimer">⚠ Demo only — looks up two sample records stored in this project (data/voters.json), not ECI records. Check your real status at <a
-                    href="https://electoralsearch.eci.gov.in" target="_blank" rel="noopener"
-                    style="color:var(--accent-violet);text-decoration:underline;">electoralsearch.eci.gov.in</a></p>
-        </div>
-
-        <div class="progress-rail" role="status" aria-live="polite">
-            <div class="progress-track" aria-hidden="true">
-                <div class="progress-fill" id="progress-fill"></div>
-            </div>
-            <span class="progress-text" id="progress-text"><strong>0</strong> of <strong>8</strong> complete</span>
-        </div>
-
-        <ul class="card-list" id="checklist-container">
-            <li class="state">Loading checklist…</li>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <nav class="navbar navbar-expand-md site-nav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><img src="assets/logo.svg" alt="" width="30" height="30">VoteReady</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto align-items-md-center gap-md-1">
+          <li class="nav-item"><a class="nav-link" href="checklist.html" aria-current="page">Checklist</a></li>
+          <li class="nav-item"><a class="nav-link" href="qa.html">Ask</a></li>
+          <li class="nav-item"><a class="nav-link" href="map.html">State map</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://voters.eci.gov.in/" target="_blank" rel="noopener">Register ↗</a></li>
+          <li class="nav-item"><button type="button" id="lang-toggle" class="btn btn-outline-primary lang-toggle" aria-label="Switch language / भाषा बदलें">अ/A</button></li>
         </ul>
+      </div>
+    </div>
+  </nav>
 
-        <footer class="foot">
-            <p>Sources verified against the Election Commission of India · <a href="index.html">Back to home</a></p>
-        </footer>
+  <main id="main" class="container pb-5 narrow">
+    <header class="page-head">
+      <h1>Am I ready to vote?</h1>
+      <p>Follow these steps to be prepared for polling day. Each item is based on Election Commission of India sources.</p>
+    </header>
+
+    <section class="vr-card epic-checker" aria-labelledby="epic-h">
+      <h2 id="epic-h">EPIC Status Checker (demo)</h2>
+      <p class="mb-3 text-body-secondary">Try the demo with a sample EPIC number: VOTE202601 or VOTE202602.</p>
+      <div class="d-flex flex-column flex-sm-row gap-2">
+        <label for="epic-input" class="visually-hidden">EPIC number</label>
+        <input type="text" id="epic-input" class="form-control" placeholder="Enter EPIC No. (e.g., VOTE202601)" autocomplete="off">
+        <button id="epic-btn" class="btn btn-primary" type="button">Verify Status</button>
+      </div>
+
+      <div id="epic-result" class="epic-result" style="display: none;" role="status" aria-live="polite">
+        <span class="epic-status-badge" id="epic-status"></span>
+        <h3 class="epic-name" id="epic-name"></h3>
+        <p class="epic-meta" id="epic-meta"></p>
+        <div class="epic-booth" id="epic-booth">
+          <span class="epic-booth-label" id="epic-booth-label"></span>
+          <span class="epic-booth-value" id="epic-station"></span>
+        </div>
+      </div>
+
+      <p class="epic-disclaimer">Demo only — looks up two sample records stored in this project (data/voters.json), not ECI records. Check your real status at <a href="https://electoralsearch.eci.gov.in" target="_blank" rel="noopener">electoralsearch.eci.gov.in</a></p>
+    </section>
+
+    <div class="my-3" role="status" aria-live="polite">
+      <div class="progress" aria-hidden="true"><div class="progress-bar" id="progress-fill" style="width:0%"></div></div>
+      <p class="mt-2 mb-0" id="progress-text"><strong>0</strong> of <strong>8</strong> complete</p>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script>
-        (function () {
-            const STORAGE_KEY = 'voteready_checklist_v1';
-            const container = document.getElementById('checklist-container');
-            const progressFill = document.getElementById('progress-fill');
-            const progressText = document.getElementById('progress-text');
+    <ul class="card-list" id="checklist-container">
+      <li class="state">Loading checklist…</li>
+    </ul>
 
-            let completed = new Set();
-            try {
-                completed = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'));
-            } catch (_) { completed = new Set(); }
+    <p class="mt-4 text-body-secondary">Sources checked against the Election Commission of India · <a href="index.html">Back to home</a></p>
+  </main>
 
-            let total = 8;
-            let currentItems = [];
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    (function () {
+      const STORAGE_KEY = 'voteready_checklist_v1';
+      const container = document.getElementById('checklist-container');
+      const progressFill = document.getElementById('progress-fill');
+      const progressText = document.getElementById('progress-text');
 
-            function persist() {
-                try {
-                    localStorage.setItem(STORAGE_KEY, JSON.stringify(Array.from(completed)));
-                } catch (_) { }
-            }
+      let completed = new Set();
+      try { completed = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')); } catch (_) { completed = new Set(); }
 
-            function updateProgress() {
-                const done = completed.size;
-                const pct = total === 0 ? 0 : (done / total) * 100;
-                progressFill.style.setProperty('--pct', pct + '%');
-                progressText.innerHTML = `<strong>${done}</strong> of <strong>${total}</strong> complete`;
-            }
+      let total = 8;
+      let currentItems = [];
 
-            function escapeHtml(str) {
-                return String(str).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[m]);
-            }
+      function persist() {
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(Array.from(completed))); } catch (_) { }
+      }
 
-            function renderCard(item, index) {
-                const isDone = completed.has(item.id);
-                const li = document.createElement('li');
-                li.className = 'cl-card motion-card';
-                li.dataset.id = item.id;
-                li.dataset.index = index;
-                li.dataset.category = item.category;
-                li.dataset.completed = isDone ? 'true' : 'false';
-                li.dataset.expanded = 'false';
+      function updateProgress() {
+        const done = completed.size;
+        const pct = total === 0 ? 0 : (done / total) * 100;
+        progressFill.style.width = pct + '%';
+        progressText.innerHTML = `<strong>${done}</strong> of <strong>${total}</strong> complete`;
+      }
 
-                const stepsHtml = item.steps.map(s => `<li>${escapeHtml(s)}</li>`).join('');
-                const bodyId = 'body-' + item.id;
-                const inputId = 'ck-' + item.id;
+      function escapeHtml(str) {
+        return String(str).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[m]);
+      }
 
-                li.innerHTML = `
-                    <div class="cl-head">
-                        <label class="cl-check" for="${inputId}">
-                            <input type="checkbox" class="cl-input" id="${inputId}" ${isDone ? 'checked' : ''} aria-label="Mark complete">
-                            <span class="cl-box" aria-hidden="true"><svg><use href="#i-check"/></svg></span>
-                        </label>
-                        <button type="button" class="cl-toggle" aria-expanded="false" aria-controls="${bodyId}">
-                            <span class="cl-title">${escapeHtml(item.title)}</span>
-                            <svg class="cl-chev" aria-hidden="true"><use href="#i-chev"/></svg>
-                        </button>
-                        <span class="cl-tag">${escapeHtml(item.category_label || item.category)}</span>
-                    </div>
-                    <div class="cl-body" id="${bodyId}">
-                        <div class="cl-body-inner">
-                            <div class="cl-body-content">
-                                <p class="cl-desc">${escapeHtml(item.description)}</p>
-                                <ol class="cl-steps">${stepsHtml}</ol>
-                                <div class="cl-actions">
-                                    <a class="cl-action" href="${escapeHtml(item.officialLink)}" target="_blank" rel="noopener">Take action <svg><use href="#i-arrow"/></svg></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
+      function renderCard(item, index) {
+        const isDone = completed.has(item.id);
+        const li = document.createElement('li');
+        li.className = 'cl-card';
+        li.dataset.id = item.id;
+        li.dataset.index = index;
+        li.dataset.category = item.category;
+        li.dataset.completed = isDone ? 'true' : 'false';
+        li.dataset.expanded = 'false';
 
-                const input = li.querySelector('.cl-input');
-                const toggleBtn = li.querySelector('.cl-toggle');
+        const stepsHtml = item.steps.map(s => `<li>${escapeHtml(s)}</li>`).join('');
+        const bodyId = 'body-' + item.id;
+        const inputId = 'ck-' + item.id;
 
-                input.addEventListener('change', () => {
-                    if (input.checked) completed.add(item.id);
-                    else completed.delete(item.id);
-                    li.dataset.completed = input.checked ? 'true' : 'false';
-                    persist();
-                    updateProgress();
-                    revealNextSteps();
-                });
+        li.innerHTML = `
+          <div class="cl-head">
+            <label class="cl-check" for="${inputId}">
+              <input type="checkbox" class="cl-input" id="${inputId}" ${isDone ? 'checked' : ''} aria-label="Mark complete: ${escapeHtml(item.title)}">
+            </label>
+            <button type="button" class="cl-toggle" aria-expanded="false" aria-controls="${bodyId}">
+              <span class="cl-title">${escapeHtml(item.title)}</span>
+              <svg class="cl-chev" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <span class="cl-tag">${escapeHtml(item.category_label || item.category)}</span>
+          </div>
+          <div class="cl-body" id="${bodyId}">
+            <p class="cl-desc">${escapeHtml(item.description)}</p>
+            <ol class="cl-steps">${stepsHtml}</ol>
+            <a class="btn btn-outline-primary" href="${escapeHtml(item.officialLink)}" target="_blank" rel="noopener">Take action ↗</a>
+          </div>`;
 
-                toggleBtn.addEventListener('click', () => {
-                    const expanded = li.dataset.expanded === 'true';
-                    li.dataset.expanded = expanded ? 'false' : 'true';
-                    toggleBtn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-                });
+        const input = li.querySelector('.cl-input');
+        const toggleBtn = li.querySelector('.cl-toggle');
 
-                return li;
-            }
+        input.addEventListener('change', () => {
+          if (input.checked) completed.add(item.id); else completed.delete(item.id);
+          li.dataset.completed = input.checked ? 'true' : 'false';
+          persist();
+          updateProgress();
+          revealNextSteps();
+        });
 
-            function revealNextSteps() {
-                // Show every completed card + the first uncompleted card.
-                // Once a card is visible, never hide it.
-                let foundFirstUncompleted = false;
-                const cards = container.querySelectorAll('.cl-card');
-                cards.forEach((card, idx) => {
-                    const shouldShow = completed.has(currentItems[idx].id) || !foundFirstUncompleted;
-                    if (!completed.has(currentItems[idx].id) && !foundFirstUncompleted) {
-                        foundFirstUncompleted = true;
-                    }
-                    if (shouldShow && card.style.display !== 'block') {
-                        card.style.display = 'block';
-                        if (window.gsap) {
-                            gsap.fromTo(card,
-                                { height: 0, opacity: 0, y: 30 },
-                                { height: "auto", opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }
-                            );
-                        } else {
-                            card.style.opacity = 1;
-                        }
-                    }
-                });
-            }
+        toggleBtn.addEventListener('click', () => {
+          const expanded = li.dataset.expanded === 'true';
+          li.dataset.expanded = expanded ? 'false' : 'true';
+          toggleBtn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+        });
 
-            window.addEventListener('languageChanged', () => {
-                load();
-            });
+        return li;
+      }
 
-            async function load() {
-                try {
-                    const lang = localStorage.getItem('voteready_lang') || 'en';
-                    const file = lang === 'hi' ? './data/checklist_hi.json' : './data/checklist.json';
-                    const res = await fetch(file);
-                    const items = await res.json();
-                    currentItems = items;
-                    total = items.length;
-                    container.innerHTML = '';
-                    items.forEach((item, i) => container.appendChild(renderCard(item, i)));
-                    updateProgress();
-                    revealNextSteps();
+      // Show every completed card plus the first uncompleted one. Once visible, a card stays visible.
+      function revealNextSteps() {
+        let foundFirstUncompleted = false;
+        container.querySelectorAll('.cl-card').forEach((card, idx) => {
+          const isDone = completed.has(currentItems[idx].id);
+          const shouldShow = isDone || !foundFirstUncompleted;
+          if (!isDone && !foundFirstUncompleted) foundFirstUncompleted = true;
+          if (shouldShow && card.style.display !== 'block') {
+            card.style.display = 'block';
+            card.classList.add('cl-fade');
+          }
+        });
+      }
 
-                    // Hover animation handled by CSS .motion-card:hover (no JS dependency needed)
-                } catch (err) {
-                    container.innerHTML = `<li class="state state--error">Error: ${escapeHtml(err.message)}</li>`;
-                }
-            }
+      window.addEventListener('languageChanged', () => { load(); });
 
-            // EPIC demo lookup — reads data/voters.json only. No timers, no generated values.
-            const VOTER_KEY = 'voteready_voter';
-            const epicBtn = document.getElementById('epic-btn');
-            const epicInput = document.getElementById('epic-input');
-            const epicResult = document.getElementById('epic-result');
-            const $ = id => document.getElementById(id);
+      async function load() {
+        try {
+          const lang = localStorage.getItem('voteready_lang') || 'en';
+          const file = lang === 'hi' ? './data/checklist_hi.json' : './data/checklist.json';
+          const res = await fetch(file);
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          const items = await res.json();
+          currentItems = items;
+          total = items.length;
+          container.innerHTML = '';
+          items.forEach((item, i) => container.appendChild(renderCard(item, i)));
+          updateProgress();
+          revealNextSteps();
+        } catch (err) {
+          container.innerHTML = `<li class="state state--error">Error: ${escapeHtml(err.message)}</li>`;
+        }
+      }
 
-            function showVoter(v) {
-                epicResult.style.display = 'block';
-                epicResult.classList.remove('is-miss');
-                $('epic-icon').style.display = '';
-                if (!v) {
-                    $('epic-status').textContent = 'No demo record';
-                    $('epic-name').textContent = 'This number is not in the demo data';
-                    $('epic-meta').textContent = 'Only the two sample EPIC numbers above exist here. For a real lookup use electoralsearch.eci.gov.in.';
-                    $('epic-booth').style.display = 'none';
-                    $('epic-icon').style.display = 'none';
-                    return;
-                }
-                $('epic-status').textContent = 'Status: ' + v.status + ' (demo record)';
-                $('epic-name').textContent = v.name;
-                $('epic-meta').textContent = v.assembly_constituency
-                    ? 'Assembly constituency: ' + v.assembly_constituency
-                    : (v.reason || '');
-                const line = v.polling_station || v.action_required;
-                $('epic-booth').style.display = line ? '' : 'none';
-                $('epic-booth-label').textContent = v.polling_station ? 'Polling Station' : 'Action required';
-                $('epic-station').textContent = line || '';
-            }
+      // EPIC demo lookup — reads data/voters.json only. No timers, no generated values.
+      const VOTER_KEY = 'voteready_voter';
+      const epicBtn = document.getElementById('epic-btn');
+      const epicInput = document.getElementById('epic-input');
+      const epicResult = document.getElementById('epic-result');
+      const $ = id => document.getElementById(id);
 
-            async function lookupVoter() {
-                const val = epicInput.value.trim().toUpperCase();
-                if (!val) return;
-                epicBtn.disabled = true;
-                try {
-                    const res = await fetch('./data/voters.json');
-                    if (!res.ok) throw new Error('HTTP ' + res.status);
-                    const data = await res.json();
-                    const v = (data.test_voters || []).find(x => x.epic_no.toUpperCase() === val) || null;
-                    showVoter(v);
-                    try {
-                        if (v) localStorage.setItem(VOTER_KEY, JSON.stringify(v));
-                        else localStorage.removeItem(VOTER_KEY);
-                    } catch (_) { }
-                } catch (err) {
-                    epicResult.style.display = 'block';
-                    $('epic-status').textContent = 'Could not load demo data';
-                    $('epic-name').textContent = '';
-                    $('epic-meta').textContent = err.message;
-                    $('epic-booth').style.display = 'none';
-                    $('epic-icon').style.display = 'none';
-                } finally {
-                    epicBtn.disabled = false;
-                }
-            }
+      function showVoter(v) {
+        epicResult.style.display = 'block';
+        if (!v) {
+          $('epic-status').textContent = 'No demo record';
+          $('epic-name').textContent = 'This number is not in the demo data';
+          $('epic-meta').textContent = 'Only the two sample EPIC numbers above exist here. For a real lookup use electoralsearch.eci.gov.in.';
+          $('epic-booth').style.display = 'none';
+          return;
+        }
+        $('epic-status').textContent = 'Status: ' + v.status + ' (demo record)';
+        $('epic-name').textContent = v.name;
+        $('epic-meta').textContent = v.assembly_constituency
+          ? 'Assembly constituency: ' + v.assembly_constituency
+          : (v.reason || '');
+        const line = v.polling_station || v.action_required;
+        $('epic-booth').style.display = line ? '' : 'none';
+        $('epic-booth-label').textContent = v.polling_station ? 'Polling Station' : 'Action required';
+        $('epic-station').textContent = line || '';
+      }
 
-            epicBtn.addEventListener('click', lookupVoter);
-            epicInput.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter') lookupVoter();
-            });
+      async function lookupVoter() {
+        const val = epicInput.value.trim().toUpperCase();
+        if (!val) return;
+        epicBtn.disabled = true;
+        try {
+          const res = await fetch('./data/voters.json');
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          const data = await res.json();
+          const v = (data.test_voters || []).find(x => x.epic_no.toUpperCase() === val) || null;
+          showVoter(v);
+          try {
+            if (v) localStorage.setItem(VOTER_KEY, JSON.stringify(v));
+            else localStorage.removeItem(VOTER_KEY);
+          } catch (_) { }
+        } catch (err) {
+          epicResult.style.display = 'block';
+          $('epic-status').textContent = 'Could not load demo data';
+          $('epic-name').textContent = '';
+          $('epic-meta').textContent = err.message;
+          $('epic-booth').style.display = 'none';
+        } finally {
+          epicBtn.disabled = false;
+        }
+      }
 
-            // Restore the last matched demo record, if any.
-            try {
-                const saved = JSON.parse(localStorage.getItem(VOTER_KEY) || 'null');
-                if (saved && saved.epic_no) { epicInput.value = saved.epic_no; showVoter(saved); }
-            } catch (_) { }
+      epicBtn.addEventListener('click', lookupVoter);
+      epicInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') lookupVoter(); });
 
-            updateProgress();
-            load();
-        })();
-    </script>
-    <script src="translate.js"></script>
+      // Restore the last matched demo record, if any.
+      try {
+        const saved = JSON.parse(localStorage.getItem(VOTER_KEY) || 'null');
+        if (saved && saved.epic_no) { epicInput.value = saved.epic_no; showVoter(saved); }
+      } catch (_) { }
+
+      updateProgress();
+      load();
+    })();
+  </script>
+  <script src="translate.js"></script>
 </body>
-
 </html>

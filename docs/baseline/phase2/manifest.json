@@ -1,0 +1,190 @@
+{
+  "base_url": "http://localhost:8765",
+  "captured_at": "2026-10-15T09:16:26+0530",
+  "shots": [
+    {
+      "file": "home-390-en.jpg",
+      "url": "http://localhost:8765/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "lang": "en",
+      "page_errors": [],
+      "http_errors": []
+    },
+    {
+      "file": "checklist-390-en.jpg",
+      "url": "http://localhost:8765/checklist.html",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "lang": "en",
+      "page_errors": [],
+      "http_errors": []
+    },
+    {
+      "file": "qa-390-en.jpg",
+      "url": "http://localhost:8765/qa.html",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "lang": "en",
+      "page_errors": [],
+      "http_errors": []
+    },
+    {
+      "file": "map-390-en.jpg",
+      "url": "http://localhost:8765/map.html",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "lang": "en",
+      "page_errors": [],
+      "http_errors": [
+        "404 http://localhost:8765/api/maps-config"
+      ]
+    },
+    {
+      "file": "home-1440-en.jpg",
+      "url": "http://localhost:8765/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "lang": "en",
+      "page_errors": [],
+      "http_errors": []
+    },
+    {
+      "file": "checklist-1440-en.jpg",
+      "url": "http://localhost:8765/checklist.html",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "lang": "en",
+      "page_errors": [],
+      "http_errors": []
+    },
+    {
+      "file": "qa-1440-en.jpg",
+      "url": "http://localhost:8765/qa.html",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "lang": "en",
+      "page_errors": [],
+      "http_errors": []
+    },
+    {
+      "file": "map-1440-en.jpg",
+      "url": "http://localhost:8765/map.html",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "lang": "en",
+      "page_errors": [],
+      "http_errors": [
+        "404 http://localhost:8765/api/maps-config"
+      ]
+    },
+    {
+      "file": "home-390-hi.jpg",
+      "url": "http://localhost:8765/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "lang": "hi",
+      "page_errors": [],
+      "http_errors": []
+    },
+    {
+      "file": "checklist-390-hi.jpg",
+      "url": "http://localhost:8765/checklist.html",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "lang": "hi",
+      "page_errors": [],
+      "http_errors": []
+    },
+    {
+      "file": "qa-390-hi.jpg",
+      "url": "http://localhost:8765/qa.html",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "lang": "hi",
+      "page_errors": [],
+      "http_errors": []
+    },
+    {
+      "file": "map-390-hi.jpg",
+      "url": "http://localhost:8765/map.html",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "lang": "hi",
+      "page_errors": [],
+      "http_errors": [
+        "404 http://localhost:8765/api/maps-config"
+      ]
+    },
+    {
+      "file": "home-1440-hi.jpg",
+      "url": "http://localhost:8765/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "lang": "hi",
+      "page_errors": [],
+      "http_errors": []
+    },
+    {
+      "file": "checklist-1440-hi.jpg",
+      "url": "http://localhost:8765/checklist.html",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "lang": "hi",
+      "page_errors": [],
+      "http_errors": []
+    },
+    {
+      "file": "qa-1440-hi.jpg",
+      "url": "http://localhost:8765/qa.html",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "lang": "hi",
+      "page_errors": [],
+      "http_errors": []
+    },
+    {
+      "file": "map-1440-hi.jpg",
+      "url": "http://localhost:8765/map.html",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "lang": "hi",
+      "page_errors": [],
+      "http_errors": [
+        "404 http://localhost:8765/api/maps-config"
+      ]
+    }
+  ]
+}

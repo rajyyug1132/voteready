@@ -1,493 +1,160 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
-
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description"
-    content="VoteReady — your guided walkthrough for first-time Indian voters. ECI-verified checklist and an AI assistant.">
-  <title>VoteReady — Your guided walkthrough for first-time Indian voters</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@700&display=swap"
-    rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600&family=Noto+Serif+Devanagari:wght@700&family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/site.css" rel="stylesheet">
   <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            display: ['"Space Grotesk"', 'sans-serif'],
-          },
-          colors: {
-            background: '#0a0a10',
-            foreground: '#ffffff',
-            muted: '#a1a1aa',
-            border: 'rgba(255,255,255,0.08)',
-            card: 'rgba(255,255,255,0.03)',
-            primary: { DEFAULT: '#a855f7', foreground: '#ffffff' },
-          },
-        }
-      }
-    }
+    (function () {
+      try {
+        var dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-bs-theme', dark ? 'dark' : 'light');
+      } catch (_) { }
+    })();
   </script>
-  <style>
-    .noise-bg {
-      background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noise)"/%3E%3C/svg%3E');
-      opacity: 0.03;
-      mix-blend-mode: overlay;
-    }
-
-    .browser-frame {
-      background: #111118;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.04);
-    }
-
-    .browser-bar {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 10px 14px;
-      background: rgba(255, 255, 255, 0.03);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .browser-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-    }
-
-    .browser-frame img {
-      display: block;
-      width: 100%;
-    }
-
-    .feature-row {
-      opacity: 0;
-      transform: translateY(40px);
-    }
-
-    .grad-text {
-      background: linear-gradient(135deg, #e2c4ff 0%, #c084fc 40%, #818cf8 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .grad-btn {
-      background: linear-gradient(135deg, #7c3aed 0%, #6366f1 100%);
-    }
-
-    .grad-btn:hover {
-      filter: brightness(1.15);
-      transform: translateY(-2px);
-      box-shadow: 0 20px 40px -8px rgba(124, 58, 237, 0.4);
-    }
-
-    .timeline-line {
-      position: absolute;
-      left: 23px;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(180deg, rgba(168, 85, 247, 0.4), rgba(99, 102, 241, 0.1));
-    }
-
-    @media(max-width:768px) {
-      .timeline-line {
-        left: 15px;
-      }
-    }
-
-    select {
-      appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23a1a1aa' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 14px center;
-    }
-  </style>
+  <meta name="description" content="VoteReady: a step-by-step walkthrough for first-time Indian voters, based on Election Commission of India sources.">
+  <title>VoteReady — A step-by-step guide for first-time Indian voters</title>
 </head>
-
-<body class="bg-background text-foreground font-sans antialiased overflow-x-hidden selection:bg-purple-500/30 relative">
-
-  <!-- AMBIENT BG -->
-  <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none bg-[#0a0a10]">
-    <div
-      class="absolute top-[-15%] left-[-10%] w-[45vw] h-[45vw] rounded-full bg-purple-600/20 blur-[120px] mix-blend-screen">
-    </div>
-    <div
-      class="absolute top-[20%] right-[-8%] w-[35vw] h-[35vw] rounded-full bg-indigo-600/15 blur-[120px] mix-blend-screen">
-    </div>
-    <div
-      class="absolute bottom-[-10%] left-[25%] w-[40vw] h-[40vw] rounded-full bg-pink-600/10 blur-[120px] mix-blend-screen">
-    </div>
-    <div class="absolute inset-0 noise-bg"></div>
-  </div>
-
-  <!-- NAV -->
-  <nav
-    class="fixed top-0 inset-x-0 z-[100] h-[56px] flex items-center justify-between px-5 md:px-8 bg-[#0a0a10]/80 backdrop-blur-xl border-b border-white/[0.06]">
-    <div class="flex items-center gap-8">
-      <a href="index.html"
-        class="flex items-center gap-2.5 text-[15px] font-bold tracking-tight text-white no-underline">
-        <div
-          class="w-[24px] h-[24px] rounded-md bg-gradient-to-br from-purple-500 to-indigo-500 flex items-center justify-center text-[10px] font-extrabold text-white">
-          VR</div>
-        <span data-i18n="brand">VoteReady</span>
-      </a>
-      <div class="hidden md:flex items-center gap-1">
-        <a href="checklist.html"
-          class="text-[13px] text-zinc-400 hover:text-white px-3 py-1.5 rounded-md hover:bg-white/5 transition-colors"
-          data-i18n="nav_checklist">Checklist</a>
-        <a href="qa.html"
-          class="text-[13px] text-zinc-400 hover:text-white px-3 py-1.5 rounded-md hover:bg-white/5 transition-colors"
-          data-i18n="nav_ask">Ask AI</a>
-        <a href="map.html"
-          class="text-[13px] text-zinc-400 hover:text-white px-3 py-1.5 rounded-md hover:bg-white/5 transition-colors"
-          data-i18n="nav_map">Explore Map</a>
-      </div>
-    </div>
-    <div class="flex items-center gap-2.5">
-      <button id="nav-toggle"
-        class="flex md:hidden items-center justify-center w-[34px] h-[34px] rounded-lg border border-white/10 bg-white/5 text-white"
-        aria-label="Open menu">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round">
-          <path d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <nav class="navbar navbar-expand-md site-nav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><img src="assets/logo.svg" alt="" width="30" height="30">VoteReady</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
       </button>
-      <a href="https://voters.eci.gov.in/" target="_blank" rel="noopener noreferrer"
-        class="hidden md:inline-flex items-center justify-center text-[12px] font-semibold text-white h-[32px] px-4 rounded-lg grad-btn transition-all duration-300"
-        data-i18n="nav_register">Register to Vote</a>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto align-items-md-center gap-md-1">
+          <li class="nav-item"><a class="nav-link" href="checklist.html">Checklist</a></li>
+          <li class="nav-item"><a class="nav-link" href="qa.html">Ask</a></li>
+          <li class="nav-item"><a class="nav-link" href="map.html">State map</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://voters.eci.gov.in/" target="_blank" rel="noopener">Register ↗</a></li>
+          <li class="nav-item"><button type="button" id="lang-toggle" class="btn btn-outline-primary lang-toggle" aria-label="Switch language / भाषा बदलें">अ/A</button></li>
+        </ul>
+      </div>
     </div>
   </nav>
 
-  <!-- MOBILE NAV -->
-  <div id="mobile-nav" class="fixed inset-0 z-[200] pointer-events-none opacity-0 transition-opacity duration-300"
-    style="visibility:hidden">
-    <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeMobileNav()"></div>
-    <div id="mobile-nav-panel"
-      class="absolute top-0 right-0 w-[260px] h-full bg-[#111118] border-l border-white/10 p-5 flex flex-col gap-1 transform translate-x-full transition-transform duration-300">
-      <div class="flex items-center justify-between mb-5">
-        <span class="text-[11px] font-semibold text-zinc-500 tracking-[0.15em] uppercase">Menu</span>
-        <button onclick="closeMobileNav()"
-          class="w-[30px] h-[30px] flex items-center justify-center rounded-lg border border-white/10 text-zinc-400 hover:text-white"
-          aria-label="Close menu">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round">
-            <path d="M18 6L6 18M6 6l12 12" />
-          </svg>
-        </button>
-      </div>
-      <a href="checklist.html"
-        class="px-3 py-2.5 rounded-lg text-[14px] text-zinc-300 hover:text-white hover:bg-white/5 transition-colors">Checklist</a>
-      <a href="qa.html"
-        class="px-3 py-2.5 rounded-lg text-[14px] text-zinc-300 hover:text-white hover:bg-white/5 transition-colors">Ask
-        AI</a>
-      <a href="map.html"
-        class="px-3 py-2.5 rounded-lg text-[14px] text-zinc-300 hover:text-white hover:bg-white/5 transition-colors">Explore
-        Map</a>
-      <div class="mt-auto pt-4 border-t border-white/10">
-        <a href="https://voters.eci.gov.in/" target="_blank" rel="noopener noreferrer"
-          class="flex items-center justify-center w-full py-2.5 rounded-lg grad-btn text-white text-[13px] font-semibold">Register
-          to Vote</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- HERO -->
-  <section
-    class="relative min-h-[100vh] flex flex-col items-center justify-center text-center px-5 pt-[80px] pb-[100px] overflow-hidden">
-    <!-- Spline 3D Background (gradient fallback if CDN unavailable) -->
-    <div class="absolute inset-0 z-0 pointer-events-none opacity-60"
-      style="background: radial-gradient(ellipse at 50% 40%, rgba(124,58,237,0.25) 0%, rgba(99,102,241,0.1) 40%, transparent 70%);">
-      <spline-viewer url="https://prod.spline.design/KKN7HxAEIQ35poYf/scene.splinecode"></spline-viewer>
-    </div>
-    <div
-      class="absolute inset-0 z-[1] bg-gradient-to-b from-transparent via-[#0a0a10]/60 to-[#0a0a10] pointer-events-none">
-    </div>
-
-    <div
-      class="hero-el relative z-[2] inline-flex items-center gap-2 text-[10px] font-semibold tracking-[0.22em] uppercase text-zinc-400 border border-white/10 rounded-full px-3.5 py-1.5 bg-white/[0.03] mb-8">
-      <span class="w-1.5 h-1.5 rounded-full bg-green-400 shadow-[0_0_8px_#4ade80]"></span>
-      <span data-i18n="badge_live">ECI-Verified · Built for PromptWars 2026</span>
-    </div>
-    <h1
-      class="hero-el relative z-[2] font-display font-bold text-[clamp(42px,8vw,88px)] leading-[0.95] tracking-[-0.04em] max-w-[900px] mb-6">
-      <span data-i18n="hero_line1">Your first vote,</span><br>
-      <span class="grad-text" data-i18n="hero_line2">fully prepared.</span>
-    </h1>
-    <p class="hero-el relative z-[2] text-[clamp(15px,2vw,18px)] text-zinc-400 font-light leading-[1.7] max-w-[520px] mb-10"
-      data-i18n="hero_sub">A step-by-step walkthrough for first-time Indian voters — ECI-verified checklist, AI-powered
-      Q&A, and state-wise resources.</p>
-    <a href="checklist.html"
-      class="hero-el relative z-[2] inline-flex items-center gap-2.5 text-[15px] font-semibold text-white h-[50px] px-8 rounded-xl grad-btn shadow-[0_8px_32px_-4px_rgba(124,58,237,0.4)] transition-all duration-300">
-      <span data-i18n="hero_cta">Start Your Checklist</span>
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-        stroke-linecap="round">
-        <path d="M5 12h14M13 6l6 6-6 6" />
-      </svg>
-    </a>
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-zinc-600 animate-bounce z-[2]">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-        stroke-linecap="round">
-        <path d="M12 5v14M5 12l7 7 7-7" />
-      </svg>
-    </div>
-  </section>
-
-  <!-- FEATURE 1: CHECKLIST -->
-  <section class="relative py-[120px] md:py-[160px] px-5 md:px-8 border-t border-white/[0.04]">
-    <div class="max-w-[1100px] mx-auto feature-row">
-      <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-        <div>
-          <span class="inline-block text-[10px] font-semibold tracking-[0.22em] uppercase text-purple-400 mb-4">Feature
-            01</span>
-          <h2 class="font-display font-bold text-[clamp(28px,4vw,44px)] tracking-[-0.03em] leading-[1.1] mb-5"
-            data-i18n="f1_title">8-step verified checklist</h2>
-          <p class="text-[16px] text-zinc-400 font-light leading-[1.75] mb-8" data-i18n="f1_desc">Every step from
-            eligibility to polling day, verified against ECI source documents. Check items off as you go — your progress
-            saves automatically.</p>
-          <a href="checklist.html"
-            class="inline-flex items-center gap-2 text-[13px] font-semibold text-white h-[40px] px-5 rounded-lg grad-btn transition-all duration-300"
-            data-i18n="f1_cta">Open Checklist →</a>
+  <main id="main">
+    <section class="hero">
+      <div class="container">
+        <p class="eyebrow">Student project · based on Election Commission of India sources</p>
+        <h1>Your first vote, fully prepared.</h1>
+        <p class="lead mb-4">A step-by-step walkthrough for first-time Indian voters: a checklist built from ECI sources, an assistant for plain-language questions, and a state-by-state resource map.</p>
+        <div class="d-flex flex-wrap gap-2">
+          <a class="btn btn-primary" href="checklist.html">Start your checklist</a>
+          <a class="btn btn-outline-primary" href="https://voters.eci.gov.in/" target="_blank" rel="noopener">Register on voters.eci.gov.in ↗</a>
         </div>
-        <div class="browser-frame">
-          <div class="browser-bar">
-            <div class="browser-dot bg-[#ff5f57]"></div>
-            <div class="browser-dot bg-[#febc2e]"></div>
-            <div class="browser-dot bg-[#28c840]"></div>
-            <span class="ml-3 text-[11px] text-zinc-600 font-mono">voteready-pi.vercel.app/checklist</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">What is here</h2>
+        <div class="row g-3 mt-1">
+          <div class="col-md-4">
+            <div class="vr-card feature-card">
+              <h3>8-step checklist</h3>
+              <p>Every step from eligibility to polling day, each based on ECI documents. Tick items off as you go; your progress is saved in this browser.</p>
+              <a class="btn btn-primary" href="checklist.html">Open the checklist</a>
+            </div>
           </div>
-          <img src="assets/screenshots/checklist.jpg" alt="VoteReady Checklist — 8 verified steps" loading="lazy">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURE 2: ASK AI -->
-  <section class="relative py-[120px] md:py-[160px] px-5 md:px-8 border-t border-white/[0.04]">
-    <div class="max-w-[1100px] mx-auto feature-row">
-      <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-        <div class="browser-frame md:order-1 order-2">
-          <div class="browser-bar">
-            <div class="browser-dot bg-[#ff5f57]"></div>
-            <div class="browser-dot bg-[#febc2e]"></div>
-            <div class="browser-dot bg-[#28c840]"></div>
-            <span class="ml-3 text-[11px] text-zinc-600 font-mono">voteready-pi.vercel.app/qa</span>
+          <div class="col-md-4">
+            <div class="vr-card feature-card">
+              <h3>Ask a question</h3>
+              <p>Ask about voting in India. Answers are limited to a small set of ECI-based notes; if they don't cover your question, it says so. The API key stays on the server.</p>
+              <a class="btn btn-primary" href="qa.html">Ask a question</a>
+            </div>
           </div>
-          <img src="assets/screenshots/qa.jpg" alt="VoteReady AI Q&A" loading="lazy">
-        </div>
-        <div class="md:order-2 order-1">
-          <span class="inline-block text-[10px] font-semibold tracking-[0.22em] uppercase text-indigo-400 mb-4">Feature
-            02</span>
-          <h2 class="font-display font-bold text-[clamp(28px,4vw,44px)] tracking-[-0.03em] leading-[1.1] mb-5"
-            data-i18n="f2_title">AI-powered Q&A</h2>
-          <p class="text-[16px] text-zinc-400 font-light leading-[1.75] mb-8" data-i18n="f2_desc">Ask anything about
-            voting in India. Powered by Gemini, grounded in verified ECI reference data. The API key never touches your
-            browser — all calls go through a serverless proxy.</p>
-          <a href="qa.html"
-            class="inline-flex items-center gap-2 text-[13px] font-semibold text-white h-[40px] px-5 rounded-lg grad-btn transition-all duration-300"
-            data-i18n="f2_cta">Ask a Question →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURE 3: MAP -->
-  <section class="relative py-[120px] md:py-[160px] px-5 md:px-8 border-t border-white/[0.04]">
-    <div class="max-w-[1100px] mx-auto feature-row">
-      <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-        <div>
-          <span class="inline-block text-[10px] font-semibold tracking-[0.22em] uppercase text-teal-400 mb-4">Feature
-            03</span>
-          <h2 class="font-display font-bold text-[clamp(28px,4vw,44px)] tracking-[-0.03em] leading-[1.1] mb-5"
-            data-i18n="f3_title">State-by-state explorer</h2>
-          <p class="text-[16px] text-zinc-400 font-light leading-[1.75] mb-6" data-i18n="f3_desc">Interactive India map
-            with Lok Sabha seats, Vidhan Sabha seats, CEO portal links, and the voter helpline number
-            for all 36 states and union territories.</p>
-          <div class="flex gap-2 mb-4">
-            <select id="quickSelect"
-              class="flex-1 px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-[13px] text-white focus:outline-none focus:border-purple-500/50 transition-colors bg-[#111118]">
-              <option value="">Select a State / UT</option>
-            </select>
-            <button onclick="goToMap()"
-              class="inline-flex items-center justify-center gap-1.5 h-[40px] px-5 rounded-lg grad-btn text-white text-[13px] font-semibold whitespace-nowrap transition-all duration-300">Go
-              →</button>
+          <div class="col-md-4">
+            <div class="vr-card feature-card">
+              <h3>State-by-state explorer</h3>
+              <p>Interactive India map with Lok Sabha seats, Vidhan Sabha seats, CEO portal links, and the voter helpline number for all 36 states and union territories.</p>
+              <div class="d-flex gap-2">
+                <label for="quickSelect" class="visually-hidden">Select a State / UT</label>
+                <select id="quickSelect" class="form-select"><option value="">Select a State / UT</option></select>
+                <button type="button" class="btn btn-primary" onclick="goToMap()">Go</button>
+              </div>
+              <a href="map.html">Browse the full map</a>
+            </div>
           </div>
-          <p class="text-[12px] text-zinc-600">Or <a href="map.html"
-              class="text-purple-400 no-underline hover:underline">browse the full interactive map →</a></p>
-        </div>
-        <div class="browser-frame">
-          <div class="browser-bar">
-            <div class="browser-dot bg-[#ff5f57]"></div>
-            <div class="browser-dot bg-[#febc2e]"></div>
-            <div class="browser-dot bg-[#28c840]"></div>
-            <span class="ml-3 text-[11px] text-zinc-600 font-mono">voteready-pi.vercel.app/map</span>
-          </div>
-          <img src="assets/screenshots/map.jpg" alt="VoteReady state map with Odisha selected" loading="lazy">
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- VOTER JOURNEY TIMELINE -->
-  <section class="journey-section" style="padding:80px 40px;text-align:center">
-    <div style="display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(168,85,247,.4);border-radius:20px;padding:5px 16px;font-size:11px;font-weight:600;letter-spacing:.18em;color:#c084fc;margin-bottom:20px;text-transform:uppercase">
-      <span style="width:6px;height:6px;border-radius:50%;background:#a855f7;display:inline-block"></span>
-      <span data-i18n="Your voter journey">Your voter journey</span>
-    </div>
-    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,5vw,46px);font-weight:700;letter-spacing:-.04em;color:#fff;line-height:1.1;margin:0 0 10px">
-      <span data-i18n="From eligible to voted">From eligible to voted</span>
-    </h2>
-    <p style="font-size:14px;color:#a1a1aa;margin:0 auto 52px;max-width:440px;line-height:1.7">
-      <span data-i18n="Steps 1 and 2 follow your progress on the checklist. Election dates are announced by the Election Commission of India.">Steps 1 and 2 follow your progress on the checklist. Election dates are announced by the Election Commission of India.</span>
-    </p>
+    <section class="section" aria-labelledby="journey-h">
+      <div class="container">
+        <h2 class="section-title" id="journey-h">From eligible to voted</h2>
+        <p class="section-sub">Steps 1 and 2 follow your progress on the checklist. Election dates are announced by the Election Commission of India.</p>
+        <ol class="journey-grid">
+          <li class="journey-step" id="j1" data-checklist-id="form_6_registration">
+            <div class="jcard">
+              <div class="jhead"><span class="jdot jdot-pending" aria-hidden="true">1</span><span class="jphase">~6 months before polling</span></div>
+              <p class="jtitle">Register to vote</p>
+              <p class="jdesc">Submit Form 6 at voters.eci.gov.in. You need proof of age, address, and a passport-size photo.</p>
+              <span class="jtag jtag-pending jtag-live">To do</span>
+            </div>
+          </li>
+          <li class="journey-step" id="j2" data-checklist-id="polling_booth_lookup">
+            <div class="jcard">
+              <div class="jhead"><span class="jdot jdot-pending" aria-hidden="true">2</span><span class="jphase">~2 weeks before polling</span></div>
+              <p class="jtitle">Find your polling booth</p>
+              <p class="jdesc">Search the electoral roll to confirm your name, serial number, and assigned polling station.</p>
+              <span class="jtag jtag-pending jtag-live">To do</span>
+            </div>
+          </li>
+          <li class="journey-step" id="j3">
+            <div class="jcard">
+              <div class="jhead"><span class="jdot jdot-active" aria-hidden="true">3</span><span class="jphase">Polling day</span></div>
+              <p class="jtitle">Cast your vote</p>
+              <p class="jdesc">Go to your assigned booth and get your identity verified. The Third Polling Officer presses the Ballot button on the Control Unit; you then press the blue button on the Ballot Unit for your chosen candidate and check your VVPAT slip (visible for about 7 seconds).</p>
+              <span class="jtag jtag-active">● Polling day</span>
+            </div>
+          </li>
+          <li class="journey-step" id="j4">
+            <div class="jcard">
+              <div class="jhead"><span class="jdot jdot-pending" aria-hidden="true">4</span><span class="jphase">After polling</span></div>
+              <p class="jtitle">Results day</p>
+              <p class="jdesc">Vote counting is conducted in the presence of candidates and their agents. VVPAT slips of 5 randomly selected polling stations in each Assembly Constituency (each Assembly segment in a Lok Sabha election) go through mandatory verification.</p>
+              <span class="jtag jtag-pending">Pending</span>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
 
-    <!-- Timeline grid -->
-    <div class="journey-grid">
-
-      <div class="journey-step" id="j1" data-checklist-id="form_6_registration">
-        <div class="jdot jdot-pending">1</div>
-        <div class="jcard">
-          <span class="jphase" data-i18n="~6 months before polling">~6 months before polling</span>
-          <div class="jicon">📋</div>
-          <p class="jtitle" data-i18n="Register to vote">Register to vote</p>
-          <p class="jdesc" data-i18n="Submit Form 6 at voters.eci.gov.in. You need proof of age, address, and a passport-size photo.">Submit Form 6 at voters.eci.gov.in. You need proof of age, address, and a passport-size photo.</p>
-          <span class="jtag jtag-pending jtag-live" data-i18n="To do">To do</span>
+    <section class="section" aria-label="At a glance">
+      <div class="container">
+        <div class="stats">
+          <div><div class="stat-num">36</div><div class="stat-lbl">States &amp; UTs</div></div>
+          <div><div class="stat-num">8</div><div class="stat-lbl">Checklist steps</div></div>
+          <div><div class="stat-num">12</div><div class="stat-lbl">Alternative photo IDs</div></div>
+          <div><div class="stat-num">1950</div><div class="stat-lbl">Voter Helpline</div></div>
         </div>
       </div>
+    </section>
 
-      <div class="journey-step" id="j2" data-checklist-id="polling_booth_lookup">
-        <div class="jdot jdot-pending">2</div>
-        <div class="jcard">
-          <span class="jphase" data-i18n="~2 weeks before polling">~2 weeks before polling</span>
-          <div class="jicon">🗺️</div>
-          <p class="jtitle" data-i18n="Find your polling booth">Find your polling booth</p>
-          <p class="jdesc" data-i18n="Search the electoral roll to confirm your name, serial number, and assigned polling station.">Search the electoral roll to confirm your name, serial number, and assigned polling station.</p>
-          <span class="jtag jtag-pending jtag-live" data-i18n="To do">To do</span>
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Ready to cast your first vote?</h2>
+        <p class="section-sub">Each checklist step is based on an official ECI source. If something looks wrong, check voters.eci.gov.in.</p>
+        <div class="d-flex flex-wrap gap-2 mt-3">
+          <a class="btn btn-primary" href="checklist.html">Start your checklist</a>
+          <a class="btn btn-outline-primary" href="https://voters.eci.gov.in/" target="_blank" rel="noopener">Register on voters.eci.gov.in ↗</a>
         </div>
       </div>
+    </section>
+  </main>
 
-      <div class="journey-step">
-        <div class="jdot jdot-active">3</div>
-        <div class="jcard jcard-active">
-          <span class="jphase" data-i18n="Polling day">Polling day</span>
-          <div class="jicon">🗳️</div>
-          <p class="jtitle" data-i18n="Cast your vote">Cast your vote</p>
-          <p class="jdesc" data-i18n="Go to your assigned booth and get your identity verified. The Third Polling Officer presses the Ballot button on the Control Unit; you then press the blue button on the Ballot Unit for your chosen candidate and check your VVPAT slip (visible for about 7 seconds).">Go to your assigned booth and get your identity verified. The Third Polling Officer presses the Ballot button on the Control Unit; you then press the blue button on the Ballot Unit for your chosen candidate and check your VVPAT slip (visible for about 7 seconds).</p>
-          <span class="jtag jtag-active" data-i18n="● Polling day">● Polling day</span>
-        </div>
-      </div>
-
-      <div class="journey-step">
-        <div class="jdot jdot-pending">4</div>
-        <div class="jcard">
-          <span class="jphase jphase-dim" data-i18n="After polling">After polling</span>
-          <div class="jicon" style="opacity:.4">🏆</div>
-          <p class="jtitle jtitle-dim" data-i18n="Results day">Results day</p>
-          <p class="jdesc" data-i18n="Vote counting is conducted in the presence of candidates and their agents. VVPAT slips of 5 randomly selected polling stations in each Assembly Constituency (each Assembly segment in a Lok Sabha election) go through mandatory verification.">Vote counting is conducted in the presence of candidates and their agents. VVPAT slips of 5 randomly selected polling stations in each Assembly Constituency (each Assembly segment in a Lok Sabha election) go through mandatory verification.</p>
-          <span class="jtag jtag-pending" data-i18n="Pending">Pending</span>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <style>
-  .journey-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;max-width:1100px;margin:0 auto}
-  .journey-grid::before{content:'';position:absolute;top:28px;left:calc(12.5% + 2px);right:calc(12.5% + 2px);height:2px;background:linear-gradient(90deg,#a855f7 0%,#a855f7 50%,rgba(168,85,247,.2) 50%);z-index:0}
-  .journey-step{display:flex;flex-direction:column;align-items:center;position:relative;z-index:1}
-  .jdot{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:#fff}
-  .jdot-done{background:#a855f7;box-shadow:0 0 20px rgba(168,85,247,.5)}
-  .jdot-active{background:#a855f7;box-shadow:0 0 28px rgba(168,85,247,.8)}
-  .jdot-pending{background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.12)}
-  .jcard{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:20px 16px;margin:0 6px;text-align:center;flex:1;transition:.2s}
-  .jcard:hover{background:rgba(168,85,247,.08);border-color:rgba(168,85,247,.3)}
-  .jcard-active{background:rgba(168,85,247,.1);border-color:rgba(168,85,247,.45)}
-  .jphase{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#a855f7;margin-bottom:8px;display:block}
-  .jphase-dim{color:rgba(168,85,247,.4)}
-  .jicon{font-size:24px;margin-bottom:8px;display:block}
-  .jtitle{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:#fff;margin:0 0 10px;letter-spacing:-.02em;line-height:1.2}
-  .jtitle-dim{color:#a1a1aa}
-  .jdesc{font-size:12px;color:#a1a1aa;line-height:1.65;margin:0 0 14px}
-  .jtag{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:600;padding:3px 10px;border-radius:10px}
-  .jtag-done{background:rgba(74,222,128,.1);color:#4ade80;border:1px solid rgba(74,222,128,.2)}
-  .jtag-active{background:rgba(168,85,247,.2);color:#c084fc;border:1px solid rgba(168,85,247,.4)}
-  .jtag-pending{background:rgba(255,255,255,.04);color:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.08)}
-  @media(max-width:800px){
-    .journey-grid{grid-template-columns:1fr;gap:14px}
-    .journey-grid::before{display:none}
-    .journey-step{flex-direction:row;align-items:flex-start;gap:16px}
-    .jdot{flex-shrink:0;margin-bottom:0}
-    .jcard{text-align:left;margin:0}
-  }
-  </style>
-
-  <!-- STATS -->
-  <section class="border-y border-white/[0.04] py-[48px] px-5 md:px-8">
-    <div class="max-w-[1000px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-      <div class="stat-el">
-        <div class="font-display font-bold text-[40px] tracking-[-0.04em] leading-tight grad-text mb-1">36</div>
-        <div class="text-[11px] text-zinc-500 tracking-[0.18em] uppercase">States & UTs</div>
-      </div>
-      <div class="stat-el">
-        <div class="font-display font-bold text-[40px] tracking-[-0.04em] leading-tight grad-text mb-1">8</div>
-        <div class="text-[11px] text-zinc-500 tracking-[0.18em] uppercase">Verified Steps</div>
-      </div>
-      <div class="stat-el">
-        <div class="font-display font-bold text-[40px] tracking-[-0.04em] leading-tight grad-text mb-1">1950</div>
-        <div class="text-[11px] text-zinc-500 tracking-[0.18em] uppercase">Voter Helpline</div>
-      </div>
-      <div class="stat-el">
-        <div class="font-display font-bold text-[40px] tracking-[-0.04em] leading-tight grad-text mb-1">AI</div>
-        <div class="text-[11px] text-zinc-500 tracking-[0.18em] uppercase">Gemini Q&A</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FINAL CTA -->
-  <section class="relative py-[120px] md:py-[160px] px-5 md:px-8 text-center overflow-hidden">
-    <div
-      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-purple-600/10 blur-[150px] pointer-events-none">
-    </div>
-    <div class="relative z-10 max-w-[600px] mx-auto feature-row">
-      <h2 class="font-display font-bold text-[clamp(30px,5vw,52px)] tracking-[-0.04em] leading-[1.05] mb-5"
-        data-i18n="cta_title">Ready to cast<br>your first vote?</h2>
-      <p class="text-[16px] text-zinc-400 font-light leading-[1.7] max-w-[420px] mx-auto mb-10" data-i18n="cta_desc">
-        Every fact in VoteReady is verified against official ECI sources. No guesses, no hallucinations — just what you
-        need to know.</p>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
-        <a href="checklist.html"
-          class="inline-flex items-center gap-2.5 text-[15px] font-semibold text-white h-[50px] px-8 rounded-xl grad-btn shadow-[0_8px_32px_-4px_rgba(124,58,237,0.4)] transition-all duration-300"
-          data-i18n="cta_btn">Start Your Checklist →</a>
-        <a href="https://voters.eci.gov.in/" target="_blank" rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 text-[14px] font-medium text-zinc-400 hover:text-white h-[50px] px-6 rounded-xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] transition-all"
-          data-i18n="cta_register">Register on voters.eci.gov.in ↗</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="border-t border-white/[0.04] py-6 px-5 md:px-8">
-    <div class="max-w-[1100px] mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-      <p class="text-[12px] text-zinc-600 text-center md:text-left max-w-[500px]">Built solo for PromptWars Virtual
-        2026. Content verified against ECI Manual on EVM (Ed. 8), ECI FAQs, PIB Press Releases, and voters.eci.gov.in.
-      </p>
-      <a href="https://github.com/rajyyug1132/voteready" target="_blank" rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 text-[12px] text-zinc-500 no-underline px-3 py-1.5 rounded-lg border border-white/[0.06] bg-white/[0.02] hover:text-white hover:border-white/15 transition-all">
-        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
-          <path
-            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" />
-        </svg>
-        GitHub
-      </a>
+  <footer class="site-footer">
+    <div class="container d-flex flex-column flex-md-row justify-content-between gap-2">
+      <p class="mb-0">VoteReady is an unofficial student project and is not affiliated with the Election Commission of India. For official information, use voters.eci.gov.in.</p>
+      <a href="https://github.com/rajyyug1132/voteready" target="_blank" rel="noopener">Source code on GitHub</a>
     </div>
   </footer>
 
@@ -496,19 +163,7 @@
     const qs = document.getElementById('quickSelect');
     STATES.forEach(s => { const o = document.createElement('option'); o.value = s; o.textContent = s; qs.appendChild(o); });
     function goToMap() { const v = qs.value; window.location.href = v ? `map.html?state=${encodeURIComponent(v)}` : 'map.html'; }
-    function openMobileNav() { const n = document.getElementById('mobile-nav'), p = document.getElementById('mobile-nav-panel'); n.style.visibility = 'visible'; requestAnimationFrame(() => { n.classList.add('opacity-100'); n.classList.remove('opacity-0'); n.style.pointerEvents = 'auto'; p.style.transform = 'translateX(0)'; }); }
-    function closeMobileNav() { const n = document.getElementById('mobile-nav'), p = document.getElementById('mobile-nav-panel'); n.classList.remove('opacity-100'); n.classList.add('opacity-0'); n.style.pointerEvents = 'none'; p.style.transform = 'translateX(100%)'; setTimeout(() => { n.style.visibility = 'hidden'; }, 300); }
-    document.getElementById('nav-toggle').addEventListener('click', openMobileNav);
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script>
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.from(".hero-el", { y: 30, opacity: 0, duration: 0.7, stagger: 0.12, ease: "power3.out", delay: 0.15 });
-    document.querySelectorAll('.feature-row').forEach(row => { gsap.to(row, { scrollTrigger: { trigger: row, start: "top 85%", once: true }, opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }); });
-    gsap.from(".stat-el", { scrollTrigger: { trigger: ".stat-el", start: "top 90%" }, y: 20, opacity: 0, duration: 0.5, stagger: 0.08, ease: "power2.out" });
-  </script>
-  <script>
+
     // Journey steps 1-2 reflect real checklist progress (localStorage). Steps 3-4 (voting, results) never auto-complete.
     (function () {
       let done = [];
@@ -518,13 +173,11 @@
         step.querySelector('.jdot').className = 'jdot jdot-done';
         var tag = step.querySelector('.jtag-live');
         tag.className = 'jtag jtag-done';
-        tag.setAttribute('data-i18n', '✓ Completed');
         tag.textContent = '✓ Completed';
       });
     })();
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="translate.js"></script>
-  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.4/build/spline-viewer.js"></script>
 </body>
-
 </html>
