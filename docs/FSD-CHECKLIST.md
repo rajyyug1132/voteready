@@ -53,7 +53,7 @@ Status: `[ ]` open · `[x]` done (proof linked) · `[ASK]` blocked on Yyug.
 |---|---|---|
 | 0 Freeze | rows written · deadline known | rows [x] · tag pushed [ ] · deadline [ASK] |
 | 1 Truth fixes (main) | every voter-facing fact has `{source, verified_on}` · en/hi parity script passes · no broken images live | parity [x] · broken images [x] · live checks [x] · **sources: partial — see E** |
-| 2 De-slop (main) | every slop item closed · Lighthouse a11y ≥ 95 · feature parity with the Phase 0 screenshots | [ ] |
+| 2 De-slop (main) | every slop item closed · Lighthouse a11y ≥ 95 · feature parity with the Phase 0 screenshots | slop items [x] · Lighthouse a11y 100 (live, 4 pages) [x] · parity [x] — see F |
 | 3 Kaggle data | row counts match source · 0 unmatched state names | [ ] |
 | 4 Server (fsd-mern) | all 5 CRUD routes pass in Postman · seed runs clean on an empty DB | [ ] |
 | 5 Client (fsd-mern) | create → list → update → delete works in the browser · every Phase 0 feature works in en + hi · no slop item returns | [ ] |
@@ -109,3 +109,26 @@ Not verifiable from the build environment:
 - **Per-state seat counts.** `results.eci.gov.in` is reachable only page by page and has no Vidhan Sabha counts; `eci.gov.in` returns HTTP 406 to non-browser clients. What is verified: the 543 total and the top-8 Assembly counts (UP 403, WB 294, MH 288, BR 243, TN 234, MP 230, KA 224, RJ 200), all from the ECI Atlas 2024. The page footer says the rest are "being re-verified".
 - **Checklist `source` and `officialLink` URLs on `eci.gov.in`, and 33 of 36 CEO domains** (D11). They return 406 or are blocked by the egress allowlist, so "dead" and "blocked" can't be told apart. Open them once in a browser (list: `python scripts/check_parity.py` has no URL check yet).
 - Checklist items other than `documents_to_carry` and `first_time_confidence` keep their original `verified_on` of 2026-04-23; I did not re-verify them.
+
+## F. Phase 2 results (commit `e321856`, live 2026-10-15)
+
+Proof: live Lighthouse (headless Chromium) accessibility 100 and best-practices 100 on `/`, `/checklist.html`, `/qa.html`, `/map.html`; 0 HTTP errors and 0 page errors in the 16 live screenshots (`docs/baseline/phase2/manifest.json`); `scripts/check_hi_coverage.py` → 0 English strings left in Hindi mode on all four pages (D4 was 52 / 58 / 6 / 1); the 19 behaviour checks from Phase 1 plus checklist reveal pass live. Screenshots to compare side by side: `docs/baseline/v1-promptwars/` vs `docs/baseline/phase2/`.
+
+| Slop item (from the brief) | Result | Status |
+|---|---|---|
+| Ambient orbs, noise, glassmorphism on every page | removed; shared `assets/site.css` | [x] |
+| Gradient headline text, blue hover on purple chips | removed; single accent, ink-violet | [x] |
+| Spline hero, GSAP on every element | removed; one CSS fade (off under `prefers-reduced-motion`) | [x] |
+| Fake browser-chrome frames, emoji icons, "AI" stat tile | removed; stats are 36 / 8 / 12 / 1950 | [x] |
+| Tailwind CDN | replaced by Bootstrap 5.3.3 + theme tokens | [x] |
+| UI direction: light paper + ink, one type pair, real focus states, mobile-first, dark via tokens | Source Serif 4 + Source Sans 3; `:focus-visible` ring; dark tokens (contrast ≥ 6.3 : 1 in both modes); no horizontal overflow at 360 px | [x] |
+| Logo + favicon kept | `assets/logo.svg`, `assets/favicon.svg` unchanged | [x] |
+| Copy: "100% factual grounding with zero retrieval latency", "lexical router" scaling claim, "cannot prompt-inject", "1.8 crore", hero badge | rewritten (README) / cut; hero badge is "Student project · based on Election Commission of India sources" | [x] |
+| Code: dead CSS, stray comment, dictionary entries for removed content, duplicated inline styles, `brand.css` | removed (dictionary 141 → 176 entries after dropping 87 dead ones and adding the new copy, state names, capitals) | [x] |
+| README "~425 tokens" (D9) | measured: reference block is 2,982 characters; README now says "about 3,000 characters" | [x] |
+| PIB date (README said 7 Oct) | PIB page says 10 Oct 2025 | [x] |
+| `PROMPTS.md` → real build log | date / commit / change / prompt table. Prompts from Apr–May 2026 were never saved, so that column says "not recorded" | [x] |
+| D7: BLOG says a `landing-redesign` branch exists and that the timeline was removed | **not touched** — BLOG is rewritten in Phase 7 | open |
+| D14 dead dictionary entries | removed | [x] |
+
+Known gaps: the map still draws the pre-2019 J&K/Ladakh boundary (note shown on Ladakh); BLOG.md still describes the vanilla-JS build until its Phase 7 rewrite; Maps directions are hidden if Google rejects the key (billing decision open, E).

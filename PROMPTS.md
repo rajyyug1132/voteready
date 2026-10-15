@@ -53,4 +53,4 @@ What changed, when, and in which commit. The original build (23 Apr – 2 May 20
 |---|---|---|---|
 | 2026-10-08 | `f47af21` | Phase 0: baseline screenshots, lab-spec checklist, screenshot script | Upgrade brief, Phase 0 |
 | 2026-10-15 | `af1803e` | Phase 1: truth fixes (EPIC demo lookup, 1:1 Hindi checklist, 12 IDs, journey from checklist progress, map fixes) | Upgrade brief, Phase 1 |
-| 2026-10-15 | PHASE2_HASH | Phase 2: plain civic-service UI on Bootstrap, copy and dead-code cleanup | Upgrade brief, Phase 2 |
+| 2026-10-15 | `e321856` | Phase 2: plain civic-service UI on Bootstrap, copy and dead-code cleanup | Upgrade brief, Phase 2 |
