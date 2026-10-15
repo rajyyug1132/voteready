@@ -13,7 +13,8 @@
         "officialLink": "https://voters.eci.gov.in/",
         "category": "eligibility",
         "verified_on": "2026-04-23",
-        "source": "https://ecisveep.nic.in/voters/general-voters/"
+        "source": "https://ecisveep.nic.in/voters/general-voters/",
+        "category_label": "Eligibility"
     },
     {
         "id": "epic_status_check",
@@ -29,7 +30,8 @@
         "officialLink": "https://electoralsearch.eci.gov.in/",
         "category": "registration",
         "verified_on": "2026-04-23",
-        "source": "https://voters.eci.gov.in/"
+        "source": "https://voters.eci.gov.in/",
+        "category_label": "Registration"
     },
     {
         "id": "form_6_registration",
@@ -45,7 +47,8 @@
         "officialLink": "https://voters.eci.gov.in/form6",
         "category": "registration",
         "verified_on": "2026-04-23",
-        "source": "https://voters.eci.gov.in/guidelines/Form-6_en.pdf"
+        "source": "https://voters.eci.gov.in/guidelines/Form-6_en.pdf",
+        "category_label": "Registration"
     },
     {
         "id": "polling_booth_lookup",
@@ -61,23 +64,26 @@
         "officialLink": "https://electoralsearch.eci.gov.in/pollingstation",
         "category": "pollingday",
         "verified_on": "2026-04-23",
-        "source": "https://eci.gov.in/eci-mobile-app/records/voter-helpline-app-r1/"
+        "source": "https://eci.gov.in/eci-mobile-app/records/voter-helpline-app-r1/",
+        "category_label": "Polling day"
     },
     {
         "id": "documents_to_carry",
         "title": "Documents to carry on polling day",
         "description": "If you do not have your EPIC, ECI accepts any one of 12 alternative photo ID documents — but your name must still appear on the electoral roll for you to vote.",
         "steps": [
-            "Carry your original EPIC (Voter ID) as first preference; e-EPIC is treated as equivalent",
-            "If EPIC is unavailable, carry ONE original document from ECI's 12-item alternate list (photocopies and soft copies are not accepted): Aadhaar, MNREGA Job Card, Bank/Post Office passbook with photo, Health Insurance Smart Card or Ayushman Bharat Card, Driving Licence, PAN Card, Smart Card issued by RGI under NPR, Indian Passport, Pension document with photo, Central/State Govt or PSU Service ID, MP/MLA/MLC ID card, or UDID Card",
+            "Carry your original EPIC (Voter ID) as first preference",
+            "If your EPIC is unavailable, carry ONE of the 12 photo ID documents ECI accepts instead: Aadhaar Card; MNREGA Job Card; Passbooks with photograph issued by Bank/Post Office; Health Insurance Smart Card issued under the scheme of Ministry of Labour / Ayushman Bharat Health Card; Driving Licence; PAN Card; Smart Card issued by RGI under NPR; Indian Passport; Pension document with photograph; Service Identity Cards with photograph issued to employees by Central/State Govt./PSUs/Public Limited Companies; Official identity cards issued to MPs/MLAs/MLCs; Unique Disability ID (UDID) Card issued by the Ministry of Social Justice & Empowerment, Government of India",
             "Confirm your name appears on the electoral roll at voters.eci.gov.in BEFORE polling day — no document overrides a missing roll entry",
             "Show the document to the First Polling Officer for identity verification",
-            "NRI / overseas electors must carry their original Indian passport only; no alternate documents are allowed"
+            "Overseas electors must carry their original Indian passport only; no alternate documents are accepted and the Voter Information Slip is not accepted as ID"
         ],
         "officialLink": "https://voters.eci.gov.in/Homepage",
         "category": "documents",
-        "verified_on": "2026-04-23",
-        "source": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2177191"
+        "verified_on": "2026-10-15",
+        "source": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2177191",
+        "category_label": "Documents",
+        "source_note": "PIB release dated 10 Oct 2025 (12 IDs); ECI order No. 3/4/ID/2024/SDR/VOL.I of 19 Mar 2024 (overseas electors)"
     },
     {
         "id": "name_not_on_list",
@@ -93,7 +99,8 @@
         "officialLink": "https://voters.eci.gov.in/Homepage",
         "category": "pollingday",
         "verified_on": "2026-04-23",
-        "source": "https://www.eci.gov.in/gallery/image/1187-call-1950-to-know-your-name-in-electoral-roll/"
+        "source": "https://www.eci.gov.in/gallery/image/1187-call-1950-to-know-your-name-in-electoral-roll/",
+        "category_label": "Polling day"
     },
     {
         "id": "first_time_confidence",
@@ -103,15 +110,17 @@
             "Enter the booth and join the queue with your EPIC or one of the 12 alternate photo IDs ready",
             "First Polling Officer: checks your ID and matches your name against the marked copy of the electoral roll",
             "Second Polling Officer: applies indelible ink on your left index finger, records your entry in the Form 17A register, takes your signature/thumb, hands you a signed voter slip",
-            "Third Polling Officer: takes your slip, checks your inked finger, directs you to the voting compartment once the Presiding Officer activates the Ballot Unit",
+            "Third Polling Officer: in charge of the Control Unit — checks the ink mark on your left forefinger, then presses the Ballot button on the Control Unit so that you can vote",
             "Press the blue button on the EVM Ballot Unit against your chosen candidate (or NOTA at the bottom); a red light glows and a beep confirms your vote",
             "Watch the VVPAT transparent window for about 7 seconds — it displays a paper slip with the candidate's serial number, name, and symbol before dropping into the sealed box",
             "Alert the Presiding Officer immediately if you do not see the VVPAT slip or hear the confirmation beep"
         ],
         "officialLink": "https://www.eci.gov.in/evm-vvpat",
         "category": "pollingday",
-        "verified_on": "2026-04-23",
-        "source": "https://eci.gov.in/files/file/11409-broucher-for-presiding-officer-on-use-of-evm-vvpat/"
+        "verified_on": "2026-10-15",
+        "source": "https://ceogoa.nic.in/pdf/ECIH/Presiding%20Officer%20Handbook.pdf",
+        "category_label": "Polling day",
+        "source_section": "Presiding Officer Handbook (ECI, 2019 ed.) §8.1.1–8.1.4 (polling officers' roles) and §20.3 (Ballot button, VVPAT slip visible for 7 seconds)"
     },
     {
         "id": "polling_day_timing",
@@ -127,6 +136,7 @@
         "officialLink": "https://voters.eci.gov.in/",
         "category": "pollingday",
         "verified_on": "2026-04-23",
-        "source": "https://eci.gov.in/files/file/8993-handbook-for-presiding-officers-october-2018/"
+        "source": "https://eci.gov.in/files/file/8993-handbook-for-presiding-officers-october-2018/",
+        "category_label": "Polling day"
     }
 ]

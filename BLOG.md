@@ -14,7 +14,7 @@ Not in a vague way — in a specific, embarrassing way. I didn't know that you n
 
 I only found all of this out because I tried to explain it to someone else through an app, and the app kept getting it wrong.
 
-VoteReady is a guided walkthrough for first-time Indian voters aged 18–22. It has three parts: a checklist that walks you from "am I eligible?" to "what do I carry on polling day," an AI-powered Q&A for natural questions about voting, and a map showing polling schedules. Everything runs on vanilla HTML, CSS, and JavaScript — no React, no build step, no frameworks.
+VoteReady is a guided walkthrough for first-time Indian voters aged 18–22. It has three parts: a checklist that walks you from "am I eligible?" to "what do I carry on polling day," an AI-powered Q&A for natural questions about voting, and a state map with seat counts and links to each state's Chief Electoral Officer portal. Everything runs on vanilla HTML, CSS, and JavaScript — no React, no build step, no frameworks.
 
 The interesting part of this project isn't the tech. It's what happened when I tried to make the content correct.
 

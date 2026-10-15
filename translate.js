@@ -17,7 +17,7 @@ const dictionary = {
     "Ask anything about voting in India. Powered by Gemini, grounded in verified ECI reference data. The API key never touches your browser — all calls go through a serverless proxy.": "भारत में मतदान के बारे में कुछ भी पूछें। Gemini द्वारा संचालित, सत्यापित ECI संदर्भ डेटा पर आधारित। API कुंजी कभी भी आपके ब्राउज़र तक नहीं पहुँचती।",
     "Ask a Question →": "प्रश्न पूछें →",
     "State-by-state explorer": "राज्य-वार एक्सप्लोरर",
-    "Interactive India map with Lok Sabha seats, Vidhan Sabha seats, registered voters, CEO portal links, and voter helpline numbers for all 36 states and union territories.": "सभी 36 राज्यों और केंद्र शासित प्रदेशों के लिए लोक सभा सीटें, विधान सभा सीटें, पंजीकृत मतदाता, CEO पोर्टल लिंक और मतदाता हेल्पलाइन नंबरों के साथ इंटरैक्टिव भारत मानचित्र।",
+    "Interactive India map with Lok Sabha seats, Vidhan Sabha seats, CEO portal links, and the voter helpline number for all 36 states and union territories.": "सभी 36 राज्यों और केंद्र शासित प्रदेशों के लिए लोक सभा सीटें, विधान सभा सीटें, CEO पोर्टल लिंक और मतदाता हेल्पलाइन नंबर के साथ इंटरैक्टिव भारत मानचित्र।",
     "Your voter journey": "आपकी मतदाता यात्रा",
     "Illustrative Timeline": "उदाहरणात्मक समयरेखा",
     "Ready to cast": "क्या आप अपना",
@@ -40,7 +40,7 @@ const dictionary = {
     "Get answers from the ECI handbook": "ECI हैंडबुक से उत्तर प्राप्त करें",
     "Explore by State": "राज्य के अनुसार खोजें",
     "Find your local election dates & rules": "अपने स्थानीय चुनाव की तारीखें और नियम खोजें",
-    "Sources verified against the Election Commission of India": "भारत निर्वाचन आयोग द्वारा सत्यापित स्रोत",
+    "Sources verified against the Election Commission of India": "स्रोतों का मिलान भारत निर्वाचन आयोग के दस्तावेज़ों से किया गया",
     "Back to home": "होम पर वापस जाएँ",
     "Ask a Voting Question": "वोटिंग का प्रश्न पूछें",
     "Get answers about voting in India, powered by Gemini.": "जेमिनी द्वारा संचालित, भारत में मतदान के बारे में उत्तर प्राप्त करें।",
@@ -79,11 +79,10 @@ const dictionary = {
     "ECI finalizes the list of contesting candidates and their symbols.": "ECI चुनाव लड़ने वाले उम्मीदवारों और उनके प्रतीकों की सूची को अंतिम रूप देता है।",
     "Head to your designated polling booth with your EPIC or an approved ID.": "अपने EPIC या स्वीकृत आईडी के साथ अपने निर्दिष्ट मतदान केंद्र पर जाएं।",
     "Vote counting concludes and election results are officially announced.": "वोटों की गिनती समाप्त होती है और चुनाव परिणामों की आधिकारिक घोषणा की जाती है।",
-    "EPIC Status Checker": "EPIC स्थिति चेकर",
-    "Verify your voter enrollment status instantly using your Voter ID (EPIC) Number.": "अपने वोटर आईडी (EPIC) नंबर का उपयोग करके तुरंत अपने मतदाता नामांकन स्थिति की जांच करें।",
-    "Enter EPIC No. (e.g., ABC1234567)": "EPIC नंबर दर्ज करें (उदा., ABC1234567)",
+    "EPIC Status Checker (demo)": "EPIC स्थिति चेकर (डेमो)",
+    "Try the demo with a sample EPIC number: VOTE202601 or VOTE202602.": "नमूना EPIC नंबर VOTE202601 या VOTE202602 से डेमो आज़माएँ।",
+    "Enter EPIC No. (e.g., VOTE202601)": "EPIC नंबर दर्ज करें (उदा., VOTE202601)",
     "Verify Status": "स्थिति जांचें",
-    "Checking ECI records...": "ECI रिकॉर्ड की जांच की जा रही है...",
     "Status: Active": "स्थिति: सक्रिय",
     "Serial No:": "क्रम संख्या:",
     "Part No:": "भाग संख्या:",
@@ -114,17 +113,17 @@ const dictionary = {
     "— Choose a State —": "— एक राज्य चुनें —",
     "Click a state on the map or use the dropdown above": "मानचित्र पर राज्य क्लिक करें या ऊपर ड्रॉपडाउन उपयोग करें",
     "Live Navigation": "लाइव नेविगेशन",
-    "Find Nearest CEO Office": "निकटतम CEO कार्यालय खोजें",
+    "Directions to the state CEO office": "राज्य CEO कार्यालय के लिए दिशा-निर्देश",
+    "No state CEO portal link is listed for this territory yet.": "इस क्षेत्र के लिए राज्य CEO पोर्टल का लिंक अभी सूचीबद्ध नहीं है।",
     "India — All States & Union Territories": "भारत — सभी राज्य और केंद्र शासित प्रदेश",
     "← Back to Home": "← होम पर वापस",
     "Lok Sabha Seats": "लोक सभा सीटें",
     "Vidhan Sabha Seats": "विधान सभा सीटें",
-    "Registered Voters (approx)": "पंजीकृत मतदाता (लगभग)",
     "Voter Helpline": "मतदाता हेल्पलाइन",
     "National": "राष्ट्रीय",
     "Toll Free": "टोल फ्री",
-    "Check / Register on NVSP": "NVSP पर जांचें / पंजीकरण करें",
-    "Data sourced from ECI & CEO portals": "ECI और CEO पोर्टल से डेटा",
+    "Check / Register on the Voters' Services Portal": "वोटर्स सर्विसेज़ पोर्टल पर जांचें / पंजीकरण करें",
+    "VoteReady · Lok Sabha total of 543 seats per ECI Atlas 2024; per-state seat counts are being re-verified against ECI sources ·": "VoteReady · लोक सभा की कुल 543 सीटें ECI एटलस 2024 के अनुसार; राज्यवार सीट संख्याओं का ECI स्रोतों से पुनः सत्यापन जारी है ·",
     "Locating...": "स्थान खोज रहे हैं...",
     "Requesting your location...": "आपका स्थान मांगा जा रहा है...",
     "Finding route...": "मार्ग खोज रहे हैं...",
@@ -134,12 +133,13 @@ const dictionary = {
     "Please select a state first.": "पहले एक राज्य चुनें।",
     "CEO Portal:": "CEO पोर्टल:",
     "From eligible to voted": "पात्र से मतदान तक",
-    "Dates shown are examples — actual election dates are announced by the Election Commission of India.": "दिखाई गई तारीखें उदाहरण हैं — वास्तविक चुनाव तिथियां ECI द्वारा घोषित की जाती हैं।",
+    "Steps 1 and 2 follow your progress on the checklist. Election dates are announced by the Election Commission of India.": "चरण 1 और 2 चेकलिस्ट पर आपकी प्रगति के अनुसार बदलते हैं। चुनाव की तारीखें भारत निर्वाचन आयोग घोषित करता है।",
     "Submit Form 6 at voters.eci.gov.in. You need proof of age, address, and a passport-size photo.": "voters.eci.gov.in पर फॉर्म 6 जमा करें। आयु, पता प्रमाण और पासपोर्ट साइज फोटो चाहिए।",
     "Search the electoral roll to confirm your name, serial number, and assigned polling station.": "अपना नाम, क्रमांक और मतदान केंद्र पुष्टि करने के लिए मतदाता सूची खोजें।",
-    "Go to your assigned booth, get your identity verified, press the blue button on the Ballot Unit for your chosen candidate, and verify your VVPAT slip (visible for ~7 seconds).": "अपने मतदान केंद्र पर जाएं, पहचान सत्यापित करवाएं, अपने उम्मीदवार के लिए नीला बटन दबाएं और VVPAT पर्ची (~7 सेकंड) देखें।",
-    "Vote counting is conducted in the presence of candidates and their agents. VVPAT slips of 5 randomly selected booths per constituency are cross-verified with the electronic count.": "उम्मीदवारों और उनके एजेंटों की उपस्थिति में मतगणना होती है। प्रति निर्वाचन क्षेत्र 5 यादृच्छिक बूथों की VVPAT पर्चियां इलेक्ट्रॉनिक गणना से जांची जाती हैं।",
-    "● Upcoming": "● आगामी",
+    "Go to your assigned booth and get your identity verified. The Third Polling Officer presses the Ballot button on the Control Unit; you then press the blue button on the Ballot Unit for your chosen candidate and check your VVPAT slip (visible for about 7 seconds).": "अपने निर्धारित मतदान केंद्र पर जाकर पहचान सत्यापित करवाएँ। तृतीय मतदान अधिकारी कंट्रोल यूनिट पर बैलेट बटन दबाता है; फिर आप अपने पसंदीदा उम्मीदवार के सामने बैलेट यूनिट का नीला बटन दबाएँ और अपनी VVPAT पर्ची (लगभग 7 सेकंड तक दिखती है) देखें।",
+    "Vote counting is conducted in the presence of candidates and their agents. VVPAT slips of 5 randomly selected polling stations in each Assembly Constituency (each Assembly segment in a Lok Sabha election) go through mandatory verification.": "उम्मीदवारों और उनके एजेंटों की उपस्थिति में मतगणना होती है। प्रत्येक विधानसभा निर्वाचन क्षेत्र (लोक सभा चुनाव में प्रत्येक विधानसभा खंड) के 5 यादृच्छिक रूप से चुने गए मतदान केंद्रों की VVPAT पर्चियों का अनिवार्य सत्यापन होता है।",
+    "● Polling day": "● मतदान का दिन",
+    "To do": "करना बाकी",
     "✓ Completed": "✓ पूर्ण",
     "Map boundary data predates the 2019 J&K bifurcation — Ladakh UT boundary not separately shown.": "ⓘ मानचित्र सीमा डेटा 2019 J&K विभाजन से पहले का है — लद्दाख UT सीमा अलग से नहीं दिखाई गई है।"
 };
@@ -154,9 +154,12 @@ function translateTextNode(node) {
             node.originalText = node.nodeValue;
         }
 
-        let textToMatch = node.originalText.trim();
-        if (dictionary[textToMatch]) {
-            node.nodeValue = node.nodeValue.replace(textToMatch, dictionary[textToMatch]);
+        // Match on whitespace-normalised text so multi-line HTML text nodes still hit the dictionary.
+        const normalised = node.originalText.trim().replace(/\s+/g, ' ');
+        if (dictionary[normalised]) {
+            const lead = node.originalText.match(/^\s*/)[0];
+            const trail = node.originalText.match(/\s*$/)[0];
+            node.nodeValue = lead + dictionary[normalised] + trail;
         }
     }
 }
@@ -218,6 +221,8 @@ function toggleLanguage() {
     currentLang = currentLang === 'en' ? 'hi' : 'en';
     localStorage.setItem('voteready_lang', currentLang);
     applyTranslation();
+    // Pages that render data from JSON (checklist) reload the matching language file.
+    window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang: currentLang } }));
 }
 
 // Observe dynamic changes (for the checklist JSON rendering or AI responses)

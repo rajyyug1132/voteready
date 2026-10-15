@@ -12,13 +12,13 @@ VoteReady answers the question "I just turned 18 — now what?" through three fe
 
 - **Ask a Question** — A Gemini-powered Q&A that answers natural questions about voting in India, grounded in verified ECI reference data.
 
-- **Polling Day Map** — An interactive map showing your state's polling schedule and booth locations.
+- **State Map** — An interactive map of all 36 states and union territories with Lok Sabha and Vidhan Sabha seat counts, the state Chief Electoral Officer (CEO) portal link and the 1950 voter helpline. It does not show polling schedules or booth locations; find your booth at [voters.eci.gov.in](https://voters.eci.gov.in).
 
 ## Screenshots
 
 | Checklist | Q&A | Map | Landing |
 |-----------|-----|-----|---------|
-| ![Checklist](assets/Screenshots/Screenshot%202026-04-29%20205827.png) | ![Q&A](assets/Screenshots/Screenshot%202026-04-29%20205859.png) | ![Map](assets/Screenshots/Screenshot%202026-04-29%20205931.png) | ![Landing](assets/Screenshots/Screenshot%202026-04-29%20205957.png) |
+| ![Checklist](assets/screenshots/checklist.jpg) | ![Q&A](assets/screenshots/qa.jpg) | ![Map](assets/screenshots/map.jpg) | ![Landing](assets/screenshots/landing.jpg) |
 
 ## How content is verified
 

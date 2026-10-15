@@ -906,16 +906,6 @@
             pointer-events: none;
         }
 
-        .epic-loading {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            padding: var(--s-4) 0;
-            color: var(--text-mid);
-            font-size: 0.9rem;
-        }
-
         .spinner {
             width: 20px;
             height: 20px;
@@ -1056,51 +1046,44 @@
         <header class="page-head">
             <h1 class="page-title">Am I Ready to Vote?</h1>
             <p class="page-sub">Follow these steps to ensure you're fully prepared for polling day. Each item is
-                verified against Election Commission of India sources.</p>
+                based on Election Commission of India sources.</p>
         </header>
 
         <div class="epic-checker">
             <div class="epic-header">
                 <span class="epic-dot"></span>
-                <h2 class="epic-title">EPIC Status Checker</h2>
+                <h2 class="epic-title">EPIC Status Checker (demo)</h2>
             </div>
-            <p class="epic-subtitle">Verify your voter enrollment status instantly using your Voter ID (EPIC) Number.
+            <p class="epic-subtitle">Try the demo with a sample EPIC number: VOTE202601 or VOTE202602.
             </p>
 
             <div class="epic-form">
-                <input type="text" id="epic-input" class="epic-input" placeholder="Enter EPIC No. (e.g., ABC1234567)"
+                <input type="text" id="epic-input" class="epic-input" placeholder="Enter EPIC No. (e.g., VOTE202601)"
                     autocomplete="off">
                 <button id="epic-btn" class="epic-btn">Verify Status</button>
             </div>
 
-            <div id="epic-loading" class="epic-loading" style="display: none;">
-                <div class="spinner"></div>
-                <span>Checking ECI records...</span>
-            </div>
-
-            <div id="epic-result" class="epic-result" style="display: none;">
+            <div id="epic-result" class="epic-result" style="display: none;" role="status" aria-live="polite">
                 <div class="epic-result-flex">
                     <div class="epic-result-info">
-                        <span class="epic-status-badge">Status: Active</span>
-                        <h3 class="epic-name" id="epic-name">Rahul Sharma</h3>
-                        <p class="epic-meta">Serial No: <strong id="epic-serial">402</strong> | Part No: <strong
-                                id="epic-part">12</strong></p>
+                        <span class="epic-status-badge" id="epic-status"></span>
+                        <h3 class="epic-name" id="epic-name"></h3>
+                        <p class="epic-meta" id="epic-meta"></p>
 
-                        <div class="epic-booth">
-                            <span class="epic-booth-label">Polling Station</span>
-                            <span class="epic-booth-value" id="epic-station">Govt. Primary School, Room 2,
-                                Bangalore</span>
+                        <div class="epic-booth" id="epic-booth">
+                            <span class="epic-booth-label" id="epic-booth-label"></span>
+                            <span class="epic-booth-value" id="epic-station"></span>
                         </div>
                     </div>
-                    <svg class="epic-success-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2" stroke-linecap="round">
+                    <svg class="epic-success-icon" id="epic-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" aria-hidden="true">
                         <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
                         <path d="M22 4L12 14.01l-3-3" />
                     </svg>
                 </div>
             </div>
 
-            <p class="epic-disclaimer">⚠ Demo only — uses sample data, not connected to real ECI records. Verify at <a
+            <p class="epic-disclaimer">⚠ Demo only — looks up two sample records stored in this project (data/voters.json), not ECI records. Check your real status at <a
                     href="https://electoralsearch.eci.gov.in" target="_blank" rel="noopener"
                     style="color:var(--accent-violet);text-decoration:underline;">electoralsearch.eci.gov.in</a></p>
         </div>
@@ -1178,7 +1161,7 @@
                             <span class="cl-title">${escapeHtml(item.title)}</span>
                             <svg class="cl-chev" aria-hidden="true"><use href="#i-chev"/></svg>
                         </button>
-                        <span class="cl-tag">${escapeHtml(item.category)}</span>
+                        <span class="cl-tag">${escapeHtml(item.category_label || item.category)}</span>
                     </div>
                     <div class="cl-body" id="${bodyId}">
                         <div class="cl-body-inner">
@@ -1261,35 +1244,72 @@
                 }
             }
 
-            // EPIC Checker Logic
+            // EPIC demo lookup — reads data/voters.json only. No timers, no generated values.
+            const VOTER_KEY = 'voteready_voter';
             const epicBtn = document.getElementById('epic-btn');
             const epicInput = document.getElementById('epic-input');
-            const epicLoading = document.getElementById('epic-loading');
             const epicResult = document.getElementById('epic-result');
+            const $ = id => document.getElementById(id);
 
-            epicBtn.addEventListener('click', () => {
-                const val = epicInput.value.trim();
+            function showVoter(v) {
+                epicResult.style.display = 'block';
+                epicResult.classList.remove('is-miss');
+                $('epic-icon').style.display = '';
+                if (!v) {
+                    $('epic-status').textContent = 'No demo record';
+                    $('epic-name').textContent = 'This number is not in the demo data';
+                    $('epic-meta').textContent = 'Only the two sample EPIC numbers above exist here. For a real lookup use electoralsearch.eci.gov.in.';
+                    $('epic-booth').style.display = 'none';
+                    $('epic-icon').style.display = 'none';
+                    return;
+                }
+                $('epic-status').textContent = 'Status: ' + v.status + ' (demo record)';
+                $('epic-name').textContent = v.name;
+                $('epic-meta').textContent = v.assembly_constituency
+                    ? 'Assembly constituency: ' + v.assembly_constituency
+                    : (v.reason || '');
+                const line = v.polling_station || v.action_required;
+                $('epic-booth').style.display = line ? '' : 'none';
+                $('epic-booth-label').textContent = v.polling_station ? 'Polling Station' : 'Action required';
+                $('epic-station').textContent = line || '';
+            }
+
+            async function lookupVoter() {
+                const val = epicInput.value.trim().toUpperCase();
                 if (!val) return;
-
                 epicBtn.disabled = true;
-                epicResult.style.display = 'none';
-                epicLoading.style.display = 'flex';
-
-                setTimeout(() => {
-                    epicLoading.style.display = 'none';
+                try {
+                    const res = await fetch('./data/voters.json');
+                    if (!res.ok) throw new Error('HTTP ' + res.status);
+                    const data = await res.json();
+                    const v = (data.test_voters || []).find(x => x.epic_no.toUpperCase() === val) || null;
+                    showVoter(v);
+                    try {
+                        if (v) localStorage.setItem(VOTER_KEY, JSON.stringify(v));
+                        else localStorage.removeItem(VOTER_KEY);
+                    } catch (_) { }
+                } catch (err) {
                     epicResult.style.display = 'block';
-
-                    document.getElementById('epic-serial').textContent = Math.floor(Math.random() * 800) + 100;
-                    document.getElementById('epic-part').textContent = Math.floor(Math.random() * 50) + 1;
-
+                    $('epic-status').textContent = 'Could not load demo data';
+                    $('epic-name').textContent = '';
+                    $('epic-meta').textContent = err.message;
+                    $('epic-booth').style.display = 'none';
+                    $('epic-icon').style.display = 'none';
+                } finally {
                     epicBtn.disabled = false;
-                }, 1800);
+                }
+            }
+
+            epicBtn.addEventListener('click', lookupVoter);
+            epicInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') lookupVoter();
             });
 
-            // Trigger on Enter
-            epicInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') epicBtn.click();
-            });
+            // Restore the last matched demo record, if any.
+            try {
+                const saved = JSON.parse(localStorage.getItem(VOTER_KEY) || 'null');
+                if (saved && saved.epic_no) { epicInput.value = saved.epic_no; showVoter(saved); }
+            } catch (_) { }
 
             updateProgress();
             load();

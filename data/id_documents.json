@@ -1,0 +1,81 @@
+{
+  "documents": [
+    {
+      "id": "aadhaar",
+      "name_en": "Aadhaar Card",
+      "name_hi": "आधार कार्ड"
+    },
+    {
+      "id": "mnrega",
+      "name_en": "MNREGA Job Card",
+      "name_hi": "मनरेगा जॉब कार्ड"
+    },
+    {
+      "id": "passbook",
+      "name_en": "Passbooks with photograph issued by Bank/Post Office",
+      "name_hi": "बैंक/डाकघर द्वारा जारी फोटो वाली पासबुक"
+    },
+    {
+      "id": "health_card",
+      "name_en": "Health Insurance Smart Card issued under the scheme of Ministry of Labour / Ayushman Bharat Health Card",
+      "name_hi": "श्रम मंत्रालय की योजना के अंतर्गत जारी स्वास्थ्य बीमा स्मार्ट कार्ड / आयुष्मान भारत स्वास्थ्य कार्ड"
+    },
+    {
+      "id": "driving_licence",
+      "name_en": "Driving Licence",
+      "name_hi": "ड्राइविंग लाइसेंस"
+    },
+    {
+      "id": "pan",
+      "name_en": "PAN Card",
+      "name_hi": "पैन कार्ड"
+    },
+    {
+      "id": "rgi_smart_card",
+      "name_en": "Smart Card issued by RGI under NPR",
+      "name_hi": "एनपीआर के अंतर्गत आरजीआई द्वारा जारी स्मार्ट कार्ड"
+    },
+    {
+      "id": "passport",
+      "name_en": "Indian Passport",
+      "name_hi": "भारतीय पासपोर्ट"
+    },
+    {
+      "id": "pension",
+      "name_en": "Pension document with photograph",
+      "name_hi": "फोटो वाला पेंशन दस्तावेज़"
+    },
+    {
+      "id": "service_id",
+      "name_en": "Service Identity Cards with photograph issued to employees by Central/State Govt./PSUs/Public Limited Companies",
+      "name_hi": "केंद्र/राज्य सरकार/सार्वजनिक उपक्रमों/पब्लिक लिमिटेड कंपनियों द्वारा कर्मचारियों को जारी फोटो वाले सेवा पहचान पत्र"
+    },
+    {
+      "id": "mp_mla_id",
+      "name_en": "Official identity cards issued to MPs/MLAs/MLCs",
+      "name_hi": "सांसदों/विधायकों/विधान परिषद सदस्यों को जारी आधिकारिक पहचान पत्र"
+    },
+    {
+      "id": "udid",
+      "name_en": "Unique Disability ID (UDID) Card issued by the Ministry of Social Justice & Empowerment, Government of India",
+      "name_hi": "सामाजिक न्याय एवं अधिकारिता मंत्रालय, भारत सरकार द्वारा जारी विशिष्ट दिव्यांगता पहचान पत्र (UDID)"
+    }
+  ],
+  "overseas_rule": {
+    "en": "Overseas electors: original passport only; the Voter Information Slip is not accepted as ID.",
+    "hi": "प्रवासी निर्वाचक: केवल मूल पासपोर्ट; मतदाता सूचना पर्ची को पहचान के रूप में स्वीकार नहीं किया जाता।"
+  },
+  "sources": [
+    {
+      "claim": "12 alternative photo IDs (list)",
+      "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2177191",
+      "published": "2025-10-10",
+      "verified_on": "2026-10-15"
+    },
+    {
+      "claim": "Overseas electors: original passport only; Voter Information Slip not accepted",
+      "ref": "ECI order No. 3/4/ID/2024/SDR/VOL.I dated 2024-03-19",
+      "verified_on": "2026-10-08"
+    }
+  ]
+}

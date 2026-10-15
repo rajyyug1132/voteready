@@ -577,7 +577,7 @@
             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
             <circle cx="12" cy="10" r="3" />
           </svg>
-          Find Nearest CEO Office
+          Directions to the state CEO office
         </button>
         <div id="google-map"></div>
         <p id="geo-status" style="font-size:11px;color:#a1a1aa;margin-top:8px;text-align:center;"></p>
@@ -592,8 +592,7 @@
   </div>
 
   <footer class="footer">
-    VoteReady · Data sourced from ECI &amp; CEO portals ·
-    <a href="https://nvsp.in" target="_blank">NVSP</a> ·
+    VoteReady · Lok Sabha total of 543 seats per ECI Atlas 2024; per-state seat counts are being re-verified against ECI sources ·
     <a href="https://voters.eci.gov.in" target="_blank">ECI Voter Portal</a>
   </footer>
 
@@ -601,42 +600,42 @@
   <script src="https://d3js.org/topojson.v3.min.js"></script>
   <script>
     const STATES = {
-      "Andhra Pradesh": { cap: "Amaravati", ceo: "ceoandhra.nic.in", ls: 25, vs: 175, voters: "~42M" },
-      "Arunachal Pradesh": { cap: "Itanagar", ceo: "ceoarec.nic.in", ls: 2, vs: 60, voters: "~0.9M" },
-      "Assam": { cap: "Dispur", ceo: "ceoassam.nic.in", ls: 14, vs: 126, voters: "~22M" },
-      "Bihar": { cap: "Patna", ceo: "ceobihar.nic.in", ls: 40, vs: 243, voters: "~75M" },
-      "Chhattisgarh": { cap: "Raipur", ceo: "ceochhattisgarh.nic.in", ls: 11, vs: 90, voters: "~20M" },
-      "Goa": { cap: "Panaji", ceo: "ceogoa.nic.in", ls: 2, vs: 40, voters: "~1.1M" },
-      "Gujarat": { cap: "Gandhinagar", ceo: "ceo.gujarat.gov.in", ls: 26, vs: 182, voters: "~52M" },
-      "Haryana": { cap: "Chandigarh", ceo: "ceoharyana.nic.in", ls: 10, vs: 90, voters: "~20M" },
-      "Himachal Pradesh": { cap: "Shimla", ceo: "himachalceo.nic.in", ls: 4, vs: 68, voters: "~5.7M" },
-      "Jharkhand": { cap: "Ranchi", ceo: "jharkhandceo.nic.in", ls: 14, vs: 81, voters: "~23M" },
-      "Karnataka": { cap: "Bengaluru", ceo: "ceokarnataka.kar.nic.in", ls: 28, vs: 224, voters: "~53M" },
-      "Kerala": { cap: "Thiruvananthapuram", ceo: "ceo.kerala.gov.in", ls: 20, vs: 140, voters: "~27M" },
-      "Madhya Pradesh": { cap: "Bhopal", ceo: "ceomadhyapradesh.nic.in", ls: 29, vs: 230, voters: "~55M" },
-      "Maharashtra": { cap: "Mumbai", ceo: "ceo.maharashtra.gov.in", ls: 48, vs: 288, voters: "~91M" },
-      "Manipur": { cap: "Imphal", ceo: "ceomanipur.nic.in", ls: 2, vs: 60, voters: "~2M" },
-      "Meghalaya": { cap: "Shillong", ceo: "ceomeghalaya.nic.in", ls: 2, vs: 60, voters: "~2M" },
-      "Mizoram": { cap: "Aizawl", ceo: "ceomizoram.nic.in", ls: 1, vs: 40, voters: "~0.8M" },
-      "Nagaland": { cap: "Kohima", ceo: "ceonagaland.nic.in", ls: 1, vs: 60, voters: "~1.3M" },
-      "Odisha": { cap: "Bhubaneswar", ceo: "ceoodisha.nic.in", ls: 21, vs: 147, voters: "~35M" },
-      "Punjab": { cap: "Chandigarh", ceo: "ceopunjab.nic.in", ls: 13, vs: 117, voters: "~21M" },
-      "Rajasthan": { cap: "Jaipur", ceo: "ceorajasthan.nic.in", ls: 25, vs: 200, voters: "~51M" },
-      "Sikkim": { cap: "Gangtok", ceo: "ceosikkim.nic.in", ls: 1, vs: 32, voters: "~0.4M" },
-      "Tamil Nadu": { cap: "Chennai", ceo: "elections.tn.gov.in", ls: 39, vs: 234, voters: "~62M" },
-      "Telangana": { cap: "Hyderabad", ceo: "ceotelangana.nic.in", ls: 17, vs: 119, voters: "~32M" },
-      "Tripura": { cap: "Agartala", ceo: "ceotripura.nic.in", ls: 2, vs: 60, voters: "~2.8M" },
-      "Uttar Pradesh": { cap: "Lucknow", ceo: "ceouttarapradesh.nic.in", ls: 80, vs: 403, voters: "~152M" },
-      "Uttarakhand": { cap: "Dehradun", ceo: "ceo.uk.gov.in", ls: 5, vs: 70, voters: "~8.5M" },
-      "West Bengal": { cap: "Kolkata", ceo: "ceowestbengal.nic.in", ls: 42, vs: 294, voters: "~73M" },
-      "Jammu and Kashmir": { cap: "Srinagar", ceo: "ceojammukashmir.nic.in", ls: 5, vs: 90, voters: "~9M" },
-      "Ladakh": { cap: "Leh", ceo: "ceojammukashmir.nic.in", ls: 1, vs: 0, voters: "~0.2M" },
-      "Delhi": { cap: "New Delhi", ceo: "ceodelhi.nic.in", ls: 7, vs: 70, voters: "~15M" },
-      "Chandigarh": { cap: "Chandigarh", ceo: "ceochandigarh.nic.in", ls: 1, vs: 0, voters: "~0.6M" },
-      "Puducherry": { cap: "Puducherry", ceo: "ceopuducherry.nic.in", ls: 1, vs: 30, voters: "~1M" },
-      "Andaman and Nicobar Islands": { cap: "Port Blair", ceo: "andamanceo.nic.in", ls: 1, vs: 30, voters: "~0.3M" },
-      "Dadra and Nagar Haveli and Daman and Diu": { cap: "Daman", ceo: "daman.nic.in", ls: 2, vs: 0, voters: "~0.4M" },
-      "Lakshadweep": { cap: "Kavaratti", ceo: "lakshadweep.gov.in", ls: 1, vs: 0, voters: "~0.06M" }
+      "Andhra Pradesh": { cap: "Amaravati", ceo: "ceoandhra.nic.in", ls: 25, vs: 175 },
+      "Arunachal Pradesh": { cap: "Itanagar", ceo: "ceoarec.nic.in", ls: 2, vs: 60 },
+      "Assam": { cap: "Dispur", ceo: "ceoassam.nic.in", ls: 14, vs: 126 },
+      "Bihar": { cap: "Patna", ceo: "ceobihar.nic.in", ls: 40, vs: 243 },
+      "Chhattisgarh": { cap: "Raipur", ceo: "ceochhattisgarh.nic.in", ls: 11, vs: 90 },
+      "Goa": { cap: "Panaji", ceo: "ceogoa.nic.in", ls: 2, vs: 40 },
+      "Gujarat": { cap: "Gandhinagar", ceo: "ceo.gujarat.gov.in", ls: 26, vs: 182 },
+      "Haryana": { cap: "Chandigarh", ceo: "ceoharyana.nic.in", ls: 10, vs: 90 },
+      "Himachal Pradesh": { cap: "Shimla", ceo: "himachalceo.nic.in", ls: 4, vs: 68 },
+      "Jharkhand": { cap: "Ranchi", ceo: "jharkhandceo.nic.in", ls: 14, vs: 81 },
+      "Karnataka": { cap: "Bengaluru", ceo: "ceokarnataka.kar.nic.in", ls: 28, vs: 224 },
+      "Kerala": { cap: "Thiruvananthapuram", ceo: "ceo.kerala.gov.in", ls: 20, vs: 140 },
+      "Madhya Pradesh": { cap: "Bhopal", ceo: "ceomadhyapradesh.nic.in", ls: 29, vs: 230 },
+      "Maharashtra": { cap: "Mumbai", ceo: "ceo.maharashtra.gov.in", ls: 48, vs: 288 },
+      "Manipur": { cap: "Imphal", ceo: "ceomanipur.nic.in", ls: 2, vs: 60 },
+      "Meghalaya": { cap: "Shillong", ceo: "ceomeghalaya.nic.in", ls: 2, vs: 60 },
+      "Mizoram": { cap: "Aizawl", ceo: "ceomizoram.nic.in", ls: 1, vs: 40 },
+      "Nagaland": { cap: "Kohima", ceo: "ceonagaland.nic.in", ls: 1, vs: 60 },
+      "Odisha": { cap: "Bhubaneswar", ceo: "ceoodisha.nic.in", ls: 21, vs: 147 },
+      "Punjab": { cap: "Chandigarh", ceo: "ceopunjab.nic.in", ls: 13, vs: 117 },
+      "Rajasthan": { cap: "Jaipur", ceo: "ceorajasthan.nic.in", ls: 25, vs: 200 },
+      "Sikkim": { cap: "Gangtok", ceo: "ceosikkim.nic.in", ls: 1, vs: 32 },
+      "Tamil Nadu": { cap: "Chennai", ceo: "elections.tn.gov.in", ls: 39, vs: 234 },
+      "Telangana": { cap: "Hyderabad", ceo: "ceotelangana.nic.in", ls: 17, vs: 119 },
+      "Tripura": { cap: "Agartala", ceo: "ceotripura.nic.in", ls: 2, vs: 60 },
+      "Uttar Pradesh": { cap: "Lucknow", ceo: "ceouttarapradesh.nic.in", ls: 80, vs: 403 },
+      "Uttarakhand": { cap: "Dehradun", ceo: "ceo.uk.gov.in", ls: 5, vs: 70 },
+      "West Bengal": { cap: "Kolkata", ceo: "ceowestbengal.nic.in", ls: 42, vs: 294 },
+      "Jammu and Kashmir": { cap: "Srinagar", ceo: "ceojammukashmir.nic.in", ls: 5, vs: 90 },
+      "Ladakh": { cap: "Leh", ceo: null, ls: 1, vs: 0 },
+      "Delhi": { cap: "New Delhi", ceo: "ceodelhi.nic.in", ls: 7, vs: 70 },
+      "Chandigarh": { cap: "Chandigarh", ceo: "ceochandigarh.nic.in", ls: 1, vs: 0 },
+      "Puducherry": { cap: "Puducherry", ceo: "ceopuducherry.nic.in", ls: 1, vs: 30 },
+      "Andaman and Nicobar Islands": { cap: "Port Blair", ceo: "andamanceo.nic.in", ls: 1, vs: 0 },
+      "Dadra and Nagar Haveli and Daman and Diu": { cap: "Daman", ceo: null, ls: 2, vs: 0 },
+      "Lakshadweep": { cap: "Kavaratti", ceo: null, ls: 1, vs: 0 }
     };
 
     const select = document.getElementById('stateSelect');
@@ -665,10 +664,9 @@
           <div class="info-box"><div class="num">${s.ls}</div><div class="lbl" data-key="Lok Sabha Seats">Lok Sabha Seats</div></div>
           <div class="info-box"><div class="num">${s.vs || '—'}</div><div class="lbl" data-key="Vidhan Sabha Seats">Vidhan Sabha Seats</div></div>
         </div>
-        <div class="info-voters"><div><div class="num">${s.voters}</div><div class="lbl" data-key="Registered Voters (approx)">Registered Voters (approx)</div></div></div>
         <div class="info-helpline"><div><div class="lbl" data-key="Voter Helpline">Voter Helpline</div><div class="hl">📞 1950</div></div><div style="text-align:right"><div class="lbl" data-key="National">National</div><div style="font-size:11px;color:#3a6080;margin-top:3px" data-key="Toll Free">Toll Free</div></div></div>
-        <a class="ceo-link" href="https://${s.ceo}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg><span data-key="CEO Portal:">CEO Portal:</span> ${s.ceo}</a>
-        <a class="nvsp-link" href="https://nvsp.in" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14"><path d="M9 11l3 3 8-8"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg><span data-key="Check / Register on NVSP">Check / Register on NVSP</span></a>`;
+        ${s.ceo ? `<a class="ceo-link" href="https://${s.ceo}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg><span data-key="CEO Portal:">CEO Portal:</span> ${s.ceo}</a>` : `<p class="ceo-missing" style="font-size:12px;color:#a1a1aa;margin:0 0 10px"><span data-key="No state CEO portal link is listed for this territory yet.">No state CEO portal link is listed for this territory yet.</span></p>`}
+        <a class="nvsp-link" href="https://voters.eci.gov.in/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14"><path d="M9 11l3 3 8-8"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg><span data-key="Check / Register on the Voters' Services Portal">Check / Register on the Voters' Services Portal</span></a>`;
       d3.selectAll('.state-path').classed('active', false);
       d3.selectAll('.state-path').filter(d => {
         const geoName = normName(d.properties);
@@ -769,7 +767,7 @@
         directionsService.route(
           { origin: userPos, destination: destination, travelMode: 'DRIVING' },
           (result, status) => {
-            routeBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" style="margin-right:8px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Find Nearest CEO Office';
+            routeBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" style="margin-right:8px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Directions to the state CEO office';
             routeBtn.disabled = false;
             if (status === 'OK') {
               directionsRenderer.setDirections(result);
@@ -786,11 +784,17 @@
           }
         );
       }, () => {
-        routeBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" style="margin-right:8px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Find Nearest CEO Office';
+        routeBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" style="margin-right:8px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Directions to the state CEO office';
         routeBtn.disabled = false;
         geoStatus.textContent = 'Location access denied.';
       });
     }
+
+    // If Google rejects the key (e.g. billing not enabled), hide the routing UI instead of showing a broken map.
+    window.gm_authFailure = function () {
+      const sec = document.querySelector('.routing-section');
+      if (sec) sec.style.display = 'none';
+    };
 
     // Dynamically load Google Maps API — key from server, not hardcoded
     (async function loadMapsApi() {
