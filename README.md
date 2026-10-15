@@ -2,7 +2,7 @@
 
 **Live:** [voteready-pi.vercel.app](https://voteready-pi.vercel.app/)
 
-A guided walkthrough for first-time Indian voters (18–22) preparing to cast their first vote in a general election. Built for [PromptWars Virtual 2026](https://hack2skill.com) with Google Antigravity.
+A guided walkthrough for first-time Indian voters (18–22) preparing to cast their first vote in a general election. 
 
 ## What it does
 
