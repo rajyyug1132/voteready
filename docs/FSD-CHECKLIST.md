@@ -52,7 +52,7 @@ Status: `[ ]` open · `[x]` done (proof linked) · `[ASK]` blocked on Yyug.
 | Phase | Gate | Status |
 |---|---|---|
 | 0 Freeze | rows written · deadline known | rows [x] · tag pushed [ ] · deadline [ASK] |
-| 1 Truth fixes (main) | every voter-facing fact has `{source, verified_on}` · en/hi parity script passes · no broken images live | [ ] |
+| 1 Truth fixes (main) | every voter-facing fact has `{source, verified_on}` · en/hi parity script passes · no broken images live | parity [x] · broken images [x] · live checks [x] · **sources: partial — see E** |
 | 2 De-slop (main) | every slop item closed · Lighthouse a11y ≥ 95 · feature parity with the Phase 0 screenshots | [ ] |
 | 3 Kaggle data | row counts match source · 0 unmatched state names | [ ] |
 | 4 Server (fsd-mern) | all 5 CRUD routes pass in Postman · seed runs clean on an empty DB | [ ] |
@@ -83,3 +83,29 @@ Each item below was checked against the repo history or the live site on 2026-10
 | D15 | `voteready_fsd_workflow.png` uses the old phase numbering (no de-slop phase). The build prompt is the source of truth. | repo root | 7 (regenerate or delete) |
 
 Capture notes: the white strip under the map page in full-page shots is a screenshot artifact (fixed background covers one viewport). The "vector map failed, falling back to raster" console error is headless-only; the billing error in D3 is not.
+
+## E. Phase 1 results (commit `af1803e`, live 2026-10-15)
+
+Proof: `python scripts/check_parity.py --base-url https://voteready-pi.vercel.app` → `PARITY OK: 8 items, steps per item [5,5,5,5,5,5,7,5], 12 IDs in both languages`. Browser checks (16) and 0 HTTP errors on all four pages, local and live.
+
+| Item | Result | Status |
+|---|---|---|
+| EPIC checker: no timer, no random numbers, no hardcoded "Rahul Sharma"; reads `data/voters.json`; "No demo record" otherwise; demo label kept; match saved to `voteready_voter` | live test: unknown EPIC → "No demo record"; `VOTE202601` → data record; saved + restored on reload | [x] |
+| `checklist_hi.json` 1:1 with English (ids, 8 items, 5/5/5/5/5/5/7/5 steps, 12 IDs, left forefinger, English category keys + `category_label`) | parity script | [x] |
+| `first_time_confidence` step 4: Third Polling Officer presses the Ballot button on the Control Unit | cited to Presiding Officer Handbook §8.1.1–8.1.4, §20.3 (`ceogoa.nic.in` copy, read 2026-10-15) | [x] |
+| Journey on `index.html`: steps 1–2 follow checklist progress; voting and results never auto-complete | live test | [x] |
+| Results-day wording (D13) | "5 randomly selected polling stations in each Assembly Constituency (each Assembly segment in a Lok Sabha election)" per ECI EVM Manual Ed. 9 §10.7 | [x] |
+| Map: Andaman & Nicobar Vidhan Sabha 30 → 0 | LS seats sum to 543 (ECI Atlas 2024 p. 31); VS seats sum to 4,123 after the fix | [x] |
+| Map: unsourced "~42M"-style voter numbers removed (also from the home-page copy) | grep + live test | [x] |
+| Map: all 36 LS/VS counts verified one by one | **not possible from here** — see below | [ASK] |
+| Map: CEO portal links verified | **not possible from here** — see below | [ASK] |
+| D3 Maps routing: relabelled "Directions to the state CEO office"; hidden if Google rejects the key | billing decision still open | [ASK] |
+| D5/D6: "verified by ECI" wording; `languageChanged` now dispatched | live test (toggle reloads checklist) | [x] |
+| README/BLOG polling-schedule claim; D2 screenshots (`assets/screenshots/` is the one name; 4 real images) | grep; 0 broken images | [x] |
+| D12: Ladakh no longer links the J&K CEO site; DNHDD and Lakshadweep (not CEO sites) show no link | live test | [x] |
+
+Not verifiable from the build environment:
+
+- **Per-state seat counts.** `results.eci.gov.in` is reachable only page by page and has no Vidhan Sabha counts; `eci.gov.in` returns HTTP 406 to non-browser clients. What is verified: the 543 total and the top-8 Assembly counts (UP 403, WB 294, MH 288, BR 243, TN 234, MP 230, KA 224, RJ 200), all from the ECI Atlas 2024. The page footer says the rest are "being re-verified".
+- **Checklist `source` and `officialLink` URLs on `eci.gov.in`, and 33 of 36 CEO domains** (D11). They return 406 or are blocked by the egress allowlist, so "dead" and "blocked" can't be told apart. Open them once in a browser (list: `python scripts/check_parity.py` has no URL check yet).
+- Checklist items other than `documents_to_carry` and `first_time_confidence` keep their original `verified_on` of 2026-04-23; I did not re-verify them.
