@@ -307,6 +307,15 @@ a:hover { color: var(--vr-accent-hover); }
 #google-map.active { display: block; }
 .map-note { font-size: 0.9rem; color: var(--vr-muted); }
 
+/* Theme toggle */
+.theme-toggle { min-width: 44px; padding: 0 0.6rem; }
+.theme-toggle svg { width: 1.15rem; height: 1.15rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.theme-toggle .i-moon { fill: currentColor; stroke: none; }
+.theme-toggle .i-sun { display: none; }
+[data-bs-theme="dark"] .theme-toggle .i-sun { display: block; }
+[data-bs-theme="dark"] .theme-toggle .i-moon { display: none; }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: 0.25s; }
+
 /* ---------- Booth walkthrough ---------- */
 .booth { padding: 1.5rem 0 2.5rem; }
 .booth + .booth { border-top: 1px solid var(--vr-line); padding-top: 2.5rem; }
@@ -393,6 +402,82 @@ a:hover { color: var(--vr-accent-hover); }
 .evm-status { min-height: 3rem; font-weight: 600; max-width: 70ch; }
 .evm-sound { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 44px; color: var(--vr-muted); }
 .evm-sound input { width: 1.2rem; height: 1.2rem; accent-color: var(--vr-accent); }
+
+/* ---------- Finish: the ink moment ---------- */
+.finish { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1.25rem; align-items: center; margin: 1rem 0 1.5rem; padding: 1.25rem; background: var(--vr-unit); border-radius: 0.9rem; box-shadow: inset 0 0 0 1px var(--vr-unit-edge); }
+.finish[hidden] { display: none; }
+.finish h2 { font-size: clamp(1.5rem, 4vw, 2.1rem); margin: 0 0 0.35rem; }
+.finish-sub { margin: 0 0 0.9rem; color: var(--vr-muted); }
+.finish-note { margin: 0.6rem 0 0; font-size: 0.9rem; color: var(--vr-muted); min-height: 1.2em; }
+.finger { width: 100%; height: auto; overflow: visible; }
+.finger .h-skin { fill: #e4e2dc; stroke: #17181a; stroke-width: 2.5; stroke-linejoin: round; }
+.finger .h-line { fill: none; stroke: var(--vr-muted); stroke-width: 2.5; stroke-linecap: round; }
+.finger .h-crease { fill: none; stroke: #17181a; stroke-width: 1.6; stroke-linecap: round; opacity: 0.45; }
+.finger .h-nail { fill: #f6f5f1; stroke: #17181a; stroke-width: 2; }
+.finger-ink { fill: none; stroke: #3a2e4f; stroke-width: 6.5; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.finish.is-inked .finger-ink { stroke-dashoffset: 0; }
+.finish.is-fresh .finger-ink { animation: ink-draw 0.9s cubic-bezier(0.65, 0, 0.35, 1) 0.15s both; }
+.finish.is-fresh .finger { animation: finger-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+@keyframes ink-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes finger-in { from { transform: translateY(10px); opacity: 0; } to { transform: none; opacity: 1; } }
+@media (max-width: 575.98px) { .finish { grid-template-columns: 4.75rem 1fr; padding: 1rem; } .finish .btn { width: 100%; } }
+
+/* ---------- ID wallet ---------- */
+.wallet { margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--vr-line); }
+.id-wallet { display: grid; grid-template-columns: repeat(auto-fill, minmax(10.5rem, 1fr)); gap: 0.6rem; margin-top: 1rem; }
+.id-card { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 0.5rem; min-height: 6.25rem; padding: 0.8rem 0.85rem; text-align: left; background: var(--vr-surface); color: var(--vr-ink); border: 1px solid var(--vr-line); border-radius: 0.6rem; font-size: 0.88rem; font-weight: 600; line-height: 1.3; transition: transform 0.12s, border-color 0.12s; }
+.id-card:hover { border-color: var(--vr-accent); }
+.id-card:active { transform: scale(0.98); }
+.id-chip { width: 1.6rem; height: 1.15rem; border-radius: 0.2rem; background: var(--vr-unit); box-shadow: inset 0 0 0 1px var(--vr-unit-edge); }
+.id-card-epic { grid-column: span 2; font-size: 1rem; }
+.id-pref { font-size: 0.78rem; font-weight: 600; color: var(--vr-muted); }
+.id-card[aria-pressed="true"] { border-color: var(--vr-accent); box-shadow: inset 0 0 0 1px var(--vr-accent); background: var(--vr-accent-soft); }
+.id-card[aria-pressed="true"]::after { content: "✓"; position: absolute; top: 0.6rem; right: 0.6rem; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: grid; place-items: center; background: var(--vr-accent); color: var(--vr-accent-ink); font-size: 0.85rem; font-weight: 800; }
+#id-none[aria-pressed="true"] { background: var(--vr-ink); color: var(--vr-bg); border-color: var(--vr-ink); }
+.id-result:empty { display: none; }
+.id-result { margin-top: 1rem; padding: 1rem 1.1rem; border-radius: 0.75rem; border: 1px solid var(--vr-line); background: var(--vr-surface); }
+.id-result.is-ok { border-color: var(--vr-ok); background: var(--vr-ok-soft); }
+.id-result.is-need { border-color: var(--vr-danger); }
+.id-verdict { font-weight: 800; font-size: 1.25rem; margin: 0 0 0.25rem; }
+.id-result.is-ok .id-verdict { color: var(--vr-ok); }
+.id-result.is-need .id-verdict { color: var(--vr-danger); }
+.id-detail { margin: 0; }
+.id-foot { margin: 0.9rem 0 0; font-size: 0.88rem; color: var(--vr-muted); }
+@media (max-width: 400px) { .id-card-epic { grid-column: auto; } .id-wallet { grid-template-columns: 1fr 1fr; } }
+
+/* ---------- qa.html ---------- */
+.answer-extra { margin-top: 0.75rem; }
+.answer-source { font-size: 0.95rem; color: var(--vr-muted); margin-bottom: 0.75rem; }
+.answer-source a { margin-left: 0.25rem; }
+.answer-followups { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem; }
+.answer-followups:empty, .answer-source:empty { display: none; }
+.read-aloud { min-height: 44px; }
+.myths { margin-top: 2.5rem; }
+.myths h2 { font-size: 1.35rem; margin-bottom: 0.25rem; }
+.myths-intro { color: var(--vr-muted); font-size: 0.95rem; margin-bottom: 1rem; }
+.myth-list { display: grid; gap: 0.5rem; }
+.myth-item { background: var(--vr-surface); border: 1px solid var(--vr-line); border-radius: 0.75rem; }
+.myth-item summary { min-height: 44px; padding: 0.6rem 1rem; cursor: pointer; display: flex; flex-direction: column; justify-content: center; }
+.myth-label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--vr-muted); }
+.myth-body { padding: 0 1rem 0.9rem; }
+.myth-body p { margin: 0.1rem 0 0.5rem; }
+.myth-src { font-size: 0.9rem; }
+@media (prefers-reduced-motion: reduce) { .myth-item, .myth-item summary, .chip { transition: none; } }
+
+/* ---------- map.html ---------- */
+.state-unit .unit-row { grid-template-columns: 1.75rem 1fr auto; min-height: 3.5rem; }
+.state-unit .unit-row.info-box { border: 0; text-align: left; padding: 0.6rem 0.85rem; background: var(--vr-surface); }
+.state-unit .unit-row:last-child { margin-bottom: 0; }
+.state-unit .unit-row-plain .unit-main { grid-column: 2 / -1; }
+.state-unit .unit-main { display: flex; flex-direction: column; min-width: 0; }
+.state-unit .unit-label { font-size: 0.85rem; font-weight: 600; color: var(--vr-muted); }
+.state-unit .unit-value { font-size: 1.4rem; font-weight: 800; font-variant-numeric: tabular-nums; line-height: 1.2; overflow-wrap: anywhere; }
+.state-unit .link-row .unit-value { font-size: 1rem; }
+.state-unit .unit-value .map-note { font-size: 0.9rem; font-weight: 500; }
+.state-unit .key-link { display: inline-flex; align-items: center; justify-content: center; min-width: 3.25rem; height: 2.75rem; color: var(--vr-accent-ink); text-decoration: none; }
+.state-unit .key-link svg { width: 1.1rem; height: 1.1rem; }
+.state-unit .key-link:hover { background: var(--vr-accent-hover); }
+.state-unit .key-link:focus-visible { outline: 3px solid var(--vr-accent); outline-offset: 3px; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }

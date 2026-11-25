@@ -12,8 +12,9 @@
   <script>
     (function () {
       try {
-        var dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        document.documentElement.setAttribute('data-bs-theme', dark ? 'dark' : 'light');
+        var t = localStorage.getItem('voteready_theme');
+        if (t !== 'light' && t !== 'dark') t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-bs-theme', t);
       } catch (_) { }
     })();
   </script>
@@ -35,6 +36,7 @@
           <li class="nav-item"><a class="nav-link" href="qa.html">Ask</a></li>
           <li class="nav-item"><a class="nav-link" href="map.html" aria-current="page">State map</a></li>
           <li class="nav-item"><a class="nav-link" href="https://voters.eci.gov.in/" target="_blank" rel="noopener">Register ↗</a></li>
+          <li class="nav-item"><button type="button" id="theme-toggle" class="btn btn-outline-primary theme-toggle"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg><span class="visually-hidden" id="theme-label">Dark mode</span></button></li>
           <li class="nav-item"><button type="button" id="lang-toggle" class="btn btn-outline-primary lang-toggle" aria-label="Switch language / भाषा बदलें">अ/A</button></li>
         </ul>
       </div>
@@ -140,19 +142,31 @@
            </div>` 
         : '';
 
+      const row = (n, label, value, keyHtml, extra) => `
+          <li class="unit-row ${keyHtml ? '' : 'unit-row-plain'} ${extra || ''}">
+            <span class="unit-num">${n}</span>
+            <span class="unit-main"><span class="unit-label" data-key="${label}">${label}</span><span class="unit-value">${value}</span></span>
+            ${keyHtml || ''}
+          </li>`;
+      const ext = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>';
+      const keyLink = (href, sr, tel) => `<a class="key key-link" href="${href}"${tel ? '' : ' target="_blank" rel="noopener"'}>${tel ? '' : ext}<span class="visually-hidden" data-key="${sr}">${sr}</span></a>`;
+      const ceoRow = s.ceo
+        ? row(4, 'CEO portal', s.ceo, keyLink('https://' + s.ceo, 'Open the CEO portal'), 'link-row')
+        : row(4, 'CEO portal', '<span class="ceo-missing map-note" data-key="No state CEO portal link is listed for this territory yet.">No state CEO portal link is listed for this territory yet.</span>', '');
+
       const card = document.getElementById('infoCard');
       card.className = 'info-card';
       card.innerHTML = `
         ${ladakhNote}
         <div class="state-name">${name}</div>
         <div class="state-capital"><span data-key="Capital:">Capital:</span> ${s.cap}</div>
-        <div class="info-grid">
-          <div class="info-box"><div class="num">${s.ls}</div><div class="lbl" data-key="Lok Sabha Seats">Lok Sabha Seats</div></div>
-          <div class="info-box"><div class="num">${s.vs || '—'}</div><div class="lbl" data-key="Vidhan Sabha Seats">Vidhan Sabha Seats</div></div>
-        </div>
-        <div class="info-helpline"><div><div class="lbl" data-key="Voter Helpline">Voter Helpline</div><div class="hl">1950</div></div><div class="text-end"><div class="lbl" data-key="National">National</div><div class="lbl" data-key="Toll Free">Toll Free</div></div></div>
-        ${s.ceo ? `<a class="ceo-link" href="https://${s.ceo}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg><span data-key="CEO Portal:">CEO Portal:</span> ${s.ceo}</a>` : `<p class="ceo-missing map-note"><span data-key="No state CEO portal link is listed for this territory yet.">No state CEO portal link is listed for this territory yet.</span></p>`}
-        <a class="nvsp-link" href="https://voters.eci.gov.in/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14"><path d="M9 11l3 3 8-8"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg><span data-key="Check / Register on the Voters' Services Portal">Check / Register on the Voters' Services Portal</span></a>`;
+        <ol class="unit state-unit">
+          ${row(1, 'Lok Sabha Seats', s.ls, '', 'info-box')}
+          ${row(2, 'Vidhan Sabha Seats', s.vs || '—', '', 'info-box')}
+          ${row(3, 'Voter Helpline', '1950', keyLink('tel:1950', 'Call 1950', true))}
+          ${ceoRow}
+          ${row(5, "Voters' Services Portal", 'voters.eci.gov.in', keyLink('https://voters.eci.gov.in/', "Open the Voters' Services Portal"), 'link-row')}
+        </ol>`;
       d3.selectAll('.state-path').classed('active', false);
       d3.selectAll('.state-path').filter(d => {
         const geoName = normName(d.properties);
@@ -299,5 +313,6 @@
     })();
   </script>
   <script src="translate.js"></script>
+  <script src="assets/app.js"></script>
 </body>
 </html>
