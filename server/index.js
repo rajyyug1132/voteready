@@ -94,6 +94,14 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Server error' })
 })
 
+// Vercel runs this file as a serverless function (no listen). Connect at load; Mongoose buffers
+// queries until the connection is up. An empty database is seeded once on first connect.
+if (process.env.VERCEL && process.env.MONGODB_URI) {
+  mongoose.connect(process.env.MONGODB_URI)
+    .then(async () => { if (!(await StateModel.estimatedDocumentCount())) await require('./seed')() })
+    .catch(err => console.error('MongoDB connection failed:', err.message))
+}
+
 if (require.main === module) {
   mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/voteready')
     .then(() => app.listen(port, () => console.log(`Server is running on port ${port}`)))

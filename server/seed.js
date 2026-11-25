@@ -1,25 +1,24 @@
 // npm run seed — fills reference collections from ../data/*.json. Safe to re-run: it replaces
 // states, checklist items and demo voters, and never touches plans.
 require('dotenv').config()
-const path = require('path')
 const mongoose = require('mongoose')
 const StateModel = require('./models/State')
 const ChecklistItemModel = require('./models/ChecklistItem')
 const DemoVoterModel = require('./models/DemoVoter')
 const ConstituencyModel = require('./models/Constituency')
 
-const data = file => require(path.join(__dirname, '..', 'data', file))
+// Static requires so Vercel's file tracing bundles the data files with the function.
 
 async function seed() {
-  const states = data('states.json')
+  const states = require('../data/states.json')
   const checklist = [
-    ...data('checklist.json').map((item, order) => ({ ...item, lang: 'en', order })),
-    ...data('checklist_hi.json').map((item, order) => ({ ...item, lang: 'hi', order })),
+    ...require('../data/checklist.json').map((item, order) => ({ ...item, lang: 'en', order })),
+    ...require('../data/checklist_hi.json').map((item, order) => ({ ...item, lang: 'hi', order })),
   ]
-  const voters = data('voters.json').test_voters
+  const voters = require('../data/voters.json').test_voters
   // Optional until the Kaggle CSV has been cleaned (npm run clean:kaggle); the form falls back to free text.
   let constituencies = []
-  try { constituencies = data('constituencies.json') } catch { console.warn('data/constituencies.json missing: run npm run clean:kaggle') }
+  try { constituencies = require('../data/constituencies.json') } catch { console.warn('data/constituencies.json missing: run npm run clean:kaggle') }
 
   await Promise.all([StateModel.deleteMany({}), ChecklistItemModel.deleteMany({}), DemoVoterModel.deleteMany({}), ConstituencyModel.deleteMany({})])
   await StateModel.insertMany(states)
