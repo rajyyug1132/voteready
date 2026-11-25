@@ -1,8 +1,8 @@
 # I Built a Voter Guide for First-Time Indians. I Am a First-Time Voter. Here's What Went Wrong.
 
-*Built for PromptWars Virtual 2026 on Hack2Skill. Solo project, 10 days, vanilla HTML/CSS/JS + Gemini 2.5 Flash.*
+*Built for PromptWars Virtual 2026 on Hack2Skill (solo, 10 days, vanilla HTML/CSS/JS + Gemini 2.5 Flash), then rebuilt on the MERN stack for my Full Stack Development lab.*
 
-**Live app:** [voteready-pi.vercel.app](https://voteready-pi.vercel.app/) · **Repo:** [github.com/rajyyug1132/voteready](https://github.com/rajyyug1132/voteready)
+**Live app:** [voteready-pi.vercel.app](https://voteready-pi.vercel.app/) (original) · [voteready-mern.vercel.app](https://voteready-mern.vercel.app/) (MERN) · **Repo:** [github.com/rajyyug1132/voteready](https://github.com/rajyyug1132/voteready)
 
 ---
 
@@ -14,7 +14,7 @@ Not in a vague way — in a specific, embarrassing way. I didn't know that you n
 
 I only found all of this out because I tried to explain it to someone else through an app, and the app kept getting it wrong.
 
-VoteReady is a guided walkthrough for first-time Indian voters aged 18–22. It has three parts: a checklist that walks you from "am I eligible?" to "what do I carry on polling day," an AI-powered Q&A for natural questions about voting, and a state map with seat counts and links to each state's Chief Electoral Officer portal. Everything runs on vanilla HTML, CSS, and JavaScript — no React, no build step, no frameworks.
+VoteReady is a guided walkthrough for first-time Indian voters aged 18–22. It has three parts: a checklist that walks you from "am I eligible?" to "what do I carry on polling day," an AI-powered Q&A for natural questions about voting, and a state map with seat counts and links to each state's Chief Electoral Officer portal. The first version ran on vanilla HTML, CSS, and JavaScript — no React, no build step, no frameworks. The MERN rebuild came later (see the end of this post).
 
 The interesting part of this project isn't the tech. It's what happened when I tried to make the content correct.
 
@@ -56,14 +56,14 @@ I found the correct list in a PIB press release (PRID 2177191, October 2025) and
 
 By day 9, I had a choice: keep polishing the landing page redesign I'd been working on, or go back and verify every factual claim in the app against real ECI sources.
 
-I shelved the redesign. It's still sitting in a `landing-redesign` branch, unfinished. The app looks rougher than it could. But every fact in it is now traceable to a specific ECI document, PIB press release, or government portal.
+I shelved the redesign. It never made it into the repo, and the app looked rougher than it could. (A later pass replaced the visual effects with a plain Bootstrap theme.) But every fact in it is now traceable to a specific ECI document, PIB press release, or government portal.
 
 Here's what I removed rather than ship unverified:
 
 - Specific polling officer duty descriptions ("First Officer checks your ID, Second Officer marks your finger") — I couldn't find the exact officer-to-duty mapping in the Manual
 - The "beep" claim in its original confident form
 - Fake section numbers in the knowledge base header that made AI-written content look like it came from an official handbook
-- A "Voter Journey Timeline" with specific dates that were already past
+- The specific dates on the "Voter Journey" timeline, which were already past. The timeline itself stayed; its first two steps now follow your checklist progress and the last two never auto-complete
 
 Every deletion made the app smaller and less impressive-looking. Every deletion also made it more honest. For a tool that's supposed to help real people navigate a real civic process, I think that's the right trade.
 
@@ -83,10 +83,22 @@ Checklist state persists in localStorage. The JSON data files are under 10KB com
 
 **Verification cannot be outsourced.** Not to another AI, not to your own app's output, not to a URL you haven't clicked yourself. The only verification that counts is reading the source document with your own eyes and comparing it to what your app says.
 
-**Smaller and verified beats bigger and hallucinated.** I could have shipped more features. I shipped fewer, correct ones. The judges will see a simple app. But they won't find a single voter-facing claim that isn't traceable to an ECI source. I'll take that trade every time.
+**Smaller and verified beats bigger and hallucinated.** I could have shipped more features. I shipped fewer, correct ones. The judges saw a simple app. Every checklist step carries its source and the date I checked it. Not everything is closed: the per-state seat counts beyond the national total and the largest states are still being re-verified, and the map says so. I'll take that trade every time.
 
 **Commit before you context-switch.** I lost two days of work early on because I didn't commit before closing my laptop. I almost committed a corrupted README because Antigravity garbled the markdown with escape characters. Both were caught by `git diff`. Now I diff before every stage, every time.
 
+## Part 2: rebuilding it on MERN
+
+My FSD lab asked for a MERN CRUD app: React with Vite, an Express server, MongoDB through Mongoose, and five routes for create, list, get, update and delete. Instead of building a throwaway "users" table, I gave VoteReady the one screen it was missing: a **voting plan** where you save your state, constituency, polling station, date and the ID you'll carry.
+
+What I learned doing it:
+
+- **The handout had bugs, and copying them would have been easy.** `<lable>` instead of `<label>`, a `.catcg`, a delete handler that shadows `res`, and `navigate('/')` firing before the request finished. I listed every one before writing code and checked them off one by one.
+- **Public datasets need the same suspicion as AI output.** The constituency dropdown comes from a public-domain Kaggle dataset of the 2024 Lok Sabha candidates. The cleaning script refused to finish because Maharashtra had 47 seats instead of 48. The dataset had given Maharashtra's Aurangabad the seat number, phase and polling date of Bihar's Aurangabad, probably by joining on the name. Counting rows against a number I already trusted (543) is what caught it.
+- **Serverless changes when code runs.** On Vercel the API pauses as soon as it answers, so my "seed the empty database in the background" step got cut off halfway. It now finishes before the first request is handled.
+
+The original static site is still live and unchanged; the MERN version runs next to it.
+
 ---
 
-*VoteReady was built solo over 10 days for PromptWars Virtual 2026 using Google Antigravity (Gemini 3.1 Pro for code generation) and Gemini 2.5 Flash for the Q&A feature. All voter-facing content is verified against the ECI Manual on EVM (Ed. 8, 2023), ECI FAQs on EVM, PIB Press Release PRID 2177191, and the Voters' Service Portal at voters.eci.gov.in.*
+*VoteReady was built solo over 10 days for PromptWars Virtual 2026 using Google Antigravity (Gemini 3.1 Pro for code generation) and Gemini 2.5 Flash for the Q&A feature. Voter-facing content is checked against the ECI Manual on EVM (Ed. 8, 2023; Ed. 9 for the later fixes), the Presiding Officer Handbook, ECI FAQs on EVM, PIB Press Release PRID 2177191, and the Voters' Service Portal at voters.eci.gov.in.*
