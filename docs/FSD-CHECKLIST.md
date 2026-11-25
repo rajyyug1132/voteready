@@ -56,9 +56,9 @@ Status: `[ ]` open · `[x]` done (proof linked) · `[ASK]` blocked on Yyug.
 | 2 De-slop (main) | every slop item closed · Lighthouse a11y ≥ 95 · feature parity with the Phase 0 screenshots | slop items [x] · Lighthouse a11y 100 (live, 4 pages) [x] · parity [x] — see F |
 | 3 Kaggle data | row counts match source · 0 unmatched state names | 543 = ECI total · 0 unmatched · per-state counts = LS seats [x] |
 | 4 Server (fsd-mern) | all 5 CRUD routes pass in Postman · seed runs clean on an empty DB | routes + seed pass `npm test` [x] · Postman collection 11/11 live (newman) [x] |
-| 5 Client (fsd-mern) | create → list → update → delete works in the browser · every Phase 0 feature works in en + hi · no slop item returns | CRUD in browser, local + live [x] · checklist/EPIC/map/ask in en + hi [x] · Maps directions dropped on purpose (D3) · no slop re-check yet [ ] |
-| 6 Deploy + merge | live client does full CRUD against the live API · `/health` green | deployed 2026-11-25: client https://voteready-mern.vercel.app, API https://voteready-api.vercel.app (both Vercel), MongoDB Atlas M0 via the Vercel integration. `/health` 200; live create → get → update → delete → 404 pass; 400 on invalid plan; CORS limited to the client origin; `/ask` answers with the Gemini key. Merge to `main` [ ] |
-| 7 Verify | every row in A and B ticked with proof · mobile + Hindi + keyboard pass | [ ] |
+| 5 Client (fsd-mern) | create → list → update → delete works in the browser · every Phase 0 feature works in en + hi · no slop item returns | CRUD in browser, local + live [x] · checklist/EPIC/map/ask in en + hi [x] · Maps directions dropped on purpose (D3) · slop re-check clean (Phase 7) [x] |
+| 6 Deploy + merge | live client does full CRUD against the live API · `/health` green | deployed 2026-11-25: client https://voteready-mern.vercel.app, API https://voteready-api.vercel.app (both Vercel), MongoDB Atlas M0 via the Vercel integration. `/health` 200; live create → get → update → delete → 404 pass; 400 on invalid plan; CORS limited to the client origin; `/ask` answers with the Gemini key. Merged to `main` (PR #2, `335d311`); voteready-pi redeployed from `main`, all 4 static pages + `/api/gemini` 200 [x] |
+| 7 Verify | every row in A and B ticked with proof · mobile + Hindi + keyboard pass | A: all [x] except R2 (rubric, [ASK]) · B: all [x] · mobile + Hindi + keyboard: `scripts/check_mern.py` 25/25 live [x] — see G |
 
 ## D. Found while freezing (not in the Phase 1/2 lists yet)
 
@@ -128,7 +128,25 @@ Proof: live Lighthouse (headless Chromium) accessibility 100 and best-practices 
 | README "~425 tokens" (D9) | measured: reference block is 2,982 characters; README now says "about 3,000 characters" | [x] |
 | PIB date (README said 7 Oct) | PIB page says 10 Oct 2025 | [x] |
 | `PROMPTS.md` → real build log | date / commit / change / prompt table. Prompts from Apr–May 2026 were never saved, so that column says "not recorded" | [x] |
-| D7: BLOG says a `landing-redesign` branch exists and that the timeline was removed | **not touched** — BLOG is rewritten in Phase 7 | open |
+| D7: BLOG says a `landing-redesign` branch exists and that the timeline was removed | corrected in Phase 7 (see G) | [x] |
 | D14 dead dictionary entries | removed | [x] |
 
 Known gaps: the map still draws the pre-2019 J&K/Ladakh boundary (note shown on Ladakh); BLOG.md still describes the vanilla-JS build until its Phase 7 rewrite; Maps directions are hidden if Google rejects the key (billing decision open, E).
+
+## G. Phase 7 results (live, 2026-11-25)
+
+Proof: `python scripts/check_mern.py --base-url https://voteready-mern.vercel.app --shots docs/baseline/mern` → `0 failure(s)`, 25 checks. Screenshots: `docs/baseline/mern/` (6 pages × 390/1440 px × en/hi).
+
+| Check | Result | Status |
+|---|---|---|
+| Mobile: no horizontal overflow at 390 px and 1440 px | home, checklist, ask, map, plans list, plan form — en and hi | [x] |
+| Hindi: no visible English UI text in `hi` (same ignore rules as `check_hi_coverage.py`) | 0 strings left on all 6 pages | [x] |
+| Keyboard: Tab reaches every visible control; each focused control shows a visible focus style | all 6 pages, en and hi (1440 px; at 390 px the nav sits behind the toggler) | [x] |
+| Keyboard-only CRUD: create a plan with Tab / type / Enter only, then see it in the list | plan saved with state Goa, constituency North Goa; deleted through the API afterwards | [x] |
+| Postman collection against the live API | 11/11 (newman) | [x] |
+| Slop re-check on the client | `client/src/site.css` identical to the Phase 2 theme; no gradients, blur/glass, GSAP, Tailwind or emoji icons (only the original "✓ Completed" tag); one fade, off under `prefers-reduced-motion` | [x] |
+| D7 BLOG claims (`landing-redesign` branch, timeline removed); D8 polling schedules | corrected; MERN section added | [x] |
+| D15 `voteready_fsd_workflow.png` with old phase numbering | deleted; `docs/system-map.html` is the diagram | [x] |
+
+Still open: R2 rubric rows beyond the handout ([ASK]); per-state seat counts and CEO links (§E, need a browser session on eci.gov.in); Lighthouse was not re-run on the MERN client (Phase 2's 100 was on the static pages).
+
