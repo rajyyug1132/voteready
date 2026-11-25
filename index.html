@@ -52,7 +52,7 @@
         <div>
           <p class="eyebrow">Student project · based on Election Commission of India sources</p>
           <h1>Your first vote, fully prepared.</h1>
-          <p class="lead mb-4">A step-by-step walkthrough for first-time Indian voters: a checklist built from ECI sources, an assistant for plain-language questions, and a state-by-state resource map.</p>
+          <p class="lead mb-4">A step-by-step walkthrough for first-time Indian voters: a checklist built from ECI sources, a practice polling booth, plain-language answers and a state-by-state map.</p>
           <div class="d-flex flex-wrap gap-2">
             <a class="btn btn-primary" href="checklist.html">Start your checklist</a>
             <a class="btn btn-outline-primary" href="https://voters.eci.gov.in/" target="_blank" rel="noopener">Register on voters.eci.gov.in ↗</a>
@@ -78,25 +78,32 @@
       <div class="container">
         <h2 class="section-title">What is here</h2>
         <div class="row g-3 mt-1">
-          <div class="col-md-4">
+          <div class="col-md-6 col-lg-3">
             <div class="vr-card feature-card">
               <h3>8-step checklist</h3>
               <p>Every step from eligibility to polling day, each based on ECI documents. Tick items off as you go; your progress is saved in this browser.</p>
               <a class="card-link" href="checklist.html">Open the checklist<span aria-hidden="true"> →</span></a>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-6 col-lg-3">
+            <div class="vr-card feature-card">
+              <h3>Practice in the booth</h3>
+              <p>Walk past each polling officer on a floor plan, then press the blue key on a practice EVM and watch your VVPAT slip.</p>
+              <a class="card-link" href="booth.html">Try the practice booth<span aria-hidden="true"> →</span></a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
             <div class="vr-card feature-card">
               <h3>Ask a question</h3>
-              <p>Ask about voting in India. Answers are limited to a small set of ECI-based notes; if they don't cover your question, it says so. The API key stays on the server.</p>
+              <p>Ask about voting in India. Answers come from a small set of ECI-based notes, with the source shown; if the notes don't cover your question, it says so.</p>
               <a class="card-link" href="qa.html">Ask a question<span aria-hidden="true"> →</span></a>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-6 col-lg-3">
             <div class="vr-card feature-card">
               <h3>State-by-state explorer</h3>
               <p>Interactive India map with Lok Sabha seats, Vidhan Sabha seats, CEO portal links, and the voter helpline number for all 36 states and union territories.</p>
-              <div class="d-flex gap-2">
+              <div class="d-flex flex-column gap-2">
                 <label for="quickSelect" class="visually-hidden">Select a State / UT</label>
                 <select id="quickSelect" class="form-select"><option value="">Select a State / UT</option></select>
                 <button type="button" class="btn btn-primary" onclick="goToMap()">Go</button>

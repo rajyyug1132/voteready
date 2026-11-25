@@ -493,6 +493,9 @@ a:hover { color: var(--vr-accent-hover); }
 .helpline a { font-size: 1.75rem; font-weight: 800; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; min-height: 44px; display: inline-flex; align-items: center; text-decoration: none; }
 .helpline a:hover { text-decoration: underline; }
 
+.card-link span[aria-hidden] { margin-left: 0.3em; }
+@media (min-width: 768px) { .site-footer .d-flex { align-items: center; } }
+
 /* Standalone links get a full 44px tap target (WCAG 2.5.8); links inside sentences stay inline. */
 .site-nav .navbar-brand { min-height: 44px; }
 .unit-foot a, .feature-card > a, .answer-source a, .myth-src a, .id-foot a, .booth-src a, .site-footer a, .map-note a, .state-unit + p a { display: inline-flex; align-items: center; min-height: 44px; }
