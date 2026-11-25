@@ -19,19 +19,19 @@ Status: `[ ]` open · `[x]` done (proof linked) · `[ASK]` blocked on Yyug.
 | L1 | `client/` created with `npm init vite` → React + JavaScript | 5 | | [ ] |
 | L2 | `client/`: `npm install bootstrap axios react-router-dom` | 5 | | [ ] |
 | L3 | `BrowserRouter` routes: list `/plans`, create `/plans/create`, update `/plans/update/:id` | 5 | | [ ] |
-| L4 | `server/` created with `npm init -y`; `npm install express mongoose cors nodemon` | 4 | | [ ] |
-| L5 | `server/package.json`: `"start": "nodemon index.js"` | 4 | | [ ] |
-| L6 | `server/index.js` + `server/models/` folder | 4 | | [ ] |
-| L7 | `app.use(cors())` and `app.use(express.json())` in `index.js` | 4 | | [ ] |
-| L8 | `GET /plans` — list | 4 | | [ ] |
-| L9 | `GET /getplan/:id` — one by id | 4 | | [ ] |
-| L10 | `POST /createplan` — create | 4 | | [ ] |
-| L11 | `PUT /updateplan/:id` — update by id | 4 | | [ ] |
-| L12 | `DELETE /deleteplan/:id` — delete by id | 4 | | [ ] |
+| L4 | `server/` created with `npm init -y`; `npm install express mongoose cors nodemon` | 4 | `npm test` in `server/` (6/6, in-memory MongoDB) | [x] |
+| L5 | `server/package.json`: `"start": "nodemon index.js"` | 4 | `npm test` in `server/` (6/6, in-memory MongoDB) | [x] |
+| L6 | `server/index.js` + `server/models/` folder | 4 | `npm test` in `server/` (6/6, in-memory MongoDB) | [x] |
+| L7 | `app.use(cors())` and `app.use(express.json())` in `index.js` | 4 | `npm test` in `server/` (6/6, in-memory MongoDB) | [x] |
+| L8 | `GET /plans` — list | 4 | `npm test` in `server/` (6/6, in-memory MongoDB) | [x] |
+| L9 | `GET /getplan/:id` — one by id | 4 | `npm test` in `server/` (6/6, in-memory MongoDB) | [x] |
+| L10 | `POST /createplan` — create | 4 | `npm test` in `server/` (6/6, in-memory MongoDB) | [x] |
+| L11 | `PUT /updateplan/:id` — update by id | 4 | `npm test` in `server/` (6/6, in-memory MongoDB) | [x] |
+| L12 | `DELETE /deleteplan/:id` — delete by id | 4 | `npm test` in `server/` (6/6, in-memory MongoDB) | [x] |
 | L13 | All five CRUD calls made from React with axios | 5 | | [ ] |
-| L14 | MongoDB: Atlas for deploy, `mongodb://localhost:27017` for dev, via `MONGODB_URI` | 4 / 6 | | [ ] |
-| L15 | Every API route tested in Postman; collection exported to `server/postman/` | 4 | | [ ] |
-| R1 | One public Kaggle dataset used in the app (slug, columns, license verified) | 3 / 5 | | [ ] |
+| L14 | MongoDB: Atlas for deploy, `mongodb://localhost:27017` for dev, via `MONGODB_URI` | 4 / 6 | `MONGODB_URI`, default `mongodb://localhost:27017/voteready`; Atlas not set up yet | [~] |
+| L15 | Every API route tested in Postman; collection exported to `server/postman/` | 4 | collection at `server/postman/voteready.postman_collection.json`; not yet run in the Postman app | [~] |
+| R1 | One public Kaggle dataset used in the app (slug, columns, license verified) | 3 / 5 | Kaggle `jainaru/lok-sabha-2024-results-and-candidates`, CC0. `candidates_with_phase.csv` (8,441 rows: State, Constituency_No, Constituency, Phase, Polling Date, …) → `server/scripts/clean-kaggle.js` → `data/constituencies.json`, 543 rows, 36/36 states matched, every state's count = its LS seats. One source error fixed in code: Maharashtra Aurangabad carried Bihar Aurangabad's PC no./phase/date (37, 1, 19 Apr) → 19, 4, 13 May 2024. Used by the Voting plan constituency dropdown via `GET /states/:name/constituencies` | [x] |
 | R2 | Rubric rows beyond the handout | — | | [ASK] |
 
 ## B. Handout bugs we must not copy
@@ -40,12 +40,12 @@ Status: `[ ]` open · `[x]` done (proof linked) · `[ASK]` blocked on Yyug.
 |---|---|---|---|
 | H1 | `<lable>` | `<label htmlFor>` | [ ] |
 | H2 | `.catcg` | `.catch` | [ ] |
-| H3 | `.then(res => res.json(res))` shadowing in delete | send a status + body; client doesn't reuse `res` | [ ] |
+| H3 | `.then(res => res.json(res))` shadowing in delete | send a status + body; client doesn't reuse `res` | [x] server |
 | H4 | `navigate('/')` fires before the request finishes | `await` the request, then navigate | [ ] |
 | H5 | Port 3000 vs 3001 mismatch | one `PORT` env on the server, `VITE_API_URL` on the client | [ ] |
 | H6 | Missing `key` in `.map` | `key={plan._id}` | [ ] |
 | H7 | Uncontrolled inputs on update | controlled inputs filled from `GET /getplan/:id` | [ ] |
-| H8 | No validation | schema validation + 400/404/201 codes, no stack traces in responses | [ ] |
+| H8 | No validation | schema validation + 400/404/201 codes, no stack traces in responses | [x] server |
 
 ## C. Phase gates
 
@@ -54,8 +54,8 @@ Status: `[ ]` open · `[x]` done (proof linked) · `[ASK]` blocked on Yyug.
 | 0 Freeze | rows written · deadline known | rows [x] · tag pushed [ ] · deadline [ASK] |
 | 1 Truth fixes (main) | every voter-facing fact has `{source, verified_on}` · en/hi parity script passes · no broken images live | parity [x] · broken images [x] · live checks [x] · **sources: partial — see E** |
 | 2 De-slop (main) | every slop item closed · Lighthouse a11y ≥ 95 · feature parity with the Phase 0 screenshots | slop items [x] · Lighthouse a11y 100 (live, 4 pages) [x] · parity [x] — see F |
-| 3 Kaggle data | row counts match source · 0 unmatched state names | [ ] |
-| 4 Server (fsd-mern) | all 5 CRUD routes pass in Postman · seed runs clean on an empty DB | [ ] |
+| 3 Kaggle data | row counts match source · 0 unmatched state names | 543 = ECI total · 0 unmatched · per-state counts = LS seats [x] |
+| 4 Server (fsd-mern) | all 5 CRUD routes pass in Postman · seed runs clean on an empty DB | routes + seed pass `npm test` [x] · Postman app run [ ] |
 | 5 Client (fsd-mern) | create → list → update → delete works in the browser · every Phase 0 feature works in en + hi · no slop item returns | [ ] |
 | 6 Deploy + merge | live client does full CRUD against the live API · `/health` green | [ ] |
 | 7 Verify | every row in A and B ticked with proof · mobile + Hindi + keyboard pass | [ ] |

@@ -39,7 +39,41 @@ Claims that could not be verified against these sources were removed rather than
 - localStorage for checklist state persistence
 - Static JSON for verified ECI content
 
-## Running locally
+## MERN version (FSD lab)
+
+The MERN rebuild sits next to the static site: `server/` (Express + Mongoose) and `client/` (React + Vite, Bootstrap, axios, react-router-dom). Its one new screen is the **Voting plan** page, which covers create, list, update and delete.
+
+```bash
+# API: needs MongoDB at MONGODB_URI (default mongodb://localhost:27017/voteready)
+cd server
+cp .env.example .env      # add GEMINI_API_KEY for /ask
+npm install
+npm run seed              # states, checklist (en + hi), demo voters
+npm start                 # nodemon, port 3001
+
+# No local MongoDB? Use a seeded in-memory database instead (data is lost on exit):
+npm run dev:memory
+
+# Client
+cd client
+cp .env.example .env      # VITE_API_URL=http://localhost:3001
+npm install
+npm run dev
+```
+
+| Route | Purpose |
+|---|---|
+| `GET /plans` · `GET /getplan/:id` · `POST /createplan` · `PUT /updateplan/:id` · `DELETE /deleteplan/:id` | Voting plan CRUD |
+| `GET /checklist?lang=en\|hi` · `GET /states` · `GET /states/:name/constituencies` | Reference data seeded from `data/` |
+| `POST /epic/lookup` | Demo EPIC records only; always returns `demo: true` |
+| `POST /ask` | Gemini Q&A (the key stays on the server; rate-limited to 10 requests a minute) |
+| `GET /health` | Database status |
+
+Constituencies come from the Kaggle dataset [Lok Sabha 2024 Results & Candidates](https://www.kaggle.com/datasets/jainaru/lok-sabha-2024-results-and-candidates) (CC0). To rebuild `data/constituencies.json`, put `candidates_with_phase.csv` in `data/kaggle/` (gitignored) and run `npm run clean:kaggle` in `server/`. The script keeps one row per constituency, drops candidate details, and fails unless all 543 seats map to the 36 states.
+
+Tests: `cd server && npm test` exercises every route against an in-memory MongoDB. The Postman collection is at `server/postman/voteready.postman_collection.json`.
+
+## Running locally (static site)
 
 ```bash
 git clone https://github.com/rajyyug1132/voteready.git
