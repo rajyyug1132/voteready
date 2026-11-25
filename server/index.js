@@ -13,6 +13,8 @@ const { askGemini } = require('./ask')
 
 const app = express()
 const port = process.env.PORT || 3001
+// The Vercel MongoDB Atlas integration names the variable after a chosen prefix; accept the usual ones.
+const MONGO_URI = process.env.MONGODB_URI || process.env.MONGODB_URL || process.env.STORAGE_URL
 
 app.set('trust proxy', 1) // behind Render's proxy; needed for per-IP rate limits
 app.use(helmet())
@@ -96,14 +98,14 @@ app.use((err, req, res, next) => {
 
 // Vercel runs this file as a serverless function (no listen). Connect at load; Mongoose buffers
 // queries until the connection is up. An empty database is seeded once on first connect.
-if (process.env.VERCEL && process.env.MONGODB_URI) {
-  mongoose.connect(process.env.MONGODB_URI)
+if (process.env.VERCEL && MONGO_URI) {
+  mongoose.connect(MONGO_URI)
     .then(async () => { if (!(await StateModel.estimatedDocumentCount())) await require('./seed')() })
     .catch(err => console.error('MongoDB connection failed:', err.message))
 }
 
 if (require.main === module) {
-  mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/voteready')
+  mongoose.connect(MONGO_URI || 'mongodb://localhost:27017/voteready')
     .then(() => app.listen(port, () => console.log(`Server is running on port ${port}`)))
     .catch(err => { console.error('MongoDB connection failed:', err.message); process.exit(1) })
 }
