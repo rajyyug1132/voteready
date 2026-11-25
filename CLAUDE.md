@@ -8,3 +8,4 @@
 - Logo: one ballot-unit row (red lamp + blue key) on an ink square (`assets/logo.svg`, `favicon.svg`).
 - Never: violet/purple, cream/paper bg, gradients or glow, side-stripe borders (`border-left` > 1px), gradient text, saffron/green tricolour by reflex.
 - Every new visible string needs a Hindi entry in `translate.js` (`scripts/check_hi_coverage.py`).
+- `booth.html` practice EVM: made-up candidates with geometric symbols only (never a real party, name or symbol); keep it labelled "practice only". Station text must stay sourced from the checklist / ECI Handbook.

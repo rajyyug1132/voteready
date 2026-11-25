@@ -205,6 +205,7 @@ a:hover { color: var(--vr-accent-hover); }
   font-weight: 700; border: 2px solid var(--vr-line); color: var(--vr-muted); background: var(--vr-bg);
 }
 .jdot-done { background: var(--vr-ok); border-color: var(--vr-ok); color: #fff; }
+[data-bs-theme="dark"] .cu-ballot { box-shadow: inset 0 0 0 1px #4a4c51, inset 0 -4px 0 #000; }
 [data-bs-theme="dark"] .jdot-done { color: #0d2014; }
 .jdot-active { border-color: var(--vr-accent); color: var(--vr-accent); }
 .jphase { font-size: 0.85rem; color: var(--vr-muted); }
@@ -305,6 +306,93 @@ a:hover { color: var(--vr-accent-hover); }
 #google-map { display: none; height: 300px; border-radius: 0.5rem; margin-top: 0.75rem; }
 #google-map.active { display: block; }
 .map-note { font-size: 0.9rem; color: var(--vr-muted); }
+
+/* ---------- Booth walkthrough ---------- */
+.booth { padding: 1.5rem 0 2.5rem; }
+.booth + .booth { border-top: 1px solid var(--vr-line); padding-top: 2.5rem; }
+.booth:focus { outline: none; }
+.booth-grid { display: grid; gap: 1.5rem; margin-top: 1rem; }
+@media (min-width: 992px) { .booth-grid { grid-template-columns: 1.2fr 1fr; align-items: stretch; } }
+.booth-plan { background: var(--vr-unit); border-radius: 0.9rem; box-shadow: inset 0 0 0 1px var(--vr-unit-edge); padding: 0.75rem; }
+.booth-plan svg { display: block; width: 100%; height: auto; }
+.plan-room { fill: var(--vr-surface); stroke: var(--vr-line); stroke-width: 2; }
+.plan-door { fill: var(--vr-bg); stroke: var(--vr-line); }
+.plan-desk { fill: var(--vr-unit); stroke: var(--vr-unit-edge); }
+.plan-cu { fill: #1f2023; }
+.plan-comp { fill: none; stroke: var(--vr-muted); stroke-width: 1.5; stroke-dasharray: 4 3; }
+.plan-bu { fill: var(--vr-unit); stroke: var(--vr-unit-edge); }
+.plan-vv { fill: var(--vr-bg); stroke: var(--vr-muted); }
+.plan-person { fill: var(--vr-lamp-off); }
+.plan-lbl { font: 600 11px var(--vr-font-body); fill: var(--vr-muted); }
+.plan-route { fill: none; stroke: var(--vr-accent); stroke-width: 2; stroke-dasharray: 3 5; stroke-linecap: round; opacity: 0.55; }
+.plan-stop circle { fill: var(--vr-surface); stroke: var(--vr-line); stroke-width: 2; }
+.plan-stop text { font: 800 12px var(--vr-font-body); fill: var(--vr-muted); }
+.plan-stop.is-done circle { fill: var(--vr-lamp); stroke: var(--vr-lamp); }
+.plan-stop.is-done text { fill: #fff; }
+.plan-stop.is-current circle { fill: var(--vr-accent); stroke: var(--vr-accent); }
+.plan-stop.is-current text { fill: var(--vr-accent-ink); }
+.plan-you { fill: none; stroke: var(--vr-accent); stroke-width: 2.5; opacity: 0.45; transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1); }
+
+.booth-panel { display: flex; flex-direction: column; gap: 1rem; }
+.booth-steps { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.booth-step { display: inline-flex; align-items: center; gap: 0.45rem; min-height: 44px; padding: 0.3rem 0.75rem 0.3rem 0.35rem; border: 1px solid var(--vr-line); border-radius: 999px; background: var(--vr-surface); color: var(--vr-ink); font-size: 0.9rem; font-weight: 600; }
+.booth-step:hover { border-color: var(--vr-accent); }
+.booth-step-num { width: 1.75rem; height: 1.75rem; border-radius: 50%; display: inline-grid; place-items: center; background: var(--vr-bg); color: var(--vr-muted); font-weight: 800; }
+.booth-step.is-done .booth-step-num { background: var(--vr-lamp); color: #fff; }
+.booth-step[aria-current="step"] { border-color: var(--vr-accent); }
+.booth-step[aria-current="step"] .booth-step-num { background: var(--vr-accent); color: var(--vr-accent-ink); }
+@media (max-width: 575.98px) { .booth-step-lbl { display: none; } .booth-step { padding-right: 0.35rem; } .booth-step[aria-current="step"] .booth-step-lbl { display: inline; padding-right: 0.4rem; } }
+.station { background: var(--vr-surface); border: 1px solid var(--vr-line); border-radius: 0.75rem; padding: 1.25rem; }
+.station-who { margin: 0 0 0.25rem; font-size: 0.9rem; font-weight: 600; color: var(--vr-muted); }
+.station-title { font-size: clamp(1.5rem, 3vw, 2rem); margin: 0 0 0.5rem; }
+.station-body { margin: 0; max-width: 60ch; }
+.booth-src { font-size: 0.88rem; color: var(--vr-muted); margin: 0; }
+
+/* ---------- Practice EVM ---------- */
+.evm { display: grid; gap: 1rem; margin: 1.5rem 0 1rem; align-items: start; }
+@media (min-width: 992px) { .evm { grid-template-columns: 11rem 1fr 13rem; } }
+.cu, .bu, .vv { background: var(--vr-unit); border-radius: 0.9rem; box-shadow: inset 0 0 0 1px var(--vr-unit-edge); padding: 0.9rem; }
+.mach-name { font-weight: 800; letter-spacing: -0.01em; margin: 0 0 0.6rem; }
+.mach-note { font-size: 0.85rem; color: var(--vr-muted); margin: 0.6rem 0 0; }
+.cu { display: flex; flex-direction: column; }
+.cu-ballot { min-height: 56px; border: 0; border-radius: 0.5rem; background: #1f2023; color: #f6f5f1; font-weight: 800; font-size: 1.05rem; box-shadow: inset 0 -4px 0 rgba(0,0,0,.35); }
+.cu-ballot:active { transform: translateY(1px); box-shadow: none; }
+.cu-ballot:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.bu-head { display: flex; justify-content: space-between; align-items: center; }
+.bu-head .mach-name { margin: 0 0 0.6rem; }
+.bu-ready { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; font-weight: 600; color: var(--vr-muted); margin-bottom: 0.6rem; }
+.ready-lamp { width: 0.7rem; height: 0.7rem; border-radius: 50%; background: var(--vr-lamp-off); }
+.ready-lamp.on { background: var(--vr-ok); box-shadow: 0 0 0 4px color-mix(in srgb, var(--vr-ok) 25%, transparent); }
+.bu-rows { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.4rem; }
+.bu-row { display: grid; grid-template-columns: 1.5rem 1fr 1.75rem 0.75rem 4.25rem; align-items: center; gap: 0.75rem; background: var(--vr-surface); border-radius: 0.4rem; padding: 0.55rem 0.75rem; }
+.bu-num { font-weight: 800; color: var(--vr-muted); }
+.bu-name { font-weight: 700; }
+.sym { width: 1.75rem; height: 1.75rem; fill: var(--vr-ink); stroke: var(--vr-ink); }
+.sym-nota { fill: none; }
+.bu-key { height: 2.25rem; border: 0; border-radius: 1.2rem; background: var(--vr-accent); box-shadow: inset 0 -4px 0 var(--vr-key-shadow); cursor: pointer; }
+.bu-key:active { transform: translateY(2px); box-shadow: inset 0 -1px 0 var(--vr-key-shadow); }
+.bu-key[aria-disabled="true"] { cursor: not-allowed; }
+.bu-row.is-done .lamp { background: var(--vr-lamp); box-shadow: 0 0 0 4px color-mix(in srgb, var(--vr-lamp) 22%, transparent); }
+
+.vv-window { height: 9.5rem; border-radius: 0.5rem; background: #1a2033; box-shadow: inset 0 0 0 3px var(--vr-unit-edge), inset 0 8px 18px rgba(0,0,0,.35); overflow: hidden; display: grid; place-items: center; padding: 0.75rem; }
+.vv-slip { width: 100%; background: #fbfbf7; color: #17181a; border-radius: 2px; padding: 0.55rem 0.6rem; display: flex; flex-direction: column; align-items: center; gap: 0.2rem; text-align: center; font-weight: 700; line-height: 1.2; box-shadow: 0 2px 6px rgba(0,0,0,.35); animation: vv-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.vv-slip .sym { fill: #17181a; stroke: #17181a; }
+.vv-slip .sym-nota { fill: none; }
+.vv-num { font-size: 1.25rem; font-weight: 800; }
+.vv-slip .sym { width: 1.6rem; height: 1.6rem; }
+.vv-slip.is-dropping { animation: vv-drop 0.6s cubic-bezier(0.55, 0, 1, 0.45) both; }
+@keyframes vv-in { from { transform: translateY(-120%); } to { transform: none; } }
+@keyframes vv-drop { to { transform: translateY(160%); opacity: 0.2; } }
+.vv-timer { height: 4px; border-radius: 2px; background: var(--vr-line); margin-top: 0.6rem; overflow: hidden; }
+.vv-bar { display: block; height: 100%; width: 100%; background: var(--vr-accent); transform-origin: left; }
+.vv-timer.is-running .vv-bar { animation: vv-bar 7s linear both; }
+@keyframes vv-bar { to { transform: scaleX(0); } }
+.vv-count { margin: 0.35rem 0 0; font-size: 0.9rem; color: var(--vr-muted); font-variant-numeric: tabular-nums; }
+.vv-box { height: 2.5rem; margin-top: 0.6rem; border-radius: 0.35rem; background: #1f2023; box-shadow: inset 0 3px 0 #000; }
+.evm-status { min-height: 3rem; font-weight: 600; max-width: 70ch; }
+.evm-sound { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 44px; color: var(--vr-muted); }
+.evm-sound input { width: 1.2rem; height: 1.2rem; accent-color: var(--vr-accent); }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }

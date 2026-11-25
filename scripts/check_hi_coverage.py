@@ -7,7 +7,7 @@ Ignored: any string that already contains Devanagari, URLs, EPIC samples, ECI/VV
 import argparse, re, sys
 from playwright.sync_api import sync_playwright
 
-PAGES = [("/", "body"), ("/checklist.html", ".cl-card"), ("/qa.html", "body"), ("/map.html?state=Odisha", ".info-box")]
+PAGES = [("/", "body"), ("/checklist.html", ".cl-card"), ("/booth.html", ".bu-row"), ("/qa.html", "body"), ("/map.html?state=Odisha", ".info-box")]
 JS = """() => {
  const out=[]; const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT); let n;
  while(n=w.nextNode()){const p=n.parentElement; if(!p||['SCRIPT','STYLE','NOSCRIPT'].includes(p.tagName)) continue;
