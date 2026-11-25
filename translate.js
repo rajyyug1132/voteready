@@ -1,4 +1,11 @@
 const dictionary = {
+    "Check eligibility": "पात्रता जाँचें",
+    "Check for an existing EPIC": "मौजूदा EPIC जाँचें",
+    "Register with Form 6": "फ़ॉर्म 6 से पंजीकरण करें",
+    "Pack your documents": "अपने दस्तावेज़ तैयार रखें",
+    "If your name is missing": "अगर सूची में आपका नाम नहीं है",
+    "Inside the booth": "मतदान केंद्र के अंदर",
+    "When to go": "कब जाएँ",
     "State-by-state explorer": "राज्य-वार एक्सप्लोरर",
     "Interactive India map with Lok Sabha seats, Vidhan Sabha seats, CEO portal links, and the voter helpline number for all 36 states and union territories.": "सभी 36 राज्यों और केंद्र शासित प्रदेशों के लिए लोक सभा सीटें, विधान सभा सीटें, CEO पोर्टल लिंक और मतदाता हेल्पलाइन नंबर के साथ इंटरैक्टिव भारत मानचित्र।",
     "Register on voters.eci.gov.in ↗": "voters.eci.gov.in पर पंजीकरण करें ↗",
