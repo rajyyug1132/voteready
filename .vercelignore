@@ -1,0 +1,5 @@
+data/kaggle/
+docs/baseline/
+**/node_modules/
+**/dist/
+**/.env
