@@ -1,0 +1,3803 @@
+[
+  {
+    "state": "Andaman and Nicobar Islands",
+    "no": 1,
+    "name": "Andaman & Nicobar Islands",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Andhra Pradesh",
+    "no": 1,
+    "name": "Araku (St)",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Andhra Pradesh",
+    "no": 2,
+    "name": "Srikakulam",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Andhra Pradesh",
+    "no": 3,
+    "name": "Vizianagaram",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Andhra Pradesh",
+    "no": 4,
+    "name": "Visakhapatnam",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Andhra Pradesh",
+    "no": 5,
+    "name": "Anakapalle",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Andhra Pradesh",
+    "no": 6,
+    "name": "Kakinada",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Andhra Pradesh",
+    "no": 7,
+    "name": "Amalapuram (Sc)",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Andhra Pradesh",
+    "no": 8,
+    "name": "Rajahmundry",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Andhra Pradesh",
+    "no": 9,
+    "name": "Narsapuram",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Andhra Pradesh",
+    "no": 10,
+    "name": "Eluru",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Andhra Pradesh",
+    "no": 11,
+    "name": "Machilipatnam",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Andhra Pradesh",
+    "no": 12,
+    "name": "Vijayawada",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Andhra Pradesh",
+    "no": 13,
+    "name": "Guntur",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Andhra Pradesh",
+    "no": 14,
+    "name": "Narsaraopet",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Andhra Pradesh",
+    "no": 15,
+    "name": "Bapatla (Sc)",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Andhra Pradesh",
+    "no": 16,
+    "name": "Ongole",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Andhra Pradesh",
+    "no": 17,
+    "name": "Nandyal",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Andhra Pradesh",
+    "no": 18,
+    "name": "Kurnoolu",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Andhra Pradesh",
+    "no": 19,
+    "name": "Ananthapur",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Andhra Pradesh",
+    "no": 20,
+    "name": "Hindupur",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Andhra Pradesh",
+    "no": 21,
+    "name": "Kadapa",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Andhra Pradesh",
+    "no": 22,
+    "name": "Nellore",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Andhra Pradesh",
+    "no": 23,
+    "name": "Thirupathi(Sc)",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Andhra Pradesh",
+    "no": 24,
+    "name": "Rajampet",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Andhra Pradesh",
+    "no": 25,
+    "name": "Chittoor(Sc)",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Arunachal Pradesh",
+    "no": 1,
+    "name": "Arunachal West",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Arunachal Pradesh",
+    "no": 2,
+    "name": "Arunachal East",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Assam",
+    "no": 1,
+    "name": "Kokrajhar",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Assam",
+    "no": 2,
+    "name": "Dhubri",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Assam",
+    "no": 3,
+    "name": "Barpeta",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Assam",
+    "no": 4,
+    "name": "Darrang-Udalguri",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Assam",
+    "no": 5,
+    "name": "Guwahati",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Assam",
+    "no": 6,
+    "name": "Diphu",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Assam",
+    "no": 7,
+    "name": "Karimganj",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Assam",
+    "no": 8,
+    "name": "Silchar",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Assam",
+    "no": 9,
+    "name": "Nagaon",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Assam",
+    "no": 10,
+    "name": "Kaziranga",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Assam",
+    "no": 11,
+    "name": "Sonitpur",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Assam",
+    "no": 12,
+    "name": "Lakhimpur",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Assam",
+    "no": 13,
+    "name": "Dibrugarh",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Assam",
+    "no": 14,
+    "name": "Jorhat",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Bihar",
+    "no": 1,
+    "name": "Valmiki Nagar",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Bihar",
+    "no": 2,
+    "name": "Paschim Champaran",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Bihar",
+    "no": 3,
+    "name": "Purvi Champaran",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Bihar",
+    "no": 4,
+    "name": "Sheohar",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Bihar",
+    "no": 5,
+    "name": "Sitamarhi",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Bihar",
+    "no": 6,
+    "name": "Madhubani",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Bihar",
+    "no": 7,
+    "name": "Jhanjharpur",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Bihar",
+    "no": 8,
+    "name": "Supaul",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Bihar",
+    "no": 9,
+    "name": "Araria",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Bihar",
+    "no": 10,
+    "name": "Kishanganj",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Bihar",
+    "no": 11,
+    "name": "Katihar",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Bihar",
+    "no": 12,
+    "name": "Purnia",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Bihar",
+    "no": 13,
+    "name": "Madhepura",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Bihar",
+    "no": 14,
+    "name": "Darbhanga",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Bihar",
+    "no": 15,
+    "name": "Muzaffarpur",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Bihar",
+    "no": 16,
+    "name": "Vaishali",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Bihar",
+    "no": 17,
+    "name": "Gopalganj",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Bihar",
+    "no": 18,
+    "name": "Siwan",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Bihar",
+    "no": 19,
+    "name": "Maharajganj",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Bihar",
+    "no": 20,
+    "name": "Saran",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Bihar",
+    "no": 21,
+    "name": "Hajipur",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Bihar",
+    "no": 22,
+    "name": "Ujiarpur",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Bihar",
+    "no": 23,
+    "name": "Samastipur",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Bihar",
+    "no": 24,
+    "name": "Begusarai",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Bihar",
+    "no": 25,
+    "name": "Khagaria",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Bihar",
+    "no": 26,
+    "name": "Bhagalpur",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Bihar",
+    "no": 27,
+    "name": "Banka",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Bihar",
+    "no": 28,
+    "name": "Munger",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Bihar",
+    "no": 29,
+    "name": "Nalanda",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Bihar",
+    "no": 30,
+    "name": "Patna Sahib",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Bihar",
+    "no": 31,
+    "name": "Patliputra",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Bihar",
+    "no": 32,
+    "name": "Arrah",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Bihar",
+    "no": 33,
+    "name": "Buxar",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Bihar",
+    "no": 34,
+    "name": "Sasaram",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Bihar",
+    "no": 35,
+    "name": "Karakat",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Bihar",
+    "no": 36,
+    "name": "Jahanabad",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Bihar",
+    "no": 37,
+    "name": "Aurangabad",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Bihar",
+    "no": 38,
+    "name": "Gaya",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Bihar",
+    "no": 39,
+    "name": "Nawada",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Bihar",
+    "no": 40,
+    "name": "Jamui",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Chandigarh",
+    "no": 1,
+    "name": "Chandigarh",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Chhattisgarh",
+    "no": 1,
+    "name": "Surguja",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Chhattisgarh",
+    "no": 2,
+    "name": "Raigarh",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Chhattisgarh",
+    "no": 3,
+    "name": "Janjgir-Champa",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Chhattisgarh",
+    "no": 4,
+    "name": "Korba",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Chhattisgarh",
+    "no": 5,
+    "name": "Bilaspur",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Chhattisgarh",
+    "no": 6,
+    "name": "Rajnandgaon",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Chhattisgarh",
+    "no": 7,
+    "name": "Durg",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Chhattisgarh",
+    "no": 8,
+    "name": "Raipur",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Chhattisgarh",
+    "no": 9,
+    "name": "Mahasamund",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Chhattisgarh",
+    "no": 10,
+    "name": "Bastar",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Chhattisgarh",
+    "no": 11,
+    "name": "Kanker",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Dadra and Nagar Haveli and Daman and Diu",
+    "no": 1,
+    "name": "Daman & Diu",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Dadra and Nagar Haveli and Daman and Diu",
+    "no": 2,
+    "name": "Dadar & Nagar Haveli",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Delhi",
+    "no": 1,
+    "name": "Chandni Chowk",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Delhi",
+    "no": 2,
+    "name": "North-East Delhi",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Delhi",
+    "no": 3,
+    "name": "East Delhi",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Delhi",
+    "no": 4,
+    "name": "New Delhi",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Delhi",
+    "no": 5,
+    "name": "North-West Delhi",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Delhi",
+    "no": 6,
+    "name": "West Delhi",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Delhi",
+    "no": 7,
+    "name": "South Delhi",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Goa",
+    "no": 1,
+    "name": "North Goa",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Goa",
+    "no": 2,
+    "name": "South Goa",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Gujarat",
+    "no": 1,
+    "name": "Kachchh",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Gujarat",
+    "no": 2,
+    "name": "Banaskantha",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Gujarat",
+    "no": 3,
+    "name": "Patan",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Gujarat",
+    "no": 4,
+    "name": "Mahesana",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Gujarat",
+    "no": 5,
+    "name": "Sabarkantha",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Gujarat",
+    "no": 6,
+    "name": "Gandhinagar",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Gujarat",
+    "no": 7,
+    "name": "Ahmedabad East",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Gujarat",
+    "no": 8,
+    "name": "Ahmedabad West",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Gujarat",
+    "no": 9,
+    "name": "Surendranagar",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Gujarat",
+    "no": 10,
+    "name": "Rajkot",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Gujarat",
+    "no": 11,
+    "name": "Porbandar",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Gujarat",
+    "no": 12,
+    "name": "Jamnagar",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Gujarat",
+    "no": 13,
+    "name": "Junagadh",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Gujarat",
+    "no": 14,
+    "name": "Amreli",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Gujarat",
+    "no": 15,
+    "name": "Bhavnagar",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Gujarat",
+    "no": 16,
+    "name": "Anand",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Gujarat",
+    "no": 17,
+    "name": "Kheda",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Gujarat",
+    "no": 18,
+    "name": "Panchmahal",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Gujarat",
+    "no": 19,
+    "name": "Dahod",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Gujarat",
+    "no": 20,
+    "name": "Vadodara",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Gujarat",
+    "no": 21,
+    "name": "Chhota Udaipur",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Gujarat",
+    "no": 22,
+    "name": "Bharuch",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Gujarat",
+    "no": 23,
+    "name": "Bardoli",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Gujarat",
+    "no": 24,
+    "name": "Surat",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Gujarat",
+    "no": 25,
+    "name": "Navsari",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Gujarat",
+    "no": 26,
+    "name": "Valsad",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Haryana",
+    "no": 1,
+    "name": "Ambala",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Haryana",
+    "no": 2,
+    "name": "Kurukshetra",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Haryana",
+    "no": 3,
+    "name": "Sirsa",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Haryana",
+    "no": 4,
+    "name": "Hisar",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Haryana",
+    "no": 5,
+    "name": "Karnal",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Haryana",
+    "no": 6,
+    "name": "Sonipat",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Haryana",
+    "no": 7,
+    "name": "Rohtak",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Haryana",
+    "no": 8,
+    "name": "Bhiwani-Mahendragarh",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Haryana",
+    "no": 9,
+    "name": "Gurgaon",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Haryana",
+    "no": 10,
+    "name": "Faridabad",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Himachal Pradesh",
+    "no": 1,
+    "name": "Kangra",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Himachal Pradesh",
+    "no": 2,
+    "name": "Mandi",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Himachal Pradesh",
+    "no": 3,
+    "name": "Hamirpur",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Himachal Pradesh",
+    "no": 4,
+    "name": "Shimla",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Jammu and Kashmir",
+    "no": 1,
+    "name": "Baramulla",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Jammu and Kashmir",
+    "no": 2,
+    "name": "Srinagar",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Jammu and Kashmir",
+    "no": 3,
+    "name": "Anantnag-Rajouri",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Jammu and Kashmir",
+    "no": 4,
+    "name": "Udhampur",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Jammu and Kashmir",
+    "no": 5,
+    "name": "Jammu",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Jharkhand",
+    "no": 1,
+    "name": "Rajmahal",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Jharkhand",
+    "no": 2,
+    "name": "Dumka",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Jharkhand",
+    "no": 3,
+    "name": "Godda",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Jharkhand",
+    "no": 4,
+    "name": "Chatra",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Jharkhand",
+    "no": 5,
+    "name": "Kodarma",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Jharkhand",
+    "no": 6,
+    "name": "Giridih",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Jharkhand",
+    "no": 7,
+    "name": "Dhanbad",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Jharkhand",
+    "no": 8,
+    "name": "Ranchi",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Jharkhand",
+    "no": 9,
+    "name": "Jamshedpur",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Jharkhand",
+    "no": 10,
+    "name": "Singhbhum",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Jharkhand",
+    "no": 11,
+    "name": "Khunti",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Jharkhand",
+    "no": 12,
+    "name": "Lohardaga",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Jharkhand",
+    "no": 13,
+    "name": "Palamau",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Jharkhand",
+    "no": 14,
+    "name": "Hazaribagh",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Karnataka",
+    "no": 1,
+    "name": "Chikkodi",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Karnataka",
+    "no": 2,
+    "name": "Belgaum",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Karnataka",
+    "no": 3,
+    "name": "Bagalkot",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Karnataka",
+    "no": 4,
+    "name": "Bijapur",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Karnataka",
+    "no": 5,
+    "name": "Gulbarga",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Karnataka",
+    "no": 6,
+    "name": "Raichur",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Karnataka",
+    "no": 7,
+    "name": "Bidar",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Karnataka",
+    "no": 8,
+    "name": "Koppal",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Karnataka",
+    "no": 9,
+    "name": "Bellary",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Karnataka",
+    "no": 10,
+    "name": "Haveri",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Karnataka",
+    "no": 11,
+    "name": "Dharwad",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Karnataka",
+    "no": 12,
+    "name": "Uttara Kannada",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Karnataka",
+    "no": 13,
+    "name": "Davanagere",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Karnataka",
+    "no": 14,
+    "name": "Shimoga",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Karnataka",
+    "no": 15,
+    "name": "Udupi Chikmagalur",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Karnataka",
+    "no": 16,
+    "name": "Hassan",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Karnataka",
+    "no": 17,
+    "name": "Dakshina Kannada",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Karnataka",
+    "no": 18,
+    "name": "Chitradurga",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Karnataka",
+    "no": 19,
+    "name": "Tumkur",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Karnataka",
+    "no": 20,
+    "name": "Mandya",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Karnataka",
+    "no": 21,
+    "name": "Mysore",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Karnataka",
+    "no": 22,
+    "name": "Chamarajanagar",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Karnataka",
+    "no": 23,
+    "name": "Bangalore Rural",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Karnataka",
+    "no": 24,
+    "name": "Bangalore North",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Karnataka",
+    "no": 25,
+    "name": "Bangalore Central",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Karnataka",
+    "no": 26,
+    "name": "Bangalore South",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Karnataka",
+    "no": 27,
+    "name": "Chikkballapur",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Karnataka",
+    "no": 28,
+    "name": "Kolar",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Kerala",
+    "no": 1,
+    "name": "Kasaragod",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Kerala",
+    "no": 2,
+    "name": "Kannur",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Kerala",
+    "no": 3,
+    "name": "Vadakara",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Kerala",
+    "no": 4,
+    "name": "Wayanad",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Kerala",
+    "no": 5,
+    "name": "Kozhikode",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Kerala",
+    "no": 6,
+    "name": "Malappuram",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Kerala",
+    "no": 7,
+    "name": "Ponnani",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Kerala",
+    "no": 8,
+    "name": "Palakkad",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Kerala",
+    "no": 9,
+    "name": "Alathur",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Kerala",
+    "no": 10,
+    "name": "Thrissur",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Kerala",
+    "no": 11,
+    "name": "Chalakudy",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Kerala",
+    "no": 12,
+    "name": "Ernakulam",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Kerala",
+    "no": 13,
+    "name": "Idukki",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Kerala",
+    "no": 14,
+    "name": "Kottayam",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Kerala",
+    "no": 15,
+    "name": "Alappuzha",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Kerala",
+    "no": 16,
+    "name": "Mavelikkara",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Kerala",
+    "no": 17,
+    "name": "Pathanamthitta",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Kerala",
+    "no": 18,
+    "name": "Kollam",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Kerala",
+    "no": 19,
+    "name": "Attingal",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Kerala",
+    "no": 20,
+    "name": "Thiruvananthapuram",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Ladakh",
+    "no": 1,
+    "name": "Ladakh",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Lakshadweep",
+    "no": 1,
+    "name": "Lakshadweep",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Madhya Pradesh",
+    "no": 1,
+    "name": "Morena",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Madhya Pradesh",
+    "no": 2,
+    "name": "Bhind",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Madhya Pradesh",
+    "no": 3,
+    "name": "Gwalior",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Madhya Pradesh",
+    "no": 4,
+    "name": "Guna",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Madhya Pradesh",
+    "no": 5,
+    "name": "Sagar",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Madhya Pradesh",
+    "no": 6,
+    "name": "Tikamgarh",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Madhya Pradesh",
+    "no": 7,
+    "name": "Damoh",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Madhya Pradesh",
+    "no": 8,
+    "name": "Khajuraho",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Madhya Pradesh",
+    "no": 9,
+    "name": "Satna",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Madhya Pradesh",
+    "no": 10,
+    "name": "Rewa",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Madhya Pradesh",
+    "no": 11,
+    "name": "Sidhi",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Madhya Pradesh",
+    "no": 12,
+    "name": "Shahdol",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Madhya Pradesh",
+    "no": 13,
+    "name": "Jabalpur",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Madhya Pradesh",
+    "no": 14,
+    "name": "Mandla",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Madhya Pradesh",
+    "no": 15,
+    "name": "Balaghat",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Madhya Pradesh",
+    "no": 16,
+    "name": "Chhindwara",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Madhya Pradesh",
+    "no": 17,
+    "name": "Hoshangabad",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Madhya Pradesh",
+    "no": 18,
+    "name": "Vidisha",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Madhya Pradesh",
+    "no": 19,
+    "name": "Bhopal",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Madhya Pradesh",
+    "no": 20,
+    "name": "Rajgarh",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Madhya Pradesh",
+    "no": 21,
+    "name": "Dewas",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Madhya Pradesh",
+    "no": 22,
+    "name": "Ujjain",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Madhya Pradesh",
+    "no": 23,
+    "name": "Mandsour",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Madhya Pradesh",
+    "no": 24,
+    "name": "Ratlam",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Madhya Pradesh",
+    "no": 25,
+    "name": "Dhar",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Madhya Pradesh",
+    "no": 26,
+    "name": "Indore",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Madhya Pradesh",
+    "no": 27,
+    "name": "Khargone",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Madhya Pradesh",
+    "no": 28,
+    "name": "Khandwa",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Madhya Pradesh",
+    "no": 29,
+    "name": "Betul",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 1,
+    "name": "Nandurbar",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 2,
+    "name": "Dhule",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 3,
+    "name": "Jalgaon",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 4,
+    "name": "Raver",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 5,
+    "name": "Buldhana",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 6,
+    "name": "Akola",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 7,
+    "name": "Amravati",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 8,
+    "name": "Wardha",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 9,
+    "name": "Ramtek",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 10,
+    "name": "Nagpur",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 11,
+    "name": "Bhandara Gondiya",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 12,
+    "name": "Gadchiroli - Chimur",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 13,
+    "name": "Chandrapur",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 14,
+    "name": "Yavatmal- Washim",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 15,
+    "name": "Hingoli",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 16,
+    "name": "Nanded",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 17,
+    "name": "Parbhani",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 18,
+    "name": "Jalna",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 19,
+    "name": "Aurangabad",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 20,
+    "name": "Dindori",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 21,
+    "name": "Nashik",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 22,
+    "name": "Palghar",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 23,
+    "name": "Bhiwandi",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 24,
+    "name": "Kalyan",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 25,
+    "name": "Thane",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 26,
+    "name": "Mumbai North",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 27,
+    "name": "Mumbai North West",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 28,
+    "name": "Mumbai North East",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 29,
+    "name": "Mumbai North Central",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 30,
+    "name": "Mumbai South Central",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 31,
+    "name": "Mumbai South",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 32,
+    "name": "Raigad",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 33,
+    "name": "Maval",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 34,
+    "name": "Pune",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 35,
+    "name": "Baramati",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 36,
+    "name": "Shirur",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 37,
+    "name": "Ahmednagar",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 38,
+    "name": "Shirdi",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 39,
+    "name": "Beed",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 40,
+    "name": "Osmanabad",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 41,
+    "name": "Latur",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 42,
+    "name": "Solapur",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 43,
+    "name": "Madha",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 44,
+    "name": "Sangli",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 45,
+    "name": "Satara",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 46,
+    "name": "Ratnagiri- Sindhudurg",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 47,
+    "name": "Kolhapur",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Maharashtra",
+    "no": 48,
+    "name": "Hatkanangale",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Manipur",
+    "no": 1,
+    "name": "Inner Manipur",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Manipur",
+    "no": 2,
+    "name": "Outer Manipur",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Meghalaya",
+    "no": 1,
+    "name": "Shillong",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Meghalaya",
+    "no": 2,
+    "name": "Tura",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Mizoram",
+    "no": 1,
+    "name": "Mizoram",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Nagaland",
+    "no": 1,
+    "name": "Nagaland",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Odisha",
+    "no": 1,
+    "name": "Bargarh",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Odisha",
+    "no": 2,
+    "name": "Sundargarh",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Odisha",
+    "no": 3,
+    "name": "Sambalpur",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Odisha",
+    "no": 4,
+    "name": "Keonjhar",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Odisha",
+    "no": 5,
+    "name": "Mayurbhanj",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Odisha",
+    "no": 6,
+    "name": "Balasore",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Odisha",
+    "no": 7,
+    "name": "Bhadrak",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Odisha",
+    "no": 8,
+    "name": "Jajpur",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Odisha",
+    "no": 9,
+    "name": "Dhenkanal",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Odisha",
+    "no": 10,
+    "name": "Bolangir",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Odisha",
+    "no": 11,
+    "name": "Kalahandi",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Odisha",
+    "no": 12,
+    "name": "Nabarangpur",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Odisha",
+    "no": 13,
+    "name": "Kandhamal",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Odisha",
+    "no": 14,
+    "name": "Cuttack",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Odisha",
+    "no": 15,
+    "name": "Kendrapara",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Odisha",
+    "no": 16,
+    "name": "Jagatsinghpur",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Odisha",
+    "no": 17,
+    "name": "Puri",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Odisha",
+    "no": 18,
+    "name": "Bhubaneswar",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Odisha",
+    "no": 19,
+    "name": "Aska",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Odisha",
+    "no": 20,
+    "name": "Berhampur",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Odisha",
+    "no": 21,
+    "name": "Koraput",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Puducherry",
+    "no": 1,
+    "name": "Puducherry",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Punjab",
+    "no": 1,
+    "name": "Gurdaspur",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Punjab",
+    "no": 2,
+    "name": "Amritsar",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Punjab",
+    "no": 3,
+    "name": "Khadoor Sahib",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Punjab",
+    "no": 4,
+    "name": "Jalandhar",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Punjab",
+    "no": 5,
+    "name": "Hoshiarpur",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Punjab",
+    "no": 6,
+    "name": "Anandpur Sahib",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Punjab",
+    "no": 7,
+    "name": "Ludhiana",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Punjab",
+    "no": 8,
+    "name": "Fatehgarh Sahib",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Punjab",
+    "no": 9,
+    "name": "Faridkot",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Punjab",
+    "no": 10,
+    "name": "Firozpur",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Punjab",
+    "no": 11,
+    "name": "Bathinda",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Punjab",
+    "no": 12,
+    "name": "Sangrur",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Punjab",
+    "no": 13,
+    "name": "Patiala",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Rajasthan",
+    "no": 1,
+    "name": "Ganganagar",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Rajasthan",
+    "no": 2,
+    "name": "Bikaner",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Rajasthan",
+    "no": 3,
+    "name": "Churu",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Rajasthan",
+    "no": 4,
+    "name": "Jhunjhunu",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Rajasthan",
+    "no": 5,
+    "name": "Sikar",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Rajasthan",
+    "no": 6,
+    "name": "Jaipur Rural",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Rajasthan",
+    "no": 7,
+    "name": "Jaipur",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Rajasthan",
+    "no": 8,
+    "name": "Alwar",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Rajasthan",
+    "no": 9,
+    "name": "Bharatpur",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Rajasthan",
+    "no": 10,
+    "name": "Karauli-Dholpur",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Rajasthan",
+    "no": 11,
+    "name": "Dausa",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Rajasthan",
+    "no": 12,
+    "name": "Tonk-Sawai Madhopur",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Rajasthan",
+    "no": 13,
+    "name": "Ajmer",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Rajasthan",
+    "no": 14,
+    "name": "Nagaur",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Rajasthan",
+    "no": 15,
+    "name": "Pali",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Rajasthan",
+    "no": 16,
+    "name": "Jodhpur",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Rajasthan",
+    "no": 17,
+    "name": "Barmer",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Rajasthan",
+    "no": 18,
+    "name": "Jalore",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Rajasthan",
+    "no": 19,
+    "name": "Udaipur",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Rajasthan",
+    "no": 20,
+    "name": "Banswara",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Rajasthan",
+    "no": 21,
+    "name": "Chittorgarh",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Rajasthan",
+    "no": 22,
+    "name": "Rajsamand",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Rajasthan",
+    "no": 23,
+    "name": "Bhilwara",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Rajasthan",
+    "no": 24,
+    "name": "Kota",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Rajasthan",
+    "no": 25,
+    "name": "Jhalawar-Baran",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Sikkim",
+    "no": 1,
+    "name": "Sikkim",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 1,
+    "name": "Tiruvallur",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 2,
+    "name": "Chennai North",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 3,
+    "name": "Chennai South",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 4,
+    "name": "Chennai Central",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 5,
+    "name": "Sriperumbudur",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 6,
+    "name": "Kancheepuram",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 7,
+    "name": "Arakkonam",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 8,
+    "name": "Vellore",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 9,
+    "name": "Krishnagiri",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 10,
+    "name": "Dharmapuri",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 11,
+    "name": "Tiruvannamalai",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 12,
+    "name": "Arani",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 13,
+    "name": "Viluppuram",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 14,
+    "name": "Kallakurichi",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 15,
+    "name": "Salem",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 16,
+    "name": "Namakkal",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 17,
+    "name": "Erode",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 18,
+    "name": "Tiruppur",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 19,
+    "name": "Nilgiris",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 20,
+    "name": "Coimbatore",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 21,
+    "name": "Pollachi",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 22,
+    "name": "Dindigul",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 23,
+    "name": "Karur",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 24,
+    "name": "Tiruchirappalli",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 25,
+    "name": "Perambalur",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 26,
+    "name": "Cuddalore",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 27,
+    "name": "Chidambaram",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 28,
+    "name": "Mayiladuthurai",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 29,
+    "name": "Nagapattinam",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 30,
+    "name": "Thanjavur",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 31,
+    "name": "Sivaganga",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 32,
+    "name": "Madurai",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 33,
+    "name": "Theni",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 34,
+    "name": "Virudhunagar",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 35,
+    "name": "Ramanathapuram",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 36,
+    "name": "Thoothukkudi",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 37,
+    "name": "Tenkasi",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 38,
+    "name": "Tirunelveli",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tamil Nadu",
+    "no": 39,
+    "name": "Kanniyakumari",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Telangana",
+    "no": 1,
+    "name": "Adilabad",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Telangana",
+    "no": 2,
+    "name": "Peddapalle",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Telangana",
+    "no": 3,
+    "name": "Karimnagar",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Telangana",
+    "no": 4,
+    "name": "Nizamabad",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Telangana",
+    "no": 5,
+    "name": "Zahirabad",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Telangana",
+    "no": 6,
+    "name": "Medak",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Telangana",
+    "no": 7,
+    "name": "Malkajgiri",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Telangana",
+    "no": 8,
+    "name": "Secunderabad",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Telangana",
+    "no": 9,
+    "name": "Hyderabad",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Telangana",
+    "no": 10,
+    "name": "Chevella",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Telangana",
+    "no": 11,
+    "name": "Mahbubnagar",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Telangana",
+    "no": 12,
+    "name": "Nagarkurnool",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Telangana",
+    "no": 13,
+    "name": "Nalgonda",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Telangana",
+    "no": 14,
+    "name": "Bhongir",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Telangana",
+    "no": 15,
+    "name": "Warangal",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Telangana",
+    "no": 16,
+    "name": "Mahabubabad",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Telangana",
+    "no": 17,
+    "name": "Khammam",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Tripura",
+    "no": 1,
+    "name": "Tripura West",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Tripura",
+    "no": 2,
+    "name": "Tripura East",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 1,
+    "name": "Saharanpur",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 2,
+    "name": "Kairana",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 3,
+    "name": "Muzaffarnagar",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 4,
+    "name": "Bijnor",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 5,
+    "name": "Nagina",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 6,
+    "name": "Moradabad",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 7,
+    "name": "Rampur",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 8,
+    "name": "Sambhal",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 9,
+    "name": "Amroha",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 10,
+    "name": "Meerut",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 11,
+    "name": "Baghpat",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 12,
+    "name": "Ghaziabad",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 13,
+    "name": "Gautam Buddha Nagar",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 14,
+    "name": "Bulandshahr",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 15,
+    "name": "Aligarh",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 16,
+    "name": "Hathras",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 17,
+    "name": "Mathura",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 18,
+    "name": "Agra",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 19,
+    "name": "Fatehpur Sikri",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 20,
+    "name": "Firozabad",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 21,
+    "name": "Mainpuri",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 22,
+    "name": "Etah",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 23,
+    "name": "Badaun",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 24,
+    "name": "Aonla",
+    "phase": 3,
+    "pollingDate2024": "07-May-24"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 25,
+    "name": "Bareilly",
+    "phase": 3,
+    "pollingDate2024": "07-May-24"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 26,
+    "name": "Pilibhit",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 27,
+    "name": "Shahjahanpur",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 28,
+    "name": "Kheri",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 29,
+    "name": "Dhaurahra",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 30,
+    "name": "Sitapur",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 31,
+    "name": "Hardoi",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 32,
+    "name": "Misrikh",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 33,
+    "name": "Unnao",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 34,
+    "name": "Mohanlalganj",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 35,
+    "name": "Lucknow",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 36,
+    "name": "Rae Bareli",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 37,
+    "name": "Amethi",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 38,
+    "name": "Sultanpur",
+    "phase": 6,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 39,
+    "name": "Pratapgarh",
+    "phase": 6,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 40,
+    "name": "Farrukhabad",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 41,
+    "name": "Etawah",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 42,
+    "name": "Kannauj",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 43,
+    "name": "Kanpur",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 44,
+    "name": "Akbarpur",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 45,
+    "name": "Jalaun",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 46,
+    "name": "Jhansi",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 47,
+    "name": "Hamirpur",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 48,
+    "name": "Banda",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 49,
+    "name": "Fatehpur",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 50,
+    "name": "Kaushambi",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 51,
+    "name": "Phulpur",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 52,
+    "name": "Allahabad",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 53,
+    "name": "Barabanki",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 54,
+    "name": "Faizabad",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 55,
+    "name": "Ambedkar Nagar",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 56,
+    "name": "Baharaich",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 57,
+    "name": "Kaiserganj",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 58,
+    "name": "Shrawasti",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 59,
+    "name": "Gonda",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 60,
+    "name": "Domariyaganj",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 61,
+    "name": "Basti",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 62,
+    "name": "Sant Kabir Nagar",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 63,
+    "name": "Maharajganj",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 64,
+    "name": "Gorakhpur",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 65,
+    "name": "Kushi Nagar",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 66,
+    "name": "Deoria",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 67,
+    "name": "Bansgaon",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 68,
+    "name": "Lalganj",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 69,
+    "name": "Azamgarh",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 70,
+    "name": "Ghosi",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 71,
+    "name": "Salempur",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 72,
+    "name": "Ballia",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 73,
+    "name": "Jaunpur",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 74,
+    "name": "Machhlishahr",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 75,
+    "name": "Ghazipur",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 76,
+    "name": "Chandauli",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 77,
+    "name": "Varanasi",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 78,
+    "name": "Bhadohi",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 79,
+    "name": "Mirzapur",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "no": 80,
+    "name": "Robertsganj",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "Uttarakhand",
+    "no": 1,
+    "name": "Tehri Garhwal",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Uttarakhand",
+    "no": 2,
+    "name": "Garhwal",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Uttarakhand",
+    "no": 3,
+    "name": "Almora",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Uttarakhand",
+    "no": 4,
+    "name": "Nainital-Udhamsingh Nagar",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "Uttarakhand",
+    "no": 5,
+    "name": "Haridwar",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "West Bengal",
+    "no": 1,
+    "name": "Coochbehar",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "West Bengal",
+    "no": 2,
+    "name": "Alipurduars",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "West Bengal",
+    "no": 3,
+    "name": "Jalpaiguri",
+    "phase": 1,
+    "pollingDate2024": "2024-04-19"
+  },
+  {
+    "state": "West Bengal",
+    "no": 4,
+    "name": "Darjeeling",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "West Bengal",
+    "no": 5,
+    "name": "Raiganj",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "West Bengal",
+    "no": 6,
+    "name": "Balurghat",
+    "phase": 2,
+    "pollingDate2024": "2024-04-26"
+  },
+  {
+    "state": "West Bengal",
+    "no": 7,
+    "name": "Maldaha Uttar",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "West Bengal",
+    "no": 8,
+    "name": "Maldaha Dakshin",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "West Bengal",
+    "no": 9,
+    "name": "Jangipur",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "West Bengal",
+    "no": 10,
+    "name": "Baharampur",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "West Bengal",
+    "no": 11,
+    "name": "Murshidabad",
+    "phase": 3,
+    "pollingDate2024": "2024-05-07"
+  },
+  {
+    "state": "West Bengal",
+    "no": 12,
+    "name": "Krishnanagar",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "West Bengal",
+    "no": 13,
+    "name": "Ranaghat",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "West Bengal",
+    "no": 14,
+    "name": "Bangaon",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "West Bengal",
+    "no": 15,
+    "name": "Barrackpur",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "West Bengal",
+    "no": 16,
+    "name": "Dum Dum",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "West Bengal",
+    "no": 17,
+    "name": "Barasat",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "West Bengal",
+    "no": 18,
+    "name": "Basirhat",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "West Bengal",
+    "no": 19,
+    "name": "Joynagar",
+    "phase": 7,
+    "pollingDate2024": "01-Jun-24"
+  },
+  {
+    "state": "West Bengal",
+    "no": 20,
+    "name": "Mathurapur",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "West Bengal",
+    "no": 21,
+    "name": "Diamond Harbour",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "West Bengal",
+    "no": 22,
+    "name": "Jadavpur",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "West Bengal",
+    "no": 23,
+    "name": "Kolkata Dakshin",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "West Bengal",
+    "no": 24,
+    "name": "Kolkata Uttar",
+    "phase": 7,
+    "pollingDate2024": "2024-06-01"
+  },
+  {
+    "state": "West Bengal",
+    "no": 25,
+    "name": "Howrah",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "West Bengal",
+    "no": 26,
+    "name": "Uluberia",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "West Bengal",
+    "no": 27,
+    "name": "Srerampur",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "West Bengal",
+    "no": 28,
+    "name": "Hooghly",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "West Bengal",
+    "no": 29,
+    "name": "Arambagh",
+    "phase": 5,
+    "pollingDate2024": "2024-05-20"
+  },
+  {
+    "state": "West Bengal",
+    "no": 30,
+    "name": "Tamluk",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "West Bengal",
+    "no": 31,
+    "name": "Kanthi",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "West Bengal",
+    "no": 32,
+    "name": "Ghatal",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "West Bengal",
+    "no": 33,
+    "name": "Jhargram",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "West Bengal",
+    "no": 34,
+    "name": "Medinipur",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "West Bengal",
+    "no": 35,
+    "name": "Purulia",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "West Bengal",
+    "no": 36,
+    "name": "Bankura",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "West Bengal",
+    "no": 37,
+    "name": "Bishnupur",
+    "phase": 6,
+    "pollingDate2024": "2024-05-25"
+  },
+  {
+    "state": "West Bengal",
+    "no": 38,
+    "name": "Bardhaman Purba",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "West Bengal",
+    "no": 39,
+    "name": "Bardhaman-Durgapur",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "West Bengal",
+    "no": 40,
+    "name": "Asansol",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "West Bengal",
+    "no": 41,
+    "name": "Bolpur",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  },
+  {
+    "state": "West Bengal",
+    "no": 42,
+    "name": "Birbhum",
+    "phase": 4,
+    "pollingDate2024": "2024-05-13"
+  }
+]

@@ -1,0 +1,254 @@
+[
+  {
+    "name": "Andhra Pradesh",
+    "capital": "Amaravati",
+    "ceo": "ceoandhra.nic.in",
+    "ls": 25,
+    "vs": 175
+  },
+  {
+    "name": "Arunachal Pradesh",
+    "capital": "Itanagar",
+    "ceo": "ceoarec.nic.in",
+    "ls": 2,
+    "vs": 60
+  },
+  {
+    "name": "Assam",
+    "capital": "Dispur",
+    "ceo": "ceoassam.nic.in",
+    "ls": 14,
+    "vs": 126
+  },
+  {
+    "name": "Bihar",
+    "capital": "Patna",
+    "ceo": "ceobihar.nic.in",
+    "ls": 40,
+    "vs": 243
+  },
+  {
+    "name": "Chhattisgarh",
+    "capital": "Raipur",
+    "ceo": "ceochhattisgarh.nic.in",
+    "ls": 11,
+    "vs": 90
+  },
+  {
+    "name": "Goa",
+    "capital": "Panaji",
+    "ceo": "ceogoa.nic.in",
+    "ls": 2,
+    "vs": 40
+  },
+  {
+    "name": "Gujarat",
+    "capital": "Gandhinagar",
+    "ceo": "ceo.gujarat.gov.in",
+    "ls": 26,
+    "vs": 182
+  },
+  {
+    "name": "Haryana",
+    "capital": "Chandigarh",
+    "ceo": "ceoharyana.nic.in",
+    "ls": 10,
+    "vs": 90
+  },
+  {
+    "name": "Himachal Pradesh",
+    "capital": "Shimla",
+    "ceo": "himachalceo.nic.in",
+    "ls": 4,
+    "vs": 68
+  },
+  {
+    "name": "Jharkhand",
+    "capital": "Ranchi",
+    "ceo": "jharkhandceo.nic.in",
+    "ls": 14,
+    "vs": 81
+  },
+  {
+    "name": "Karnataka",
+    "capital": "Bengaluru",
+    "ceo": "ceokarnataka.kar.nic.in",
+    "ls": 28,
+    "vs": 224
+  },
+  {
+    "name": "Kerala",
+    "capital": "Thiruvananthapuram",
+    "ceo": "ceo.kerala.gov.in",
+    "ls": 20,
+    "vs": 140
+  },
+  {
+    "name": "Madhya Pradesh",
+    "capital": "Bhopal",
+    "ceo": "ceomadhyapradesh.nic.in",
+    "ls": 29,
+    "vs": 230
+  },
+  {
+    "name": "Maharashtra",
+    "capital": "Mumbai",
+    "ceo": "ceo.maharashtra.gov.in",
+    "ls": 48,
+    "vs": 288
+  },
+  {
+    "name": "Manipur",
+    "capital": "Imphal",
+    "ceo": "ceomanipur.nic.in",
+    "ls": 2,
+    "vs": 60
+  },
+  {
+    "name": "Meghalaya",
+    "capital": "Shillong",
+    "ceo": "ceomeghalaya.nic.in",
+    "ls": 2,
+    "vs": 60
+  },
+  {
+    "name": "Mizoram",
+    "capital": "Aizawl",
+    "ceo": "ceomizoram.nic.in",
+    "ls": 1,
+    "vs": 40
+  },
+  {
+    "name": "Nagaland",
+    "capital": "Kohima",
+    "ceo": "ceonagaland.nic.in",
+    "ls": 1,
+    "vs": 60
+  },
+  {
+    "name": "Odisha",
+    "capital": "Bhubaneswar",
+    "ceo": "ceoodisha.nic.in",
+    "ls": 21,
+    "vs": 147
+  },
+  {
+    "name": "Punjab",
+    "capital": "Chandigarh",
+    "ceo": "ceopunjab.nic.in",
+    "ls": 13,
+    "vs": 117
+  },
+  {
+    "name": "Rajasthan",
+    "capital": "Jaipur",
+    "ceo": "ceorajasthan.nic.in",
+    "ls": 25,
+    "vs": 200
+  },
+  {
+    "name": "Sikkim",
+    "capital": "Gangtok",
+    "ceo": "ceosikkim.nic.in",
+    "ls": 1,
+    "vs": 32
+  },
+  {
+    "name": "Tamil Nadu",
+    "capital": "Chennai",
+    "ceo": "elections.tn.gov.in",
+    "ls": 39,
+    "vs": 234
+  },
+  {
+    "name": "Telangana",
+    "capital": "Hyderabad",
+    "ceo": "ceotelangana.nic.in",
+    "ls": 17,
+    "vs": 119
+  },
+  {
+    "name": "Tripura",
+    "capital": "Agartala",
+    "ceo": "ceotripura.nic.in",
+    "ls": 2,
+    "vs": 60
+  },
+  {
+    "name": "Uttar Pradesh",
+    "capital": "Lucknow",
+    "ceo": "ceouttarapradesh.nic.in",
+    "ls": 80,
+    "vs": 403
+  },
+  {
+    "name": "Uttarakhand",
+    "capital": "Dehradun",
+    "ceo": "ceo.uk.gov.in",
+    "ls": 5,
+    "vs": 70
+  },
+  {
+    "name": "West Bengal",
+    "capital": "Kolkata",
+    "ceo": "ceowestbengal.nic.in",
+    "ls": 42,
+    "vs": 294
+  },
+  {
+    "name": "Jammu and Kashmir",
+    "capital": "Srinagar",
+    "ceo": "ceojammukashmir.nic.in",
+    "ls": 5,
+    "vs": 90
+  },
+  {
+    "name": "Ladakh",
+    "capital": "Leh",
+    "ceo": null,
+    "ls": 1,
+    "vs": 0
+  },
+  {
+    "name": "Delhi",
+    "capital": "New Delhi",
+    "ceo": "ceodelhi.nic.in",
+    "ls": 7,
+    "vs": 70
+  },
+  {
+    "name": "Chandigarh",
+    "capital": "Chandigarh",
+    "ceo": "ceochandigarh.nic.in",
+    "ls": 1,
+    "vs": 0
+  },
+  {
+    "name": "Puducherry",
+    "capital": "Puducherry",
+    "ceo": "ceopuducherry.nic.in",
+    "ls": 1,
+    "vs": 30
+  },
+  {
+    "name": "Andaman and Nicobar Islands",
+    "capital": "Port Blair",
+    "ceo": "andamanceo.nic.in",
+    "ls": 1,
+    "vs": 0
+  },
+  {
+    "name": "Dadra and Nagar Haveli and Daman and Diu",
+    "capital": "Daman",
+    "ceo": null,
+    "ls": 2,
+    "vs": 0
+  },
+  {
+    "name": "Lakshadweep",
+    "capital": "Kavaratti",
+    "ceo": null,
+    "ls": 1,
+    "vs": 0
+  }
+]

@@ -1,0 +1,251 @@
+{
+  "info": {
+    "name": "VoteReady API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3001"
+    },
+    {
+      "key": "planId",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/health",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "health"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Create plan",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/createplan",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "createplan"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Asha Rao\",\n  \"state\": \"Karnataka\",\n  \"constituency\": \"Basavanagudi\",\n  \"pollingStation\": \"BMSCE Main Block, Room 101\",\n  \"pollingDate\": \"2028-04-26\",\n  \"idDocument\": \"epic\"\n}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"201\", () => pm.response.to.have.status(201));",
+              "pm.collectionVariables.set(\"planId\", pm.response.json()._id);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "List plans",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/plans",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "plans"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get plan",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/getplan/{{planId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "getplan",
+            "{{planId}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Update plan",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/updateplan/{{planId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "updateplan",
+            "{{planId}}"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"pollingStation\": \"BMSCE Main Block, Room 102\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Delete plan",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/deleteplan/{{planId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "deleteplan",
+            "{{planId}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Checklist (en)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/checklist",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "checklist"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Checklist (hi)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/checklist?lang=hi",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "checklist"
+          ],
+          "query": [
+            {
+              "key": "lang",
+              "value": "hi"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "States",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/states",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "states"
+          ]
+        }
+      }
+    },
+    {
+      "name": "EPIC demo lookup",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/epic/lookup",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "epic",
+            "lookup"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"epic_no\": \"VOTE202601\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Ask",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/ask",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "ask"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"question\": \"What ID do I need at the polling booth?\",\n  \"userContext\": {\n    \"completedSteps\": [\n      \"age_eligibility\"\n    ]\n  }\n}"
+        }
+      }
+    }
+  ]
+}
