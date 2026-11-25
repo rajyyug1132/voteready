@@ -16,6 +16,7 @@
   }
   function setTheme(t) {
     root.setAttribute('data-bs-theme', t);
+    var meta = document.querySelector('meta[name=theme-color]'); if (meta) meta.content = t === 'dark' ? '#141517' : '#ecebe6';
     try { localStorage.setItem('voteready_theme', t); } catch (_) { }
     syncLabel();
   }

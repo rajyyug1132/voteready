@@ -71,6 +71,9 @@
   --bs-link-color-rgb: 125, 156, 255;
 }
 
+html { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+[id] { scroll-margin-top: 1rem; }
+
 body {
   background: var(--vr-bg);
   color: var(--vr-ink);
@@ -485,6 +488,10 @@ a:hover { color: var(--vr-accent-hover); }
   .booth-steps::-webkit-scrollbar { display: none; }
   .booth-step { flex: none; }
 }
+
+.helpline { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin: 0.75rem 0 0; font-weight: 600; }
+.helpline a { font-size: 1.75rem; font-weight: 800; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; min-height: 44px; display: inline-flex; align-items: center; text-decoration: none; }
+.helpline a:hover { text-decoration: underline; }
 
 /* Standalone links get a full 44px tap target (WCAG 2.5.8); links inside sentences stay inline. */
 .site-nav .navbar-brand { min-height: 44px; }

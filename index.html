@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ecebe6">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,6 +17,7 @@
         var t = localStorage.getItem('voteready_theme');
         if (t !== 'light' && t !== 'dark') t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
         document.documentElement.setAttribute('data-bs-theme', t);
+        var m = document.querySelector('meta[name=theme-color]'); if (m) m.content = t === 'dark' ? '#141517' : '#ecebe6';
       } catch (_) { }
     })();
   </script>
@@ -25,7 +28,7 @@
   <a class="skip-link" href="#main">Skip to content</a>
   <nav class="navbar navbar-expand-md site-nav">
     <div class="container">
-      <a class="navbar-brand" href="index.html"><img src="assets/logo.svg" alt="" width="30" height="30">VoteReady</a>
+      <a class="navbar-brand" href="index.html" translate="no"><img src="assets/logo.svg" alt="" width="30" height="30">VoteReady</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -147,21 +150,12 @@
       </div>
     </section>
 
-    <section class="section" aria-label="At a glance">
-      <div class="container">
-        <div class="stats">
-          <div><div class="stat-num">36</div><div class="stat-lbl">States &amp; UTs</div></div>
-          <div><div class="stat-num">8</div><div class="stat-lbl">Checklist steps</div></div>
-          <div><div class="stat-num">12</div><div class="stat-lbl">Alternative photo IDs</div></div>
-          <div><div class="stat-num">1950</div><div class="stat-lbl">Voter Helpline</div></div>
-        </div>
-      </div>
-    </section>
 
     <section class="section">
       <div class="container">
         <h2 class="section-title">Ready to cast your first vote?</h2>
         <p class="section-sub">Each checklist step is based on an official ECI source. If something looks wrong, check voters.eci.gov.in.</p>
+        <p class="helpline"><span>Questions on the day? Call the Voter Helpline</span> <a href="tel:1950">1950</a></p>
         <div class="d-flex flex-wrap gap-2 mt-3">
           <a class="btn btn-primary" href="checklist.html">Start your checklist</a>
           <a class="btn btn-outline-primary" href="https://voters.eci.gov.in/" target="_blank" rel="noopener">Register on voters.eci.gov.in ↗</a>
