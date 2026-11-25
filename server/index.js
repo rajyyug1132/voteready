@@ -16,10 +16,20 @@ const port = process.env.PORT || 3001
 // The Vercel MongoDB Atlas integration names the variable after a chosen prefix; accept the usual ones.
 const MONGO_URI = process.env.MONGODB_URI || process.env.MONGODB_URL || process.env.STORAGE_URL
 
-app.set('trust proxy', 1) // behind Render's proxy; needed for per-IP rate limits
+// Vercel runs this file as a serverless function (no listen) and pauses it once a response is
+// sent, so connecting and seeding an empty database must finish before a request is handled.
+// ponytail: two cold starts racing on an empty DB could both seed; fine for a one-time first run.
+const ready = process.env.VERCEL && MONGO_URI
+  ? mongoose.connect(MONGO_URI)
+    .then(async () => { if (!(await StateModel.estimatedDocumentCount())) await require('./seed')() })
+    .catch(err => console.error('MongoDB startup failed:', err.message))
+  : null
+
+app.set('trust proxy', 1) // behind Vercel's proxy; needed for per-IP rate limits
 app.use(helmet())
 app.use(cors({ origin: process.env.ALLOWED_ORIGIN || true }))
 app.use(express.json({ limit: '20kb' }))
+if (ready) app.use(async (req, res, next) => { await ready; next() })
 
 const PLAN_FIELDS = ['name', 'state', 'constituency', 'pollingStation', 'pollingDate', 'idDocument']
 const pick = (body = {}) => Object.fromEntries(PLAN_FIELDS.filter(k => k in body).map(k => [k, body[k]]))
@@ -95,14 +105,6 @@ app.use((err, req, res, next) => {
   console.error(err)
   res.status(500).json({ error: 'Server error' })
 })
-
-// Vercel runs this file as a serverless function (no listen). Connect at load; Mongoose buffers
-// queries until the connection is up. An empty database is seeded once on first connect.
-if (process.env.VERCEL && MONGO_URI) {
-  mongoose.connect(MONGO_URI)
-    .then(async () => { if (!(await StateModel.estimatedDocumentCount())) await require('./seed')() })
-    .catch(err => console.error('MongoDB connection failed:', err.message))
-}
 
 if (require.main === module) {
   mongoose.connect(MONGO_URI || 'mongodb://localhost:27017/voteready')
