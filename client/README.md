@@ -1,16 +1,17 @@
-# React + Vite
+# VoteReady client
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+React + Vite front end for the VoteReady MERN version. Live at https://voteready-mern.vercel.app.
 
-Currently, two official plugins are available:
+```bash
+cp .env.example .env   # VITE_API_URL=http://localhost:3001
+npm install
+npm run dev            # needs the API running: cd ../server && npm start (or npm run dev:memory)
+npm run build && npm run lint
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- `src/api.js`: the one axios instance (`VITE_API_URL`).
+- `src/i18n.jsx` + `src/dictionary.js`: the en/hi toggle (`t()` keyed by the English text).
+- `src/pages/`: Home, Checklist (with the EPIC demo), Ask, StateMap, Plans (list, create, update, delete).
+- `vercel.json` rewrites every path to `index.html` so react-router routes work on refresh.
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+Setup, API routes and data sources: see the repo [README](../README.md).
