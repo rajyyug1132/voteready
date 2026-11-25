@@ -29,7 +29,7 @@ Status: `[ ]` open · `[x]` done (proof linked) · `[ASK]` blocked on Yyug.
 | L11 | `PUT /updateplan/:id` — update by id | 4 | `npm test` in `server/` (6/6, in-memory MongoDB) | [x] |
 | L12 | `DELETE /deleteplan/:id` — delete by id | 4 | `npm test` in `server/` (6/6, in-memory MongoDB) | [x] |
 | L13 | All five CRUD calls made from React with axios | 5 | | [ ] |
-| L14 | MongoDB: Atlas for deploy, `mongodb://localhost:27017` for dev, via `MONGODB_URI` | 4 / 6 | `MONGODB_URI`, default `mongodb://localhost:27017/voteready`; Atlas not set up yet | [~] |
+| L14 | MongoDB: Atlas for deploy, `mongodb://localhost:27017` for dev, via `MONGODB_URI` | 4 / 6 | dev: `mongodb://localhost:27017/voteready`; deploy: Atlas M0 (`atlas-green-cave`) injected as `MONGODB_URI` by the Vercel integration; first request seeds an empty DB | [x] |
 | L15 | Every API route tested in Postman; collection exported to `server/postman/` | 4 | collection at `server/postman/voteready.postman_collection.json`; not yet run in the Postman app | [~] |
 | R1 | One public Kaggle dataset used in the app (slug, columns, license verified) | 3 / 5 | Kaggle `jainaru/lok-sabha-2024-results-and-candidates`, CC0. `candidates_with_phase.csv` (8,441 rows: State, Constituency_No, Constituency, Phase, Polling Date, …) → `server/scripts/clean-kaggle.js` → `data/constituencies.json`, 543 rows, 36/36 states matched, every state's count = its LS seats. One source error fixed in code: Maharashtra Aurangabad carried Bihar Aurangabad's PC no./phase/date (37, 1, 19 Apr) → 19, 4, 13 May 2024. Used by the Voting plan constituency dropdown via `GET /states/:name/constituencies` | [x] |
 | R2 | Rubric rows beyond the handout | — | | [ASK] |
@@ -57,7 +57,7 @@ Status: `[ ]` open · `[x]` done (proof linked) · `[ASK]` blocked on Yyug.
 | 3 Kaggle data | row counts match source · 0 unmatched state names | 543 = ECI total · 0 unmatched · per-state counts = LS seats [x] |
 | 4 Server (fsd-mern) | all 5 CRUD routes pass in Postman · seed runs clean on an empty DB | routes + seed pass `npm test` [x] · Postman app run [ ] |
 | 5 Client (fsd-mern) | create → list → update → delete works in the browser · every Phase 0 feature works in en + hi · no slop item returns | [ ] |
-| 6 Deploy + merge | live client does full CRUD against the live API · `/health` green | [ ] |
+| 6 Deploy + merge | live client does full CRUD against the live API · `/health` green | deployed 2026-11-25: client https://voteready-mern.vercel.app, API https://voteready-api.vercel.app (both Vercel), MongoDB Atlas M0 via the Vercel integration. `/health` 200; live create → get → update → delete → 404 pass; 400 on invalid plan; CORS limited to the client origin; `/ask` answers with the Gemini key. Merge to `main` [ ] |
 | 7 Verify | every row in A and B ticked with proof · mobile + Hindi + keyboard pass | [ ] |
 
 ## D. Found while freezing (not in the Phase 1/2 lists yet)

@@ -41,6 +41,8 @@ Claims that could not be verified against these sources were removed rather than
 
 ## MERN version (FSD lab)
 
+**Live:** client [voteready-mern.vercel.app](https://voteready-mern.vercel.app) · API [voteready-api.vercel.app/health](https://voteready-api.vercel.app/health)
+
 The MERN rebuild sits next to the static site: `server/` (Express + Mongoose) and `client/` (React + Vite, Bootstrap, axios, react-router-dom). Its one new screen is the **Voting plan** page, which covers create, list, update and delete.
 
 ```bash
@@ -70,6 +72,8 @@ npm run dev
 | `GET /health` | Database status |
 
 Constituencies come from the Kaggle dataset [Lok Sabha 2024 Results & Candidates](https://www.kaggle.com/datasets/jainaru/lok-sabha-2024-results-and-candidates) (CC0). To rebuild `data/constituencies.json`, put `candidates_with_phase.csv` in `data/kaggle/` (gitignored) and run `npm run clean:kaggle` in `server/`. The script keeps one row per constituency, drops candidate details, and fails unless all 543 seats map to the 36 states.
+
+Deploy: both halves are Vercel projects with root directories `server` and `client` (deployed from the repo root so `data/` is included). The API needs `MONGODB_URI`, `GEMINI_API_KEY` and `ALLOWED_ORIGIN`; the client needs `VITE_API_URL`. On Vercel the API connects and seeds an empty database before handling its first request.
 
 Tests: `cd server && npm test` exercises every route against an in-memory MongoDB. The Postman collection is at `server/postman/voteready.postman_collection.json`.
 
