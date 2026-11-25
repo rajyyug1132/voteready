@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ecebe6">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/site.css" rel="stylesheet">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('voteready_theme');
+        if (t !== 'light' && t !== 'dark') t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-bs-theme', t);
+        var m = document.querySelector('meta[name=theme-color]'); if (m) m.content = t === 'dark' ? '#141517' : '#ecebe6';
+      } catch (_) { }
+    })();
+  </script>
+  <meta name="description" content="Walk through an Indian polling booth station by station, then cast a practice vote on a model EVM and VVPAT.">
+  <title>Inside the polling booth — VoteReady</title>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <nav class="navbar navbar-expand-md site-nav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html" translate="no"><img src="assets/logo.svg" alt="" width="30" height="30">VoteReady</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto align-items-md-center gap-md-1">
+          <li class="nav-item"><a class="nav-link" href="checklist.html">Checklist</a></li>
+          <li class="nav-item"><a class="nav-link" href="booth.html" aria-current="page">Booth</a></li>
+          <li class="nav-item"><a class="nav-link" href="qa.html">Ask</a></li>
+          <li class="nav-item"><a class="nav-link" href="map.html">State map</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://voters.eci.gov.in/" target="_blank" rel="noopener">Register ↗</a></li>
+          <li class="nav-item"><button type="button" id="theme-toggle" class="btn btn-outline-primary theme-toggle"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg><span class="visually-hidden" id="theme-label">Dark mode</span></button></li>
+          <li class="nav-item"><button type="button" id="lang-toggle" class="btn btn-outline-primary lang-toggle" aria-label="Switch language / भाषा बदलें">अ/A</button></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main" class="container pb-5">
+    <header class="page-head">
+      <h1>Inside the polling booth</h1>
+      <p>Walk through each station in the order you will meet it, then cast a practice vote on a model EVM. The steps follow the ECI Presiding Officer Handbook.</p>
+    </header>
+
+    <!-- 1. Walkthrough -->
+    <section class="booth" aria-labelledby="walk-h">
+      <h2 class="section-title" id="walk-h">Walk through the booth</h2>
+      <div class="booth-grid">
+        <div class="booth-plan">
+          <svg viewBox="0 0 400 300" role="img" aria-labelledby="plan-title">
+            <title id="plan-title">Floor plan of a polling station</title>
+            <rect class="plan-room" x="8" y="8" width="384" height="284" rx="10"/>
+            <rect class="plan-door" x="40" y="286" width="54" height="12" rx="2"/>
+            <text class="plan-lbl" x="67" y="280" text-anchor="middle">Entrance</text>
+            <!-- desks -->
+            <rect class="plan-desk" x="104" y="132" width="60" height="22" rx="3"/>
+            <rect class="plan-desk" x="184" y="132" width="60" height="22" rx="3"/>
+            <rect class="plan-desk" x="264" y="132" width="60" height="22" rx="3"/>
+            <rect class="plan-cu" x="300" y="137" width="16" height="12" rx="2"/>
+            <text class="plan-lbl" x="134" y="124" text-anchor="middle">1st officer</text>
+            <text class="plan-lbl" x="214" y="124" text-anchor="middle">2nd officer</text>
+            <text class="plan-lbl" x="294" y="124" text-anchor="middle">3rd officer</text>
+            <!-- voting compartment -->
+            <rect class="plan-comp" x="298" y="22" width="80" height="70" rx="4"/>
+            <rect class="plan-bu" x="318" y="40" width="26" height="34" rx="3"/>
+            <rect class="plan-vv" x="350" y="44" width="18" height="26" rx="2"/>
+            <text class="plan-lbl" x="290" y="58" text-anchor="end">Voting compartment</text>
+            <!-- queue -->
+            <circle class="plan-person" cx="67" cy="250" r="5"/>
+            <circle class="plan-person" cx="67" cy="232" r="5"/>
+            <circle class="plan-person" cx="67" cy="214" r="5"/>
+            <text class="plan-lbl" x="30" y="236" text-anchor="middle">Queue</text>
+            <!-- route -->
+            <polyline class="plan-route" points="67,200 134,182 214,182 294,182 352,168 352,110"/>
+            <g class="plan-stops" aria-hidden="true"></g>
+            <circle class="plan-you" r="20" cx="0" cy="0"/>
+          </svg>
+        </div>
+
+        <div class="booth-panel">
+          <ol class="booth-steps" aria-label="Stations"></ol>
+          <div class="station" aria-live="polite">
+            <p class="station-who" id="st-who"></p>
+            <h3 class="station-title" id="st-title"></h3>
+            <p class="station-body" id="st-body"></p>
+          </div>
+          <div class="d-flex flex-wrap gap-2 mt-auto">
+            <button type="button" class="btn btn-outline-primary" id="st-prev">Back</button>
+            <button type="button" class="btn btn-primary" id="st-next">Next</button>
+            <a class="btn btn-primary d-none" id="st-try" href="#practice">Try the practice machine</a>
+          </div>
+          <p class="booth-src">Source: <a href="https://ceogoa.nic.in/pdf/ECIH/Presiding%20Officer%20Handbook.pdf" target="_blank" rel="noopener">ECI Presiding Officer Handbook, sections 8.1 and 20.3</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Practice EVM + VVPAT -->
+    <section class="booth" id="practice" aria-labelledby="practice-h" tabindex="-1">
+      <h2 class="section-title" id="practice-h">Cast a practice vote</h2>
+      <p class="section-sub">Practice only: this is not a real EVM, and the candidates are made up. Start the way the booth does: the Third Polling Officer presses Ballot on the Control Unit.</p>
+
+      <span class="visually-hidden" id="vote-for">Vote for</span>
+      <div class="evm">
+        <div class="cu">
+          <p class="mach-name">Control Unit</p>
+          <button type="button" class="cu-ballot" id="cu-ballot">Ballot</button>
+          <p class="mach-note">Pressed by the Third Polling Officer</p>
+        </div>
+
+        <div class="bu">
+          <div class="bu-head">
+            <p class="mach-name">Ballot Unit</p>
+            <span class="bu-ready"><span class="ready-lamp" id="ready-lamp" aria-hidden="true"></span><span>Ready</span></span>
+          </div>
+          <ol class="bu-rows" id="bu-rows"></ol>
+        </div>
+
+        <div class="vv">
+          <p class="mach-name">VVPAT</p>
+          <div class="vv-window" id="vv-window">
+            <div class="vv-slip" id="vv-slip" hidden>
+              <span class="vv-num" id="vv-num"></span>
+              <span class="vv-cand" id="vv-cand"></span>
+              <span class="vv-sym" id="vv-sym"></span>
+            </div>
+          </div>
+          <div class="vv-timer" id="vv-timer" hidden><span class="vv-bar"></span></div>
+          <p class="vv-count" id="vv-count-wrap" hidden><span id="vv-count">7</span> <span>seconds</span></p>
+          <div class="vv-box" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <p class="evm-status" id="evm-status" role="status"></p>
+      <div class="d-flex flex-wrap align-items-center gap-3">
+        <button type="button" class="btn btn-outline-primary d-none" id="evm-reset">Vote again</button>
+        <label class="evm-sound"><input type="checkbox" id="evm-sound" checked> <span>Beep sound</span></label>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container d-flex flex-column flex-md-row justify-content-between gap-2">
+      <p class="mb-0">VoteReady is an unofficial student project and is not affiliated with the Election Commission of India. For official information, use voters.eci.gov.in.</p>
+      <a href="https://github.com/rajyyug1132/voteready" target="_blank" rel="noopener">Source code on GitHub</a>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="translate.js"></script>
+  <script src="assets/app.js"></script>
+  <script>
+    // Dynamic strings carry data-key so translate.js swaps them on language change.
+    function say(el, en) {
+      el.dataset.key = en;
+      el.textContent = (currentLang === 'hi' && dictionary[en]) ? dictionary[en] : en;
+    }
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ---------- 1. Walkthrough ---------- */
+    // Text follows data/checklist.json "first_time_confidence" (Presiding Officer Handbook §8.1.1-8.1.4, §20.3).
+    const STATIONS = [
+      { x: 67, y: 200, who: 'Queue', title: 'Join the queue',
+        body: 'Enter the polling station and join the queue with your EPIC, or one of the 12 alternative photo IDs, ready in your hand.' },
+      { x: 134, y: 182, who: 'First Polling Officer', title: 'Show your ID',
+        body: 'The First Polling Officer checks your ID and finds your name on the marked copy of the electoral roll.' },
+      { x: 214, y: 182, who: 'Second Polling Officer', title: 'Get your finger inked',
+        body: 'The Second Polling Officer puts indelible ink on your left index finger, records your entry in the Form 17A register, takes your signature or thumb impression, and hands you a signed voter slip.' },
+      { x: 294, y: 182, who: 'Third Polling Officer', title: 'Wait for the Ballot button',
+        body: 'The Third Polling Officer is in charge of the Control Unit. They check the ink mark on your finger, then press the Ballot button so the machine accepts one vote.' },
+      { x: 352, y: 110, who: 'Voting compartment', title: 'Cast your vote',
+        body: 'Press the blue button next to your chosen candidate, or NOTA at the bottom. A red light glows and you hear a beep. Then watch the VVPAT window: your slip shows for about 7 seconds before it drops into the sealed box. If you see no slip or hear no beep, tell the Presiding Officer straight away.' }
+    ];
+    const svgNS = 'http://www.w3.org/2000/svg';
+    const stopsG = document.querySelector('.plan-stops');
+    const you = document.querySelector('.plan-you');
+    const stepsOl = document.querySelector('.booth-steps');
+    let cur = 0;
+
+    STATIONS.forEach((s, i) => {
+      const g = document.createElementNS(svgNS, 'g');
+      g.setAttribute('class', 'plan-stop');
+      g.innerHTML = `<circle cx="${s.x}" cy="${s.y}" r="12"/><text x="${s.x}" y="${s.y + 4.5}" text-anchor="middle">${i + 1}</text>`;
+      stopsG.appendChild(g);
+
+      const li = document.createElement('li');
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'booth-step';
+      b.innerHTML = `<span class="booth-step-num">${i + 1}</span><span class="booth-step-lbl"></span>`;
+      say(b.querySelector('.booth-step-lbl'), s.who);
+      b.addEventListener('click', () => go(i));
+      li.appendChild(b);
+      stepsOl.appendChild(li);
+    });
+
+    function go(i) {
+      cur = Math.max(0, Math.min(STATIONS.length - 1, i));
+      const s = STATIONS[cur];
+      you.style.transform = `translate(${s.x}px, ${s.y}px)`;
+      stopsG.querySelectorAll('.plan-stop').forEach((g, j) => {
+        g.classList.toggle('is-current', j === cur);
+        g.classList.toggle('is-done', j < cur);
+      });
+      stepsOl.querySelectorAll('.booth-step').forEach((b, j) => {
+        if (j === cur) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current');
+        b.classList.toggle('is-done', j < cur);
+      });
+      say(document.getElementById('st-who'), s.who);
+      say(document.getElementById('st-title'), s.title);
+      say(document.getElementById('st-body'), s.body);
+      document.getElementById('st-prev').disabled = cur === 0;
+      const last = cur === STATIONS.length - 1;
+      document.getElementById('st-next').classList.toggle('d-none', last);
+      document.getElementById('st-try').classList.toggle('d-none', !last);
+    }
+    document.getElementById('st-prev').addEventListener('click', () => go(cur - 1));
+    document.getElementById('st-next').addEventListener('click', () => go(cur + 1));
+    document.getElementById('st-try').addEventListener('click', (e) => {
+      e.preventDefault();
+      const p = document.getElementById('practice');
+      p.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+      p.focus({ preventScroll: true });
+    });
+    go(0);
+
+    /* ---------- 2. Practice EVM ---------- */
+    // Made-up candidates with plain geometric symbols, so no real party or symbol is implied.
+    const SYMBOLS = {
+      circle: '<circle cx="12" cy="12" r="8"/>',
+      triangle: '<path d="M12 4l8.5 15h-17z"/>',
+      square: '<rect x="4.5" y="4.5" width="15" height="15" rx="1"/>',
+      diamond: '<path d="M12 3l9 9-9 9-9-9z"/>',
+      nota: '<rect x="4" y="4" width="16" height="16" rx="1" fill="none" stroke-width="2"/><path d="M8 8l8 8M16 8l-8 8" fill="none" stroke-width="2.2" stroke-linecap="round"/>'
+    };
+    const CANDIDATES = [
+      { name: 'Candidate A', sym: 'circle' },
+      { name: 'Candidate B', sym: 'triangle' },
+      { name: 'Candidate C', sym: 'square' },
+      { name: 'Candidate D', sym: 'diamond' },
+      { name: 'NOTA', sym: 'nota' }
+    ];
+    const symSvg = (k) => `<svg viewBox="0 0 24 24" aria-hidden="true" class="sym sym-${k}">${SYMBOLS[k]}</svg>`;
+
+    const rowsOl = document.getElementById('bu-rows');
+    const status = document.getElementById('evm-status');
+    const ballotBtn = document.getElementById('cu-ballot');
+    const readyLamp = document.getElementById('ready-lamp');
+    const slip = document.getElementById('vv-slip');
+    const timer = document.getElementById('vv-timer');
+    const countWrap = document.getElementById('vv-count-wrap');
+    const countEl = document.getElementById('vv-count');
+    const resetBtn = document.getElementById('evm-reset');
+    let state = 'locked'; // locked -> ready -> voted -> done
+    let timers = [];
+
+    CANDIDATES.forEach((c, i) => {
+      const li = document.createElement('li');
+      li.className = 'bu-row' + (c.sym === 'nota' ? ' bu-nota' : '');
+      li.innerHTML = `
+        <span class="bu-num">${i + 1}</span>
+        <span class="bu-name" id="cand-${i}"></span>
+        ${symSvg(c.sym)}
+        <span class="lamp" aria-hidden="true"></span>
+        <button type="button" class="bu-key" aria-labelledby="vote-for cand-${i}" aria-disabled="true"></button>`;
+      say(li.querySelector('.bu-name'), c.name);
+      li.querySelector('.bu-key').addEventListener('click', () => vote(i, li));
+      rowsOl.appendChild(li);
+    });
+
+    function setState(s) {
+      state = s;
+      readyLamp.classList.toggle('on', s === 'ready');
+      ballotBtn.disabled = s !== 'locked';
+      rowsOl.querySelectorAll('.bu-key').forEach(k => k.setAttribute('aria-disabled', s === 'ready' ? 'false' : 'true'));
+      resetBtn.classList.toggle('d-none', s !== 'done');
+    }
+
+    ballotBtn.addEventListener('click', () => {
+      if (state !== 'locked') return;
+      setState('ready');
+      say(status, 'The Ready lamp is on. Press the blue button next to your choice.');
+    });
+
+    function beep() {
+      if (!document.getElementById('evm-sound').checked) return;
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const o = ctx.createOscillator(), g = ctx.createGain();
+        o.type = 'square'; o.frequency.value = 1150;
+        g.gain.setValueAtTime(0.0001, ctx.currentTime);
+        g.gain.exponentialRampToValueAtTime(0.06, ctx.currentTime + 0.02);
+        g.gain.setValueAtTime(0.06, ctx.currentTime + 1.4);
+        g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 1.5);
+        o.connect(g).connect(ctx.destination);
+        o.start(); o.stop(ctx.currentTime + 1.55);
+        o.onended = () => ctx.close();
+      } catch (_) { /* no audio: the lamp and the status line still confirm the vote */ }
+    }
+
+    function vote(i, li) {
+      if (state === 'locked') { say(status, 'Nothing happens: Ballot has not been pressed on the Control Unit yet.'); return; }
+      if (state !== 'ready') { say(status, 'The machine takes only one vote. Nothing happens.'); return; }
+      setState('voted');
+      li.classList.add('is-done');
+      beep();
+      if (navigator.vibrate) navigator.vibrate(180);
+
+      const c = CANDIDATES[i];
+      document.getElementById('vv-num').textContent = i + 1;
+      say(document.getElementById('vv-cand'), c.name);
+      document.getElementById('vv-sym').innerHTML = symSvg(c.sym);
+      slip.hidden = false; timer.hidden = false; countWrap.hidden = false;
+      slip.classList.remove('is-dropping');
+      timer.classList.remove('is-running'); void timer.offsetWidth; timer.classList.add('is-running');
+      say(status, 'Beep. Your vote is recorded. Check the VVPAT slip now: it shows for 7 seconds.');
+      if (window.innerWidth < 992) document.getElementById('vv-window').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+
+      let left = 7;
+      countEl.textContent = left;
+      timers.push(setInterval(() => { left = Math.max(0, left - 1); countEl.textContent = left; }, 1000));
+      timers.push(setTimeout(() => {
+        timers.forEach(clearInterval);
+        slip.classList.add('is-dropping');
+        timers.push(setTimeout(() => {
+          slip.hidden = true; timer.hidden = true; countWrap.hidden = true;
+          setState('done');
+          say(status, 'The slip has dropped into the sealed box. In a real booth, if you saw no slip or heard no beep, tell the Presiding Officer.');
+          resetBtn.focus();
+        }, reduceMotion ? 0 : 650));
+      }, 7000));
+    }
+
+    resetBtn.addEventListener('click', () => {
+      timers.forEach(t => { clearTimeout(t); clearInterval(t); }); timers = [];
+      rowsOl.querySelectorAll('.bu-row').forEach(r => r.classList.remove('is-done'));
+      setState('locked');
+      say(status, 'The machine is locked. Press Ballot on the Control Unit to begin.');
+      ballotBtn.focus();
+    });
+
+    setState('locked');
+    say(status, 'The machine is locked. Press Ballot on the Control Unit to begin.');
+  </script>
+</body>
+</html>

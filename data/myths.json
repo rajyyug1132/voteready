@@ -1,0 +1,68 @@
+[
+  {
+    "myth": "I need a Voter ID card (EPIC) to vote.",
+    "fact": "If you don't have your EPIC, you can show any one of 12 alternative photo IDs approved by the Election Commission, such as Aadhaar, PAN, Indian Passport or Driving Licence. Your name must still be on the electoral roll.",
+    "source_title": "Documents to carry on polling day",
+    "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2177191",
+    "hi": {
+      "myth": "वोट देने के लिए मेरे पास वोटर आईडी कार्ड (EPIC) होना ज़रूरी है।",
+      "fact": "अगर आपके पास EPIC नहीं है, तो आप चुनाव आयोग द्वारा मान्य 12 वैकल्पिक फोटो पहचान पत्रों में से कोई एक दिखा सकते हैं, जैसे आधार, पैन, भारतीय पासपोर्ट या ड्राइविंग लाइसेंस। आपका नाम मतदाता सूची में होना फिर भी ज़रूरी है।",
+      "source_title": "मतदान के दिन साथ ले जाने वाले दस्तावेज़"
+    }
+  },
+  {
+    "myth": "Any government photo ID will be accepted at the booth.",
+    "fact": "Only the specific list of 12 IDs notified by the Election Commission is accepted, not any government-issued photo ID. Check the full list on voters.eci.gov.in.",
+    "source_title": "Documents to carry on polling day",
+    "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2177191",
+    "hi": {
+      "myth": "बूथ पर कोई भी सरकारी फोटो पहचान पत्र चल जाएगा।",
+      "fact": "केवल चुनाव आयोग द्वारा अधिसूचित 12 पहचान पत्रों की सूची मान्य है, कोई भी सरकारी फोटो पहचान पत्र नहीं। पूरी सूची voters.eci.gov.in पर देखें।",
+      "source_title": "मतदान के दिन साथ ले जाने वाले दस्तावेज़"
+    }
+  },
+  {
+    "myth": "If I'm still in the queue when polling closes, I've missed my chance.",
+    "fact": "Anyone already in the queue at closing time must be allowed to vote. Join the queue before the notified closing hour.",
+    "source_title": "When and when not to go to the booth",
+    "source_url": "https://eci.gov.in/files/file/8993-handbook-for-presiding-officers-october-2018/",
+    "hi": {
+      "myth": "अगर मतदान बंद होते समय मैं कतार में ही हूँ, तो मेरा मौका निकल गया।",
+      "fact": "बंद होने के समय जो भी कतार में खड़ा है, उसे वोट देने दिया जाना चाहिए। अधिसूचित समापन समय से पहले कतार में लग जाएँ।",
+      "source_title": "बूथ पर कब जाएँ और कब नहीं"
+    }
+  },
+  {
+    "myth": "If my name is missing from the voter list, I can still vote with my ID.",
+    "fact": "If your name is not on the electoral roll, you cannot vote in that election. Check your name at electoralsearch.eci.gov.in or call 1950, and file Form 6 to get added.",
+    "source_title": "What to do if your name is missing from the voter list",
+    "source_url": "https://www.eci.gov.in/gallery/image/1187-call-1950-to-know-your-name-in-electoral-roll/",
+    "hi": {
+      "myth": "अगर मेरा नाम मतदाता सूची में नहीं है, तब भी मैं अपनी आईडी से वोट दे सकता/सकती हूँ।",
+      "fact": "अगर आपका नाम मतदाता सूची में नहीं है, तो आप उस चुनाव में वोट नहीं दे सकते। electoralsearch.eci.gov.in पर अपना नाम जाँचें या 1950 पर कॉल करें, और नाम जुड़वाने के लिए फॉर्म 6 भरें।",
+      "source_title": "मतदाता सूची में नाम न होने पर क्या करें"
+    }
+  },
+  {
+    "myth": "There is no way to check that the EVM recorded my vote correctly.",
+    "fact": "After you press the button, the VVPAT shows a paper slip with the serial number, name and symbol of your candidate for about 7 seconds before it drops into a sealed box.",
+    "source_title": "What happens inside the polling booth",
+    "source_url": "https://ceogoa.nic.in/pdf/ECIH/Presiding%20Officer%20Handbook.pdf",
+    "hi": {
+      "myth": "यह जाँचने का कोई तरीका नहीं है कि EVM ने मेरा वोट सही दर्ज किया।",
+      "fact": "बटन दबाने के बाद VVPAT लगभग 7 सेकंड तक आपके उम्मीदवार का क्रम संख्या, नाम और चिह्न वाली पर्ची दिखाता है, फिर वह पर्ची सीलबंद डिब्बे में गिर जाती है।",
+      "source_title": "मतदान केंद्र के अंदर क्या होता है"
+    }
+  },
+  {
+    "myth": "Registering to vote means going to a government office.",
+    "fact": "You can submit Form 6 online at voters.eci.gov.in or through the Voter Helpline App. You will typically need proof of age, proof of address and a passport-size photograph.",
+    "source_title": "Register as a new voter with Form 6",
+    "source_url": "https://voters.eci.gov.in/guidelines/Form-6_en.pdf",
+    "hi": {
+      "myth": "वोटर के रूप में पंजीकरण के लिए सरकारी दफ़्तर जाना पड़ता है।",
+      "fact": "आप फॉर्म 6 voters.eci.gov.in पर ऑनलाइन या वोटर हेल्पलाइन ऐप से जमा कर सकते हैं। आमतौर पर आयु प्रमाण, पते का प्रमाण और पासपोर्ट आकार की फोटो चाहिए।",
+      "source_title": "फॉर्म 6 से नए मतदाता के रूप में पंजीकरण करें"
+    }
+  }
+]
