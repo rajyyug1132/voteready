@@ -21,7 +21,7 @@ const MONGO_URI = process.env.MONGODB_URI || process.env.MONGODB_URL || process.
 // ponytail: two cold starts racing on an empty DB could both seed; fine for a one-time first run.
 const ready = process.env.VERCEL && MONGO_URI
   ? mongoose.connect(MONGO_URI)
-    .then(async () => { if (!(await ConstituencyModel.estimatedDocumentCount())) await require('./seed')() // seed inserts constituencies last, so 0 also catches a half-finished seed })
+    .then(async () => { if (!(await ConstituencyModel.estimatedDocumentCount())) await require('./seed')() }) // seed inserts constituencies last, so 0 also catches a half-finished seed
     .catch(err => console.error('MongoDB startup failed:', err.message))
   : null
 
